@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Me{% endblock %}
+
+{% block body %}
+    <h1>Me</h1>
+    <div class="two-columns">
+        <div class="column">
+            <p>Mitt namn är Adam Grimmehed, från Lidköping, jag har sedan tidigare en kandidatexamen i Rättsvetenskap (Bachelor of sience, main field: Law) från Örebor Universitet.
+            Innan jag flyttade till Karlskrona för att studera webbprogramering så arbetade jag på Skatteverket i Halmstad.
+            Största intresset är självklart gaming, åker även mycket skidor.</p>
+        </div>
+        <div class="column">
+            <a href="{{ asset('img/meADAM.png') }}">
+                <img src="{{ asset('img/meADAM.png') }}" alt="" class="img-resize">
+            </a>
+        </div>
+    </div>
+{% endblock %}
