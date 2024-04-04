@@ -1,4 +1,4 @@
-![](app/public/img/GitHub-logo.png) 
+![](public/img/GitHub-logo.png) 
 # Mvc 
 
 # Ladda hem projektet
@@ -11,7 +11,7 @@
 3. Navigera med Ubuntu (eller liknande) till app folder.
 ![](image-1.png)
 
-# Starta sidan ![](app/public/img/php.png)
+# Starta sidan ![](public/img/php.png)
 
 Navigera till report/app och copy-paste följande i terminalen för att starta servern:
 
