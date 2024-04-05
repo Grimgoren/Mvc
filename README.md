@@ -8,12 +8,12 @@
 
 2. Extrahera innehållet till valfri plats.
 
-3. Navigera med Ubuntu (eller liknande) till app folder.
-![](image-1.png)
+3. Navigera med Ubuntu (eller liknande) till report folder.
+![](image-3.png)
 
 # Starta sidan ![](public/img/php.png)
 
-Navigera till report/app och copy-paste följande i terminalen för att starta servern:
+Navigera till /report och copy-paste följande i terminalen för att starta servern:
 
 $ php -S localhost:8888 -t public
 
