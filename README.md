@@ -1,4 +1,4 @@
-![](public/img/GitHub-logo.png) 
+![](public/assets/img/GitHub-logo.png) 
 # Mvc 
 
 # Ladda hem projektet

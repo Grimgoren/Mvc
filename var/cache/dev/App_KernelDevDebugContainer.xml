@@ -2316,6 +2316,7 @@
           <argument>/home/grimgoren/dbwebb-kurser/mvc/me/report/vendor/symfony/validator/Resources/translations</argument>
           <argument>/home/grimgoren/dbwebb-kurser/mvc/me/report/vendor/symfony/form/Resources/translations</argument>
           <argument>/home/grimgoren/dbwebb-kurser/mvc/me/report/vendor/symfony/security-core/Resources/translations</argument>
+          <argument>/home/grimgoren/dbwebb-kurser/mvc/me/report/translations</argument>
           <argument>/home/grimgoren/dbwebb-kurser/mvc/me/report/vendor/symfony/framework-bundle/translations</argument>
           <argument>/home/grimgoren/dbwebb-kurser/mvc/me/report/vendor/doctrine/doctrine-bundle/translations</argument>
           <argument>/home/grimgoren/dbwebb-kurser/mvc/me/report/vendor/doctrine/doctrine-migrations-bundle/translations</argument>
@@ -2329,13 +2330,13 @@
           <argument>/home/grimgoren/dbwebb-kurser/mvc/me/report/vendor/symfony/monolog-bundle/translations</argument>
           <argument>/home/grimgoren/dbwebb-kurser/mvc/me/report/vendor/symfony/maker-bundle/src/translations</argument>
           <argument>/home/grimgoren/dbwebb-kurser/mvc/me/report/vendor/symfony/webpack-encore-bundle/src/translations</argument>
-          <argument>/home/grimgoren/dbwebb-kurser/mvc/me/report/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
           <argument key="scanned_directories" type="collection">
             <argument>vendor/symfony/validator/Resources/translations</argument>
             <argument>vendor/symfony/form/Resources/translations</argument>
             <argument>vendor/symfony/security-core/Resources/translations</argument>
+            <argument>translations</argument>
             <argument>vendor/symfony/framework-bundle/translations</argument>
             <argument>vendor/doctrine/doctrine-bundle/translations</argument>
             <argument>vendor/doctrine/doctrine-migrations-bundle/translations</argument>
@@ -2349,7 +2350,6 @@
             <argument>vendor/symfony/monolog-bundle/translations</argument>
             <argument>vendor/symfony/maker-bundle/src/translations</argument>
             <argument>vendor/symfony/webpack-encore-bundle/src/translations</argument>
-            <argument>translations</argument>
           </argument>
         </argument>
       </argument>
