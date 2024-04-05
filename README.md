@@ -11,7 +11,7 @@
 3. Navigera med Ubuntu (eller liknande) till report folder.
 ![](image-3.png)
 
-# Starta sidan ![](public/img/php.png)
+# Starta sidan ![](public/assets/img/php.png)
 
 Navigera till /report och copy-paste följande i terminalen för att starta servern:
 
