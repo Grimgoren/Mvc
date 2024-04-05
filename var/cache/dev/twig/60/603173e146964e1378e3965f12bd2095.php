@@ -92,16 +92,23 @@ class __TwigTemplate_3b508d9778b66a6f6a8fe7cd52d4db13 extends Template
 
     <h2>Berätta kort om PHPs modell för klasser och objekt. Vilka är de grunder man behöver veta/förstå 
     för att kunna komma igång och skapa sina första klasser?</h2>
-    <p>Ett objekt är en instans av en klass. När du skapar ett objekt, använder du 
-    klassens definition för att tilldela det egenskaper och möjliggöra att det kan utföra handlingar genom dess metoder.
+    <p>Ett objekt ärver av en klass, när man skapar ett objekt. 
     En klass i PHP är som en blueprint för att skapa objekt. Den definierar variabler
      och funktioner som objekten skapade från klassen kommer att ha.</p>
+
+    <p>Exempelvis om jag har en class som innehåller en fyrkant (längd & bredd) och sen skapar jag ett fyrkants objekt, då ärver det objektet från 
+    klassen (längd och bredd)</p>
 
 
     <h2>Reflektera kort över den kodbas, koden, strukturen som användes till uppgiften me/report, hur uppfattar du den?</h2>
     <p>Väldigt stökig och rörig, strukturen på hela grejen är väldigt utsprid och oorganiserad enligt mitt tycke. Det tar längre tid än vad 
     det borde göra för att åstadkomma enkla saker, visst det löser sig efter att man kommit in i det men från en första blick så finns det inte 
     mycket mer att säga än att det är en enda stor röra.</p>
+
+    <p>Något jag fick väldigt stora problem med var \"övningen\" och följande uppgift, övningen la all sin kod i \"app\" folder men 
+    uppgiften och \"dbwebb validate kmom01\" förväntade sig att alla filer låg i roten av /report och inte report/app. Tog många svordommar 
+    och mycket extra tid för att flytta allt till rooten och få det att fungera igen. Min poäng är att övningen vägledde mig in på något som 
+    inte fungerade i uppgiften och skapade otrolig frustration.</p>
 
     <h2>Med tanke på artikeln “PHP The Right Way”, vilka delar in den finner du extra intressanta och värdefulla? 
     Är det några särskilda områden som du känner att du vill veta mer om? Lyft fram några delar av artikeln som du känner mer värdefulla.</h2>
@@ -174,16 +181,23 @@ class __TwigTemplate_3b508d9778b66a6f6a8fe7cd52d4db13 extends Template
 
     <h2>Berätta kort om PHPs modell för klasser och objekt. Vilka är de grunder man behöver veta/förstå 
     för att kunna komma igång och skapa sina första klasser?</h2>
-    <p>Ett objekt är en instans av en klass. När du skapar ett objekt, använder du 
-    klassens definition för att tilldela det egenskaper och möjliggöra att det kan utföra handlingar genom dess metoder.
+    <p>Ett objekt ärver av en klass, när man skapar ett objekt. 
     En klass i PHP är som en blueprint för att skapa objekt. Den definierar variabler
      och funktioner som objekten skapade från klassen kommer att ha.</p>
+
+    <p>Exempelvis om jag har en class som innehåller en fyrkant (längd & bredd) och sen skapar jag ett fyrkants objekt, då ärver det objektet från 
+    klassen (längd och bredd)</p>
 
 
     <h2>Reflektera kort över den kodbas, koden, strukturen som användes till uppgiften me/report, hur uppfattar du den?</h2>
     <p>Väldigt stökig och rörig, strukturen på hela grejen är väldigt utsprid och oorganiserad enligt mitt tycke. Det tar längre tid än vad 
     det borde göra för att åstadkomma enkla saker, visst det löser sig efter att man kommit in i det men från en första blick så finns det inte 
     mycket mer att säga än att det är en enda stor röra.</p>
+
+    <p>Något jag fick väldigt stora problem med var \"övningen\" och följande uppgift, övningen la all sin kod i \"app\" folder men 
+    uppgiften och \"dbwebb validate kmom01\" förväntade sig att alla filer låg i roten av /report och inte report/app. Tog många svordommar 
+    och mycket extra tid för att flytta allt till rooten och få det att fungera igen. Min poäng är att övningen vägledde mig in på något som 
+    inte fungerade i uppgiften och skapade otrolig frustration.</p>
 
     <h2>Med tanke på artikeln “PHP The Right Way”, vilka delar in den finner du extra intressanta och värdefulla? 
     Är det några särskilda områden som du känner att du vill veta mer om? Lyft fram några delar av artikeln som du känner mer värdefulla.</h2>
