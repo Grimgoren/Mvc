@@ -51,7 +51,7 @@ class LuckyControllerJson
     {
         $number = random_int(0, 2);
 
-        $t=time();
+        $t = time();
         $time = date("Y-m-d H:i:s", $t);
 
         $data = [];
@@ -72,7 +72,7 @@ class LuckyControllerJson
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
-        $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
         return $response;
     }
