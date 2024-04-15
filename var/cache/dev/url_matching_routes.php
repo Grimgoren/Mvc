@@ -14,6 +14,8 @@ return [
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/xdebug' => [[['_route' => '_profiler_xdebug', '_controller' => 'web_profiler.controller.profiler::xdebugAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
+        '/api/session' => [[['_route' => 'app_cardcontrollerkmom02json_thissession', '_controller' => 'App\\Controller\\CardControllerKmom02Json::ThisSession'], null, null, null, false, false, null]],
+        '/api/delete' => [[['_route' => 'app_cardcontrollerkmom02json_deletesession', '_controller' => 'App\\Controller\\CardControllerKmom02Json::DeleteSession'], null, null, null, false, false, null]],
         '/api/lucky/number' => [[['_route' => 'app_luckycontrollerjson_jsonnumber', '_controller' => 'App\\Controller\\LuckyControllerJson::jsonNumber'], null, null, null, false, false, null]],
         '/api' => [[['_route' => 'app_luckycontrollerjson_apiroutes', '_controller' => 'App\\Controller\\LuckyControllerJson::apiRoutes'], null, null, null, false, false, null]],
         '/api/quote' => [[['_route' => 'app_luckycontrollerjson_apiquote', '_controller' => 'App\\Controller\\LuckyControllerJson::apiQuote'], null, null, null, false, false, null]],

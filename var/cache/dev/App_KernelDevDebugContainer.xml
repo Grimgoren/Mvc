@@ -355,6 +355,7 @@
     <service id="App\Entity" class="App\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
+    <service id="App\Controller\CardControllerKmom02Json" class="App\Controller\CardControllerKmom02Json" autowire="true" autoconfigure="true"/>
     <service id="App\Controller\LuckyControllerJson" class="App\Controller\LuckyControllerJson" autowire="true" autoconfigure="true"/>
     <service id="App\Controller\LuckyControllerTwig" class="App\Controller\LuckyControllerTwig" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
