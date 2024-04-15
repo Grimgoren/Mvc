@@ -36,7 +36,9 @@ class LuckyControllerJson
                 'report' => '/report',
                 'lucky' => '/lucky',
                 'lucky_pretty_print' => '/api/lucky/number',
-                'quote' => '/api/quote'
+                'quote' => '/api/quote',
+                'session' => '/api/session',
+                'delete session' => '/delete'
             ]
         ];
 

@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 class CardControllerKmom02Json
 {
@@ -21,20 +21,5 @@ class CardControllerKmom02Json
         );
 
         return $response;
-    }
-    #[Route("/api/delete")]
-    public function DeleteSession(Request $request): JsonResponse
-    {
-        $session = $request->getSession();
-        $session->clear();
-
-        $this->addFlash(
-            'Session cleared successfully'
-        );
-
-        return new JsonResponse([
-            'success' => true,
-            'message' => 'Session cleared successfully'
-        ]);
     }
 }

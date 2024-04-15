@@ -356,6 +356,13 @@
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
     <service id="App\Controller\CardControllerKmom02Json" class="App\Controller\CardControllerKmom02Json" autowire="true" autoconfigure="true"/>
+    <service id="App\Controller\CardControllerKmom02Twig" class="App\Controller\CardControllerKmom02Twig" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.jUv.zyj.App\Controller\CardControllerKmom02Twig"/>
+      </call>
+    </service>
     <service id="App\Controller\LuckyControllerJson" class="App\Controller\LuckyControllerJson" autowire="true" autoconfigure="true"/>
     <service id="App\Controller\LuckyControllerTwig" class="App\Controller\LuckyControllerTwig" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
@@ -7028,6 +7035,9 @@
         <argument key="_default" type="service_closure" id="webpack_encore.entrypoint_lookup[_default]"/>
       </argument>
     </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CardControllerKmom02Twig" class="App\Controller\CardControllerKmom02Twig" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CardControllerKmom02Twig" class="App\Controller\CardControllerKmom02Twig" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CardControllerKmom02Twig" class="App\Controller\CardControllerKmom02Twig" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LuckyControllerTwig" class="App\Controller\LuckyControllerTwig" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LuckyControllerTwig" class="App\Controller\LuckyControllerTwig" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\LuckyControllerTwig" class="App\Controller\LuckyControllerTwig" autowire="true" autoconfigure="true" abstract="true"/>
@@ -8049,6 +8059,12 @@
         <argument key="web_link.http_header_serializer" type="service_closure" id="web_link.http_header_serializer" on-invalid="ignore"/>
       </argument>
     </service>
+    <service id=".service_locator.jUv.zyj.App\Controller\CardControllerKmom02Twig" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\CardControllerKmom02Twig"/>
+      <argument>App\Controller\CardControllerKmom02Twig</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.jUv.zyj" method="withContext"/>
+    </service>
     <service id=".service_locator.jUv.zyj.App\Controller\LuckyControllerTwig" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\LuckyControllerTwig"/>
       <argument>App\Controller\LuckyControllerTwig</argument>
@@ -8224,6 +8240,7 @@
       <call method="allowControllers">
         <argument type="collection">
           <argument>App\Kernel</argument>
+          <argument>App\Controller\CardControllerKmom02Twig</argument>
           <argument>App\Controller\LuckyControllerTwig</argument>
           <argument>Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController</argument>
         </argument>

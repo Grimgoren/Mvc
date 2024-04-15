@@ -103,6 +103,10 @@ class __TwigTemplate_bf5f29405f823e6828f0f0656a68c382 extends Template
         </a>
     </div>
 </div>
+    ";
+        // line 21
+        echo twig_include($this->env, $context, "flash.html.twig");
+        echo "
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -133,7 +137,7 @@ class __TwigTemplate_bf5f29405f823e6828f0f0656a68c382 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  101 => 17,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  108 => 21,  101 => 17,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -158,6 +162,7 @@ class __TwigTemplate_bf5f29405f823e6828f0f0656a68c382 extends Template
         </a>
     </div>
 </div>
+    {{ include('flash.html.twig') }}
 {% endblock %}
 ", "about.html.twig", "/home/grimgoren/dbwebb-kurser/mvc/me/report/templates/about.html.twig");
     }
