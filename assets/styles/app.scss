@@ -106,3 +106,31 @@ h1 {
 .flash-warning:before {
     content: "⚠";
 }
+
+.allcards p {
+    background-color: rgb(45, 45, 45);
+    color: black;
+    font-size: 72px;
+    font-weight: bold;
+    padding: 20px;
+    border: 2px solid #000; 
+    margin: 10px;
+    border-radius: 10px; 
+    width: 120px; 
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white; 
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+    text-align: center;
+    margin: auto;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+    margin: 0 auto;
+}

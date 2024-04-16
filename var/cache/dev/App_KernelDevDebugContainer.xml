@@ -355,6 +355,16 @@
     <service id="App\Entity" class="App\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
+    <service id="App\Card\Card" class="App\Card\Card" autowire="true" autoconfigure="true">
+      <tag name="container.error" message="Cannot autowire service &quot;App\Card\Card&quot;: argument &quot;$suit&quot; of method &quot;__construct()&quot; has no type-hint, you should configure its value explicitly."/>
+    </service>
+    <service id="App\Card\CardGraphic" class="App\Card\CardGraphic" autowire="true" autoconfigure="true">
+      <tag name="container.error" message="Cannot autowire service &quot;App\Card\CardGraphic&quot;: argument &quot;$suit&quot; of method &quot;__construct()&quot; has no type-hint, you should configure its value explicitly."/>
+    </service>
+    <service id="App\Card\CardHand" class="App\Card\CardHand" autowire="true" autoconfigure="true"/>
+    <service id="App\Card\CardSort" class="App\Card\CardSort" autowire="true" autoconfigure="true"/>
+    <service id="App\Card\CardValue" class="App\Card\CardValue" autowire="true" autoconfigure="true"/>
+    <service id="App\Card\DeckOfCards" class="App\Card\DeckOfCards" autowire="true" autoconfigure="true"/>
     <service id="App\Controller\CardControllerKmom02Json" class="App\Controller\CardControllerKmom02Json" autowire="true" autoconfigure="true"/>
     <service id="App\Controller\CardControllerKmom02Twig" class="App\Controller\CardControllerKmom02Twig" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
