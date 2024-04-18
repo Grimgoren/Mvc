@@ -15,8 +15,12 @@ return [
         '/_profiler/xdebug' => [[['_route' => '_profiler_xdebug', '_controller' => 'web_profiler.controller.profiler::xdebugAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/api/session' => [[['_route' => 'app_cardcontrollerkmom02json_thissession', '_controller' => 'App\\Controller\\CardControllerKmom02Json::ThisSession'], null, null, null, false, false, null]],
+        '/api/deck' => [[['_route' => 'app_cardcontrollerkmom02json_apideck', '_controller' => 'App\\Controller\\CardControllerKmom02Json::apiDeck'], null, ['GET' => 0], null, false, false, null]],
+        '/api/deck/shuffle' => [[['_route' => 'api-shuffle', '_controller' => 'App\\Controller\\CardControllerKmom02Json::apiShuffle'], null, ['POST' => 0], null, false, false, null]],
+        '/api/deck/draw' => [[['_route' => 'api-draw', '_controller' => 'App\\Controller\\CardControllerKmom02Json::apiDraw'], null, ['POST' => 0], null, false, false, null]],
+        '/card' => [[['_route' => 'landingpage', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::cardStartPage'], null, null, null, false, false, null]],
         '/delete' => [[['_route' => 'delete', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::DeleteSession'], null, null, null, false, false, null]],
-        '/card' => [[['_route' => 'card_init_get', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::initCard'], null, ['GET' => 0], null, false, false, null]],
+        '/card/deck' => [[['_route' => 'card_init_get', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::initCard'], null, ['GET' => 0], null, false, false, null]],
         '/card/deck/shuffle' => [[['_route' => 'card_shuffle_get', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::initShuffle'], null, ['GET' => 0], null, false, false, null]],
         '/card/deck/draw' => [[['_route' => 'card_draw_get', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::initDraw'], null, ['GET' => 0], null, false, false, null]],
         '/api/lucky/number' => [[['_route' => 'app_luckycontrollerjson_jsonnumber', '_controller' => 'App\\Controller\\LuckyControllerJson::jsonNumber'], null, null, null, false, false, null]],
@@ -47,7 +51,9 @@ return [
                         .')'
                     .')'
                 .')'
-                .'|/card/deck/draw/(\\d+)(*:223)'
+                .'|/card/deck/draw/(\\d+)(?'
+                    .'|(*:226)'
+                .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -59,7 +65,8 @@ return [
         168 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         181 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         191 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        223 => [
+        226 => [
+            [['_route' => 'api_draw_number', '_controller' => 'App\\Controller\\CardControllerKmom02Json::apiDrawNumber'], ['num'], ['POST' => 0], null, false, true, null],
             [['_route' => 'card_draw_number_post', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::initDrawNumber'], ['num'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

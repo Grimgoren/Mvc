@@ -26,28 +26,36 @@ class LuckyControllerJson
         );
         return $response;
     }
+
     #[Route("/api")]
     public function apiRoutes(): Response
     {
         $data = [
             'routes' => [
-                'me (me page)' => '/',
-                'about (about the course page' => '/about',
-                'report (student report page)' => '/report',
-                'lucky (lucky number page)' => '/lucky',
-                'lucky_pretty_print (lucky number in json format)' => '/api/lucky/number',
-                'quote (random quote in json format)' => '/api/quote',
-                'session (shows what is in the session in json format)' => '/api/session',
-                'delete session (deletes the current information in the session)' => '/delete'
+                'me' => '/',
+                'about' => '/about',
+                'report' => '/report',
+                'lucky' => '/lucky',
+                'lucky_pretty_print' => '/api/lucky/number',
+                'quote' => '/api/quote',
+                'session' => '/api/session',
+                'delete session' => '/delete',
+                'deck' => 'card/deck',
+                'shuffle' => '/card/deck/shuffle',
+                'draw' => '/card/deck/draw',
+                'draw number' => '/card/deck/draw/{input a number}',
+                'api deck' => '/api/deck',
+                'api shuffle' => '/api/deck/shuffle (navigate to the landingpage and use the shuffle button)'
             ]
         ];
-
+    
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
         return $response;
     }
+
     #[Route("/api/quote")]
     public function apiQuote(): Response
     {

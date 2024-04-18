@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card landingpage{% endblock %}
+
+{% block body %}
+<ul>
+    <li class="link-color"><a class="link-color" href="{{ path('card_init_get') }}">Cards</a></li>
+    <li class="link-color"><a class="link-color" href="{{ path('card_shuffle_get') }}">Shuffle</a></li>
+    <li class="link-color"><a class="link-color" href="{{ path('card_draw_get') }}">Draw</a></li>
+</ul>
+
+<form method="post" action="">
+    <p>
+        <input type="submit" name="shuffle" value="Shuffle"
+               onclick="this.form.action='{{ path('api-shuffle') }}';">
+    </p>
+    <p>
+        <input type="submit" name="draw" value="Draw"
+               onclick="this.form.action='{{ path('api-draw') }}';">
+    </p>
+    <p>
+        <label for="drawNumber">Number of cards:</label>
+        <input type="number" id="drawNumber" name="num" min="1" value="1">
+        <input type="submit" name="draw-number" value="Draw Cards"
+               onclick="updateAction();">
+    </p>
+</form>
+
+<script>
+function updateAction() {
+    var num = document.getElementById('drawNumber').value;
+    var baseUrl = '{{ path('api_draw_number', {'num': '0'}) }}';
+    var actionUrl = baseUrl.replace('/0', '/' + num);
+    document.querySelector('form').action = actionUrl;
+}
+</script>
+
+{% endblock %}

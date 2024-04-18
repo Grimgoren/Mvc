@@ -9,7 +9,6 @@ use App\Card\DeckOfCards;
 use App\Card\CardSort;
 use App\Card\Draw;
 
-
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,6 +17,12 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CardControllerKmom02Twig extends AbstractController
 {
+    #[Route("/card", name: "landingpage")]
+    public function cardStartPage(Request $request): Response
+    {
+        return $this->render('landingpage.html.twig');
+    }
+
     #[Route("/delete", name: "delete")]
     public function DeleteSession(Request $request): Response
     {
@@ -32,7 +37,7 @@ class CardControllerKmom02Twig extends AbstractController
         return $this->redirectToRoute('about');
     }
 
-    #[Route("/card", name: "card_init_get", methods: ['GET'])]
+    #[Route("/card/deck", name: "card_init_get", methods: ['GET'])]
     public function initCard(SessionInterface $session): Response
     {
 
@@ -44,7 +49,7 @@ class CardControllerKmom02Twig extends AbstractController
         $session->set('All cards', $cards);
         $sorter->sortByValue($cards);
     
-        return $this->render('card.html.twig', [
+        return $this->render('deck.html.twig', [
             'cards' => $cards,
             'deckCount' => $deckCount
         ]);
@@ -62,6 +67,12 @@ class CardControllerKmom02Twig extends AbstractController
         $deckCount = count($cards);
 
         $session->set('shuffled_deck', $cards);
+
+        
+        $this->addFlash(
+            'notice',
+            'Session reset! All cards restored.'
+        );
 
         return $this->render('shuffle.html.twig', [
             'cards' => $cards,

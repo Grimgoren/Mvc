@@ -1,3 +1,19 @@
 {% extends "base.html.twig" %}
 {% block body %}
+<ul>
+    <li class="link-color"><a class="link-color" href="{{ path('card_init_get') }}">Cards</a></li>
+    <li class="link-color"><a class="link-color" href="{{ path('card_shuffle_get') }}">Shuffle</a></li>
+    <li class="link-color"><a class="link-color" href="{{ path('card_draw_get') }}">Draw</a></li>
+</ul>
+<h1>All available cards</h1>
+<ul>
+    <p>Total cards: {{ deckCount }}</p>
+    {% for card in cards %}
+    <div class = card-container>
+        <div class = allcards>
+            <p>{{ card.getAsString() }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</ul>
 {% endblock %}
