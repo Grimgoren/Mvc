@@ -1,8 +1,9 @@
 {% extends "base.html.twig" %}
 {% block body %}
-<h1>All Available Cards</h1>
+<h1>Shuffled Cards</h1>
 <ul>
-    <p>Total cards: {{ deckCount }}</p>
+    <p>Deck has been reset!<p>
+    <p>Remaining cards: {{ deckCount }}</p>
     {% for card in cards %}
     <div class = card-container>
         <div class = allcards>

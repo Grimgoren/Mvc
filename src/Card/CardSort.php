@@ -6,7 +6,6 @@ use App\Card\CardValue;
 
 class CardSort
 {
-    // Adding suit value mapping
     private static $suitValues = [
         'Clubs' => 0,
         'Diamonds' => 1,

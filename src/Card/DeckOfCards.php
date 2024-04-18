@@ -28,6 +28,7 @@ class DeckOfCards
         shuffle($this->deck);
     }
 
+    /*
     public function draw()
     {
         if (count($this->deck) > 0) {
@@ -36,6 +37,7 @@ class DeckOfCards
             return "No cards left in the deck";
         }
     }
+    */
 
     public function getDeck(): array
     {

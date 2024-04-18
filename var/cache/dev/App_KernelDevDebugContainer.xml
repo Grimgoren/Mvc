@@ -365,6 +365,9 @@
     <service id="App\Card\CardSort" class="App\Card\CardSort" autowire="true" autoconfigure="true"/>
     <service id="App\Card\CardValue" class="App\Card\CardValue" autowire="true" autoconfigure="true"/>
     <service id="App\Card\DeckOfCards" class="App\Card\DeckOfCards" autowire="true" autoconfigure="true"/>
+    <service id="App\Card\Draw" class="App\Card\Draw" autowire="true" autoconfigure="true">
+      <tag name="container.error" message="Cannot autowire service &quot;App\Card\Draw&quot;: argument &quot;$deck&quot; of method &quot;__construct()&quot; is type-hinted &quot;array&quot;, you should configure its value explicitly."/>
+    </service>
     <service id="App\Controller\CardControllerKmom02Json" class="App\Controller\CardControllerKmom02Json" autowire="true" autoconfigure="true"/>
     <service id="App\Controller\CardControllerKmom02Twig" class="App\Controller\CardControllerKmom02Twig" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>

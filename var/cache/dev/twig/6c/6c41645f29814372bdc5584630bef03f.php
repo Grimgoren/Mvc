@@ -96,18 +96,26 @@ class __TwigTemplate_7a87bf8f319ab038a914a6205d429a41 extends Template
         // line 26
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("card_init_get");
         echo "\">Cards</a></li>
+                <li class=\"link-color\"><a class=\"link-color\" href=\"";
+        // line 27
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("card_shuffle_get");
+        echo "\">Shuffle</a></li>
+                <li class=\"link-color\"><a class=\"link-color\" href=\"";
+        // line 28
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("card_draw_get");
+        echo "\">Draw</a></li>
             </ul>
         </nav>
         ";
-        // line 29
+        // line 31
         $this->displayBlock('body', $context, $blocks);
-        // line 30
+        // line 32
         echo "    </body>
     <footer class=\"site-footer\">
         <div class=\"footer-content\">
             <a class=\"gitimg\" href=\"https://github.com/Grimgoren/Mvc\">
                 <img src=\"";
-        // line 34
+        // line 36
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/GitHub-logo.png"), "html", null, true);
         echo "\" alt=\"\">
             </a>
@@ -212,7 +220,7 @@ class __TwigTemplate_7a87bf8f319ab038a914a6205d429a41 extends Template
 
     }
 
-    // line 29
+    // line 31
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -251,7 +259,7 @@ class __TwigTemplate_7a87bf8f319ab038a914a6205d429a41 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  216 => 29,  197 => 16,  187 => 17,  185 => 16,  180 => 15,  170 => 14,  157 => 11,  147 => 10,  128 => 8,  111 => 34,  105 => 30,  103 => 29,  97 => 26,  93 => 25,  89 => 24,  85 => 23,  81 => 22,  75 => 18,  73 => 14,  70 => 13,  68 => 10,  64 => 9,  60 => 8,  52 => 3,  48 => 1,);
+        return array (  224 => 31,  205 => 16,  195 => 17,  193 => 16,  188 => 15,  178 => 14,  165 => 11,  155 => 10,  136 => 8,  119 => 36,  113 => 32,  111 => 31,  105 => 28,  101 => 27,  97 => 26,  93 => 25,  89 => 24,  85 => 23,  81 => 22,  75 => 18,  73 => 14,  70 => 13,  68 => 10,  64 => 9,  60 => 8,  52 => 3,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -282,6 +290,8 @@ class __TwigTemplate_7a87bf8f319ab038a914a6205d429a41 extends Template
                 <li class=\"link-color\"><a class=\"link-color\" href=\"{{ path('report') }}\">Report</a></li>
                 <li class=\"link-color\"><a class=\"link-color\" href=\"{{ path('lucky') }}\">Lucky</a></li>
                 <li class=\"link-color\"><a class=\"link-color\" href=\"{{ path('card_init_get') }}\">Cards</a></li>
+                <li class=\"link-color\"><a class=\"link-color\" href=\"{{ path('card_shuffle_get') }}\">Shuffle</a></li>
+                <li class=\"link-color\"><a class=\"link-color\" href=\"{{ path('card_draw_get') }}\">Draw</a></li>
             </ul>
         </nav>
         {% block body %}{% endblock %}

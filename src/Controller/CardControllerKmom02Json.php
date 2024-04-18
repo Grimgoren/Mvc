@@ -22,4 +22,10 @@ class CardControllerKmom02Json
 
         return $response;
     }
+
+    #[Route("/api/deck/shuffle")]
+    public function apiShuffle(Request $request): JsonResponse
+    {
+        
+    }
 }

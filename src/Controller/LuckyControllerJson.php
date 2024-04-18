@@ -31,14 +31,14 @@ class LuckyControllerJson
     {
         $data = [
             'routes' => [
-                'me' => '/',
-                'about' => '/about',
-                'report' => '/report',
-                'lucky' => '/lucky',
-                'lucky_pretty_print' => '/api/lucky/number',
-                'quote' => '/api/quote',
-                'session' => '/api/session',
-                'delete session' => '/delete'
+                'me (me page)' => '/',
+                'about (about the course page' => '/about',
+                'report (student report page)' => '/report',
+                'lucky (lucky number page)' => '/lucky',
+                'lucky_pretty_print (lucky number in json format)' => '/api/lucky/number',
+                'quote (random quote in json format)' => '/api/quote',
+                'session (shows what is in the session in json format)' => '/api/session',
+                'delete session (deletes the current information in the session)' => '/delete'
             ]
         ];
 
