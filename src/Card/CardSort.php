@@ -13,8 +13,9 @@ class CardSort
         'Spades' => 3
     ];
 
-    public function sortByValue(array &$cards): void {
-        usort($cards, function($cardA, $cardB) {
+    public function sortByValue(array &$cards): void
+    {
+        usort($cards, function ($cardA, $cardB) {
             $suitA = self::$suitValues[$cardA->getSuit()] ?? 0;
             $suitB = self::$suitValues[$cardB->getSuit()] ?? 0;
             if ($suitA !== $suitB) {

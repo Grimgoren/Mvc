@@ -1,14 +1,16 @@
 {% extends "base.html.twig" %}
-
-{% block title %}Card landingpage{% endblock %}
-
 {% block body %}
+
+<h1>Card landingpage</h1>
+
+<h2>Twig</h2>
 <ul>
     <li class="link-color"><a class="link-color" href="{{ path('card_init_get') }}">Cards</a></li>
     <li class="link-color"><a class="link-color" href="{{ path('card_shuffle_get') }}">Shuffle</a></li>
     <li class="link-color"><a class="link-color" href="{{ path('card_draw_get') }}">Draw</a></li>
 </ul>
 
+<h2>Api</h2>
 <form method="post" action="">
     <p>
         <input type="submit" name="shuffle" value="Shuffle"
@@ -19,7 +21,6 @@
                onclick="this.form.action='{{ path('api-draw') }}';">
     </p>
     <p>
-        <label for="drawNumber">Number of cards:</label>
         <input type="number" id="drawNumber" name="num" min="1" value="1">
         <input type="submit" name="draw-number" value="Draw Cards"
                onclick="updateAction();">
@@ -34,5 +35,39 @@ function updateAction() {
     document.querySelector('form').action = actionUrl;
 }
 </script>
+
+<h2>Klasser</h2>
+<ul>
+    <li>CardControllerKmom02Twig</li>
+    <p>Routes för olika twig sidor, /card, /card/deck m.m.</p>
+
+    <li>CardControllerKmom02Json</li>
+    <p>Routes för json sidor så som /api/session, /api/deck m.m.</p>
+
+    <li>Card</li>
+    <p>Representerar ett kort, vilken färg och poäng kortet har exempelvis.</p>
+
+    <li>CardGraphic</li>
+    <p>Bygger upp hur kortet ska se ut, 'Clubs': ♣, 'Hearts': ♥, 'Diamonds': ♦ , 'Spades': ♠</p>
+
+    <li>CardHand</li>
+    <p>Representerar en hand full med kort</p>
+
+    <li>CardValue</li>
+    <p>Anger vad alla kort är värda i poäng</p>
+
+    <li>CardSort</li>
+    <p>Sorterar kort på färg och dem värden som är bestämda i CardValue</p>
+
+    <li>DeckOfCards</li>
+    <p>Representerar en hel kortlek</p>
+
+    <li>Draw</li>
+    <p>En klass som drar ett kort från kortleken</p>
+</ul>
+
+        <a>
+            <img src="{{ asset('assets/img/card.jpg') }}" alt="">
+        </a>
 
 {% endblock %}

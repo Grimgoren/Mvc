@@ -71,7 +71,7 @@ class CardControllerKmom02Json
         $data = $sessionData = $session->all();
         $info = "Card deck has been reset!";
 
-        $allData= [
+        $allData = [
             'info' => $info,
             'remaining' => $deckCount,
             'cards' => $data
@@ -99,7 +99,7 @@ class CardControllerKmom02Json
         $card = $draw->drawCard();
         $modifiedDeck = $draw->getDeck();
         $deckCount = count($modifiedDeck);
-    
+
         $session->set('deck', $modifiedDeck);
         $session->set('drawn_card', $card);
 
@@ -127,7 +127,7 @@ class CardControllerKmom02Json
             $deck = new DeckOfCards();
             $session->set('deck', $deck->getDeck());
         }
-    
+
         $currentDeck = $session->get('deck');
         $drawnCards = [];
 

@@ -24,5 +24,3 @@ class Draw
         return $this->deck;
     }
 }
-
-

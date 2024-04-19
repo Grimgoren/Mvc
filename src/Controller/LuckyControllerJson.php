@@ -48,7 +48,7 @@ class LuckyControllerJson
                 'api shuffle' => '/api/deck/shuffle (navigate to the landingpage and use the shuffle button)'
             ]
         ];
-    
+
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT

@@ -48,7 +48,7 @@ class CardControllerKmom02Twig extends AbstractController
 
         $session->set('All cards', $cards);
         $sorter->sortByValue($cards);
-    
+
         return $this->render('deck.html.twig', [
             'cards' => $cards,
             'deckCount' => $deckCount
@@ -68,7 +68,7 @@ class CardControllerKmom02Twig extends AbstractController
 
         $session->set('shuffled_deck', $cards);
 
-        
+
         $this->addFlash(
             'notice',
             'Session reset! All cards restored.'
@@ -94,10 +94,10 @@ class CardControllerKmom02Twig extends AbstractController
         $card = $draw->drawCard();
         $modifiedDeck = $draw->getDeck();
         $deckCount = count($modifiedDeck);
-    
+
         $session->set('deck', $modifiedDeck);
         $session->set('drawn_card', $card);
-    
+
         return $this->render('draw.html.twig', [
             'card' => $card,
             'deckCount' => $deckCount
@@ -115,7 +115,7 @@ class CardControllerKmom02Twig extends AbstractController
             $deck = new DeckOfCards();
             $session->set('deck', $deck->getDeck());
         }
-    
+
         $currentDeck = $session->get('deck');
         $drawnCards = [];
 

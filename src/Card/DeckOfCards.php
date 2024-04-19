@@ -15,7 +15,8 @@ class DeckOfCards
         $this->initializeDeck();
     }
 
-    private function initializeDeck() {
+    private function initializeDeck()
+    {
         foreach ($this->suits as $suit) {
             foreach ($this->ranks as $rank) {
                 $this->deck[] = new CardGraphic($suit, $rank);
@@ -24,7 +25,8 @@ class DeckOfCards
         $this->shuffleDeck();
     }
 
-    public function shuffleDeck() {
+    public function shuffleDeck()
+    {
         shuffle($this->deck);
     }
 

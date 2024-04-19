@@ -20,7 +20,8 @@ class CardValue
         'K' => 13
     ];
 
-    public static function getValue($rank) {
+    public static function getValue($rank)
+    {
         return self::$cardValues[$rank] ?? null;
     }
 }
