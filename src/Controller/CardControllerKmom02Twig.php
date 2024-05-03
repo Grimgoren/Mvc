@@ -21,6 +21,12 @@ class CardControllerKmom02Twig extends AbstractController
         return $this->render('landingpage.html.twig');
     }
 
+    #[Route("/apilandingpage", name: "apilandingpage")]
+    public function apiLandpage(Request $request): Response
+    {
+        return $this->render('api-landingpage.html.twig');
+    }
+
     #[Route("/delete", name: "delete")]
     public function DeleteSession(Request $request): Response
     {

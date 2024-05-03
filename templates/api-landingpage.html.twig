@@ -4,7 +4,29 @@
 <h1>Api landingpage</h1>
 
 <p>
-    href="{{ path('api-session') }}">Session</a>
+    <a class="link-color" href="{{ path('api-session') }}">Session</a></li>
 </p>
+<p>
+    <a class="link-color" href="{{ path('delete') }}">Delete</a></li>
+</p>
+<p>
+    <a class="link-color" href="{{ path('api-deck') }}">Deck</a></li>
+</p>
+<form method="post" action="">
+    <p>
+        <input type="submit" name="shuffle" value="Shuffle"
+               onclick="this.form.action='{{ path('api-shuffle') }}';">
+    </p>
+    <p>
+        <input type="submit" name="draw" value="Draw"
+               onclick="this.form.action='{{ path('api-draw') }}';">
+    </p>
+    <p>
+        <input type="number" id="drawNumber" name="num" min="1" value="1">
+        <input type="submit" name="draw-number" value="Draw Cards"
+               onclick="updateAction();">
+    </p>
+</form>
+
 
 {% endblock %}

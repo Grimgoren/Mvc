@@ -96,18 +96,22 @@ class __TwigTemplate_7a87bf8f319ab038a914a6205d429a41 extends Template
         // line 26
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("landingpage");
         echo "\">Card landingpage</a></li>
+                <li class=\"link-color\"><a class=\"link-color\" href=\"";
+        // line 27
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("apilandingpage");
+        echo "\">Api landingpage</a></li>
             </ul>
         </nav>
         ";
-        // line 29
-        $this->displayBlock('body', $context, $blocks);
         // line 30
+        $this->displayBlock('body', $context, $blocks);
+        // line 31
         echo "    </body>
     <footer class=\"site-footer\">
         <div class=\"footer-content\">
             <a class=\"gitimg\" href=\"https://github.com/Grimgoren/Mvc\">
                 <img src=\"";
-        // line 34
+        // line 35
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/GitHub-logo.png"), "html", null, true);
         echo "\" alt=\"\">
             </a>
@@ -212,7 +216,7 @@ class __TwigTemplate_7a87bf8f319ab038a914a6205d429a41 extends Template
 
     }
 
-    // line 29
+    // line 30
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -251,7 +255,7 @@ class __TwigTemplate_7a87bf8f319ab038a914a6205d429a41 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  216 => 29,  197 => 16,  187 => 17,  185 => 16,  180 => 15,  170 => 14,  157 => 11,  147 => 10,  128 => 8,  111 => 34,  105 => 30,  103 => 29,  97 => 26,  93 => 25,  89 => 24,  85 => 23,  81 => 22,  75 => 18,  73 => 14,  70 => 13,  68 => 10,  64 => 9,  60 => 8,  52 => 3,  48 => 1,);
+        return array (  220 => 30,  201 => 16,  191 => 17,  189 => 16,  184 => 15,  174 => 14,  161 => 11,  151 => 10,  132 => 8,  115 => 35,  109 => 31,  107 => 30,  101 => 27,  97 => 26,  93 => 25,  89 => 24,  85 => 23,  81 => 22,  75 => 18,  73 => 14,  70 => 13,  68 => 10,  64 => 9,  60 => 8,  52 => 3,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -282,6 +286,7 @@ class __TwigTemplate_7a87bf8f319ab038a914a6205d429a41 extends Template
                 <li class=\"link-color\"><a class=\"link-color\" href=\"{{ path('report') }}\">Report</a></li>
                 <li class=\"link-color\"><a class=\"link-color\" href=\"{{ path('lucky') }}\">Lucky</a></li>
                 <li class=\"link-color\"><a class=\"link-color\" href=\"{{ path('landingpage') }}\">Card landingpage</a></li>
+                <li class=\"link-color\"><a class=\"link-color\" href=\"{{ path('apilandingpage') }}\">Api landingpage</a></li>
             </ul>
         </nav>
         {% block body %}{% endblock %}

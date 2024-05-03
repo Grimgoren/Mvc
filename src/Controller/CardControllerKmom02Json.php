@@ -29,7 +29,7 @@ class CardControllerKmom02Json
         return $response;
     }
 
-    #[Route("/api/deck", methods: ['GET'])]
+    #[Route("/api/deck", name: "api-deck", methods: ['GET'])]
     public function apiDeck(Request $request): JsonResponse
     {
         $deck = new DeckOfCards();
