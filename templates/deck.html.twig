@@ -9,14 +9,23 @@
     <li class="link-color"><a class="link-color" href="{{ path('card_draw_get') }}">Draw</a></li>
 </ul>
 
-<ul>
-    <p>Total cards: {{ deckCount }}</p>
+<p>Total cards: {{ deckCount }}</p>
+<div class="card-container">
     {% for card in cards %}
-    <div class = card-container>
-        <div class = allcards>
+        <div class="allcards
+            {% if card.getSuit() == 'Hearts' %}
+                heart
+            {% elseif card.getSuit() == 'Diamonds' %}
+                diamond
+            {% elseif card.getSuit() == 'Clubs' %}
+                club
+            {% else %}
+                spade
+            {% endif %}
+        ">
             <p>{{ card.getAsString() }}</p>
         </div>
-    </div>
     {% endfor %}
-</ul>
+</div>
+
 {% endblock %}

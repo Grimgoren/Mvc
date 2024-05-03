@@ -6,7 +6,12 @@ use App\Card\Card;
 
 class CardHand
 {
-    private $hand = [];
+    private $hand;
+
+    public function __construct()
+    {
+        $this->hand = [];
+    }
 
     public function add(Card $card): void
     {

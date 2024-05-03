@@ -10,14 +10,24 @@
 </ul>
 
 <ul>
-    {{ include('flash.html.twig') }}
-    <p>Remaining cards: {{ deckCount }}</p>
+{{ include('flash.html.twig') }}
+<p>Remaining cards: {{ deckCount }}</p>
+<div class="card-container">
     {% for card in cards %}
-    <div class = card-container>
-        <div class = allcards>
+        <div class="allcards
+            {% if card.getSuit() == 'Hearts' %}
+                heart
+            {% elseif card.getSuit() == 'Diamonds' %}
+                diamond
+            {% elseif card.getSuit() == 'Clubs' %}
+                club
+            {% else %}
+                spade
+            {% endif %}
+        ">
             <p>{{ card.getAsString() }}</p>
         </div>
-    </div>
     {% endfor %}
+</div>
 </ul>
 {% endblock %}

@@ -108,24 +108,35 @@ h1 {
 }
 
 .allcards p {
-    background-color: rgb(45, 45, 45);
+    background-color: white;
     color: black;
     font-size: 62px;
     font-weight: bold;
     padding: 20px;
     border: 2px solid #000; 
-    margin: 10px;
     border-radius: 10px; 
     width: 120px; 
     height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white; 
     box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
     text-align: center;
     margin: auto;
 }
+
+.heart p {
+    color: red;
+}
+
+.heart p, .diamond p {
+    color: red;
+}
+
+.club p, .spade p {
+    color: black;
+}
+
 
 .card-container {
     display: grid;

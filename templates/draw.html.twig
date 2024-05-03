@@ -12,7 +12,17 @@
 <ul>
     <p>Remaining cards: {{ deckCount }}</p>
     <div class = card-container>
-        <div class = allcards>
+        <div class="allcards
+            {% if card.getSuit() == 'Hearts' %}
+                heart
+            {% elseif card.getSuit() == 'Diamonds' %}
+                diamond
+            {% elseif card.getSuit() == 'Clubs' %}
+                club
+            {% else %}
+                spade
+            {% endif %}
+        ">
             <p>{{ card.getAsString() }}</p>
         </div>
     </div>

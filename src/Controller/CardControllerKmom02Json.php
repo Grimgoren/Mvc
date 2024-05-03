@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CardControllerKmom02Json
 {
-    #[Route("/api/session")]
+    #[Route("/api/session", name: "api-session")]
     public function ThisSession(Request $request): JsonResponse
     {
         $session = $request->getSession();

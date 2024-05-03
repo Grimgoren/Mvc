@@ -362,11 +362,15 @@
       <tag name="container.error" message="Cannot autowire service &quot;App\Card\CardGraphic&quot;: argument &quot;$suit&quot; of method &quot;__construct()&quot; has no type-hint, you should configure its value explicitly."/>
     </service>
     <service id="App\Card\CardHand" class="App\Card\CardHand" autowire="true" autoconfigure="true"/>
-    <service id="App\Card\CardSort" class="App\Card\CardSort" autowire="true" autoconfigure="true"/>
-    <service id="App\Card\CardValue" class="App\Card\CardValue" autowire="true" autoconfigure="true"/>
     <service id="App\Card\DeckOfCards" class="App\Card\DeckOfCards" autowire="true" autoconfigure="true"/>
-    <service id="App\Card\Draw" class="App\Card\Draw" autowire="true" autoconfigure="true">
-      <tag name="container.error" message="Cannot autowire service &quot;App\Card\Draw&quot;: argument &quot;$deck&quot; of method &quot;__construct()&quot; is type-hinted &quot;array&quot;, you should configure its value explicitly."/>
+    <service id="App\Card_old\CardSort" class="App\Card_old\CardSort" autowire="true" autoconfigure="true">
+      <tag name="container.error" message="The autoloader expected class &quot;App\Card_old\CardSort&quot; to be defined in file &quot;/home/grimgoren/dbwebb-kurser/mvc/me/report/vendor/composer/../../src/Card_old/CardSort.php&quot;. The file was found but the class was not in it, the class name or namespace probably has a typo."/>
+    </service>
+    <service id="App\Card_old\CardValue" class="App\Card_old\CardValue" autowire="true" autoconfigure="true">
+      <tag name="container.error" message="The autoloader expected class &quot;App\Card_old\CardValue&quot; to be defined in file &quot;/home/grimgoren/dbwebb-kurser/mvc/me/report/vendor/composer/../../src/Card_old/CardValue.php&quot;. The file was found but the class was not in it, the class name or namespace probably has a typo."/>
+    </service>
+    <service id="App\Card_old\Draw" class="App\Card_old\Draw" autowire="true" autoconfigure="true">
+      <tag name="container.error" message="The autoloader expected class &quot;App\Card_old\Draw&quot; to be defined in file &quot;/home/grimgoren/dbwebb-kurser/mvc/me/report/vendor/composer/../../src/Card_old/Draw.php&quot;. The file was found but the class was not in it, the class name or namespace probably has a typo."/>
     </service>
     <service id="App\Controller\CardControllerKmom02Json" class="App\Controller\CardControllerKmom02Json" autowire="true" autoconfigure="true"/>
     <service id="App\Controller\CardControllerKmom02Twig" class="App\Controller\CardControllerKmom02Twig" public="true" autowire="true" autoconfigure="true">
