@@ -28,5 +28,15 @@
     </p>
 </form>
 
+<script>
+function updateAction() {
+    var num = document.getElementById('drawNumber').value;
+    var baseUrl = '{{ path('api_draw_number', {'num': '0'}) }}';
+    var actionUrl = baseUrl.replace('/0', '/' + num);
+    document.querySelector('form').action = actionUrl;
+}
+</script>
+
+    {{ include('flash.html.twig') }}
 
 {% endblock %}

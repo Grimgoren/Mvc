@@ -38,7 +38,7 @@ class CardControllerKmom02Twig extends AbstractController
             'Session cleared successfully'
         );
 
-        return $this->redirectToRoute('about');
+        return $this->redirectToRoute('apilandingpage');
     }
 
     #[Route("/card/deck", name: "card_init_get", methods: ['GET'])]
