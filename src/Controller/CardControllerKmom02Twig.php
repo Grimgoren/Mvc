@@ -6,7 +6,6 @@ use App\Card\Card;
 use App\Card\CardGraphic;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
-use App\Card\CardSort;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,15 +38,13 @@ class CardControllerKmom02Twig extends AbstractController
     #[Route("/card/deck", name: "card_init_get", methods: ['GET'])]
     public function initCard(SessionInterface $session): Response
     {
-
         $deck = new DeckOfCards();
-        $sorter = new CardSort();
+        $deck->sortByValue();
         $cards = $deck->getDeck();
         $deckCount = count($cards);
-
-        $session->set('All cards', $cards);
-        $sorter->sortByValue($cards);
-
+    
+        $session->set('deck', serialize($deck));
+    
         return $this->render('deck.html.twig', [
             'cards' => $cards,
             'deckCount' => $deckCount

@@ -6,7 +6,6 @@ use App\Card\Card;
 use App\Card\CardGraphic;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
-use App\Card\CardSort;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,10 +33,9 @@ class CardControllerKmom02Json
     public function apiDeck(Request $request): JsonResponse
     {
         $deck = new DeckOfCards();
+        $deck->sortByValue();
         $cards = $deck->getDeck();
-
-        $sorter = new CardSort();
-        $sorter->sortByValue($cards);
+        $deckCount = count($cards);
 
         $session = $request->getSession();
         $session->set('All cards', $cards);
