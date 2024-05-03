@@ -7,7 +7,6 @@ use App\Card\CardGraphic;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
 use App\Card\CardSort;
-use App\Card\Draw;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -88,19 +87,16 @@ class CardControllerKmom02Json
     #[Route("/api/deck/draw", name: "api-draw", methods: ['POST'])]
     public function apiDraw(Request $request, SessionInterface $session): JsonResponse
     {
-        if (!$session->has('deck')) {
-            $deck = new DeckOfCards();
-            $session->set('deck', $deck->getDeck());
+        if (!$session->has('deckOfCards')) {
+            $deckOfCards = new DeckOfCards();
+            $session->set('deckOfCards', serialize($deckOfCards));
         }
 
-        $setDeck = $session->get('deck');
+        $deckOfCards = unserialize($session->get('deckOfCards'));
 
-        $draw = new Draw($setDeck);
-        $card = $draw->drawCard();
-        $modifiedDeck = $draw->getDeck();
-        $deckCount = count($modifiedDeck);
-
-        $session->set('deck', $modifiedDeck);
+        $card = $deckOfCards->drawCard();
+        $deckCount = count($deckOfCards->getDeck());
+        $session->set('deckOfCards', serialize($deckOfCards));
         $session->set('drawn_card', $card);
 
         $data = [

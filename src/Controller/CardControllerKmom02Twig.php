@@ -7,7 +7,6 @@ use App\Card\CardGraphic;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
 use App\Card\CardSort;
-use App\Card\Draw;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -83,21 +82,18 @@ class CardControllerKmom02Twig extends AbstractController
     #[Route("/card/deck/draw", name: "card_draw_get", methods: ['GET'])]
     public function initDraw(SessionInterface $session): Response
     {
-        if (!$session->has('deck')) {
-            $deck = new DeckOfCards();
-            $session->set('deck', $deck->getDeck());
+        if (!$session->has('deckOfCards')) {
+            $deckOfCards = new DeckOfCards();
+            $session->set('deckOfCards', serialize($deckOfCards));
         }
 
-        $setDeck = $session->get('deck');
+        $deckOfCards = unserialize($session->get('deckOfCards'));
 
-        $draw = new Draw($setDeck);
-        $card = $draw->drawCard();
-        $modifiedDeck = $draw->getDeck();
-        $deckCount = count($modifiedDeck);
-
-        $session->set('deck', $modifiedDeck);
+        $card = $deckOfCards->drawCard();
+        $deckCount = count($deckOfCards->getDeck());
+        $session->set('deckOfCards', serialize($deckOfCards));
         $session->set('drawn_card', $card);
-
+    
         return $this->render('draw.html.twig', [
             'card' => $card,
             'deckCount' => $deckCount
