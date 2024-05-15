@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+<a href="{{ asset('assets/img/flowchart.drawio.png') }}">
+    <img src="{{ asset('assets/img/flowchart.drawio.png') }}" alt="" class="img-resize">
+</a>
+
+<h2>Start</h2>
+<p>Kortleken blandas och både spelaren och dealern får två kort var. 
+Det andra kortet som dealern får är dolt från spelaren. Efter att korten delats ut summeras poängen för både 
+dealern och spelaren för att sedan visas upp.</p>
+
+<h2>Spelarens tur</h2>
+<p>Efter att dem två första korten delats ut till respektive dealer och spelare så har spelaren två val. Första valet 
+är att välja att avsluta spelet (inte dra fler kort) och andra valet är att dra ett till kort.</p>
+
+<h2>Dealerns tur</h2>
+<p>Om spelaren valt att inte fortsätta så börjar dealern med att avtäcka sitt dolda kort. Om den totala poängen är under 17 
+så kommer dealern att dra kort tills det att dealerns totala poäng uppgår i minst 17.</p>
+
+<h2>Resultat</h2>
+<p>Efter att spelaren valt att stanna och dealern uppnått minst 17 poäng så visas den totala poängen för både dealern och spelaren. 
+Den som kommit närmast 21 vinner.</p>
+
+<h2>Klasser</h2>
+<h3>Card</h3>
+<p>Representerar ett kort.</p>
+
+<h3>CardGraphic</h3>
+<p>Ger korten ett utseende.</p>
+
+<h3>CardHand</h3>
+<p>Representerar en hand med kort.</p>
+
+<h3>DeckOfCards</h3>
+<p>Representerar en hel kortlek.</p>
+
+<h3>CardGame</h3>
+<p>Representerar spelet och dess regler.</p>
+
+
+{% endblock %}

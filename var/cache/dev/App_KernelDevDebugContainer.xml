@@ -388,6 +388,13 @@
         <argument type="service" id=".service_locator.jUv.zyj.App\Controller\LuckyControllerTwig"/>
       </call>
     </service>
+    <service id="App\Controller\TjugoettControllerTwig" class="App\Controller\TjugoettControllerTwig" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.jUv.zyj.App\Controller\TjugoettControllerTwig"/>
+      </call>
+    </service>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory"/>
     <service id="argument_resolver.backed_enum_resolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">
       <tag priority="100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">controller.argument_value_resolver</tag>
@@ -7058,6 +7065,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LuckyControllerTwig" class="App\Controller\LuckyControllerTwig" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LuckyControllerTwig" class="App\Controller\LuckyControllerTwig" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\LuckyControllerTwig" class="App\Controller\LuckyControllerTwig" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TjugoettControllerTwig" class="App\Controller\TjugoettControllerTwig" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TjugoettControllerTwig" class="App\Controller\TjugoettControllerTwig" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\TjugoettControllerTwig" class="App\Controller\TjugoettControllerTwig" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.bJ.4HC5" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -8088,6 +8098,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.jUv.zyj" method="withContext"/>
     </service>
+    <service id=".service_locator.jUv.zyj.App\Controller\TjugoettControllerTwig" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\TjugoettControllerTwig"/>
+      <argument>App\Controller\TjugoettControllerTwig</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.jUv.zyj" method="withContext"/>
+    </service>
     <service id=".service_locator.fuYM_Z." class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -8259,6 +8275,7 @@
           <argument>App\Kernel</argument>
           <argument>App\Controller\CardControllerKmom02Twig</argument>
           <argument>App\Controller\LuckyControllerTwig</argument>
+          <argument>App\Controller\TjugoettControllerTwig</argument>
           <argument>Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController</argument>
         </argument>
       </call>

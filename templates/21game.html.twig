@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+{% if deckCount == 52 %}
+    <button onclick="location.href='{{ path('startgame') }}'" type="button">Spela</button>
+{% endif %}
+
+{% if deckCount < 52 %}
+    <h1>Dealer</h1>
+        <ul>
+            <p>Remaining cards: {{ deckCount }}</p>
+            <div class="card-container">
+                {% for card in dealerCards %}
+                    <div class="allcards
+                        {% if card.getSuit() == 'Hearts' %}
+                            heart
+                        {% elseif card.getSuit() == 'Diamonds' %}
+                            diamond
+                        {% elseif card.getSuit() == 'Clubs' %}
+                            club
+                        {% else %}
+                            spade
+                        {% endif %}
+                    ">
+                        <p>{{ card.getAsString() }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </ul>
+{% endif %}
+
+
+{% if deckCount < 52 %}
+    <h1>Spelare</h1>
+        <ul>
+            <div class="card-container">
+                {% for card in playerCards %}
+                    <div class="allcards
+                        {% if card.getSuit() == 'Hearts' %}
+                            heart
+                        {% elseif card.getSuit() == 'Diamonds' %}
+                            diamond
+                        {% elseif card.getSuit() == 'Clubs' %}
+                            club
+                        {% else %}
+                            spade
+                        {% endif %}
+                    ">
+                        <p>{{ card.getAsString() }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        <button onclick="location.href='{{ path('continuegame') }}'" type="button">Fortsätt</button>
+        <button onclick="location.href='{{ path('continuegame') }}'" type="button">Avsluta</button>
+        </ul>
+{% endif %}
+
+{% endblock %}

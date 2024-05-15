@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+<h1>21</h1>
+<ul>
+    <li class="link-color"><a class="link-color" href="{{ path('gamedoc') }}">Dokumentation</a></li>
+</ul>
+
+<p>21 är den svenska version av blackjack, den största skillnaden är värdet på korten. Spelaren ska komma så nära värdet 21 
+och inte överskriva det. Samtidigt som man spelar mot "dealern" som också försöker komma så nära 21 som möjligt.</p>
+<p>Kortens värde:</p>
+<li>Ess = 14</li>
+<li>Kung = 13</li>
+<li>Dam = 12</li>
+<li>Knekt = 11</li>
+<p>Resterande kort är värda lika mycket som korten anger.</p>
+
+<button onclick="location.href='{{ path('gamepage') }}'" type="button">21</button>
+
+{% endblock %}

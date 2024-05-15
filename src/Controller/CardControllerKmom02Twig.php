@@ -27,6 +27,18 @@ class CardControllerKmom02Twig extends AbstractController
         return $this->render('api-landingpage.html.twig');
     }
 
+    #[Route("/gamelandingpage", name: "gamelandingpage")]
+    public function gameLandingpage(Request $request): Response
+    {
+        return $this->render('game.html.twig');
+    }
+
+    #[Route("/game/doc", name: "gamedoc")]
+    public function gameDoc(Request $request): Response
+    {
+        return $this->render('gamedoc.html.twig');
+    }
+
     #[Route("/delete", name: "delete")]
     public function DeleteSession(Request $request): Response
     {
@@ -48,9 +60,9 @@ class CardControllerKmom02Twig extends AbstractController
         $deck->sortByValue();
         $cards = $deck->getDeck();
         $deckCount = count($cards);
-    
+
         $session->set('deck', serialize($deck));
-    
+
         return $this->render('deck.html.twig', [
             'cards' => $cards,
             'deckCount' => $deckCount
@@ -96,7 +108,7 @@ class CardControllerKmom02Twig extends AbstractController
         $deckCount = count($deckOfCards->getDeck());
         $session->set('deckOfCards', serialize($deckOfCards));
         $session->set('drawn_card', $card);
-    
+
         return $this->render('draw.html.twig', [
             'card' => $card,
             'deckCount' => $deckCount

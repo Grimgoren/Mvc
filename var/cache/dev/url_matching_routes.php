@@ -20,6 +20,8 @@ return [
         '/api/deck/draw' => [[['_route' => 'api-draw', '_controller' => 'App\\Controller\\CardControllerKmom02Json::apiDraw'], null, ['POST' => 0], null, false, false, null]],
         '/card' => [[['_route' => 'landingpage', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::cardStartPage'], null, null, null, false, false, null]],
         '/apilandingpage' => [[['_route' => 'apilandingpage', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::apiLandpage'], null, null, null, false, false, null]],
+        '/gamelandingpage' => [[['_route' => 'gamelandingpage', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::gameLandingpage'], null, null, null, false, false, null]],
+        '/game/doc' => [[['_route' => 'gamedoc', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::gameDoc'], null, null, null, false, false, null]],
         '/delete' => [[['_route' => 'delete', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::DeleteSession'], null, null, null, false, false, null]],
         '/card/deck' => [[['_route' => 'card_init_get', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::initCard'], null, ['GET' => 0], null, false, false, null]],
         '/card/deck/shuffle' => [[['_route' => 'card_shuffle_get', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::initShuffle'], null, ['GET' => 0], null, false, false, null]],
@@ -31,6 +33,9 @@ return [
         '/about' => [[['_route' => 'about', '_controller' => 'App\\Controller\\LuckyControllerTwig::about'], null, null, null, false, false, null]],
         '/report' => [[['_route' => 'report', '_controller' => 'App\\Controller\\LuckyControllerTwig::report'], null, null, null, false, false, null]],
         '/lucky' => [[['_route' => 'lucky', '_controller' => 'App\\Controller\\LuckyControllerTwig::number'], null, null, null, false, false, null]],
+        '/game' => [[['_route' => 'gamepage', '_controller' => 'App\\Controller\\TjugoettControllerTwig::cardStartPage'], null, null, null, false, false, null]],
+        '/game/start' => [[['_route' => 'startgame', '_controller' => 'App\\Controller\\TjugoettControllerTwig::initGame'], null, ['GET' => 0], null, false, false, null]],
+        '/game/continue' => [[['_route' => 'continuegame', '_controller' => 'App\\Controller\\TjugoettControllerTwig::continueGame'], null, ['GET' => 0], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

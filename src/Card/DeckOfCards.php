@@ -84,7 +84,7 @@ class DeckOfCards
             if ($suitA !== $suitB) {
                 return $suitA <=> $suitB;
             }
-    
+
             $rankA = self::getCardValue($cardA->getRank());
             $rankB = self::getCardValue($cardB->getRank());
             return $rankA <=> $rankB;
