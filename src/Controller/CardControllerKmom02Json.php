@@ -151,4 +151,25 @@ class CardControllerKmom02Json
 
         return $response;
     }
+
+    #[Route("/api/game", name: "api-game", methods: ['GET'])]
+    public function apiGame(Request $request): JsonResponse
+    {
+
+        $session = $request->getSession();
+        $dealerValue = $session->get('dealerValue');
+        $playerValue = $session->get('playerValue');
+
+        $values = [
+            'dealerValue' => $dealerValue,
+            'playerValue' => $playerValue
+        ];
+
+        $response = new JsonResponse($values);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
+    }
 }

@@ -18,6 +18,7 @@ return [
         '/api/deck' => [[['_route' => 'api-deck', '_controller' => 'App\\Controller\\CardControllerKmom02Json::apiDeck'], null, ['GET' => 0], null, false, false, null]],
         '/api/deck/shuffle' => [[['_route' => 'api-shuffle', '_controller' => 'App\\Controller\\CardControllerKmom02Json::apiShuffle'], null, ['POST' => 0], null, false, false, null]],
         '/api/deck/draw' => [[['_route' => 'api-draw', '_controller' => 'App\\Controller\\CardControllerKmom02Json::apiDraw'], null, ['POST' => 0], null, false, false, null]],
+        '/api/game' => [[['_route' => 'api-game', '_controller' => 'App\\Controller\\CardControllerKmom02Json::apiGame'], null, ['GET' => 0], null, false, false, null]],
         '/card' => [[['_route' => 'landingpage', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::cardStartPage'], null, null, null, false, false, null]],
         '/apilandingpage' => [[['_route' => 'apilandingpage', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::apiLandpage'], null, null, null, false, false, null]],
         '/gamelandingpage' => [[['_route' => 'gamelandingpage', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::gameLandingpage'], null, null, null, false, false, null]],
