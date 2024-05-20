@@ -33,12 +33,15 @@ class TjugoettControllerTwig extends AbstractController
         $dealerCards = $session->get('dealerCards');
         $deckCount = count($deckOfCards->getDeck());
 
+        $gameDone = false;
+
         error_log("There are this many cards currently: ". $deckCount);
 
         return $this->render('21game.html.twig', [
             'playerCards' => $playerCards,
             'dealerCards' => $dealerCards,
-            'deckCount' => $deckCount
+            'deckCount' => $deckCount,
+            'class' => $gameDone ? "finish" : ""
         ]);
     }
 
@@ -69,16 +72,26 @@ class TjugoettControllerTwig extends AbstractController
             $dealerHand->add($card);
         }
 
+        $playerValue = $playerHand->getHandValue();
+        $dealerValue = $dealerHand->getHandValue();
+
         $session->set('deckOfCards', serialize($deckOfCards));
         $session->set('playerCards', $playerCards);
         $session->set('dealerCards', $dealerCards);
+        $session->set('playerValue', $playerValue);
+        $session->set('dealerValue', $dealerValue);
 
         $deckCount = count($deckOfCards->getDeck());
+
+        $gameDone = false;
 
         return $this->render('21game.html.twig', [
             'playerCards' => $playerCards,
             'dealerCards' => $dealerCards,
-            'deckCount' => $deckCount
+            'playerValue' => $playerValue,
+            'dealerValue' => $dealerValue,
+            'deckCount' => $deckCount,
+            'class' => $gameDone ? "finish" : ""
         ]);
     }
 
@@ -88,20 +101,80 @@ class TjugoettControllerTwig extends AbstractController
         $deckOfCards = unserialize($session->get('deckOfCards'));
         $oldPlayerCards = $session->get('playerCards');
         $dealerCards = $session->get('dealerCards');
+        $dealerValue = $session->get('dealerValue');
 
         $newCard = $deckOfCards->drawCard();
         $playerCards = array_merge($oldPlayerCards, [$newCard]);
 
+        $playerHand = new CardHand();
+        foreach ($playerCards as $card) {
+            $playerHand->add($card);
+        }
+
+        $playerValue = $playerHand->getHandValue();
+
         $session->set('deckOfCards', serialize($deckOfCards));
         $session->set('playerCards', $playerCards);
         $session->set('dealerCards', $dealerCards);
+        $session->set('playerValue', $playerValue);
 
         $deckCount = count($deckOfCards->getDeck());
+
+        $gameDone = false;
 
         return $this->render('21game.html.twig', [
             'playerCards' => $playerCards,
             'dealerCards' => $dealerCards,
-            'deckCount' => $deckCount
+            'dealerValue' => $dealerValue,
+            'playerValue' => $playerValue,
+            'deckCount' => $deckCount,
+            'class' => $gameDone ? "finish" : ""
+        ]);
+    }
+
+    #[Route("/game/stop", name: "stopgame", methods: ['GET'])]
+    public function stopGame(SessionInterface $session): Response
+    {
+        $deckOfCards = unserialize($session->get('deckOfCards'));
+        $oldDealerCards = $session->get('dealerCards');
+        $playerCards = $session->get('playerCards');
+        $playerValue = $session->get('playerValue');
+
+        $dealerHand = new CardHand();
+        foreach ($oldDealerCards as $card) {
+            $dealerHand->add($card);
+        }
+
+        $dealerValue = $dealerHand->getHandValue();
+
+        while ($dealerValue <= 21) {
+            $newCard = $deckOfCards->drawCard();
+            $dealerHand->add($newCard);
+            $dealerValue = $dealerHand->getHandValue();
+            $oldDealerCards[] = $newCard;
+        }
+    
+        $session->set('deckOfCards', serialize($deckOfCards));
+        $session->set('playerCards', $playerCards);
+        $session->set('dealerCards', $oldDealerCards);
+
+        $deckCount = count($deckOfCards->getDeck());
+
+        $gameDone = true;
+
+        $this->addFlash(
+            'notice',
+            'Resultat:'
+        );
+
+        return $this->render('21game.html.twig', [
+            'playerCards' => $playerCards,
+            'dealerCards' => $oldDealerCards,
+            'playerValue' => $playerValue,
+            'dealerValue' => $dealerValue,
+            'deckCount' => $deckCount,
+            'dealerValue' => $dealerValue,
+            'class' => $gameDone ? "finish" : ""
         ]);
     }
 }

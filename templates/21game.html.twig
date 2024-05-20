@@ -1,37 +1,39 @@
 {% extends "base.html.twig" %}
 {% block body %}
 
-{% if deckCount == 52 %}
-    <button onclick="location.href='{{ path('startgame') }}'" type="button">Spela</button>
-{% endif %}
+    {{ include('flash.html.twig') }}
 
-{% if deckCount < 52 %}
-    <h1>Dealer</h1>
-        <ul>
-            <p>Remaining cards: {{ deckCount }}</p>
-            <div class="card-container">
-                {% for card in dealerCards %}
-                    <div class="allcards
-                        {% if card.getSuit() == 'Hearts' %}
-                            heart
-                        {% elseif card.getSuit() == 'Diamonds' %}
-                            diamond
-                        {% elseif card.getSuit() == 'Clubs' %}
-                            club
-                        {% else %}
-                            spade
-                        {% endif %}
-                    ">
-                        <p>{{ card.getAsString() }}</p>
-                    </div>
-                {% endfor %}
-            </div>
-        </ul>
-{% endif %}
+{% if class == "finish" %}
+    {% if playerValue <= 21 and (dealerValue > 21 or playerValue > dealerValue) %}
+        <h2>Du vann!</h2>
+        <p>Din poäng: {{ playerValue }}</p>
+        <p>Dealerns poäng: {{ dealerValue }}</p>
+    {% elseif dealerValue <= 21 and (playerValue > 21 or dealerValue >= playerValue) %}
+        <h2>Du förlorade!</h2>
+        <p>Dealerns poäng: {{ dealerValue }}</p>
+        <p>Din poäng: {{ playerValue }}</p>
+    {% endif %}
 
+    <h2>Dealer</<h2>
+    <div class="card-container">
+    {% for card in dealerCards %}
+        <div class="allcards
+            {% if card.getSuit() == 'Hearts' %}
+                heart
+            {% elseif card.getSuit() == 'Diamonds' %}
+                diamond
+            {% elseif card.getSuit() == 'Clubs' %}
+                club
+            {% else %}
+                spade
+            {% endif %}
+        ">
+            <p>{{ card.getAsString() }}</p>
+        </div>
+    {% endfor %}
+    </div>
 
-{% if deckCount < 52 %}
-    <h1>Spelare</h1>
+    <h2>Spelare</h2>
         <ul>
             <div class="card-container">
                 {% for card in playerCards %}
@@ -50,9 +52,102 @@
                     </div>
                 {% endfor %}
             </div>
-        <button onclick="location.href='{{ path('continuegame') }}'" type="button">Fortsätt</button>
-        <button onclick="location.href='{{ path('continuegame') }}'" type="button">Avsluta</button>
         </ul>
+{% endif %}
+
+{% if deckCount == 52 %}
+    <h2>Dealer</h2>
+    <ul>
+        <p>Kort kvar: {{ deckCount }}</p>
+    </ul>
+    <h2>Spelare</h2>
+    <button onclick="location.href='{{ path('startgame') }}'" type="button">Spela</button>
+{% endif %}
+
+{% if class != "finish" %}
+    {% if deckCount < 52 %}
+            {% if dealerCards|length <= 2 %}
+        <h2>Dealer</h2>
+        <ul>
+            <p>Kort kvar: {{ deckCount }}</p>
+
+                <div class="card-container">
+                        <div class="allcards
+                            {% if dealerCards[0].getSuit() == 'Hearts' %}
+                                heart
+                            {% elseif dealerCards[0].getSuit() == 'Diamonds' %}
+                                diamond
+                            {% elseif dealerCards[0].getSuit() == 'Clubs' %}
+                                club
+                            {% else %}
+                                spade
+                            {% endif %}
+                        ">
+                            <p>{{ dealerCards[0].getAsString() }}</p>
+                            <p>?</p>
+                        </div>
+                </div>
+            {% endif %}
+        </ul>
+    {% endif %}
+{% endif %}
+
+{% if class != "finish" %}
+    {% if deckCount < 52 %}
+            {% if dealerCards|length > 2 %}
+            <h2>Dealer</h2>
+                <ul>
+                    <p>Kort kvar: {{ deckCount }}</p>
+                    <p>Poäng: {{ dealerValue }}</p>
+                    <div class="card-container">
+                        {% for card in dealerCards %}
+                            <div class="allcards
+                                {% if card.getSuit() == 'Hearts' %}
+                                    heart
+                                {% elseif card.getSuit() == 'Diamonds' %}
+                                    diamond
+                                {% elseif card.getSuit() == 'Clubs' %}
+                                    club
+                                {% else %}
+                                    spade
+                                {% endif %}
+                            ">
+                                <p>{{ card.getAsString() }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </ul>
+    {% endif %}
+{% endif %}
+
+
+{% if class != "finish" %}
+    {% if deckCount < 52 %}
+        <h2>Spelare</h2>
+            <ul>
+                <p>Poäng: {{ playerValue }}</p>
+                <button onclick="location.href='{{ path('continuegame') }}'" type="button">Fortsätt</button>
+                <button onclick="location.href='{{ path('stopgame') }}'" type="button">Avsluta</button>
+                <div class="card-container">
+                    {% for card in playerCards %}
+                        <div class="allcards
+                            {% if card.getSuit() == 'Hearts' %}
+                                heart
+                            {% elseif card.getSuit() == 'Diamonds' %}
+                                diamond
+                            {% elseif card.getSuit() == 'Clubs' %}
+                                club
+                            {% else %}
+                                spade
+                            {% endif %}
+                        ">
+                            <p>{{ card.getAsString() }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </ul>
+    {% endif %}
 {% endif %}
 
 {% endblock %}

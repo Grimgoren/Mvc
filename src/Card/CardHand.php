@@ -3,6 +3,7 @@
 namespace App\Card;
 
 use App\Card\Card;
+use App\Card\DeckOfCards;
 
 class CardHand
 {
@@ -30,5 +31,23 @@ class CardHand
     public function getNumberCards(): int
     {
         return count($this->hand);
+    }
+
+    public function getHandValue(): int
+    {
+        $value = 0;
+        $numAces = 0;
+        foreach ($this->hand as $card) {
+            $rank = $card->getRank();
+            $value += DeckOfCards::getCardValue($rank);
+            if ($rank === 'A') {
+                $numAces++;
+            }
+        }
+        while ($numAces > 0 && $value > 21) {
+            $value -= 13;
+            $numAces--;
+        }
+        return $value;
     }
 }

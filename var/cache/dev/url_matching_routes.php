@@ -36,6 +36,7 @@ return [
         '/game' => [[['_route' => 'gamepage', '_controller' => 'App\\Controller\\TjugoettControllerTwig::cardStartPage'], null, null, null, false, false, null]],
         '/game/start' => [[['_route' => 'startgame', '_controller' => 'App\\Controller\\TjugoettControllerTwig::initGame'], null, ['GET' => 0], null, false, false, null]],
         '/game/continue' => [[['_route' => 'continuegame', '_controller' => 'App\\Controller\\TjugoettControllerTwig::continueGame'], null, ['GET' => 0], null, false, false, null]],
+        '/game/stop' => [[['_route' => 'stopgame', '_controller' => 'App\\Controller\\TjugoettControllerTwig::stopGame'], null, ['GET' => 0], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

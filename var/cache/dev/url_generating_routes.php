@@ -41,6 +41,7 @@ return [
     'gamepage' => [[], ['_controller' => 'App\\Controller\\TjugoettControllerTwig::cardStartPage'], [], [['text', '/game']], [], [], []],
     'startgame' => [[], ['_controller' => 'App\\Controller\\TjugoettControllerTwig::initGame'], [], [['text', '/game/start']], [], [], []],
     'continuegame' => [[], ['_controller' => 'App\\Controller\\TjugoettControllerTwig::continueGame'], [], [['text', '/game/continue']], [], [], []],
+    'stopgame' => [[], ['_controller' => 'App\\Controller\\TjugoettControllerTwig::stopGame'], [], [['text', '/game/stop']], [], [], []],
     'App\Controller\CardControllerKmom02Json::ThisSession' => [[], ['_controller' => 'App\\Controller\\CardControllerKmom02Json::ThisSession'], [], [['text', '/api/session']], [], [], []],
     'App\Controller\CardControllerKmom02Json::apiDeck' => [[], ['_controller' => 'App\\Controller\\CardControllerKmom02Json::apiDeck'], [], [['text', '/api/deck']], [], [], []],
     'App\Controller\CardControllerKmom02Json::apiShuffle' => [[], ['_controller' => 'App\\Controller\\CardControllerKmom02Json::apiShuffle'], [], [['text', '/api/deck/shuffle']], [], [], []],
@@ -65,4 +66,5 @@ return [
     'App\Controller\TjugoettControllerTwig::cardStartPage' => [[], ['_controller' => 'App\\Controller\\TjugoettControllerTwig::cardStartPage'], [], [['text', '/game']], [], [], []],
     'App\Controller\TjugoettControllerTwig::initGame' => [[], ['_controller' => 'App\\Controller\\TjugoettControllerTwig::initGame'], [], [['text', '/game/start']], [], [], []],
     'App\Controller\TjugoettControllerTwig::continueGame' => [[], ['_controller' => 'App\\Controller\\TjugoettControllerTwig::continueGame'], [], [['text', '/game/continue']], [], [], []],
+    'App\Controller\TjugoettControllerTwig::stopGame' => [[], ['_controller' => 'App\\Controller\\TjugoettControllerTwig::stopGame'], [], [['text', '/game/stop']], [], [], []],
 ];
