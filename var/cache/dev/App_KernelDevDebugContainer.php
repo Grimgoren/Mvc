@@ -16,7 +16,7 @@ if (!\class_exists(App_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerSHYKLPx\App_KernelDevDebugContainer([
     'container.build_hash' => 'SHYKLPx',
-    'container.build_id' => '5ba551b9',
-    'container.build_time' => 1715817565,
+    'container.build_id' => 'b651275a',
+    'container.build_time' => 1716218017,
     'container.runtime_mode' => \in_array(\PHP_SAPI, ['cli', 'phpdbg', 'embed'], true) ? 'web=0' : 'web=1',
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerSHYKLPx');

@@ -39,7 +39,7 @@ class CardControllerKmom02Twig extends AbstractController
         return $this->render('gamedoc.html.twig');
     }
 
-    #[Route("/delete", name: "delete")]
+    #[Route("/session/delete", name: "delete")]
     public function DeleteSession(Request $request): Response
     {
         $session = $request->getSession();
