@@ -61,8 +61,8 @@ class LuckyControllerJson
     {
         $number = random_int(0, 2);
 
-        $t = time();
-        $time = date("Y-m-d H:i:s", $t);
+        $clock = time();
+        $time = date("Y-m-d H:i:s", $clock);
 
         $data = [];
 

@@ -260,3 +260,17 @@ b35c4f,127.0.0.1,GET,http://localhost:8888/game,1716218845,,200,request
 6220a6,127.0.0.1,GET,http://localhost:8888/game/start,1716218846,,200,request
 0d1e1b,127.0.0.1,GET,http://localhost:8888/game/stop,1716218848,,200,request
 e6d676,127.0.0.1,GET,http://localhost:8888/api/game,1716218855,,200,request
+1e4a1b,127.0.0.1,GET,http://localhost:8888/api/game,1716219948,,200,request
+d9051c,127.0.0.1,GET,http://localhost:8888/gamelandingpage,1716219950,,200,request
+7ee538,127.0.0.1,GET,http://localhost:8888/game,1716219952,,200,request
+115f82,127.0.0.1,GET,http://localhost:8888/game/start,1716219954,81843a,500,request
+81843a,127.0.0.1,GET,http://localhost:8888/game/start,1716219954,,500,request
+ed3ae7,127.0.0.1,GET,http://localhost:8888/game/start,1716219966,,200,request
+f052aa,127.0.0.1,GET,http://localhost:8888/game/stop,1716219968,,200,request
+736634,127.0.0.1,GET,http://localhost:8888/game/start,1716219970,,200,request
+457db4,127.0.0.1,GET,http://localhost:8888/gamelandingpage,1716220070,,200,request
+8821af,127.0.0.1,GET,http://localhost:8888/gamelandingpage,1716220070,,200,request
+ec3fae,127.0.0.1,GET,http://localhost:8888/game,1716220072,,200,request
+6030d7,127.0.0.1,GET,http://localhost:8888/game/start,1716220073,,200,request
+8bb99a,127.0.0.1,GET,http://localhost:8888/game/continue,1716220075,,200,request
+c68a21,127.0.0.1,GET,http://localhost:8888/game/stop,1716220077,,200,request

@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
-class TjugoettControllerTwig extends AbstractController 
+class TjugoettControllerTwig extends AbstractController
 {
     #[Route("/game", name: "gamepage")]
     public function cardStartPage(SessionInterface $session): Response
@@ -41,7 +41,7 @@ class TjugoettControllerTwig extends AbstractController
             'playerCards' => $playerCards,
             'dealerCards' => $dealerCards,
             'deckCount' => $deckCount,
-            'class' => $gameDone ? "finish" : ""
+            'class' => $gameDone
         ]);
     }
 
@@ -91,7 +91,7 @@ class TjugoettControllerTwig extends AbstractController
             'playerValue' => $playerValue,
             'dealerValue' => $dealerValue,
             'deckCount' => $deckCount,
-            'class' => $gameDone ? "finish" : ""
+            'class' => $gameDone
         ]);
     }
 
@@ -130,7 +130,7 @@ class TjugoettControllerTwig extends AbstractController
             'dealerValue' => $dealerValue,
             'playerValue' => $playerValue,
             'deckCount' => $deckCount,
-            'class' => $gameDone ? "finish" : ""
+            'class' => $gameDone
         ]);
     }
 
@@ -176,7 +176,7 @@ class TjugoettControllerTwig extends AbstractController
             'playerValue' => $playerValue,
             'dealerValue' => $dealerValue,
             'deckCount' => $deckCount,
-            'class' => $gameDone ? "finish" : ""
+            'class' => $gameDone
         ]);
     }
 }

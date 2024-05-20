@@ -16,31 +16,31 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class CardControllerKmom02Twig extends AbstractController
 {
     #[Route("/card", name: "landingpage")]
-    public function cardStartPage(Request $request): Response
+    public function cardStartPage(): Response
     {
         return $this->render('landingpage.html.twig');
     }
 
     #[Route("/apilandingpage", name: "apilandingpage")]
-    public function apiLandpage(Request $request): Response
+    public function apiLandpage(): Response
     {
         return $this->render('api-landingpage.html.twig');
     }
 
     #[Route("/gamelandingpage", name: "gamelandingpage")]
-    public function gameLandingpage(Request $request): Response
+    public function gameLandingpage(): Response
     {
         return $this->render('game.html.twig');
     }
 
     #[Route("/game/doc", name: "gamedoc")]
-    public function gameDoc(Request $request): Response
+    public function gameDoc(): Response
     {
         return $this->render('gamedoc.html.twig');
     }
 
     #[Route("/session/delete", name: "delete")]
-    public function DeleteSession(Request $request): Response
+    public function deleteSession(Request $request): Response
     {
         $session = $request->getSession();
         $session->clear();

@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class CardControllerKmom02Json
 {
     #[Route("/session", name: "api-session")]
-    public function ThisSession(Request $request): JsonResponse
+    public function thisSession(Request $request): JsonResponse
     {
         $session = $request->getSession();
         $sessionData = $session->all();
@@ -83,7 +83,7 @@ class CardControllerKmom02Json
     }
 
     #[Route("/api/deck/draw", name: "api-draw", methods: ['POST'])]
-    public function apiDraw(Request $request, SessionInterface $session): JsonResponse
+    public function apiDraw(SessionInterface $session): JsonResponse
     {
         if (!$session->has('deckOfCards')) {
             $deckOfCards = new DeckOfCards();
