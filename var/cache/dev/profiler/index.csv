@@ -236,3 +236,10 @@ ad4674,127.0.0.1,GET,http://localhost:8888/apilandingpage,1716218034,,200,reques
 32efb4,127.0.0.1,GET,http://localhost:8888/session,1716218039,,200,request
 f3b991,127.0.0.1,GET,http://localhost:8888/session/delete,1716218043,,302,request
 6dd04c,127.0.0.1,GET,http://localhost:8888/apilandingpage,1716218043,,200,request
+b4209c,127.0.0.1,GET,http://localhost:8888/gamelandingpage,1716218141,,200,request
+5a1b1d,127.0.0.1,GET,http://localhost:8888/game,1716218143,,200,request
+e6ecb9,127.0.0.1,GET,http://localhost:8888/game/start,1716218144,,200,request
+bd6cfc,127.0.0.1,GET,http://localhost:8888/game/stop,1716218149,,200,request
+eecd3d,127.0.0.1,GET,http://localhost:8888/game/start,1716218157,,200,request
+924b23,127.0.0.1,GET,http://localhost:8888/gamelandingpage,1716218159,,200,request
+d351b7,127.0.0.1,GET,http://localhost:8888/game/doc,1716218160,,200,request
