@@ -102,6 +102,7 @@ class TjugoettControllerTwig extends AbstractController
         $oldPlayerCards = $session->get('playerCards');
         $dealerCards = $session->get('dealerCards');
         $dealerValue = $session->get('dealerValue');
+        $playerValue = $session->get('playerValue');
 
         $newCard = $deckOfCards->drawCard();
         $playerCards = array_merge($oldPlayerCards, [$newCard]);
@@ -117,6 +118,7 @@ class TjugoettControllerTwig extends AbstractController
         $session->set('playerCards', $playerCards);
         $session->set('dealerCards', $dealerCards);
         $session->set('playerValue', $playerValue);
+        $session->set('dealerValue', $dealerValue);
 
         $deckCount = count($deckOfCards->getDeck());
 
@@ -147,16 +149,17 @@ class TjugoettControllerTwig extends AbstractController
 
         $dealerValue = $dealerHand->getHandValue();
 
-        while ($dealerValue <= 21) {
+        while ($dealerValue < 21) {
             $newCard = $deckOfCards->drawCard();
             $dealerHand->add($newCard);
             $dealerValue = $dealerHand->getHandValue();
             $oldDealerCards[] = $newCard;
         }
-    
+
         $session->set('deckOfCards', serialize($deckOfCards));
         $session->set('playerCards', $playerCards);
         $session->set('dealerCards', $oldDealerCards);
+        $session->set('dealerValue', $dealerValue);
 
         $deckCount = count($deckOfCards->getDeck());
 
@@ -173,7 +176,6 @@ class TjugoettControllerTwig extends AbstractController
             'playerValue' => $playerValue,
             'dealerValue' => $dealerValue,
             'deckCount' => $deckCount,
-            'dealerValue' => $dealerValue,
             'class' => $gameDone ? "finish" : ""
         ]);
     }

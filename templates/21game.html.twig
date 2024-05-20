@@ -14,6 +14,10 @@
         <p>Din poäng: {{ playerValue }}</p>
     {% endif %}
 
+    {% if class == "finish" %}
+    <button onclick="location.href='{{ path('startgame') }}'" type="button">Spela igen</button>
+    {% endif %}
+
     <h2>Dealer</<h2>
     <div class="card-container">
     {% for card in dealerCards %}
@@ -66,28 +70,36 @@
 
 {% if class != "finish" %}
     {% if deckCount < 52 %}
-            {% if dealerCards|length <= 2 %}
         <h2>Dealer</h2>
         <ul>
             <p>Kort kvar: {{ deckCount }}</p>
-
-                <div class="card-container">
-                        <div class="allcards
-                            {% if dealerCards[0].getSuit() == 'Hearts' %}
+            <div class="card-container">
+                {% for card in dealerCards %}
+                    <div class="allcards
+                        {% if loop.index == 1 %}
+                            {% if card.getSuit() == 'Hearts' %}
                                 heart
-                            {% elseif dealerCards[0].getSuit() == 'Diamonds' %}
+                            {% elseif card.getSuit() == 'Diamonds' %}
                                 diamond
-                            {% elseif dealerCards[0].getSuit() == 'Clubs' %}
+                            {% elseif card.getSuit() == 'Clubs' %}
                                 club
                             {% else %}
                                 spade
                             {% endif %}
-                        ">
-                            <p>{{ dealerCards[0].getAsString() }}</p>
-                            <p>?</p>
-                        </div>
-                </div>
-            {% endif %}
+                        {% else %}
+                            back
+                        {% endif %}
+                    ">
+                        <p>
+                            {% if loop.index == 1 %}
+                                {{ card.getAsString() }}
+                            {% else %}
+                                ?
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
         </ul>
     {% endif %}
 {% endif %}
