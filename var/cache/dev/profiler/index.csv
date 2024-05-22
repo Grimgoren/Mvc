@@ -274,3 +274,14 @@ ec3fae,127.0.0.1,GET,http://localhost:8888/game,1716220072,,200,request
 6030d7,127.0.0.1,GET,http://localhost:8888/game/start,1716220073,,200,request
 8bb99a,127.0.0.1,GET,http://localhost:8888/game/continue,1716220075,,200,request
 c68a21,127.0.0.1,GET,http://localhost:8888/game/stop,1716220077,,200,request
+a6798a,127.0.0.1,GET,http://localhost:8888/apilandingpage,1716398704,,200,request
+4ae81c,127.0.0.1,GET,http://localhost:8888/api,1716398720,,200,request
+27f06a,127.0.0.1,GET,http://localhost:8888/apilandingpage,1716399053,,200,request
+a5b69a,127.0.0.1,GET,http://localhost:8888/api,1716399057,,200,request
+a47a3b,127.0.0.1,GET,http://localhost:8888/api/lucky/number,1716399059,,200,request
+c35b72,127.0.0.1,GET,http://localhost:8888/api/quote,1716399061,,200,request
+2d1d32,127.0.0.1,GET,http://localhost:8888/session,1716399064,,200,request
+375902,127.0.0.1,GET,http://localhost:8888/apilandingpage,1716399114,,200,request
+1cfa85,127.0.0.1,GET,http://localhost:8888/api/game,1716399118,,200,request
+40245e,127.0.0.1,GET,http://localhost:8888/card,1716399128,,200,request
+3cb862,127.0.0.1,GET,http://localhost:8888/apilandingpage,1716399133,,200,request

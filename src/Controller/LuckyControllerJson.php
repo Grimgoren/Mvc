@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LuckyControllerJson
 {
-    #[Route("/api/lucky/number")]
+    #[Route("/api/lucky/number", name: "api-lucky")]
     public function jsonNumber(): Response
     {
         $number = random_int(0, 100);
@@ -27,7 +27,7 @@ class LuckyControllerJson
         return $response;
     }
 
-    #[Route("/api")]
+    #[Route("/api", name: "api")]
     public function apiRoutes(): Response
     {
         $data = [
@@ -56,7 +56,7 @@ class LuckyControllerJson
         return $response;
     }
 
-    #[Route("/api/quote")]
+    #[Route("/api/quote", name: "api-quote")]
     public function apiQuote(): Response
     {
         $number = random_int(0, 2);

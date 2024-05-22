@@ -4,6 +4,15 @@
 <h1>Api landingpage</h1>
 
 <p>
+    <a class="link-color" href="{{ path('api') }}">Api's</a></li>
+</p>
+<p>
+    <a class="link-color" href="{{ path('api-lucky') }}">Lucky number</a></li>
+</p>
+<p>
+    <a class="link-color" href="{{ path('api-quote') }}">Quote's</a></li>
+</p>
+<p>
     <a class="link-color" href="{{ path('api-session') }}">Session</a></li>
 </p>
 <p>
@@ -26,6 +35,9 @@
         <input type="submit" name="draw-number" value="Draw Cards"
                onclick="updateAction();">
     </p>
+<p>
+    <a class="link-color" href="{{ path('api-game') }}">Game</a></li>
+</p>
 </form>
 
 <script>

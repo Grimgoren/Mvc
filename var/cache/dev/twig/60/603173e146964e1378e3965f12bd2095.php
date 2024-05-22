@@ -121,30 +121,52 @@ class __TwigTemplate_3b508d9778b66a6f6a8fe7cd52d4db13 extends Template
     <p>Mycket repition med exempelvis SASS, Twig och självklart PHP.</p>
 
     <h2 id=\"kmom02\">Kmom02</h2>
-    <p>Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de används i PHP.</p>
+    <h2>Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de används i PHP.</h2>
     <p>Arv är som det låter något som en klass ärver från en annan, exempelvis ärver min 
     CardSort från CardValue för att kunna sortera på just \"value\" eller vad korten är värda (Ess>Kung>Dam osv).</p>
     <p>En komposition är när en klass kan använda en annan klass variabler i sin egna kod. Samma gäller för interface, 
     interface låter olika komponenter från klasser att interagera med varandra. Traits är något som låter dig återanvända saker från 
     en klass i en annan klass (återanvänd kod).</p>
 
-    <p>Berätta om din implementation från uppgiften. 
-    Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden och dina klasser?</p>
+    <h2>Berätta om din implementation från uppgiften. 
+    Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden och dina klasser?</h2>
     <p>Det tog extremt lång tid att få färdigt denna uppgiften och nej jag är nog inte helt nöjd med allt 
     (framförallt utseendet). Jag hade kunnat dela upp exempelvis DeckOfCards i fler små klasser, även om jag gjorde det till 
     viss del med exempelvis Draw och CardValue samt CardSort.</p>
 
-    <p>Vilka är dina reflektioner så här långt med att jobb i Symfony med applikationskod enligt MVC?</p>
+    <h2>Vilka är dina reflektioner så här långt med att jobb i Symfony med applikationskod enligt MVC?</h2>
     <p>Jag tycker själva interfacet är ovänligt i många fall, det är många gånger som det inte är helt uppenbart varför 
     något inte fungerar och man kan spendera mycket tid på något som senare visar sig faktiskt ha fungerat men symfony förväntat 
     sig på ett annat sätt, lite svårt att ge konkret exempel men det är hur jag upplever det just nu i alla fall.</p>
 
-    <p>Vilken är din TIL för detta kmom?</p>
+    <h2>Vilken är din TIL för detta kmom?</h2>
     <p>mycket php och klasser, repition om hur man hanterar klasser och arv.</p>
 
 
     <h2 id=\"kmom03\">Kmom03</h2>
-    <p></p>
+    <h2>Berätta hur det kändes att modellera ett kortspel med flödesdiagram och psuedokod. 
+    Var det något som du tror stödjer dig i din problemlösning och tankearbete för att 
+    strukturera koden kring en applikation?</h2>
+    <p>Jag tyckte det hjälpte rätt så mycket eftersom man redan innan påbörjandet av kodandet såg vilka problem man 
+    hade kommit att fastna i för att man inte \"tänkt så långt\" vilket ledde till att jag undvek dem problemen när jag skrev 
+    själva koden. Exempelvis hur det hela skulle fungera när man valde att dra fler kort och titta upp om korte översteg 21 eller inte
+     och vad man då skulle göra.</p>
+
+    <h2>Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, 
+    vilken förbättringspotential ser du i din koden, dina klasser och applikationen som helhet?</h2>
+    <p>Självklart så är det inte \"snyggt\" det är alltid något som kan förbättras (utseendemässigt) men hur det funkar är 
+    jag rätt nöjd med. Hela saken funkar nästintill exakt som mitt flödeschema är uppställd innan jag började skriva koden.
+    Dealern får två kort vilken en av dem är gömt för spelaren, spelaren får två kort och sen får spelaren välja vad den vill göra.
+    Stanna eller dra mer kort. Dealern drar alltid kort till minst 17 poäng är nådda efter att spelaren valt att stanna och sen 
+    summeras spelet och ett resultat visas.</p>
+
+    <h2>Vilken är din känsla för att koda i ett ramverk som Symfony, så här långt in i kursen?</h2>
+    <p>I början tyckte jag det var otroligt rörigt men nu börjar det \"falla på plats\" lite mera och jag har börjat 
+    tycka exemeplvis twig osv är rätt smidigt för att göra olika saker på samma sida beroende på x och y.</p>
+
+    <h2>Vilken är din TIL för detta kmom?</h2>
+    <p>Mycket php och twig.</p>
+
     <h2 id=\"kmom04\">Kmom04</h2>
     <p></p>
     <h2 id=\"kmom05\">Kmom05</h2>
@@ -231,30 +253,52 @@ class __TwigTemplate_3b508d9778b66a6f6a8fe7cd52d4db13 extends Template
     <p>Mycket repition med exempelvis SASS, Twig och självklart PHP.</p>
 
     <h2 id=\"kmom02\">Kmom02</h2>
-    <p>Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de används i PHP.</p>
+    <h2>Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de används i PHP.</h2>
     <p>Arv är som det låter något som en klass ärver från en annan, exempelvis ärver min 
     CardSort från CardValue för att kunna sortera på just \"value\" eller vad korten är värda (Ess>Kung>Dam osv).</p>
     <p>En komposition är när en klass kan använda en annan klass variabler i sin egna kod. Samma gäller för interface, 
     interface låter olika komponenter från klasser att interagera med varandra. Traits är något som låter dig återanvända saker från 
     en klass i en annan klass (återanvänd kod).</p>
 
-    <p>Berätta om din implementation från uppgiften. 
-    Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden och dina klasser?</p>
+    <h2>Berätta om din implementation från uppgiften. 
+    Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden och dina klasser?</h2>
     <p>Det tog extremt lång tid att få färdigt denna uppgiften och nej jag är nog inte helt nöjd med allt 
     (framförallt utseendet). Jag hade kunnat dela upp exempelvis DeckOfCards i fler små klasser, även om jag gjorde det till 
     viss del med exempelvis Draw och CardValue samt CardSort.</p>
 
-    <p>Vilka är dina reflektioner så här långt med att jobb i Symfony med applikationskod enligt MVC?</p>
+    <h2>Vilka är dina reflektioner så här långt med att jobb i Symfony med applikationskod enligt MVC?</h2>
     <p>Jag tycker själva interfacet är ovänligt i många fall, det är många gånger som det inte är helt uppenbart varför 
     något inte fungerar och man kan spendera mycket tid på något som senare visar sig faktiskt ha fungerat men symfony förväntat 
     sig på ett annat sätt, lite svårt att ge konkret exempel men det är hur jag upplever det just nu i alla fall.</p>
 
-    <p>Vilken är din TIL för detta kmom?</p>
+    <h2>Vilken är din TIL för detta kmom?</h2>
     <p>mycket php och klasser, repition om hur man hanterar klasser och arv.</p>
 
 
     <h2 id=\"kmom03\">Kmom03</h2>
-    <p></p>
+    <h2>Berätta hur det kändes att modellera ett kortspel med flödesdiagram och psuedokod. 
+    Var det något som du tror stödjer dig i din problemlösning och tankearbete för att 
+    strukturera koden kring en applikation?</h2>
+    <p>Jag tyckte det hjälpte rätt så mycket eftersom man redan innan påbörjandet av kodandet såg vilka problem man 
+    hade kommit att fastna i för att man inte \"tänkt så långt\" vilket ledde till att jag undvek dem problemen när jag skrev 
+    själva koden. Exempelvis hur det hela skulle fungera när man valde att dra fler kort och titta upp om korte översteg 21 eller inte
+     och vad man då skulle göra.</p>
+
+    <h2>Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, 
+    vilken förbättringspotential ser du i din koden, dina klasser och applikationen som helhet?</h2>
+    <p>Självklart så är det inte \"snyggt\" det är alltid något som kan förbättras (utseendemässigt) men hur det funkar är 
+    jag rätt nöjd med. Hela saken funkar nästintill exakt som mitt flödeschema är uppställd innan jag började skriva koden.
+    Dealern får två kort vilken en av dem är gömt för spelaren, spelaren får två kort och sen får spelaren välja vad den vill göra.
+    Stanna eller dra mer kort. Dealern drar alltid kort till minst 17 poäng är nådda efter att spelaren valt att stanna och sen 
+    summeras spelet och ett resultat visas.</p>
+
+    <h2>Vilken är din känsla för att koda i ett ramverk som Symfony, så här långt in i kursen?</h2>
+    <p>I början tyckte jag det var otroligt rörigt men nu börjar det \"falla på plats\" lite mera och jag har börjat 
+    tycka exemeplvis twig osv är rätt smidigt för att göra olika saker på samma sida beroende på x och y.</p>
+
+    <h2>Vilken är din TIL för detta kmom?</h2>
+    <p>Mycket php och twig.</p>
+
     <h2 id=\"kmom04\">Kmom04</h2>
     <p></p>
     <h2 id=\"kmom05\">Kmom05</h2>
