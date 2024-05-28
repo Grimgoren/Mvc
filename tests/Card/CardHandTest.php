@@ -15,7 +15,7 @@ class CardHandTest extends TestCase
     public function testCreateCardHand()
     {
         $hand = new CardHand();
-        
+
         $this->assertInstanceOf("\App\Card\CardHand", $hand);
         $this->assertEquals(0, $hand->getNumberCards());
     }

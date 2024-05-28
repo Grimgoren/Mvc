@@ -58,12 +58,12 @@ class DeckOfCards
         if (count($this->deck) === 0) {
             return "No cards left in the deck";
         }
-    
+
         $randomKey = array_rand($this->deck);
         $randomCard = $this->deck[$randomKey];
         unset($this->deck[$randomKey]);
         $this->deck = array_values($this->deck);
-        
+
         return $randomCard;
     }
 

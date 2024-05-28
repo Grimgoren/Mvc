@@ -18,7 +18,7 @@ class CardTest extends TestCase
         $suit = "Hearts";
         $rank = "A";
         $card = new Card($suit, $rank);
-        
+
         $this->assertInstanceOf("\App\Card\Card", $card);
 
         $res = $card->getAsString();

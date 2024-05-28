@@ -18,7 +18,7 @@ class CardGraphicTest extends TestCase
         $suit = "Clubs";
         $rank = "A";
         $cardGraphic = new CardGraphic($suit, $rank);
-        
+
         $this->assertInstanceOf("\App\Card\CardGraphic", $cardGraphic);
 
         $res = $cardGraphic->getAsString();
