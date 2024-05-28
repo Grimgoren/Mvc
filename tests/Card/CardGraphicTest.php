@@ -26,6 +26,9 @@ class CardGraphicTest extends TestCase
         $this->assertEquals("A ♣", $res);
     }
 
+    /**
+     * Test getAsString method.
+     */
     public function testGetRank()
     {
         $suit = "Clubs";
@@ -37,7 +40,7 @@ class CardGraphicTest extends TestCase
     }
 
     /**
-     * Test getSuit method.
+     * Test getAsString method.
      */
     public function testGetSuit()
     {
