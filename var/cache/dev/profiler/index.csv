@@ -285,3 +285,10 @@ c35b72,127.0.0.1,GET,http://localhost:8888/api/quote,1716399061,,200,request
 1cfa85,127.0.0.1,GET,http://localhost:8888/api/game,1716399118,,200,request
 40245e,127.0.0.1,GET,http://localhost:8888/card,1716399128,,200,request
 3cb862,127.0.0.1,GET,http://localhost:8888/apilandingpage,1716399133,,200,request
+3cbf2d,127.0.0.1,GET,http://localhost:8888/gamelandingpage,1716399342,,200,request
+b43058,127.0.0.1,GET,http://localhost:8888/apilandingpage,1716399346,,200,request
+9bc980,127.0.0.1,GET,http://localhost:8888/delete,1716559751,aef6ff,404,request
+aef6ff,127.0.0.1,GET,http://localhost:8888/delete,1716559751,,404,request
+b56112,127.0.0.1,GET,http://localhost:8888/,1716559755,,200,request
+7d3484,127.0.0.1,GET,http://localhost:8888/docs/api,1716559760,db28ba,404,request
+db28ba,127.0.0.1,GET,http://localhost:8888/docs/api,1716559760,,404,request
