@@ -168,7 +168,38 @@ class __TwigTemplate_3b508d9778b66a6f6a8fe7cd52d4db13 extends Template
     <p>Mycket php och twig.</p>
 
     <h2 id=\"kmom04\">Kmom04</h2>
-    <p></p>
+    <h2>Berätta hur du upplevde att skriva kod som testar annan kod med PHPUnit och hur du upplever phpunit rent allmänt.</h2>
+    <p>Det var lite svårt att komma igång med till och blörja med, men efter en stund så förstod man hur det skulle ställas upp så att säga.
+    Då blev det ganska \"straight forward\" i slutändan att lägga in små test för att testa x och y i visa delar av min kod.</p>
+
+    <h2>Hur väl lyckades du med kodtäckningen av din kod, lyckades du nå mer än 90% kodtäckning?</h2>
+    <p>Om nu allt stämmer så fick jag 100% på samtliga test, visst det kan ju vara att jag lurat mig själv men det ser bra ut 
+    i alla fall.</p>
+
+    <h2>Upplever du din egen kod som “testbar kod” eller finns det delar i koden som är mer eller 
+    mindre testbar och finns det saker som kan göras för att förbättra kodens testbarhet?</h2>
+    <p>Jag skulle ändå påstå att min kod är relativt testbar, 
+    koden har inga superkomplicerade functioner eller klasser, det finns inga stora enskilda funktioner, allt är 
+    uppdelat i små egna delar.</p>
+
+    <h2>Valde du att skriva om delar av din kod för att förbättra den eller göra den mer testbar, 
+    om så berätta lite hur du tänkte.</h2>
+    <p>Nej jag vale att inte skriva om koden då det inte fanns något uppenbart behov av det. 
+    Detta eftersom allt jag ville testa gick att genomföra utan några större ändringar.
+     Mycket av mina klasser var bra uppdelade till att börja med i små egna delar,
+     så som CardHand och getHandValue som skickar tillbaka vad din hand är värd i relation till spelet 21 så 
+     behövdes inga större ändringar och funktionen som blandar korten shuffleDeck från DeckOfCards, där räcker det att göra två kortlekar och sortera dem båda och 
+    sen säkerställa att dem inte är exakt samma i en assert. 
+    </p>
+
+    <h2>Fundera över om du anser att testbar kod är något som kan identifiera “snygg och ren kod”.</h2>
+    <p>Jag skulle anta att \"sygg kod\" och testbar kod har samma kvalite, om koden är stor och avancerad så är den nog 
+    förmodligen mycket svårare att testa i sin helhet. Medans \"snygg kod\" förmodligen är mycket enklare att rent allmänt \"läsa\" 
+    och därmed också testa.</p>
+
+    <h2>Vilken är din TIL för detta kmom?</h2>
+    <p>Skriva tester, phpdoc m.m.</p>
+
     <h2 id=\"kmom05\">Kmom05</h2>
     <p></p>
     <h2 id=\"kmom06>Kmom06</h2>
@@ -300,7 +331,38 @@ class __TwigTemplate_3b508d9778b66a6f6a8fe7cd52d4db13 extends Template
     <p>Mycket php och twig.</p>
 
     <h2 id=\"kmom04\">Kmom04</h2>
-    <p></p>
+    <h2>Berätta hur du upplevde att skriva kod som testar annan kod med PHPUnit och hur du upplever phpunit rent allmänt.</h2>
+    <p>Det var lite svårt att komma igång med till och blörja med, men efter en stund så förstod man hur det skulle ställas upp så att säga.
+    Då blev det ganska \"straight forward\" i slutändan att lägga in små test för att testa x och y i visa delar av min kod.</p>
+
+    <h2>Hur väl lyckades du med kodtäckningen av din kod, lyckades du nå mer än 90% kodtäckning?</h2>
+    <p>Om nu allt stämmer så fick jag 100% på samtliga test, visst det kan ju vara att jag lurat mig själv men det ser bra ut 
+    i alla fall.</p>
+
+    <h2>Upplever du din egen kod som “testbar kod” eller finns det delar i koden som är mer eller 
+    mindre testbar och finns det saker som kan göras för att förbättra kodens testbarhet?</h2>
+    <p>Jag skulle ändå påstå att min kod är relativt testbar, 
+    koden har inga superkomplicerade functioner eller klasser, det finns inga stora enskilda funktioner, allt är 
+    uppdelat i små egna delar.</p>
+
+    <h2>Valde du att skriva om delar av din kod för att förbättra den eller göra den mer testbar, 
+    om så berätta lite hur du tänkte.</h2>
+    <p>Nej jag vale att inte skriva om koden då det inte fanns något uppenbart behov av det. 
+    Detta eftersom allt jag ville testa gick att genomföra utan några större ändringar.
+     Mycket av mina klasser var bra uppdelade till att börja med i små egna delar,
+     så som CardHand och getHandValue som skickar tillbaka vad din hand är värd i relation till spelet 21 så 
+     behövdes inga större ändringar och funktionen som blandar korten shuffleDeck från DeckOfCards, där räcker det att göra två kortlekar och sortera dem båda och 
+    sen säkerställa att dem inte är exakt samma i en assert. 
+    </p>
+
+    <h2>Fundera över om du anser att testbar kod är något som kan identifiera “snygg och ren kod”.</h2>
+    <p>Jag skulle anta att \"sygg kod\" och testbar kod har samma kvalite, om koden är stor och avancerad så är den nog 
+    förmodligen mycket svårare att testa i sin helhet. Medans \"snygg kod\" förmodligen är mycket enklare att rent allmänt \"läsa\" 
+    och därmed också testa.</p>
+
+    <h2>Vilken är din TIL för detta kmom?</h2>
+    <p>Skriva tester, phpdoc m.m.</p>
+
     <h2 id=\"kmom05\">Kmom05</h2>
     <p></p>
     <h2 id=\"kmom06>Kmom06</h2>
