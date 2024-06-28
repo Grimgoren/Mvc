@@ -445,7 +445,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.jc2gG7_"/>
+      <argument type="service" id=".service_locator.lt.Qe7j"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -3342,7 +3342,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.jc2gG7_"/>
+      <argument type="service" id=".service_locator.lt.Qe7j"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -7536,15 +7536,27 @@
         <argument key="doctrine" type="service_closure" id="doctrine"/>
       </argument>
     </service>
+    <service id=".service_locator.mFXXG35" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="libraryRepository" type="service_closure" id="App\Repository\LibraryRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.DZowHzb" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="productRepository" type="service_closure" id="App\Repository\ProductRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.jc2gG7_" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.lt.Qe7j" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\LibraryController::createLibraryItem" type="service_closure" id=".service_locator.o6sN0hZ"/>
+        <argument key="App\Controller\LibraryController::deleteLibraryItemById" type="service_closure" id=".service_locator.o6sN0hZ"/>
+        <argument key="App\Controller\LibraryController::showAllLibraryItems" type="service_closure" id=".service_locator.mFXXG35"/>
+        <argument key="App\Controller\LibraryController::showAllLibraryItemsHtml" type="service_closure" id=".service_locator.mFXXG35"/>
+        <argument key="App\Controller\LibraryController::showLibraryItemById" type="service_closure" id=".service_locator.mFXXG35"/>
+        <argument key="App\Controller\LibraryController::updateLibraryItem" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\ProductController::createProduct" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\ProductController::deleteProductById" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\ProductController::showAllProduct" type="service_closure" id=".service_locator.DZowHzb"/>
@@ -7557,6 +7569,12 @@
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
+        <argument key="App\Controller\LibraryController:createLibraryItem" type="service_closure" id=".service_locator.o6sN0hZ"/>
+        <argument key="App\Controller\LibraryController:deleteLibraryItemById" type="service_closure" id=".service_locator.o6sN0hZ"/>
+        <argument key="App\Controller\LibraryController:showAllLibraryItems" type="service_closure" id=".service_locator.mFXXG35"/>
+        <argument key="App\Controller\LibraryController:showAllLibraryItemsHtml" type="service_closure" id=".service_locator.mFXXG35"/>
+        <argument key="App\Controller\LibraryController:showLibraryItemById" type="service_closure" id=".service_locator.mFXXG35"/>
+        <argument key="App\Controller\LibraryController:updateLibraryItem" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\ProductController:createProduct" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\ProductController:deleteProductById" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\ProductController:showAllProduct" type="service_closure" id=".service_locator.DZowHzb"/>
@@ -9730,7 +9748,7 @@
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface" alias="webpack_encore.entrypoint_lookup[_default]"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.bJ.4HC5" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.jc2gG7_"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.lt.Qe7j"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -9775,6 +9793,7 @@
     <service id="security.event_dispatcher.main" alias="debug.security.event_dispatcher.main"/>
     <service id=".service_locator.gFlme_s" alias=".service_locator.y4_Zrx."/>
     <service id=".service_locator.eQ296SW" alias=".service_locator.o6sN0hZ"/>
+    <service id=".service_locator.sBKhR6k" alias=".service_locator.mFXXG35"/>
     <service id=".service_locator.YAVoKZL" alias=".service_locator.DZowHzb"/>
     <service id=".service_locator.Q1z.f9O" alias=".service_locator.jUv.zyj"/>
   </services>

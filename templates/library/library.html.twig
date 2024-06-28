@@ -1,0 +1,13 @@
+<h1>Sök efter en bok</h1>
+<form action="{{ path('library_create') }}" method="post">
+    <label for="title"></label>
+    <input type="text" id="title" name="title"><br>
+</form>
+    <input type="submit" value="Sök">
+
+
+<ul>
+    <li class="link-color"><a class="link-color" href="{{ path('library-addBook-page') }}">Lägg till bok</a></li>
+    <li class="link-color"><a class="link-color" href="{{ path('library_show_all_html') }}">Visa alla böcker</a></li>
+</ul>
+

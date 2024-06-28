@@ -28,7 +28,12 @@ return [
         '/card/deck/shuffle' => [[['_route' => 'card_shuffle_get', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::initShuffle'], null, ['GET' => 0], null, false, false, null]],
         '/card/deck/draw' => [[['_route' => 'card_draw_get', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::initDraw'], null, ['GET' => 0], null, false, false, null]],
         '/library' => [[['_route' => 'app_library', '_controller' => 'App\\Controller\\LibraryController::index'], null, null, null, false, false, null]],
-        '/library/landingpage' => [[['_route' => 'library-page', '_controller' => 'App\\Controller\\LibraryController::libraryPage'], null, null, null, false, false, null]],
+        '/library/landing-page' => [[['_route' => 'library-page', '_controller' => 'App\\Controller\\LibraryController::libraryPage'], null, null, null, false, false, null]],
+        '/library/addBook' => [[['_route' => 'library-addBook-page', '_controller' => 'App\\Controller\\LibraryController::addBookPage'], null, null, null, false, false, null]],
+        '/library/allBooks' => [[['_route' => 'library-showAll-page', '_controller' => 'App\\Controller\\LibraryController::showAllBooks'], null, null, null, false, false, null]],
+        '/library/create' => [[['_route' => 'library_create', '_controller' => 'App\\Controller\\LibraryController::createLibraryItem'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/library/show' => [[['_route' => 'library_show_all', '_controller' => 'App\\Controller\\LibraryController::showAllLibraryItems'], null, null, null, false, false, null]],
+        '/library/showHtml' => [[['_route' => 'library_show_all_html', '_controller' => 'App\\Controller\\LibraryController::showAllLibraryItemsHtml'], null, null, null, false, false, null]],
         '/api/lucky/number' => [[['_route' => 'api-lucky', '_controller' => 'App\\Controller\\LuckyControllerJson::jsonNumber'], null, null, null, false, false, null]],
         '/api' => [[['_route' => 'api', '_controller' => 'App\\Controller\\LuckyControllerJson::apiRoutes'], null, null, null, false, false, null]],
         '/api/quote' => [[['_route' => 'api-quote', '_controller' => 'App\\Controller\\LuckyControllerJson::apiQuote'], null, null, null, false, false, null]],
@@ -68,14 +73,19 @@ return [
                 .'|/card/deck/draw/(\\d+)(?'
                     .'|(*:226)'
                 .')'
+                .'|/library/(?'
+                    .'|show/([^/]++)(*:260)'
+                    .'|delete/([^/]++)(*:283)'
+                    .'|update/([^/]++)/([^/]++)(*:315)'
+                .')'
                 .'|/product/(?'
                     .'|show/(?'
-                        .'|([^/]++)(*:263)'
-                        .'|min/([^/]++)(*:283)'
+                        .'|([^/]++)(*:352)'
+                        .'|min/([^/]++)(*:372)'
                     .')'
-                    .'|delete/([^/]++)(*:307)'
-                    .'|update/([^/]++)/([^/]++)(*:339)'
-                    .'|view/([^/]++)(*:360)'
+                    .'|delete/([^/]++)(*:396)'
+                    .'|update/([^/]++)/([^/]++)(*:428)'
+                    .'|view/([^/]++)(*:449)'
                 .')'
             .')/?$}sDu',
     ],
@@ -92,11 +102,14 @@ return [
             [['_route' => 'api_draw_number', '_controller' => 'App\\Controller\\CardControllerKmom02Json::apiDrawNumber'], ['num'], ['POST' => 0], null, false, true, null],
             [['_route' => 'card_draw_number_post', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::initDrawNumber'], ['num'], null, null, false, true, null],
         ],
-        263 => [[['_route' => 'product_by_id', '_controller' => 'App\\Controller\\ProductController::showProductById'], ['id'], null, null, false, true, null]],
-        283 => [[['_route' => 'product_by_min_value', '_controller' => 'App\\Controller\\ProductController::showProductByMinimumValue'], ['value'], null, null, false, true, null]],
-        307 => [[['_route' => 'product_delete_by_id', '_controller' => 'App\\Controller\\ProductController::deleteProductById'], ['id'], null, null, false, true, null]],
-        339 => [[['_route' => 'product_update', '_controller' => 'App\\Controller\\ProductController::updateProduct'], ['id', 'value'], null, null, false, true, null]],
-        360 => [
+        260 => [[['_route' => 'library_by_id', '_controller' => 'App\\Controller\\LibraryController::showLibraryItemById'], ['id'], null, null, false, true, null]],
+        283 => [[['_route' => 'library_delete_by_id', '_controller' => 'App\\Controller\\LibraryController::deleteLibraryItemById'], ['id'], null, null, false, true, null]],
+        315 => [[['_route' => 'library_update', '_controller' => 'App\\Controller\\LibraryController::updateLibraryItem'], ['id', 'picture'], null, null, false, true, null]],
+        352 => [[['_route' => 'product_by_id', '_controller' => 'App\\Controller\\ProductController::showProductById'], ['id'], null, null, false, true, null]],
+        372 => [[['_route' => 'product_by_min_value', '_controller' => 'App\\Controller\\ProductController::showProductByMinimumValue'], ['value'], null, null, false, true, null]],
+        396 => [[['_route' => 'product_delete_by_id', '_controller' => 'App\\Controller\\ProductController::deleteProductById'], ['id'], null, null, false, true, null]],
+        428 => [[['_route' => 'product_update', '_controller' => 'App\\Controller\\ProductController::updateProduct'], ['id', 'value'], null, null, false, true, null]],
+        449 => [
             [['_route' => 'product_view_minimum_value', '_controller' => 'App\\Controller\\ProductController::viewProductWithMinimumValue'], ['value'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
