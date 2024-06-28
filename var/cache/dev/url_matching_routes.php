@@ -34,6 +34,7 @@ return [
         '/library/create' => [[['_route' => 'library_create', '_controller' => 'App\\Controller\\LibraryController::createLibraryItem'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/library/show' => [[['_route' => 'library_show_all', '_controller' => 'App\\Controller\\LibraryController::showAllLibraryItems'], null, null, null, false, false, null]],
         '/library/showHtml' => [[['_route' => 'library_show_all_html', '_controller' => 'App\\Controller\\LibraryController::showAllLibraryItemsHtml'], null, null, null, false, false, null]],
+        '/library/search' => [[['_route' => 'library_search_html', '_controller' => 'App\\Controller\\LibraryController::showLibrarySearchHtml'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/api/lucky/number' => [[['_route' => 'api-lucky', '_controller' => 'App\\Controller\\LuckyControllerJson::jsonNumber'], null, null, null, false, false, null]],
         '/api' => [[['_route' => 'api', '_controller' => 'App\\Controller\\LuckyControllerJson::apiRoutes'], null, null, null, false, false, null]],
         '/api/quote' => [[['_route' => 'api-quote', '_controller' => 'App\\Controller\\LuckyControllerJson::apiQuote'], null, null, null, false, false, null]],

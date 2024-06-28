@@ -38,6 +38,36 @@ class LibraryController extends AbstractController
         return $this->render('library/showAllBooks.html.twig');
     }
 
+    #[Route("/library/detailsOfBook", name: "library-showDetails-page", methods: ['GET', 'POST'])]
+    public function showBookDetails(Request $request, ManagerRegistry $doctrine): Response
+    {
+
+        $libraryItems = [];
+
+
+        if ($request->isMethod('POST')) {
+            $searchIt = $request->request->get('search');
+
+            if (!$searchIt) {
+                return new Response('Missing required parameters', Response::HTTP_BAD_REQUEST);
+            }
+
+            $searchIt = trim($searchIt);
+
+            $query = $libraryRepository->createQueryBuilder('l')
+            ->where('l.title LIKE :searchIt')
+            ->orWhere('l.author LIKE :searchIt')
+            ->setParameter('searchIt', '%' . $searchIt . '%')
+            ->getQuery();
+
+            $libraryItems = $query->getResult();
+        }
+
+        return $this->render('library/showDetails.html.twig', [
+            'libraryItems' => $libraryItems,
+        ]);
+    }
+
     #[Route('/library/create', name: 'library_create', methods: ['GET', 'POST'])]
     public function createLibraryItem(Request $request, ManagerRegistry $doctrine): Response
     {
@@ -103,6 +133,34 @@ class LibraryController extends AbstractController
             ->find($id);
     
         return $this->json($libraryItem);
+    }
+
+    #[Route('/library/search', name: 'library_search_html', methods: ['GET', 'POST'])]
+    public function showLibrarySearchHtml(Request $request, LibraryRepository $libraryRepository): Response
+    {
+        $libraryItems = [];
+
+        if ($request->isMethod('POST')) {
+            $searchIt = $request->request->get('search');
+
+            if (!$searchIt) {
+                return new Response('Missing required parameters', Response::HTTP_BAD_REQUEST);
+            }
+
+            $searchIt = trim($searchIt);
+
+            $query = $libraryRepository->createQueryBuilder('l')
+            ->where('l.title LIKE :searchIt')
+            ->orWhere('l.author LIKE :searchIt')
+            ->setParameter('searchIt', '%' . $searchIt . '%')
+            ->getQuery();
+
+            $libraryItems = $query->getResult();
+        }
+
+        return $this->render('library/showThisBook.html.twig', [
+            'libraryItems' => $libraryItems,
+        ]);
     }
 
     #[Route('/library/delete/{id}', name: 'library_delete_by_id')]

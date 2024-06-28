@@ -1,0 +1,13 @@
+<h1>Resultat</h1>
+<ul>
+    {% for item in libraryItems %}
+        <li>
+            <strong>Title:</strong> {{ item.title }}<br>
+            <strong>ISBN:</strong> {{ item.ISBN }}<br>
+            <strong>Author:</strong> {{ item.author }}<br>
+            <strong>Picture:</strong> {{ item.picture }}<br>
+        </li>
+    {% else %}
+        <li>No results found.</li>
+    {% endfor %}
+</ul>
