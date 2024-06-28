@@ -2,10 +2,12 @@
 <ul>
     {% for item in libraryItems %}
         <li>
-            <strong>Title:</strong> {{ item.title }}<br>
+            <a href="{{ path('library-showDetails-page', {'title': item.title}) }}" style="color:blue;text-decoration:underline;">
+                <strong>Titel:</strong> {{ item.title }}
+            </a><br>
             <strong>ISBN:</strong> {{ item.ISBN }}<br>
-            <strong>Author:</strong> {{ item.author }}<br>
-            <strong>Picture:</strong> {{ item.picture }}<br>
+            <strong>Författare: </strong> {{ item.author }}<br>
+            <img src="{{ item.picture }}" alt="{{ item.title }} picture" /><br>
         </li>
     {% else %}
         <li>No results found.</li>

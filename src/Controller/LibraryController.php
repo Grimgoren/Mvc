@@ -38,29 +38,17 @@ class LibraryController extends AbstractController
         return $this->render('library/showAllBooks.html.twig');
     }
 
-    #[Route("/library/detailsOfBook", name: "library-showDetails-page", methods: ['GET', 'POST'])]
-    public function showBookDetails(Request $request, ManagerRegistry $doctrine): Response
+    #[Route("/library/detailsOfBook/{title}", name: "library-showDetails-page", methods: ['GET'])]
+    public function showBookDetails(string $title, LibraryRepository $libraryRepository): Response
     {
+        $libraryItems = $libraryRepository->createQueryBuilder('l')
+            ->where('l.title = :title')
+            ->setParameter('title', $title)
+            ->getQuery()
+            ->getResult();
 
-        $libraryItems = [];
-
-
-        if ($request->isMethod('POST')) {
-            $searchIt = $request->request->get('search');
-
-            if (!$searchIt) {
-                return new Response('Missing required parameters', Response::HTTP_BAD_REQUEST);
-            }
-
-            $searchIt = trim($searchIt);
-
-            $query = $libraryRepository->createQueryBuilder('l')
-            ->where('l.title LIKE :searchIt')
-            ->orWhere('l.author LIKE :searchIt')
-            ->setParameter('searchIt', '%' . $searchIt . '%')
-            ->getQuery();
-
-            $libraryItems = $query->getResult();
+        if (!$libraryItems) {
+            return new Response('No book found with the title ' . $title, Response::HTTP_NOT_FOUND);
         }
 
         return $this->render('library/showDetails.html.twig', [
@@ -76,30 +64,30 @@ class LibraryController extends AbstractController
             $isbn = $request->request->get('isbn');
             $author = $request->request->get('author');
             $picture = $request->request->get('picture');
-
+    
             if (!$title || !$isbn || !$author || !$picture) {
                 return new Response('Missing required parameters', Response::HTTP_BAD_REQUEST);
             }
-
+    
             $entityManager = $doctrine->getManager();
-
+    
             $libraryItem = new Library();
             $libraryItem->setTitle($title);
             $libraryItem->setISBN($isbn);
             $libraryItem->setAuthor($author);
             $libraryItem->setPicture($picture);
-
+    
             // tell Doctrine you want to (eventually) save the library item
             // (no queries yet)
             $entityManager->persist($libraryItem);
-
+    
             // actually executes the queries (i.e. the INSERT query)
             $entityManager->flush();
-
+    
             return new Response('Saved new library item with id ' . $libraryItem->getId());
         }
-
-        return $this->render('library.html.twig');
+    
+        return $this->render('library/addBook.html.twig');
     }
 
     #[Route('/library/show', name: 'library_show_all')]

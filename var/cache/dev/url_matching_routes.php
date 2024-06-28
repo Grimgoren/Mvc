@@ -75,18 +75,21 @@ return [
                     .'|(*:226)'
                 .')'
                 .'|/library/(?'
-                    .'|show/([^/]++)(*:260)'
-                    .'|delete/([^/]++)(*:283)'
-                    .'|update/([^/]++)/([^/]++)(*:315)'
+                    .'|de(?'
+                        .'|tailsOfBook/([^/]++)(*:272)'
+                        .'|lete/([^/]++)(*:293)'
+                    .')'
+                    .'|show/([^/]++)(*:315)'
+                    .'|update/([^/]++)/([^/]++)(*:347)'
                 .')'
                 .'|/product/(?'
                     .'|show/(?'
-                        .'|([^/]++)(*:352)'
-                        .'|min/([^/]++)(*:372)'
+                        .'|([^/]++)(*:384)'
+                        .'|min/([^/]++)(*:404)'
                     .')'
-                    .'|delete/([^/]++)(*:396)'
-                    .'|update/([^/]++)/([^/]++)(*:428)'
-                    .'|view/([^/]++)(*:449)'
+                    .'|delete/([^/]++)(*:428)'
+                    .'|update/([^/]++)/([^/]++)(*:460)'
+                    .'|view/([^/]++)(*:481)'
                 .')'
             .')/?$}sDu',
     ],
@@ -103,14 +106,15 @@ return [
             [['_route' => 'api_draw_number', '_controller' => 'App\\Controller\\CardControllerKmom02Json::apiDrawNumber'], ['num'], ['POST' => 0], null, false, true, null],
             [['_route' => 'card_draw_number_post', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::initDrawNumber'], ['num'], null, null, false, true, null],
         ],
-        260 => [[['_route' => 'library_by_id', '_controller' => 'App\\Controller\\LibraryController::showLibraryItemById'], ['id'], null, null, false, true, null]],
-        283 => [[['_route' => 'library_delete_by_id', '_controller' => 'App\\Controller\\LibraryController::deleteLibraryItemById'], ['id'], null, null, false, true, null]],
-        315 => [[['_route' => 'library_update', '_controller' => 'App\\Controller\\LibraryController::updateLibraryItem'], ['id', 'picture'], null, null, false, true, null]],
-        352 => [[['_route' => 'product_by_id', '_controller' => 'App\\Controller\\ProductController::showProductById'], ['id'], null, null, false, true, null]],
-        372 => [[['_route' => 'product_by_min_value', '_controller' => 'App\\Controller\\ProductController::showProductByMinimumValue'], ['value'], null, null, false, true, null]],
-        396 => [[['_route' => 'product_delete_by_id', '_controller' => 'App\\Controller\\ProductController::deleteProductById'], ['id'], null, null, false, true, null]],
-        428 => [[['_route' => 'product_update', '_controller' => 'App\\Controller\\ProductController::updateProduct'], ['id', 'value'], null, null, false, true, null]],
-        449 => [
+        272 => [[['_route' => 'library-showDetails-page', '_controller' => 'App\\Controller\\LibraryController::showBookDetails'], ['title'], ['GET' => 0], null, false, true, null]],
+        293 => [[['_route' => 'library_delete_by_id', '_controller' => 'App\\Controller\\LibraryController::deleteLibraryItemById'], ['id'], null, null, false, true, null]],
+        315 => [[['_route' => 'library_by_id', '_controller' => 'App\\Controller\\LibraryController::showLibraryItemById'], ['id'], null, null, false, true, null]],
+        347 => [[['_route' => 'library_update', '_controller' => 'App\\Controller\\LibraryController::updateLibraryItem'], ['id', 'picture'], null, null, false, true, null]],
+        384 => [[['_route' => 'product_by_id', '_controller' => 'App\\Controller\\ProductController::showProductById'], ['id'], null, null, false, true, null]],
+        404 => [[['_route' => 'product_by_min_value', '_controller' => 'App\\Controller\\ProductController::showProductByMinimumValue'], ['value'], null, null, false, true, null]],
+        428 => [[['_route' => 'product_delete_by_id', '_controller' => 'App\\Controller\\ProductController::deleteProductById'], ['id'], null, null, false, true, null]],
+        460 => [[['_route' => 'product_update', '_controller' => 'App\\Controller\\ProductController::updateProduct'], ['id', 'value'], null, null, false, true, null]],
+        481 => [
             [['_route' => 'product_view_minimum_value', '_controller' => 'App\\Controller\\ProductController::viewProductWithMinimumValue'], ['value'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

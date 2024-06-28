@@ -1,9 +1,24 @@
 <ul>
     {% for item in libraryItems %}
         <li>
-            Title:</strong> {{ item.title }}<br>
+            Titel: </strong> {{ item.title }}<br>
             ISBN:</strong> {{ item.ISBN }}<br>
-            Author:</strong> {{ item.author }}<br>
-            Picture:</strong> {{ item.picture }}<br>
+            Författare: </strong> {{ item.author }}<br>
+            <img src="{{ item.picture }}" alt="{{ item.title }} picture" /><br>
         </li>
+        <form action="{{ path('library_create') }}" method="post">
+    <label for="title">Titel:</label>
+    <input type="text" id="title" name="title"><br>
+
+    <label for="isbn">ISBN:</label>
+    <input type="text" id="isbn" name="isbn"><br>
+
+    <label for="author">Författare:</label>
+    <input type="text" id="author" name="author"><br>
+
+    <label for="picture">Bild URL:</label>
+    <input type="text" id="picture" name="picture"><br>
+
+    <input type="submit" value="Redigera">
+</form>
     {% endfor %}
