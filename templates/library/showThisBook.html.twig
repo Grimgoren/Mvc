@@ -1,14 +1,12 @@
 <h1>Resultat</h1>
 <ul>
     {% for item in libraryItems %}
-        <li>
             <a href="{{ path('library-showDetails-page', {'title': item.title}) }}" style="color:blue;text-decoration:underline;">
                 <strong>Titel:</strong> {{ item.title }}
             </a><br>
             <strong>ISBN:</strong> {{ item.ISBN }}<br>
             <strong>Författare: </strong> {{ item.author }}<br>
             <img src="{{ item.picture }}" alt="{{ item.title }} picture" /><br>
-        </li>
     {% else %}
         <li>No results found.</li>
     {% endfor %}

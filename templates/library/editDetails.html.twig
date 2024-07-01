@@ -1,0 +1,21 @@
+<h1>Redigera Bok</h1>
+<form action="{{ path('library_edit', {'id': libraryItem.id}) }}" method="post">
+    <input type="hidden" id="id" name="id" value="{{ libraryItem.id }}">
+
+    <label for="title">Titel:</label>
+    <input type="text" id="title" name="title" value="{{ libraryItem.title }}"><br>
+
+    <label for="isbn">ISBN:</label>
+    <input type="text" id="isbn" name="isbn" value="{{ libraryItem.ISBN }}"><br>
+
+    <label for="author">Författare:</label>
+    <input type="text" id="author" name="author" value="{{ libraryItem.author }}"><br>
+
+    <label for="picture">Bild URL:</label>
+    <input type="text" id="picture" name="picture" value="{{ libraryItem.picture }}"><br>
+
+    <input type="submit" value="Spara">
+    <a href="{{ path('library_show_all_html') }}">Avbryt</a><br>
+
+    <img src="{{ libraryItem.picture }}" alt="{{ libraryItem.title }} picture" /><br>
+</form>

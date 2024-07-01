@@ -1,24 +1,14 @@
 <ul>
     {% for item in libraryItems %}
-        <li>
-            Titel: </strong> {{ item.title }}<br>
-            ISBN:</strong> {{ item.ISBN }}<br>
-            Författare: </strong> {{ item.author }}<br>
-            <img src="{{ item.picture }}" alt="{{ item.title }} picture" /><br>
-        </li>
-        <form action="{{ path('library_create') }}" method="post">
-    <label for="title">Titel:</label>
-    <input type="text" id="title" name="title"><br>
-
-    <label for="isbn">ISBN:</label>
-    <input type="text" id="isbn" name="isbn"><br>
-
-    <label for="author">Författare:</label>
-    <input type="text" id="author" name="author"><br>
-
-    <label for="picture">Bild URL:</label>
-    <input type="text" id="picture" name="picture"><br>
-
-    <input type="submit" value="Redigera">
-</form>
+            <form action="{{ path('library_show_edit_form', {'id': item.id}) }}" method="post">
+                Book Id: {{ item.id }}<br>
+                Titel: <strong>{{ item.title }}</strong><br>
+                ISBN: <strong>{{ item.ISBN }}</strong><br>
+                Författare: <strong>{{ item.author }}</strong><br>
+                <input type="submit" value="Redigera"><br>
+                <img src="{{ item.picture }}" alt="{{ item.title }} picture" /><br>
+            </form>
+    {% else %}
+        <li>No results found.</li>
     {% endfor %}
+</ul>

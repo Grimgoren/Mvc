@@ -192,4 +192,56 @@ class LibraryController extends AbstractController
         return new Response('Updated library item picture with id ' . $libraryItem->getId());
         return $this->redirectToRoute('library_show_all');
     }
+
+    #[Route('/library/{id}/update', name: 'library_edit', methods: ['GET', 'POST'])]
+    public function editLibraryItem(
+        Request $request, 
+        ManagerRegistry $doctrine,
+        int $id): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $libraryItem = $entityManager->getRepository(Library::class)->find($id);
+    
+        if (!$libraryItem) {
+            throw $this->createNotFoundException('No book found for id ' . $id);
+        }
+    
+        if ($request->isMethod('POST')) {
+            $title = $request->request->get('title');
+            $isbn = $request->request->get('isbn');
+            $author = $request->request->get('author');
+            $picture = $request->request->get('picture');
+    
+            if (!$title || !$isbn || !$author || !$picture) {
+                return new Response('Missing required parameters', Response::HTTP_BAD_REQUEST);
+            }
+    
+            $libraryItem->setTitle($title);
+            $libraryItem->setISBN($isbn);
+            $libraryItem->setAuthor($author);
+            $libraryItem->setPicture($picture);
+    
+            $entityManager->flush();
+    
+            return $this->redirectToRoute('library_show_all_html');
+        }
+    
+        return $this->render('library/editBook.html.twig', [
+            'libraryItem' => $libraryItem,
+        ]);
+    }
+
+    #[Route('/library/edit/{id}', name: 'library_show_edit_form', methods: ['POST'])]
+    public function showEditForm(Request $request, int $id, LibraryRepository $libraryRepository): Response
+    {
+        $libraryItem = $libraryRepository->find($id);
+    
+        if (!$libraryItem) {
+            throw $this->createNotFoundException('No book found for id ' . $id);
+        }
+    
+        return $this->render('library/editDetails.html.twig', [
+            'libraryItem' => $libraryItem,
+        ]);
+    }
 }
