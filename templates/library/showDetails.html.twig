@@ -1,7 +1,7 @@
 <ul>
     {% for item in libraryItems %}
             <form action="{{ path('library_show_edit_form', {'id': item.id}) }}" method="post">
-                Book Id: {{ item.id }}<br>
+                Bokens Id: {{ item.id }}<br>
                 Titel: <strong>{{ item.title }}</strong><br>
                 ISBN: <strong>{{ item.ISBN }}</strong><br>
                 Författare: <strong>{{ item.author }}</strong><br>

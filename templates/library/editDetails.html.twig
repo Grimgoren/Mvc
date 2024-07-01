@@ -15,7 +15,11 @@
     <input type="text" id="picture" name="picture" value="{{ libraryItem.picture }}"><br>
 
     <input type="submit" value="Spara">
-    <a href="{{ path('library_show_all_html') }}">Avbryt</a><br>
-
-    <img src="{{ libraryItem.picture }}" alt="{{ libraryItem.title }} picture" /><br>
+    <a href="{{ path('library_show_all_html') }}">Avbryt</a>
 </form>
+
+<form action="{{ path('library_delete', {'id': libraryItem.id}) }}" method="post">
+    <input type="submit" value="Radera">
+</form><br>
+
+<img src="{{ libraryItem.picture }}" alt="{{ libraryItem.title }} picture" /><br>

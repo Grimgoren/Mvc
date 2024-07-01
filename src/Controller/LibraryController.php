@@ -84,7 +84,7 @@ class LibraryController extends AbstractController
             // actually executes the queries (i.e. the INSERT query)
             $entityManager->flush();
     
-            return new Response('Saved new library item with id ' . $libraryItem->getId());
+            return $this->redirectToRoute('library_show_all_html');
         }
     
         return $this->render('library/addBook.html.twig');
@@ -151,6 +151,9 @@ class LibraryController extends AbstractController
         ]);
     }
 
+
+    /*
+
     #[Route('/library/delete/{id}', name: 'library_delete_by_id')]
     public function deleteLibraryItemById(
         ManagerRegistry $doctrine,
@@ -170,6 +173,8 @@ class LibraryController extends AbstractController
     
         return $this->redirectToRoute('library_show_all');
     }
+
+    */
 
     #[Route('/library/update/{id}/{picture}', name: 'library_update')]
     public function updateLibraryItem(
@@ -241,6 +246,33 @@ class LibraryController extends AbstractController
         }
     
         return $this->render('library/editDetails.html.twig', [
+            'libraryItem' => $libraryItem,
+        ]);
+    }
+
+    #[Route('/library/delete/{id}', name: 'library_delete', methods: ['POST'])]
+    public function libraryDelete(
+        Request $request, 
+        ManagerRegistry $doctrine,
+        int $id
+    ): Response {
+        $entityManager = $doctrine->getManager();
+        $libraryItem = $entityManager->getRepository(Library::class)->find($id);
+    
+        if (!$libraryItem) {
+            throw $this->createNotFoundException(
+                'No book found for id '.$id
+            );
+        }
+    
+        if ($request->isMethod('POST')) {
+            $entityManager->remove($libraryItem);
+            $entityManager->flush();
+    
+            return $this->redirectToRoute('library_show_all_html');
+        }
+    
+        return $this->render('library/editBook.html.twig', [
             'libraryItem' => $libraryItem,
         ]);
     }
