@@ -16,7 +16,7 @@ if (!\class_exists(App_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerAJIV2Fs\App_KernelDevDebugContainer([
     'container.build_hash' => 'AJIV2Fs',
-    'container.build_id' => '27d047b4',
-    'container.build_time' => 1719845105,
+    'container.build_id' => 'd66c22b7',
+    'container.build_time' => 1719847623,
     'container.runtime_mode' => \in_array(\PHP_SAPI, ['cli', 'phpdbg', 'embed'], true) ? 'web=0' : 'web=1',
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerAJIV2Fs');

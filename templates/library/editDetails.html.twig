@@ -1,4 +1,8 @@
-<h1>Redigera Bok</h1>
+{% extends 'base.html.twig' %}
+
+{% block title %}Redigera Bok{% endblock %}
+
+{% block body %}
 <form action="{{ path('library_edit', {'id': libraryItem.id}) }}" method="post">
     <input type="hidden" id="id" name="id" value="{{ libraryItem.id }}">
 
@@ -14,7 +18,7 @@
     <label for="picture">Bild URL:</label>
     <input type="text" id="picture" name="picture" value="{{ libraryItem.picture }}"><br>
 
-    <input type="submit" value="Spara">
+    <button><input type="submit" value="Spara"></button>
     <a href="{{ path('library_show_all_html') }}">Avbryt</a>
 </form>
 
@@ -23,3 +27,4 @@
 </form><br>
 
 <img src="{{ libraryItem.picture }}" alt="{{ libraryItem.title }} picture" /><br>
+{% endblock %}

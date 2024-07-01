@@ -1,12 +1,18 @@
-<h1>Alla Böcker</h1>
+{% extends 'base.html.twig' %}
+
+{% block title %}Alla Böcker{% endblock %}
+
+{% block body %}
+    <button><a href="{{ path('library-page') }}">Tillbaka</a></button><br>
 <ul>
     {% for item in libraryItems %}
             <a href="{{ path('library-showDetails-page', {'title': item.title}) }}" style="color:blue;text-decoration:underline;">
                 <strong>Titel:</strong> {{ item.title }}
             </a><br>
             <strong>Författare: </strong> {{ item.author }}<br>
-            <img src="{{ item.picture }}" alt="{{ item.title }} picture" /><br>
+            <span class="book-cover"><img src="{{ item.picture }}" alt="{{ item.title }} picture" class="book-picture" /><br></span>
     {% else %}
         <li>No results found.</li>
     {% endfor %}
 </ul>
+{% endblock %}

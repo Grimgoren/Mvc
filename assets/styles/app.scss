@@ -137,11 +137,21 @@ h1 {
     color: black;
 }
 
-
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     grid-gap: 20px;
     padding: 20px;
     margin: 0 auto;
+}
+
+.book-cover {
+    display: block;
+    margin-top: 10px;
+}
+
+.book-picture {
+    width: 100px; /* Example width */
+    height: auto;
+    border: 1px solid #ccc; /* Example border */
 }

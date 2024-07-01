@@ -66,8 +66,11 @@ class LibraryController extends AbstractController
             $picture = $request->request->get('picture');
     
             if (!$title || !$isbn || !$author || !$picture) {
-                return new Response('Missing required parameters', Response::HTTP_BAD_REQUEST);
+                return $this->render('library/error.html.twig', [
+                    'error_message' => 'Det saknas information'
+                ]);
             }
+            
     
             $entityManager = $doctrine->getManager();
     
@@ -132,7 +135,7 @@ class LibraryController extends AbstractController
             $searchIt = $request->request->get('search');
 
             if (!$searchIt) {
-                return new Response('Missing required parameters', Response::HTTP_BAD_REQUEST);
+                return new Response('Det saknas information', Response::HTTP_BAD_REQUEST);
             }
 
             $searchIt = trim($searchIt);
@@ -218,7 +221,7 @@ class LibraryController extends AbstractController
             $picture = $request->request->get('picture');
     
             if (!$title || !$isbn || !$author || !$picture) {
-                return new Response('Missing required parameters', Response::HTTP_BAD_REQUEST);
+                return new Response('Det saknas inormation', Response::HTTP_BAD_REQUEST);
             }
     
             $libraryItem->setTitle($title);

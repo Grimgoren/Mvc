@@ -1,4 +1,8 @@
-<h1>Resultat</h1>
+{% extends 'base.html.twig' %}
+
+{% block title %}Resultat{% endblock %}
+
+{% block body %}
 <ul>
     {% for item in libraryItems %}
             <a href="{{ path('library-showDetails-page', {'title': item.title}) }}" style="color:blue;text-decoration:underline;">
@@ -6,8 +10,11 @@
             </a><br>
             <strong>ISBN:</strong> {{ item.ISBN }}<br>
             <strong>Författare: </strong> {{ item.author }}<br>
+            <button><a href="{{ path('library-page') }}">Tillbaka</a></button><br>
             <img src="{{ item.picture }}" alt="{{ item.title }} picture" /><br>
     {% else %}
-        <li>No results found.</li>
+        Ingen bok hittades
+        <button><a href="{{ path('library-page') }}">Tillbaka</a></button><br>
     {% endfor %}
 </ul>
+{% endblock %}

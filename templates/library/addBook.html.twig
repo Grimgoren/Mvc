@@ -1,4 +1,8 @@
-<h1>Lägg till en bok</h1>
+{% extends 'base.html.twig' %}
+
+{% block title %}Lägg till en bok{% endblock %}
+
+{% block body %}
 <form action="{{ path('library_create') }}" method="post">
     <label for="title">Titel:</label>
     <input type="text" id="title" name="title"><br>
@@ -12,5 +16,7 @@
     <label for="picture">Bild URL:</label>
     <input type="text" id="picture" name="picture"><br>
 
-    <input type="submit" value="Lägg till">
+    <button><input type="submit" value="Lägg till"></button>
+    <button><a href="{{ path('library-page') }}">Tillbaka</a></button><br>
 </form>
+{% endblock %}
