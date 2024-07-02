@@ -3,16 +3,21 @@
 {% block title %}Alla Böcker{% endblock %}
 
 {% block body %}
-    <button><a href="{{ path('library-page') }}">Tillbaka</a></button><br>
-<ul>
+<h1>Alla Böcker</h1>
+<div class="button-container">
+    <a href="{{ path('library-page') }}" class="button-86">Tillbaka</a>
+</div>
+<div class="library-container">
     {% for item in libraryItems %}
-            <a href="{{ path('library-showDetails-page', {'title': item.title}) }}" style="color:blue;text-decoration:underline;">
-                <strong>Titel:</strong> {{ item.title }}
-            </a><br>
-            <strong>Författare: </strong> {{ item.author }}<br>
-            <span class="book-cover"><img src="{{ item.picture }}" alt="{{ item.title }} picture" class="book-picture" /><br></span>
+    <div class="book">
+        <a href="{{ path('library-showDetails-page', {'title': item.title}) }}" style="color:blue;text-decoration:underline;">
+            {{ item.title }}
+        </a><br>
+        {{ item.author }}<br>
+        <span class="book-cover"><img src="{{ item.picture }}" alt="{{ item.title }} picture" class="book-picture" /></span>
+    </div>
     {% else %}
-        <li>No results found.</li>
+    <div>No results found.</div>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}

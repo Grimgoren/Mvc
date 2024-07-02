@@ -3,28 +3,45 @@
 {% block title %}Redigera Bok{% endblock %}
 
 {% block body %}
-<form action="{{ path('library_edit', {'id': libraryItem.id}) }}" method="post">
-    <input type="hidden" id="id" name="id" value="{{ libraryItem.id }}">
+<h1>Redigera bok-Id: {{ libraryItem.id }}</h1>
 
-    <label for="title">Titel:</label>
-    <input type="text" id="title" name="title" value="{{ libraryItem.title }}"><br>
+<div class="edit-container">
+    <div class="library-container">
+        <div class="book">
+            <img src="{{ libraryItem.picture }}" alt="{{ libraryItem.title }} picture" class="book-picture" /><br>
+        </div>
+    </div>
+    <form action="{{ path('library_edit', {'id': libraryItem.id}) }}" method="post">
+        <input type="hidden" id="id" name="id" value="{{ libraryItem.id }}">
 
-    <label for="isbn">ISBN:</label>
-    <input type="text" id="isbn" name="isbn" value="{{ libraryItem.ISBN }}"><br>
+        <div class="form-group">
+            <label for="title">Titel:</label>
+            <input type="text" id="title" name="title" value="{{ libraryItem.title }}" class="edit-input">
+        </div>
 
-    <label for="author">Författare:</label>
-    <input type="text" id="author" name="author" value="{{ libraryItem.author }}"><br>
+        <div class="form-group">
+            <label for="isbn">ISBN:</label>
+            <input type="text" id="isbn" name="isbn" value="{{ libraryItem.ISBN }}" class="edit-input">
+        </div>
 
-    <label for="picture">Bild URL:</label>
-    <input type="text" id="picture" name="picture" value="{{ libraryItem.picture }}"><br>
+        <div class="form-group">
+            <label for="author">Författare:</label>
+            <input type="text" id="author" name="author" value="{{ libraryItem.author }}" class="edit-input">
+        </div>
 
-    <button><input type="submit" value="Spara"></button>
-    <a href="{{ path('library_show_all_html') }}">Avbryt</a>
-</form>
+        <div class="form-group">
+            <label for="picture">Bild URL:</label>
+            <input type="text" id="picture" name="picture" value="{{ libraryItem.picture }}" class="edit-input">
+        </div>
 
-<form action="{{ path('library_delete', {'id': libraryItem.id}) }}" method="post">
-    <input type="submit" value="Radera">
-</form><br>
+        <button type="submit" class="button-86">Spara</button>
+        <div class="button-container">
+            <a href="{{ path('library_show_all_html') }}" class="button-86">Avbryt</a>
+        </div>
+    </form>
 
-<img src="{{ libraryItem.picture }}" alt="{{ libraryItem.title }} picture" /><br>
+    <form action="{{ path('library_delete', {'id': libraryItem.id}) }}" method="post">
+        <button type="submit" class="button-86-red" value="Radera">Radera</button>
+    </form>
+</div>
 {% endblock %}

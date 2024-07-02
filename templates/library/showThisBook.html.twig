@@ -3,6 +3,7 @@
 {% block title %}Resultat{% endblock %}
 
 {% block body %}
+<h1>Resultat</h1>
 <ul>
     {% for item in libraryItems %}
             <a href="{{ path('library-showDetails-page', {'title': item.title}) }}" style="color:blue;text-decoration:underline;">
@@ -10,11 +11,21 @@
             </a><br>
             <strong>ISBN:</strong> {{ item.ISBN }}<br>
             <strong>Författare: </strong> {{ item.author }}<br>
-            <button><a href="{{ path('library-page') }}">Tillbaka</a></button><br>
-            <img src="{{ item.picture }}" alt="{{ item.title }} picture" /><br>
+
+            <div class="button-container">
+                <a href="{{ path('library-page') }}" class="button-86">Tillbaka</a></button><br>
+            </div>
+
+            <div class="library-container">
+                <div class="book">
+                    <img src="{{ item.picture }}" alt="{{ item.title }} picture" class="book-picture" />
+                </div>
+            </div>
     {% else %}
-        Ingen bok hittades
-        <button><a href="{{ path('library-page') }}">Tillbaka</a></button><br>
+        Ingen bok hittades<br>
+            <div class="button-container">
+                <a href="{{ path('library-page') }}" class="button-86">Tillbaka</a></button><br>
+            </div>
     {% endfor %}
 </ul>
 {% endblock %}

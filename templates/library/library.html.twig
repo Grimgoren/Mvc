@@ -1,17 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Sök efter en bok{% endblock %}
+{% block title %}Bibliotek{% endblock %}
 
 {% block body %}
-<h1>Sök efter en bok</h1>
-<form action="{{ path('library_search_html') }}" method="post">
-    <label for="search"></label>
-    <input type="text" id="search" name="search"><br>
-    <input type="submit" value="Sök">
-</form>
+<h1>Bibliotek</h1>
+<div class="search-container">
+    <form action="{{ path('library_search_html') }}" method="post">
+        <label for="search"></label>
+        <input type="text" id="search" name="search" class="search-input">
+        <button type="submit" class="button-86" value="Sök">Sök</button>
+    </form>
+</div>
 
-<ul>
-    <li class="link-color"><a class="link-color" href="{{ path('library-addBook-page') }}">Lägg till bok</a></li>
-    <li class="link-color"><a class="link-color" href="{{ path('library_show_all_html') }}">Visa alla böcker</a></li>
-</ul>
+<div class="button-container">
+    <a href="{{ path('library_show_all_html') }}" class="button-86">Visa alla böcker</a><br>
+    <a href="{{ path('library-addBook-page') }}" class="button-86">Lägg till bok</a><br>
+</div>
+
 {% endblock %}

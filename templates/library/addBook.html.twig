@@ -3,6 +3,7 @@
 {% block title %}Lägg till en bok{% endblock %}
 
 {% block body %}
+<h1>Lägg till en bok</h1>
 <form action="{{ path('library_create') }}" method="post">
     <label for="title">Titel:</label>
     <input type="text" id="title" name="title"><br>
@@ -16,7 +17,9 @@
     <label for="picture">Bild URL:</label>
     <input type="text" id="picture" name="picture"><br>
 
-    <button><input type="submit" value="Lägg till"></button>
-    <button><a href="{{ path('library-page') }}">Tillbaka</a></button><br>
+    <button type="submit" class="button-86">Lägg till</button>
+    <div class="button-container">
+        <a href="{{ path('library-page') }}" class="button-86">Tillbaka</a>
+    </div>
 </form>
 {% endblock %}

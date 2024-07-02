@@ -1,19 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<ul>
+{% for item in libraryItems %}
+<h1>{{ item.title }}</h1>
+{% endfor %}
     {% for item in libraryItems %}
-            <form action="{{ path('library_show_edit_form', {'id': item.id}) }}" method="post">
-                Bokens Id: {{ item.id }}<br>
-                Titel: <strong>{{ item.title }}</strong><br>
-                ISBN: <strong>{{ item.ISBN }}</strong><br>
-                Författare: <strong>{{ item.author }}</strong><br>
-                <button><input type="submit" value="Redigera"><br></button>
-                <button><a href="{{ path('library_show_all_html') }}">Tillbaka</a></button><br>
-                <img src="{{ item.picture }}" alt="{{ item.title }} picture" /><br>
-            </form>
+        <div class="button-container">
+            <a href="{{ path('library_show_all_html') }}" class="button-86">Tillbaka</a>
+        </div>
+        <form action="{{ path('library_show_edit_form', {'id': item.id}) }}" method="post">
+            <button type="submit" class="button-86">Redigera</button>
+            <div class="library-container">
+            <div class="book">
+            <p>Bokens Id: {{ item.id }}</p>
+            <p>ISBN: <strong>{{ item.ISBN }}</strong></p>
+            <p>Författare: <strong>{{ item.author }}</strong></p>
+            <img src="{{ item.picture }}" alt="{{ item.title }} picture" class="book-picture" />
+        </form>
+    </div>
     {% else %}
-        <li>No results found.</li>
+    <div>No results found.</div>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}

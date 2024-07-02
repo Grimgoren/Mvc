@@ -151,7 +151,7 @@ h1 {
 }
 
 .book-picture {
-  width: 100px; /* Example width */
+  width: 100px;
   height: auto;
-  border: 1px solid #ccc; /* Example border */
+  border: 1px solid #ccc;
 }
