@@ -32,7 +32,7 @@ return [
         '/library/addBook' => [[['_route' => 'library-addBook-page', '_controller' => 'App\\Controller\\LibraryController::addBookPage'], null, null, null, false, false, null]],
         '/library/allBooks' => [[['_route' => 'library-showAll-page', '_controller' => 'App\\Controller\\LibraryController::showAllBooks'], null, null, null, false, false, null]],
         '/library/create' => [[['_route' => 'library_create', '_controller' => 'App\\Controller\\LibraryController::createLibraryItem'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        '/library/show' => [[['_route' => 'library_show_all', '_controller' => 'App\\Controller\\LibraryController::showAllLibraryItems'], null, null, null, false, false, null]],
+        '/api/library/books' => [[['_route' => 'library_show_all', '_controller' => 'App\\Controller\\LibraryController::showAllLibraryItems'], null, null, null, false, false, null]],
         '/library/showHtml' => [[['_route' => 'library_show_all_html', '_controller' => 'App\\Controller\\LibraryController::showAllLibraryItemsHtml'], null, null, null, false, false, null]],
         '/library/search' => [[['_route' => 'library_search_html', '_controller' => 'App\\Controller\\LibraryController::showLibrarySearchHtml'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/api/lucky/number' => [[['_route' => 'api-lucky', '_controller' => 'App\\Controller\\LuckyControllerJson::jsonNumber'], null, null, null, false, false, null]],
@@ -82,14 +82,15 @@ return [
                     .'|edit/([^/]++)(*:366)'
                     .'|delete/([^/]++)(*:389)'
                 .')'
+                .'|/api/library/book/([^/]++)(*:424)'
                 .'|/product/(?'
                     .'|show/(?'
-                        .'|([^/]++)(*:426)'
-                        .'|min/([^/]++)(*:446)'
+                        .'|([^/]++)(*:460)'
+                        .'|min/([^/]++)(*:480)'
                     .')'
-                    .'|delete/([^/]++)(*:470)'
-                    .'|update/([^/]++)/([^/]++)(*:502)'
-                    .'|view/([^/]++)(*:523)'
+                    .'|delete/([^/]++)(*:504)'
+                    .'|update/([^/]++)/([^/]++)(*:536)'
+                    .'|view/([^/]++)(*:557)'
                 .')'
             .')/?$}sDu',
     ],
@@ -112,11 +113,12 @@ return [
         345 => [[['_route' => 'library_edit', '_controller' => 'App\\Controller\\LibraryController::editLibraryItem'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         366 => [[['_route' => 'library_show_edit_form', '_controller' => 'App\\Controller\\LibraryController::showEditForm'], ['id'], ['POST' => 0], null, false, true, null]],
         389 => [[['_route' => 'library_delete', '_controller' => 'App\\Controller\\LibraryController::libraryDelete'], ['id'], ['POST' => 0], null, false, true, null]],
-        426 => [[['_route' => 'product_by_id', '_controller' => 'App\\Controller\\ProductController::showProductById'], ['id'], null, null, false, true, null]],
-        446 => [[['_route' => 'product_by_min_value', '_controller' => 'App\\Controller\\ProductController::showProductByMinimumValue'], ['value'], null, null, false, true, null]],
-        470 => [[['_route' => 'product_delete_by_id', '_controller' => 'App\\Controller\\ProductController::deleteProductById'], ['id'], null, null, false, true, null]],
-        502 => [[['_route' => 'product_update', '_controller' => 'App\\Controller\\ProductController::updateProduct'], ['id', 'value'], null, null, false, true, null]],
-        523 => [
+        424 => [[['_route' => 'library_by_isbn', '_controller' => 'App\\Controller\\LibraryController::showLibraryItemByISBN'], ['isbn'], null, null, false, true, null]],
+        460 => [[['_route' => 'product_by_id', '_controller' => 'App\\Controller\\ProductController::showProductById'], ['id'], null, null, false, true, null]],
+        480 => [[['_route' => 'product_by_min_value', '_controller' => 'App\\Controller\\ProductController::showProductByMinimumValue'], ['value'], null, null, false, true, null]],
+        504 => [[['_route' => 'product_delete_by_id', '_controller' => 'App\\Controller\\ProductController::deleteProductById'], ['id'], null, null, false, true, null]],
+        536 => [[['_route' => 'product_update', '_controller' => 'App\\Controller\\ProductController::updateProduct'], ['id', 'value'], null, null, false, true, null]],
+        557 => [
             [['_route' => 'product_view_minimum_value', '_controller' => 'App\\Controller\\ProductController::viewProductWithMinimumValue'], ['value'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

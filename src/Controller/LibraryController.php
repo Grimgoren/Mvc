@@ -64,40 +64,40 @@ class LibraryController extends AbstractController
             $isbn = $request->request->get('isbn');
             $author = $request->request->get('author');
             $picture = $request->request->get('picture');
-    
+
             if (!$title || !$isbn || !$author || !$picture) {
                 return $this->render('library/error.html.twig', [
                     'error_message' => 'Det saknas information'
                 ]);
             }
-            
-    
+
+
             $entityManager = $doctrine->getManager();
-    
+
             $libraryItem = new Library();
             $libraryItem->setTitle($title);
             $libraryItem->setISBN($isbn);
             $libraryItem->setAuthor($author);
             $libraryItem->setPicture($picture);
-    
+
             // tell Doctrine you want to (eventually) save the library item
             // (no queries yet)
             $entityManager->persist($libraryItem);
-    
+
             // actually executes the queries (i.e. the INSERT query)
             $entityManager->flush();
-    
+
             return $this->redirectToRoute('library_show_all_html');
         }
-    
+
         return $this->render('library/addBook.html.twig');
     }
 
-    #[Route('/library/show', name: 'library_show_all')]
+    #[Route('api/library/books', name: 'library_show_all')]
     public function showAllLibraryItems(LibraryRepository $libraryRepository): Response
     {
         $libraryItem = $libraryRepository->findAll();
-    
+
         $response = $this->json($libraryItem);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
@@ -122,7 +122,17 @@ class LibraryController extends AbstractController
     ): Response {
         $libraryItem = $libraryRepository
             ->find($id);
-    
+
+        return $this->json($libraryItem);
+    }
+
+    #[Route('api/library/book/{isbn}', name: 'library_by_isbn')]
+    public function showLibraryItemByISBN(
+        LibraryRepository $libraryRepository,
+        string $isbn
+    ): Response {
+        $libraryItem = $libraryRepository->findOneBy(['ISBN' => $isbn]);
+
         return $this->json($libraryItem);
     }
 
@@ -164,16 +174,16 @@ class LibraryController extends AbstractController
     ): Response {
         $entityManager = $doctrine->getManager();
         $libraryItem = $entityManager->getRepository(Library::class)->find($id);
-    
+
         if (!$libraryItem) {
             throw $this->createNotFoundException(
                 'No book found for id '.$id
             );
         }
-    
+
         $entityManager->remove($libraryItem);
         $entityManager->flush();
-    
+
         return $this->redirectToRoute('library_show_all');
     }
 
@@ -187,67 +197,67 @@ class LibraryController extends AbstractController
     ): Response {
         $entityManager = $doctrine->getManager();
         $libraryItem = $entityManager->getRepository(Library::class)->find($id);
-    
+
         if (!$libraryItem) {
             throw $this->createNotFoundException(
                 'No book found for id '.$id
             );
         }
-    
+
         $libraryItem->setPicture($picture);
         $entityManager->flush();
-    
+
         return new Response('Updated library item picture with id ' . $libraryItem->getId());
         return $this->redirectToRoute('library_show_all');
     }
 
     #[Route('/library/{id}/update', name: 'library_edit', methods: ['GET', 'POST'])]
     public function editLibraryItem(
-        Request $request, 
+        Request $request,
         ManagerRegistry $doctrine,
-        int $id): Response
-    {
+        int $id
+    ): Response {
         $entityManager = $doctrine->getManager();
         $libraryItem = $entityManager->getRepository(Library::class)->find($id);
-    
+
         if (!$libraryItem) {
             throw $this->createNotFoundException('No book found for id ' . $id);
         }
-    
+
         if ($request->isMethod('POST')) {
             $title = $request->request->get('title');
             $isbn = $request->request->get('isbn');
             $author = $request->request->get('author');
             $picture = $request->request->get('picture');
-    
+
             if (!$title || !$isbn || !$author || !$picture) {
                 return new Response('Det saknas inormation', Response::HTTP_BAD_REQUEST);
             }
-    
+
             $libraryItem->setTitle($title);
             $libraryItem->setISBN($isbn);
             $libraryItem->setAuthor($author);
             $libraryItem->setPicture($picture);
-    
+
             $entityManager->flush();
-    
+
             return $this->redirectToRoute('library_show_all_html');
         }
-    
+
         return $this->render('library/editBook.html.twig', [
             'libraryItem' => $libraryItem,
         ]);
     }
 
     #[Route('/library/edit/{id}', name: 'library_show_edit_form', methods: ['POST'])]
-    public function showEditForm(Request $request, int $id, LibraryRepository $libraryRepository): Response
+    public function showEditForm(int $id, LibraryRepository $libraryRepository): Response
     {
         $libraryItem = $libraryRepository->find($id);
-    
+
         if (!$libraryItem) {
             throw $this->createNotFoundException('No book found for id ' . $id);
         }
-    
+
         return $this->render('library/editDetails.html.twig', [
             'libraryItem' => $libraryItem,
         ]);
@@ -255,26 +265,26 @@ class LibraryController extends AbstractController
 
     #[Route('/library/delete/{id}', name: 'library_delete', methods: ['POST'])]
     public function libraryDelete(
-        Request $request, 
+        Request $request,
         ManagerRegistry $doctrine,
         int $id
     ): Response {
         $entityManager = $doctrine->getManager();
         $libraryItem = $entityManager->getRepository(Library::class)->find($id);
-    
+
         if (!$libraryItem) {
             throw $this->createNotFoundException(
                 'No book found for id '.$id
             );
         }
-    
+
         if ($request->isMethod('POST')) {
             $entityManager->remove($libraryItem);
             $entityManager->flush();
-    
+
             return $this->redirectToRoute('library_show_all_html');
         }
-    
+
         return $this->render('library/editBook.html.twig', [
             'libraryItem' => $libraryItem,
         ]);
