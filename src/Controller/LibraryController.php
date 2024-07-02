@@ -12,6 +12,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LibraryController extends AbstractController
 {
+    /**
+     * Route to show controller message for the library.
+     */
     #[Route('/library', name: 'app_library')]
     public function index(): Response
     {
@@ -20,24 +23,36 @@ class LibraryController extends AbstractController
         ]);
     }
 
+    /**
+     * Route to show the landingpage of the library.
+     */
     #[Route("/library/landing-page", name: "library-page")]
     public function libraryPage(): Response
     {
         return $this->render('library/library.html.twig');
     }
 
+    /**
+     * Route to add a book to the library.
+     */
     #[Route("/library/addBook", name: "library-addBook-page")]
     public function addBookPage(): Response
     {
         return $this->render('library/addBook.html.twig');
     }
 
+    /**
+     * Route to add a book to the library (api route).
+     */
     #[Route("/library/allBooks", name: "library-showAll-page")]
     public function showAllBooks(): Response
     {
         return $this->render('library/showAllBooks.html.twig');
     }
 
+    /**
+     * Route to show details of a book.
+     */
     #[Route("/library/detailsOfBook/{title}", name: "library-showDetails-page", methods: ['GET'])]
     public function showBookDetails(string $title, LibraryRepository $libraryRepository): Response
     {
@@ -56,6 +71,9 @@ class LibraryController extends AbstractController
         ]);
     }
 
+    /**
+     * Route to add a book to the library.
+     */
     #[Route('/library/create', name: 'library_create', methods: ['GET', 'POST'])]
     public function createLibraryItem(Request $request, ManagerRegistry $doctrine): Response
     {
@@ -93,6 +111,9 @@ class LibraryController extends AbstractController
         return $this->render('library/addBook.html.twig');
     }
 
+    /**
+     * Route to show all the books in the library as Json.
+     */
     #[Route('api/library/books', name: 'library_show_all')]
     public function showAllLibraryItems(LibraryRepository $libraryRepository): Response
     {
@@ -105,6 +126,9 @@ class LibraryController extends AbstractController
         return $response;
     }
 
+    /**
+     * Route to show all the books in the library.
+     */
     #[Route('/library/showHtml', name: 'library_show_all_html')]
     public function showAllLibraryItemsHtml(LibraryRepository $libraryRepository): Response
     {
@@ -115,6 +139,9 @@ class LibraryController extends AbstractController
         ]);
     }
 
+    /**
+     * Route to show a book by id from the library.
+     */
     #[Route('/library/show/{id}', name: 'library_by_id')]
     public function showLibraryItemById(
         LibraryRepository $libraryRepository,
@@ -126,6 +153,9 @@ class LibraryController extends AbstractController
         return $this->json($libraryItem);
     }
 
+    /**
+     * Route to show a book based on isbn from the library.
+     */
     #[Route('api/library/book/{isbn}', name: 'library_by_isbn')]
     public function showLibraryItemByISBN(
         LibraryRepository $libraryRepository,
@@ -136,6 +166,9 @@ class LibraryController extends AbstractController
         return $this->json($libraryItem);
     }
 
+    /**
+     * Route to search for a book from the library.
+     */
     #[Route('/library/search', name: 'library_search_html', methods: ['GET', 'POST'])]
     public function showLibrarySearchHtml(Request $request, LibraryRepository $libraryRepository): Response
     {
@@ -189,6 +222,9 @@ class LibraryController extends AbstractController
 
     */
 
+    /**
+     * Route to update the picture of a book cover library.
+     */
     #[Route('/library/update/{id}/{picture}', name: 'library_update')]
     public function updateLibraryItem(
         ManagerRegistry $doctrine,
@@ -211,6 +247,9 @@ class LibraryController extends AbstractController
         return $this->redirectToRoute('library_show_all');
     }
 
+    /**
+     * Route to the info about a book by the id library.
+     */
     #[Route('/library/{id}/update', name: 'library_edit', methods: ['GET', 'POST'])]
     public function editLibraryItem(
         Request $request,
@@ -249,6 +288,9 @@ class LibraryController extends AbstractController
         ]);
     }
 
+    /**
+     * Route to the info about a book by the id library.
+     */
     #[Route('/library/edit/{id}', name: 'library_show_edit_form', methods: ['POST'])]
     public function showEditForm(int $id, LibraryRepository $libraryRepository): Response
     {
@@ -263,6 +305,9 @@ class LibraryController extends AbstractController
         ]);
     }
 
+    /**
+     * Route delete a book from the library by it's id.
+     */
     #[Route('/library/delete/{id}', name: 'library_delete', methods: ['POST'])]
     public function libraryDelete(
         Request $request,

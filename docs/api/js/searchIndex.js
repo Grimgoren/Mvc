@@ -308,77 +308,77 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
-            "summary": "",
+            "summary": "Route\u0020to\u0020show\u0020controller\u0020message\u0020for\u0020the\u0020library.",
             "url": "classes/App-Controller-LibraryController.html#method_index"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AlibraryPage\u0028\u0029",
             "name": "libraryPage",
-            "summary": "",
+            "summary": "Route\u0020to\u0020show\u0020the\u0020landingpage\u0020of\u0020the\u0020library.",
             "url": "classes/App-Controller-LibraryController.html#method_libraryPage"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AaddBookPage\u0028\u0029",
             "name": "addBookPage",
-            "summary": "",
+            "summary": "Route\u0020to\u0020add\u0020a\u0020book\u0020to\u0020the\u0020library.",
             "url": "classes/App-Controller-LibraryController.html#method_addBookPage"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowAllBooks\u0028\u0029",
             "name": "showAllBooks",
-            "summary": "",
+            "summary": "Route\u0020to\u0020add\u0020a\u0020book\u0020to\u0020the\u0020library\u0020\u0028api\u0020route\u0029.",
             "url": "classes/App-Controller-LibraryController.html#method_showAllBooks"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowBookDetails\u0028\u0029",
             "name": "showBookDetails",
-            "summary": "",
+            "summary": "Route\u0020to\u0020show\u0020details\u0020of\u0020a\u0020book.",
             "url": "classes/App-Controller-LibraryController.html#method_showBookDetails"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AcreateLibraryItem\u0028\u0029",
             "name": "createLibraryItem",
-            "summary": "",
+            "summary": "Route\u0020to\u0020add\u0020a\u0020book\u0020to\u0020the\u0020library.",
             "url": "classes/App-Controller-LibraryController.html#method_createLibraryItem"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowAllLibraryItems\u0028\u0029",
             "name": "showAllLibraryItems",
-            "summary": "",
+            "summary": "Route\u0020to\u0020show\u0020all\u0020the\u0020books\u0020in\u0020the\u0020library\u0020as\u0020Json.",
             "url": "classes/App-Controller-LibraryController.html#method_showAllLibraryItems"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowAllLibraryItemsHtml\u0028\u0029",
             "name": "showAllLibraryItemsHtml",
-            "summary": "",
+            "summary": "Route\u0020to\u0020show\u0020all\u0020the\u0020books\u0020in\u0020the\u0020library.",
             "url": "classes/App-Controller-LibraryController.html#method_showAllLibraryItemsHtml"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowLibraryItemById\u0028\u0029",
             "name": "showLibraryItemById",
-            "summary": "",
+            "summary": "Route\u0020to\u0020show\u0020a\u0020book\u0020by\u0020id\u0020from\u0020the\u0020library.",
             "url": "classes/App-Controller-LibraryController.html#method_showLibraryItemById"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowLibraryItemByISBN\u0028\u0029",
             "name": "showLibraryItemByISBN",
-            "summary": "",
+            "summary": "Route\u0020to\u0020show\u0020a\u0020book\u0020based\u0020on\u0020isbn\u0020from\u0020the\u0020library.",
             "url": "classes/App-Controller-LibraryController.html#method_showLibraryItemByISBN"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowLibrarySearchHtml\u0028\u0029",
             "name": "showLibrarySearchHtml",
-            "summary": "",
+            "summary": "Route\u0020to\u0020search\u0020for\u0020a\u0020book\u0020from\u0020the\u0020library.",
             "url": "classes/App-Controller-LibraryController.html#method_showLibrarySearchHtml"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AupdateLibraryItem\u0028\u0029",
             "name": "updateLibraryItem",
-            "summary": "",
+            "summary": "Route\u0020to\u0020update\u0020the\u0020picture\u0020of\u0020a\u0020book\u0020cover\u0020library.",
             "url": "classes/App-Controller-LibraryController.html#method_updateLibraryItem"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AeditLibraryItem\u0028\u0029",
             "name": "editLibraryItem",
-            "summary": "",
+            "summary": "Route\u0020to\u0020the\u0020info\u0020about\u0020a\u0020book\u0020by\u0020the\u0020id\u0020library.",
             "url": "classes/App-Controller-LibraryController.html#method_editLibraryItem"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowEditForm\u0028\u0029",
             "name": "showEditForm",
-            "summary": "",
+            "summary": "Route\u0020to\u0020the\u0020info\u0020about\u0020a\u0020book\u0020by\u0020the\u0020id\u0020library.",
             "url": "classes/App-Controller-LibraryController.html#method_showEditForm"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AlibraryDelete\u0028\u0029",
             "name": "libraryDelete",
-            "summary": "",
+            "summary": "Route\u0020delete\u0020a\u0020book\u0020from\u0020the\u0020library\u0020by\u0020it\u0027s\u0020id.",
             "url": "classes/App-Controller-LibraryController.html#method_libraryDelete"
         },                {
             "fqsen": "\\App\\Controller\\LuckyControllerJson",
@@ -660,6 +660,26 @@ Search.appendIndex(
             "name": "__construct",
             "summary": "",
             "url": "classes/App-Repository-LibraryRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\ProductRepository",
+            "name": "ProductRepository",
+            "summary": "",
+            "url": "classes/App-Repository-ProductRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\ProductRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-ProductRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\ProductRepository\u003A\u003AfindByMinimumValue\u0028\u0029",
+            "name": "findByMinimumValue",
+            "summary": "Find\u0020all\u0020products\u0020having\u0020a\u0020value\u0020above\u0020the\u0020specified\u0020one.",
+            "url": "classes/App-Repository-ProductRepository.html#method_findByMinimumValue"
+        },                {
+            "fqsen": "\\App\\Repository\\ProductRepository\u003A\u003AfindByMinimumValue2\u0028\u0029",
+            "name": "findByMinimumValue2",
+            "summary": "Find\u0020all\u0020products\u0020having\u0020a\u0020value\u0020above\u0020the\u0020specified\u0020one\u0020with\u0020SQL.",
+            "url": "classes/App-Repository-ProductRepository.html#method_findByMinimumValue2"
         },                {
             "fqsen": "\\",
             "name": "\\",
