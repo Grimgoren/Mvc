@@ -201,7 +201,54 @@ class __TwigTemplate_3b508d9778b66a6f6a8fe7cd52d4db13 extends Template
     <p>Skriva tester, phpdoc m.m.</p>
 
     <h2 id=\"kmom05\">Kmom05</h2>
-    <p></p>
+        <h2>
+            Gick det bra att jobba igenom övningen med Symfony och Doctrine. 
+            Något särskilt du tänkte/reagerade på under övningen?
+        </2>
+            <p>
+                Övningen var bra uppbyggd och gick att applicera nästan direkt på uppgiften (något som inte är sant 
+                för många utav tidigare övnnigar enligt hur jag upplevt det) vilket var väldigt positivt. Det ledde 
+                till mindre slösad tid med stopp där man funderar över varför något inte funkar.
+            </p>
+        <h2>
+            Berätta om din applikation och hur du tänkte när du byggde upp den. 
+            Tänkte du något speciellt på användargränssnittet?
+        </h2>
+            <p>
+                Jag började med göra någon typ av sökfunktion för att uppfylla krav 4, visst det visade sig senare 
+                att det går att hoppa över detta och göra så att man kommer till detaljer om en bok när man trycker på den 
+                i den routen som visar alla böcker. Oavsett så kan det fortfarande vara bra att ha en sådan sökfunktion 
+                om biblioteket växer. Själva gränssnittet är simpelt, jag ville ha det så basic som möjligt, en knapp för att 
+                göra något och en annan knapp för att gå tillbaka, något som är implementerat på de flesta sidorna i 
+                biblioteket.
+            </p>
+        <h2>
+            Gick det bra att jobba med ORM i CRUD eller vad anser du om det, 
+            jämför gärna med andra sätt att jobba med databaser?
+        </h2>
+            <p>
+                Eftersom övningen var så bra uppbyggd så gick det väldigt smidigt att komma igång med databasen, jag har självklart 
+                några problem som jag inte löst, exempelvis att böckerna id inte gör något reset om man exempelvis tar bort en bok. 
+                Vilket innebär att en bok som är gammal kan ha id 2 medans en ny bok kan ha id 18. Jag tyckte ändå att det var 
+                väldigt skönt att arbeta med denna databas om jag jämför med SQL.
+            </p>
+        <h2>
+            Vad är din uppfattning om ORM så här långt och relatera gärna till andra sätt att jobba med 
+            applikationskod mot databaser?
+        </h2>
+            <p>
+                Denna fråga är delvis besvarad i tidigare frågeställningar, jag tyckte att denna databas var mycket mer enkel att 
+                komma igång md och komma frammåt med än om man jämför med SQL. Twig gör det också väldigt skönt att \"göra\" saker 
+                med databasen, vill jag göra något så skriver jag bara en route och andänder twig för att lösa det, mycket 
+                användarvänligt i min mening.
+            </p>
+        <h2>
+            Vilken är din TIL för detta kmom?
+        </h2>
+            <p>
+                CRUD och uppdatera minnet om twig.
+            </p>
+
     <h2 id=\"kmom06>Kmom06</h2>
     <p></p>
     <h2 id=\"kmom07\">Kmom07</h2>
@@ -364,7 +411,54 @@ class __TwigTemplate_3b508d9778b66a6f6a8fe7cd52d4db13 extends Template
     <p>Skriva tester, phpdoc m.m.</p>
 
     <h2 id=\"kmom05\">Kmom05</h2>
-    <p></p>
+        <h2>
+            Gick det bra att jobba igenom övningen med Symfony och Doctrine. 
+            Något särskilt du tänkte/reagerade på under övningen?
+        </2>
+            <p>
+                Övningen var bra uppbyggd och gick att applicera nästan direkt på uppgiften (något som inte är sant 
+                för många utav tidigare övnnigar enligt hur jag upplevt det) vilket var väldigt positivt. Det ledde 
+                till mindre slösad tid med stopp där man funderar över varför något inte funkar.
+            </p>
+        <h2>
+            Berätta om din applikation och hur du tänkte när du byggde upp den. 
+            Tänkte du något speciellt på användargränssnittet?
+        </h2>
+            <p>
+                Jag började med göra någon typ av sökfunktion för att uppfylla krav 4, visst det visade sig senare 
+                att det går att hoppa över detta och göra så att man kommer till detaljer om en bok när man trycker på den 
+                i den routen som visar alla böcker. Oavsett så kan det fortfarande vara bra att ha en sådan sökfunktion 
+                om biblioteket växer. Själva gränssnittet är simpelt, jag ville ha det så basic som möjligt, en knapp för att 
+                göra något och en annan knapp för att gå tillbaka, något som är implementerat på de flesta sidorna i 
+                biblioteket.
+            </p>
+        <h2>
+            Gick det bra att jobba med ORM i CRUD eller vad anser du om det, 
+            jämför gärna med andra sätt att jobba med databaser?
+        </h2>
+            <p>
+                Eftersom övningen var så bra uppbyggd så gick det väldigt smidigt att komma igång med databasen, jag har självklart 
+                några problem som jag inte löst, exempelvis att böckerna id inte gör något reset om man exempelvis tar bort en bok. 
+                Vilket innebär att en bok som är gammal kan ha id 2 medans en ny bok kan ha id 18. Jag tyckte ändå att det var 
+                väldigt skönt att arbeta med denna databas om jag jämför med SQL.
+            </p>
+        <h2>
+            Vad är din uppfattning om ORM så här långt och relatera gärna till andra sätt att jobba med 
+            applikationskod mot databaser?
+        </h2>
+            <p>
+                Denna fråga är delvis besvarad i tidigare frågeställningar, jag tyckte att denna databas var mycket mer enkel att 
+                komma igång md och komma frammåt med än om man jämför med SQL. Twig gör det också väldigt skönt att \"göra\" saker 
+                med databasen, vill jag göra något så skriver jag bara en route och andänder twig för att lösa det, mycket 
+                användarvänligt i min mening.
+            </p>
+        <h2>
+            Vilken är din TIL för detta kmom?
+        </h2>
+            <p>
+                CRUD och uppdatera minnet om twig.
+            </p>
+
     <h2 id=\"kmom06>Kmom06</h2>
     <p></p>
     <h2 id=\"kmom07\">Kmom07</h2>
