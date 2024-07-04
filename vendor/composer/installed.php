@@ -3,7 +3,7 @@
         'name' => 'grimgoren/report',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '513ffbeb3de78d5dd998f81becaaee7b2cd8781f',
+        'reference' => 'fc467e82978816daca599419a299439e2326eaeb',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -157,7 +157,7 @@
         'grimgoren/report' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '513ffbeb3de78d5dd998f81becaaee7b2cd8781f',
+            'reference' => 'fc467e82978816daca599419a299439e2326eaeb',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
