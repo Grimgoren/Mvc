@@ -2,7 +2,12 @@ imports:
     - php
 
 filter:
-    excluded_paths: [vendor/*, test/*]
+    excluded_paths: [
+        # Exclude all vendor paths except for the specific Twig Resources directory
+        "vendor/*",
+        "!vendor/twig/twig/src/Resources/**",
+        "test/*"
+    ]
 
 build:
     image: default-bionic
