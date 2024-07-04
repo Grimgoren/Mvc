@@ -1143,6 +1143,8 @@ class UnitOfWork implements PropertyChangedListener
         $eventsToDispatch = [];
 
         foreach ($entities as $entity) {
+            $this->removeFromIdentityMap($entity);
+
             $oid       = spl_object_id($entity);
             $class     = $this->em->getClassMetadata($entity::class);
             $persister = $this->getEntityPersister($class->name);
@@ -1483,8 +1485,6 @@ class UnitOfWork implements PropertyChangedListener
         if (! $this->isInIdentityMap($entity)) {
             return;
         }
-
-        $this->removeFromIdentityMap($entity);
 
         unset($this->entityUpdates[$oid]);
 
@@ -2467,10 +2467,7 @@ class UnitOfWork implements PropertyChangedListener
                             } else {
                                 $associatedId[$targetClass->fieldNames[$targetColumn]] = $joinColumnValue;
                             }
-                        } elseif (
-                            $targetClass->containsForeignIdentifier
-                            && in_array($targetClass->getFieldForColumn($targetColumn), $targetClass->identifier, true)
-                        ) {
+                        } elseif (in_array($targetClass->getFieldForColumn($targetColumn), $targetClass->identifier, true)) {
                             // the missing key is part of target's entity primary key
                             $associatedId = [];
                             break;
@@ -2653,7 +2650,7 @@ class UnitOfWork implements PropertyChangedListener
                 $entities[] = $collection->getOwner();
             }
 
-            $found = $this->getEntityPersister($targetEntity)->loadAll([$mappedBy => $entities]);
+            $found = $this->getEntityPersister($targetEntity)->loadAll([$mappedBy => $entities], $mapping->orderBy);
 
             $targetClass    = $this->em->getClassMetadata($targetEntity);
             $targetProperty = $targetClass->getReflectionProperty($mappedBy);

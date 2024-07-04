@@ -11,6 +11,7 @@
 
 namespace Symfony\Bridge\PhpUnit;
 
+use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\TestResult;
 use PHPUnit\Runner\ErrorHandler;
 use PHPUnit\Util\Error\Handler;
@@ -370,13 +371,23 @@ class DeprecationErrorHandler
         }
 
         foreach (debug_backtrace(\DEBUG_BACKTRACE_PROVIDE_OBJECT | \DEBUG_BACKTRACE_IGNORE_ARGS) as $frame) {
-            if (isset($frame['object']) && $frame['object'] instanceof TestResult) {
+            if (!isset($frame['object'])) {
+                continue;
+            }
+
+            if ($frame['object'] instanceof TestResult) {
                 return new $eh(
                     $frame['object']->getConvertDeprecationsToExceptions(),
                     $frame['object']->getConvertErrorsToExceptions(),
                     $frame['object']->getConvertNoticesToExceptions(),
                     $frame['object']->getConvertWarningsToExceptions()
                 );
+            } elseif (ErrorHandler::class === $eh && $frame['object'] instanceof TestCase) {
+                return function (int $errorNumber, string $errorString, string $errorFile, int $errorLine) {
+                    ErrorHandler::instance()($errorNumber, $errorString, $errorFile, $errorLine);
+
+                    return true;
+                };
             }
         }
 

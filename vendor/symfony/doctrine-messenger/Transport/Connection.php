@@ -19,8 +19,10 @@ use Doctrine\DBAL\LockMode;
 use Doctrine\DBAL\Platforms\AbstractMySQLPlatform;
 use Doctrine\DBAL\Platforms\OraclePlatform;
 use Doctrine\DBAL\Platforms\PostgreSQLPlatform;
+use Doctrine\DBAL\Query\ForUpdate\ConflictResolutionMode;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\DBAL\Result;
+use Doctrine\DBAL\Schema\AbstractAsset;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\DBAL\Schema\Table;
 use Doctrine\DBAL\Types\Types;
@@ -182,15 +184,22 @@ class Connection implements ResetInterface
                     ->setParameters($query->getParameters(), $query->getParameterTypes());
 
                 if (method_exists(QueryBuilder::class, 'forUpdate')) {
-                    $query->forUpdate();
+                    $query->forUpdate(ConflictResolutionMode::SKIP_LOCKED);
                 }
 
                 $sql = $query->getSQL();
             } elseif (method_exists(QueryBuilder::class, 'forUpdate')) {
-                $query->forUpdate();
+                $query->forUpdate(ConflictResolutionMode::SKIP_LOCKED);
                 try {
                     $sql = $query->getSQL();
                 } catch (DBALException $e) {
+                    // If SKIP_LOCKED is not supported, fallback to without SKIP_LOCKED
+                    $query->forUpdate();
+
+                    try {
+                        $sql = $query->getSQL();
+                    } catch (DBALException $e) {
+                    }
                 }
             } elseif (preg_match('/FROM (.+) WHERE/', (string) $sql, $matches)) {
                 $fromClause = $matches[1];
@@ -281,7 +290,17 @@ class Connection implements ResetInterface
     {
         $configuration = $this->driverConnection->getConfiguration();
         $assetFilter = $configuration->getSchemaAssetsFilter();
-        $configuration->setSchemaAssetsFilter(static fn () => true);
+        $configuration->setSchemaAssetsFilter(function ($tableName) {
+            if ($tableName instanceof AbstractAsset) {
+                $tableName = $tableName->getName();
+            }
+
+            if (!\is_string($tableName)) {
+                throw new \TypeError(sprintf('The table name must be an instance of "%s" or a string ("%s" given).', AbstractAsset::class, get_debug_type($tableName)));
+            }
+
+            return $tableName === $this->configuration['table_name'];
+        });
         $this->updateSchema();
         $configuration->setSchemaAssetsFilter($assetFilter);
         $this->autoSetup = false;
