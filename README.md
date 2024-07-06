@@ -1,5 +1,16 @@
-![](public/assets/img/GitHub-logo.png) 
+![](public/assets/img/GitHub-logo.png)
 # Mvc 
+<a href="{{ asset('assets/img/scrut.png') }}">
+    <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/quality-score.png?b=main" alt="Code Coverage" />
+</a>
+
+<a href="{{ asset('assets/img/scrut.png') }}">
+    <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/coverage.png?b=main" alt="Code Coverage" />
+</a>
+
+<a href="{{ asset('assets/img/scrut.png') }}">
+    <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/build.png?b=main" alt="Code Coverage" />
+</a>
 
 # Ladda hem projektet
 

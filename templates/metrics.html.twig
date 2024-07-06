@@ -5,44 +5,119 @@
 
     <h2>Codestyle</h2>
         <p>
-
+            Issues, violations, storlek och volym är vad codestyle innebär i realtion till detta kmom. Exempelvis så har jag 
+            <a href="{{ asset('assets/img/violation.png') }}">sex stycken violations</a> enligt Phpmetrics, två filer med 
+            <a href="{{ asset('assets/img/issue.png') }}">issue</a> enligt scrutinizer.
         </p>
+        <p>
+            En stor mängd kod i en enda class (utöver kommentarer) kan indikera en svår och komplex klass, exempelvis min 
+            <a href="{{ asset('assets/img/volym.png') }}">LibraryController</a> har en ganska stor volym, något som också kommer 
+            upp i senare kategorier som en komplex klass.
+        </p>
+
 
     <h2>Coverage</h2>
         <p>
-            Syftar på hur väl koden 
+            Syftar på hur mycket utav koden som faktiskt täcks av den automatiserade testningen. Exempelvis testeran i composer phpunit.
         </p>
-        <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/coverage.png?b=main" alt="Code Coverage" />
+        <p>
+            I skrivande stund har jag inte särskilt bra resultat: 
+            
+            <a href="{{ asset('assets/img/scrut.png') }}">
+                <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/coverage.png?b=main" alt="Code Coverage" />
+            </a>
+             , något som kan förbättras.
+        </p>
 
 
     <h2>Complexity</h2>
         <p>
-            
+            Representerar hur svår/komplex
+            koden är och hur lätt eller svårt det kommer vara att utveckla vidare koden eller 
+            upprätthålla koden i längden.
         </p>
+        <p>
+            Från Phpmetrics:<br>
+            "Each file is symbolized by a circle. Size of the circle represents the Cyclomatic complexity. 
+            Color of the circle represents the Maintainability Index. Large red circles will be probably hard to maintain."
+        </p>
+        <p>
+            Bilden nedanför representerar mina classer, den stora röda (mest komplexa klassen) är <a href="{{ asset('assets/img/complexity.png') }}">LibraryController</a> för kmom05.
+        </p>
+            <a href="{{ asset('assets/img/bubbles.png') }}">
+                <img src="{{ asset('assets/img/complexity1.png') }}" alt="" class="img-resize-20">
+            </a>
 
     <h2>Cohesion</h2>
         <p>
-            
+            LCOM (Cohesion) representerar hurvida en klasser och dess metoder kunde delats upp i fler små klasser, vilket hade gett 
+            ett lågt värde, kontra en stor klass som hanterar väldigt mycket och ger ett högt värde i Phpmetrics.
+        </p>
+        <p>
+            <a href="{{ asset('assets/img/LCOM.png') }}">Här</a> har exempelvis min kod ett högt värde om man jämför med resterande kod på min klass som hanterar kortspelet.
+            Vilket innebär att klassen förmodligen skulle kunnat delats upp i två eller fler mindre klasser.
         </p>
 
     <h2>Coupling</h2>
         <p>
-            
+            Coupling relaterar till hur en klass används av en annan klass och hur en klass använder sig av andra klasser.
+        </p>
+        <p>
+            Afferent är hur många andra klasser som den klassen använder sig utav medans Efferent är hur många 
+            klasser som förlitar sig på klassen i fråga. <a href="{{ asset('assets/img/coupling.png') }}">Exempelvis<a/> använder sig min DeckOfCards utav fyra andra klasser medans 
+            den förlitar sig på en annan klass.
         </p>
 
     <h2>CRAP</h2>
         <p>
-            
+            Crap estimerar hur olika metoder är hanterade, ett högt värde indikerar att en komplex metod med få tester. 
+            För att sänka en poäng för en komplex klass så krävs med andra ord robusta tester för den klassen.
+        </p>
+        <p>
+            <a href="{{ asset('assets/img/crap.png') }}">Exempelvis</a> så har editLibraryItem() från LibraryController (en metod som ska ändra detaljer för en bok, så 
+            som namn, isbn, m.m.) ett högt värde, vilket indikerar att jag borde skapa tester för den metoden.
         </p>
 
     <h2>Phpmetrics</h2>
         <p>
-
+            <li>LibraryController har ett medelvärde på sin <a href="{{ asset('assets/img/LCOM.png') }}">LCOM</a> vilket kan sänkas genom att dela upp denna upp denna större klass
+            i två mindre klasser.</li>
+            <li>Phpmetrics klagar även på att LibraryController har <a href="{{ asset('assets/img/libviolation.png') }}">violations</a>, den pekar inte ut något exakt men skriver
+            "Calculation is based on number of operators, operands, cyclomatic complexity" och "This component contains in theory 0.72 bugs."<br>
+            Vilket jag utgår från skulle förbättras med ovanstående förslag om att dela upp klassen i två mindre klasser.</li>
+            <li>LibraryController har även en stor <a href="{{ asset('assets/img/volym.png') }}">volym</a> enligt Phpmetrics, vilket också åtgärdas med en uppdelning i två mindre klasser.</li>
         </p>
 
     <h2>Scrutinizer</h2>
         <p>
-            
+            <li>Eftersom CRAP nivån på LibraryController är relativt hög så är det ett område som borde åtgärdas, alltså skriva 
+            tester för den controllern.
+
+            <a href="{{ asset('assets/img/crap.png') }}">
+                <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/coverage.png?b=main" alt="Code Coverage" />
+            </a></li>
+        </p>
+        <p>
+            <li>LibraryController har även i scrutinizer ett högt värde på <a href="{{ asset('assets/img/complexlib.png') }}">complexity</a>
+            , precis som i Phpmetrics, vilket förmodligen sänks med en uppdelning av koden.</li>
+        </p>
+        <p>
+            <li>Detsamma gäller även för volymen eller som det benämns i scrutinizer <a href="{{ asset('assets/img/complexlib.png') }}">size</a>, LibraryController är väldigt stor om man 
+            jämför med resterande klasser, controllers m.m. på min sida.</li>
+        </p>
+        <p>
+
+            <a href="{{ asset('assets/img/scrut.png') }}">
+                <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/quality-score.png?b=main" alt="Code Coverage" />
+            </a>
+
+            <a href="{{ asset('assets/img/scrut.png') }}">
+                <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/coverage.png?b=main" alt="Code Coverage" />
+            </a>
+
+            <a href="{{ asset('assets/img/scrut.png') }}">
+                <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/build.png?b=main" alt="Code Coverage" />
+            </a>
         </p>
 
     <h2>Förbättringar</h2>

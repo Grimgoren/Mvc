@@ -3,7 +3,9 @@
         "../../src"
     ],
     "exclude": [
-      "../../test[s]?"
+      "../../test[s]?",
+      "../../app_old",
+      "../../src/controller/ProductController.php"
     ],
     "report": {
         "html": "../../docs/metrics"
