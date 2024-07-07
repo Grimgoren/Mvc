@@ -30,7 +30,6 @@ return [
         '/library' => [[['_route' => 'app_library', '_controller' => 'App\\Controller\\LibraryController::index'], null, null, null, false, false, null]],
         '/library/landing-page' => [[['_route' => 'library-page', '_controller' => 'App\\Controller\\LibraryController::libraryPage'], null, null, null, false, false, null]],
         '/library/addBook' => [[['_route' => 'library-addBook-page', '_controller' => 'App\\Controller\\LibraryController::addBookPage'], null, null, null, false, false, null]],
-        '/library/allBooks' => [[['_route' => 'library-showAll-page', '_controller' => 'App\\Controller\\LibraryController::showAllBooks'], null, null, null, false, false, null]],
         '/library/create' => [[['_route' => 'library_create', '_controller' => 'App\\Controller\\LibraryController::createLibraryItem'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/library/showHtml' => [[['_route' => 'library_show_all_html', '_controller' => 'App\\Controller\\LibraryController::showAllLibraryItemsHtml'], null, null, null, false, false, null]],
         '/library/search' => [[['_route' => 'library_search_html', '_controller' => 'App\\Controller\\LibraryController::showLibrarySearchHtml'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],

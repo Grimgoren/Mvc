@@ -55,5 +55,16 @@ class LibraryControllerTest extends WebTestCase
 
         $this->assertSelectorTextContains('h1', 'Alla Böcker');
     }
+
+    public function testShowBookDetailsPage()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/library/detailsOfBook/The Lord of the Rings');
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+
+        $this->assertSelectorTextContains('h1', 'The Lord of the Rings');
+    }
 }
 
