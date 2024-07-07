@@ -169,14 +169,13 @@ class LibraryController extends AbstractController
 
         if (!$libraryItem) {
             throw $this->createNotFoundException(
-                'No book found for id '.$id
+                'No book found for id ' . $id
             );
         }
 
         $libraryItem->setPicture($picture);
         $entityManager->flush();
 
-        return new Response('Updated library item picture with id ' . $libraryItem->getId());
         return $this->redirectToRoute('library_show_all');
     }
 

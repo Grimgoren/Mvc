@@ -12945,3 +12945,6 @@
 [2024-07-07T15:32:10.108016+00:00] request.INFO: Matched route "library-page". {"route":"library-page","route_parameters":{"_route":"library-page","_controller":"App\\Controller\\LibraryController::libraryPage"},"request_uri":"http://localhost:8888/library/landing-page","method":"GET"} []
 [2024-07-07T15:32:10.108513+00:00] security.DEBUG: Checking for authenticator support. {"firewall_name":"main","authenticators":0} []
 [2024-07-07T15:32:10.812431+00:00] request.INFO: Matched route "_wdt". {"route":"_wdt","route_parameters":{"_route":"_wdt","_controller":"web_profiler.controller.profiler::toolbarAction","token":"535e2d"},"request_uri":"http://localhost:8888/_wdt/535e2d","method":"GET"} []
+[2024-07-07T15:53:15.323694+00:00] request.INFO: Matched route "metrics". {"route":"metrics","route_parameters":{"_route":"metrics","_controller":"App\\Controller\\LuckyControllerTwig::metrics"},"request_uri":"http://localhost:8888/metrics","method":"GET"} []
+[2024-07-07T15:53:15.338987+00:00] security.DEBUG: Checking for authenticator support. {"firewall_name":"main","authenticators":0} []
+[2024-07-07T15:53:15.812675+00:00] request.INFO: Matched route "_wdt". {"route":"_wdt","route_parameters":{"_route":"_wdt","_controller":"web_profiler.controller.profiler::toolbarAction","token":"fea083"},"request_uri":"http://localhost:8888/_wdt/fea083","method":"GET"} []
