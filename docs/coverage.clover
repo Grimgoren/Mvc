@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1720393433">
-  <project timestamp="1720393433">
+<coverage generated="1720394650">
+  <project timestamp="1720394650">
     <file name="/home/grimgoren/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="9" coveredelements="9"/>
@@ -323,7 +323,7 @@
     </file>
     <file name="/home/grimgoren/dbwebb-kurser/mvc/me/report/src/Controller/LibraryController.php">
       <class name="App\Controller\LibraryController" namespace="global">
-        <metrics complexity="29" methods="11" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="101" coveredstatements="27" elements="112" coveredelements="31"/>
+        <metrics complexity="29" methods="11" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="101" coveredstatements="42" elements="112" coveredelements="47"/>
       </class>
       <line num="18" type="method" name="index" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="21" type="stmt" count="1"/>
@@ -369,22 +369,22 @@
       <line num="116" type="stmt" count="1"/>
       <line num="117" type="stmt" count="1"/>
       <line num="118" type="stmt" count="1"/>
-      <line num="124" type="method" name="showLibrarySearchHtml" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="127" type="stmt" count="0"/>
-      <line num="129" type="stmt" count="0"/>
-      <line num="130" type="stmt" count="0"/>
-      <line num="132" type="stmt" count="0"/>
-      <line num="133" type="stmt" count="0"/>
-      <line num="136" type="stmt" count="0"/>
-      <line num="138" type="stmt" count="0"/>
-      <line num="139" type="stmt" count="0"/>
-      <line num="140" type="stmt" count="0"/>
-      <line num="141" type="stmt" count="0"/>
-      <line num="142" type="stmt" count="0"/>
-      <line num="144" type="stmt" count="0"/>
-      <line num="147" type="stmt" count="0"/>
-      <line num="148" type="stmt" count="0"/>
-      <line num="149" type="stmt" count="0"/>
+      <line num="124" type="method" name="showLibrarySearchHtml" visibility="public" complexity="3" crap="3" count="2"/>
+      <line num="127" type="stmt" count="2"/>
+      <line num="129" type="stmt" count="2"/>
+      <line num="130" type="stmt" count="2"/>
+      <line num="132" type="stmt" count="2"/>
+      <line num="133" type="stmt" count="1"/>
+      <line num="136" type="stmt" count="1"/>
+      <line num="138" type="stmt" count="1"/>
+      <line num="139" type="stmt" count="1"/>
+      <line num="140" type="stmt" count="1"/>
+      <line num="141" type="stmt" count="1"/>
+      <line num="142" type="stmt" count="1"/>
+      <line num="144" type="stmt" count="1"/>
+      <line num="147" type="stmt" count="1"/>
+      <line num="148" type="stmt" count="1"/>
+      <line num="149" type="stmt" count="1"/>
       <line num="155" type="method" name="updateLibraryItem" visibility="public" complexity="2" crap="6" count="0"/>
       <line num="161" type="stmt" count="0"/>
       <line num="162" type="stmt" count="0"/>
@@ -437,7 +437,7 @@
       <line num="259" type="stmt" count="0"/>
       <line num="260" type="stmt" count="0"/>
       <line num="261" type="stmt" count="0"/>
-      <metrics loc="264" ncloc="224" classes="1" methods="11" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="101" coveredstatements="27" elements="112" coveredelements="31"/>
+      <metrics loc="264" ncloc="224" classes="1" methods="11" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="101" coveredstatements="42" elements="112" coveredelements="47"/>
     </file>
     <file name="/home/grimgoren/dbwebb-kurser/mvc/me/report/src/Controller/LibraryControllerJson.php">
       <class name="App\Controller\LibraryControllerJson" namespace="global">
@@ -745,23 +745,23 @@
       </class>
       <line num="28" type="method" name="getId" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="30" type="stmt" count="1"/>
-      <line num="33" type="method" name="getTitle" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="35" type="stmt" count="2"/>
+      <line num="33" type="method" name="getTitle" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="35" type="stmt" count="3"/>
       <line num="38" type="method" name="setTitle" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="40" type="stmt" count="0"/>
       <line num="42" type="stmt" count="0"/>
-      <line num="45" type="method" name="getisbn" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="47" type="stmt" count="1"/>
+      <line num="45" type="method" name="getisbn" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="47" type="stmt" count="2"/>
       <line num="50" type="method" name="setisbn" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="52" type="stmt" count="0"/>
       <line num="54" type="stmt" count="0"/>
-      <line num="57" type="method" name="getAuthor" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="59" type="stmt" count="2"/>
+      <line num="57" type="method" name="getAuthor" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="59" type="stmt" count="3"/>
       <line num="62" type="method" name="setAuthor" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="64" type="stmt" count="0"/>
       <line num="66" type="stmt" count="0"/>
-      <line num="69" type="method" name="getPicture" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="71" type="stmt" count="2"/>
+      <line num="69" type="method" name="getPicture" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="71" type="stmt" count="3"/>
       <line num="74" type="method" name="setPicture" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="76" type="stmt" count="0"/>
       <line num="78" type="stmt" count="0"/>
@@ -795,8 +795,8 @@
       <class name="App\Repository\LibraryRepository" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="16" type="stmt" count="2"/>
+      <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="16" type="stmt" count="4"/>
       <metrics loc="44" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/grimgoren/dbwebb-kurser/mvc/me/report/src/Repository/ProductRepository.php">
@@ -821,6 +821,6 @@
       <line num="77" type="stmt" count="0"/>
       <metrics loc="80" ncloc="44" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="16" coveredelements="0"/>
     </file>
-    <metrics files="21" loc="1741" ncloc="1585" classes="20" methods="95" coveredmethods="31" conditionals="0" coveredconditionals="0" statements="599" coveredstatements="87" elements="694" coveredelements="118"/>
+    <metrics files="21" loc="1741" ncloc="1585" classes="20" methods="95" coveredmethods="32" conditionals="0" coveredconditionals="0" statements="599" coveredstatements="102" elements="694" coveredelements="134"/>
   </project>
 </coverage>

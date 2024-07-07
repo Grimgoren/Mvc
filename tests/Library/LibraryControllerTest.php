@@ -78,13 +78,39 @@ class LibraryControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('POST', '/library/create');
+        $client->request('POST', '/library/create');
 
         $this->assertEquals(400, $client->getResponse()->getStatusCode());
 
         $this->assertSelectorTextContains('h1', 'Error');
 
         $this->assertSelectorTextContains('p', 'Det saknas information');
+    }
+
+    public function testSearchFailPage()
+    {
+        $client = static::createClient();
+
+        $client->request('POST', '/library/search');
+
+        $this->assertEquals(400, $client->getResponse()->getStatusCode());
+
+        $this->assertSelectorTextContains('p', 'Det saknas information');
+    }
+
+    public function testSearchSuccessPage()
+    {
+        $client = static::createClient();
+
+        $searchIt = 'Rings';
+
+        $crawler = $client->request('POST', '/library/search', ['search' => $searchIt]);
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+
+        $this->assertSelectorTextContains('h1', 'Resultat');
+
+        $this->assertStringContainsString('The Lord of the Rings', $client->getResponse()->getContent());
     }
 }
 
