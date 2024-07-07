@@ -81,32 +81,27 @@ class LibraryController extends AbstractController
             $isbn = $request->request->get('isbn');
             $author = $request->request->get('author');
             $picture = $request->request->get('picture');
-
+    
             if (!$title || !$isbn || !$author || !$picture) {
                 return $this->render('library/error.html.twig', [
                     'error_message' => 'Det saknas information'
-                ]);
+                ], new Response('', Response::HTTP_BAD_REQUEST));
             }
-
-
+    
             $entityManager = $doctrine->getManager();
-
+    
             $libraryItem = new Library();
             $libraryItem->setTitle($title);
             $libraryItem->setISBN($isbn);
             $libraryItem->setAuthor($author);
             $libraryItem->setPicture($picture);
-
-            // tell Doctrine you want to (eventually) save the library item
-            // (no queries yet)
+    
             $entityManager->persist($libraryItem);
-
-            // actually executes the queries (i.e. the INSERT query)
             $entityManager->flush();
-
+    
             return $this->redirectToRoute('library_show_all_html');
         }
-
+    
         return $this->render('library/addBook.html.twig');
     }
 
