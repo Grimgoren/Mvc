@@ -1,39 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="21" assertions="48" errors="0" warnings="0" failures="0" skipped="0" time="0.431741">
-    <testsuite name="Project Test Suite" tests="21" assertions="48" errors="0" warnings="0" failures="0" skipped="0" time="0.431741">
-      <testsuite name="App\Card\CardGraphicTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.005745">
-        <testcase name="testCreateCard" class="App\Card\CardGraphicTest" classname="App.Card.CardGraphicTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="16" assertions="3" time="0.005388"/>
-        <testcase name="testGetRank" class="App\Card\CardGraphicTest" classname="App.Card.CardGraphicTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="32" assertions="1" time="0.000195"/>
-        <testcase name="testGetSuit" class="App\Card\CardGraphicTest" classname="App.Card.CardGraphicTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="45" assertions="1" time="0.000162"/>
+  <testsuite name="" tests="21" assertions="48" errors="0" warnings="0" failures="0" skipped="0" time="0.246787">
+    <testsuite name="Project Test Suite" tests="21" assertions="48" errors="0" warnings="0" failures="0" skipped="0" time="0.246787">
+      <testsuite name="App\Card\CardGraphicTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.004730">
+        <testcase name="testCreateCard" class="App\Card\CardGraphicTest" classname="App.Card.CardGraphicTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="16" assertions="3" time="0.004326"/>
+        <testcase name="testGetRank" class="App\Card\CardGraphicTest" classname="App.Card.CardGraphicTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="32" assertions="1" time="0.000226"/>
+        <testcase name="testGetSuit" class="App\Card\CardGraphicTest" classname="App.Card.CardGraphicTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="45" assertions="1" time="0.000179"/>
       </testsuite>
-      <testsuite name="App\Card\CardHandTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" tests="4" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.001912">
-        <testcase name="testCreateCardHand" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="15" assertions="2" time="0.000634"/>
-        <testcase name="testAddCardToHand" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="26" assertions="2" time="0.000454"/>
-        <testcase name="testGetCardsAsString" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="42" assertions="3" time="0.000190"/>
-        <testcase name="testGetHandValue" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="65" assertions="3" time="0.000635"/>
+      <testsuite name="App\Card\CardHandTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" tests="4" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.001546">
+        <testcase name="testCreateCardHand" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="15" assertions="2" time="0.000407"/>
+        <testcase name="testAddCardToHand" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="26" assertions="2" time="0.000484"/>
+        <testcase name="testGetCardsAsString" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="42" assertions="3" time="0.000203"/>
+        <testcase name="testGetHandValue" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="65" assertions="3" time="0.000452"/>
       </testsuite>
-      <testsuite name="App\Card\CardTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.000557">
-        <testcase name="testCreateCard" class="App\Card\CardTest" classname="App.Card.CardTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="16" assertions="3" time="0.000222"/>
-        <testcase name="testGetRank" class="App\Card\CardTest" classname="App.Card.CardTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="32" assertions="1" time="0.000166"/>
-        <testcase name="testGetSuit" class="App\Card\CardTest" classname="App.Card.CardTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="45" assertions="1" time="0.000169"/>
+      <testsuite name="App\Card\CardTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.000647">
+        <testcase name="testCreateCard" class="App\Card\CardTest" classname="App.Card.CardTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="16" assertions="3" time="0.000221"/>
+        <testcase name="testGetRank" class="App\Card\CardTest" classname="App.Card.CardTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="32" assertions="1" time="0.000154"/>
+        <testcase name="testGetSuit" class="App\Card\CardTest" classname="App.Card.CardTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="45" assertions="1" time="0.000272"/>
       </testsuite>
-      <testsuite name="App\Card\DeckOfCardsTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" tests="6" assertions="14" errors="0" warnings="0" failures="0" skipped="0" time="0.017540">
-        <testcase name="testInitializeDeck" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="15" assertions="3" time="0.000279"/>
-        <testcase name="testShuffleDeck" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="29" assertions="2" time="0.007680"/>
-        <testcase name="testDrawCard" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="44" assertions="2" time="0.000290"/>
-        <testcase name="testDrawManyOfCard" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="57" assertions="2" time="0.000381"/>
-        <testcase name="testGetAsString" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="86" assertions="2" time="0.000726"/>
-        <testcase name="testSortByValue" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="99" assertions="3" time="0.008185"/>
+      <testsuite name="App\Card\DeckOfCardsTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" tests="6" assertions="14" errors="0" warnings="0" failures="0" skipped="0" time="0.017217">
+        <testcase name="testInitializeDeck" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="15" assertions="3" time="0.000278"/>
+        <testcase name="testShuffleDeck" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="29" assertions="2" time="0.007318"/>
+        <testcase name="testDrawCard" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="44" assertions="2" time="0.000295"/>
+        <testcase name="testDrawManyOfCard" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="57" assertions="2" time="0.000356"/>
+        <testcase name="testGetAsString" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="86" assertions="2" time="0.000696"/>
+        <testcase name="testSortByValue" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="99" assertions="3" time="0.008274"/>
       </testsuite>
-      <testsuite name="App\Dice\DiceTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" tests="1" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.001150">
-        <testcase name="testCreateDice" class="App\Dice\DiceTest" classname="App.Dice.DiceTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" line="16" assertions="2" time="0.001150"/>
+      <testsuite name="App\Dice\DiceTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" tests="1" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.000404">
+        <testcase name="testCreateDice" class="App\Dice\DiceTest" classname="App.Dice.DiceTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" line="16" assertions="2" time="0.000404"/>
       </testsuite>
-      <testsuite name="App\Tests\Controller\LibraryControllerTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Library/LibraryControllerTest.php" tests="4" assertions="12" errors="0" warnings="0" failures="0" skipped="0" time="0.404838">
-        <testcase name="testIndexPage" class="App\Tests\Controller\LibraryControllerTest" classname="App.Tests.Controller.LibraryControllerTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Library/LibraryControllerTest.php" line="12" assertions="3" time="0.317322"/>
-        <testcase name="testLandingPage" class="App\Tests\Controller\LibraryControllerTest" classname="App.Tests.Controller.LibraryControllerTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Library/LibraryControllerTest.php" line="23" assertions="3" time="0.010338"/>
-        <testcase name="testAddBookPage" class="App\Tests\Controller\LibraryControllerTest" classname="App.Tests.Controller.LibraryControllerTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Library/LibraryControllerTest.php" line="34" assertions="3" time="0.008213"/>
-        <testcase name="testShowAllBooksPage" class="App\Tests\Controller\LibraryControllerTest" classname="App.Tests.Controller.LibraryControllerTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Library/LibraryControllerTest.php" line="45" assertions="3" time="0.068965"/>
+      <testsuite name="App\Tests\Controller\LibraryControllerTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Library/LibraryControllerTest.php" tests="4" assertions="12" errors="0" warnings="0" failures="0" skipped="0" time="0.222243">
+        <testcase name="testIndexPage" class="App\Tests\Controller\LibraryControllerTest" classname="App.Tests.Controller.LibraryControllerTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Library/LibraryControllerTest.php" line="12" assertions="3" time="0.136207"/>
+        <testcase name="testLandingPage" class="App\Tests\Controller\LibraryControllerTest" classname="App.Tests.Controller.LibraryControllerTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Library/LibraryControllerTest.php" line="23" assertions="3" time="0.008969"/>
+        <testcase name="testAddBookPage" class="App\Tests\Controller\LibraryControllerTest" classname="App.Tests.Controller.LibraryControllerTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Library/LibraryControllerTest.php" line="34" assertions="3" time="0.007934"/>
+        <testcase name="testShowAllBooksPage" class="App\Tests\Controller\LibraryControllerTest" classname="App.Tests.Controller.LibraryControllerTest" file="/home/grimgoren/dbwebb-kurser/mvc/me/report/tests/Library/LibraryControllerTest.php" line="45" assertions="3" time="0.069133">
+          <system-out>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;header class="site-header" style="background-image: url(/assets/img/background.jpg)"&gt;
+        &lt;span class="site-title"&gt;My Symfony Site&lt;/span&gt;
+    &lt;/header&gt;
+    &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;title&gt;Alla Böcker&lt;/title&gt;
+        &lt;link rel="icon" href="/assets/img/glider.svg"&gt;
+                    &lt;link rel="stylesheet" href="/build/app.5660c19c.css"&gt;
+        
+                    &lt;script src="/build/runtime.05dacd30.js" defer&gt;&lt;/script&gt;&lt;script src="/build/app.652303d0.js" defer&gt;&lt;/script&gt;
+            
+&lt;script type="importmap" data-turbo-track="reload"&gt;
+{
+    "imports": {
+        "app": "/assets/app-ddaa1e70c7d60bd3d2c192b70f27b978.js",
+        "@hotwired/stimulus": "/assets/vendor/@hotwired/stimulus/stimulus.index-b5b1d00e42695b8959b4a1e94e3bc92a.js",
+        "@symfony/stimulus-bundle": "/assets/@symfony/stimulus-bundle/loader-e1ee9ace0562f2e6a52301e4ccc8627d.js",
+        "/assets/@symfony/stimulus-bundle/controllers.js": "/assets/@symfony/stimulus-bundle/controllers-9d42643c079ab11f27a3a9614f81cc2f.js",
+        "/assets/@symfony/ux-turbo/turbo_controller.js": "/assets/@symfony/ux-turbo/turbo_controller-ce5e32dafdec0b7752f02e3e2cb25751.js",
+        "/assets/controllers/hello_controller.js": "/assets/controllers/hello_controller-55882fcad241d2bea50276ea485583bc.js",
+        "@hotwired/turbo": "/assets/vendor/@hotwired/turbo/turbo.index-810f44ef1a202a441e4866b7a4c72d11.js"
+    }
+}
+&lt;/script&gt;
+&lt;!-- ES Module Shims: Import maps polyfill for modules browsers without import maps support --&gt;
+&lt;script async src="https://ga.jspm.io/npm:es-module-shims@1.10.0/dist/es-module-shims.js" data-turbo-track="reload"&gt;&lt;/script&gt;
+&lt;link rel="modulepreload" href="/assets/app-ddaa1e70c7d60bd3d2c192b70f27b978.js"&gt;
+&lt;script type="module" data-turbo-track="reload"&gt;import 'app';&lt;/script&gt;            &lt;/head&gt;
+    &lt;body&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li class="link-color"&gt;&lt;a class="link-color" href="/"&gt;Me&lt;/a&gt;&lt;/li&gt;
+                &lt;li class="link-color"&gt;&lt;a class="link-color" href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+                &lt;li class="link-color"&gt;&lt;a class="link-color" href="/report"&gt;Report&lt;/a&gt;&lt;/li&gt;
+                &lt;li class="link-color"&gt;&lt;a class="link-color" href="/lucky"&gt;Lucky&lt;/a&gt;&lt;/li&gt;
+                &lt;li class="link-color"&gt;&lt;a class="link-color" href="/card"&gt;Card landingpage&lt;/a&gt;&lt;/li&gt;
+                &lt;li class="link-color"&gt;&lt;a class="link-color" href="/apilandingpage"&gt;Api landingpage&lt;/a&gt;&lt;/li&gt;
+                &lt;li class="link-color"&gt;&lt;a class="link-color" href="/gamelandingpage"&gt;Game&lt;/a&gt;&lt;/li&gt;
+                &lt;li class="link-color"&gt;&lt;a class="link-color" href="/library/landing-page"&gt;Bibliotek&lt;/a&gt;&lt;/li&gt;
+                &lt;li class="link-color"&gt;&lt;a class="link-color" href="/metrics"&gt;Mätvärden&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+        &lt;h1&gt;Alla Böcker&lt;/h1&gt;
+&lt;div class="button-container"&gt;
+    &lt;a href="/library/landing-page" class="button-86"&gt;Tillbaka&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="library-container"&gt;
+        &lt;div class="book"&gt;
+        &lt;a href="/library/detailsOfBook/The%20Lord%20of%20the%20Rings" style="color:blue;text-decoration:underline;"&gt;
+            The Lord of the Rings
+        &lt;/a&gt;&lt;br&gt;
+        Tolkien.J.R.R.&lt;br&gt;
+        &lt;span class="book-cover"&gt;&lt;img src="https://i.harperapps.com/hcanz/covers/9780261103252/y648.jpg" alt="The Lord of the Rings picture" class="book-picture" /&gt;&lt;/span&gt;
+    &lt;/div&gt;
+        &lt;div class="book"&gt;
+        &lt;a href="/library/detailsOfBook/The%20Two%20Towers" style="color:blue;text-decoration:underline;"&gt;
+            The Two Towers
+        &lt;/a&gt;&lt;br&gt;
+        Tolkien.J.R.R.&lt;br&gt;
+        &lt;span class="book-cover"&gt;&lt;img src="https://m.media-amazon.com/images/I/81HfbQ8F2UL._AC_UF1000,1000_QL80_.jpg" alt="The Two Towers picture" class="book-picture" /&gt;&lt;/span&gt;
+    &lt;/div&gt;
+        &lt;div class="book"&gt;
+        &lt;a href="/library/detailsOfBook/Return%20of%20the%20King" style="color:blue;text-decoration:underline;"&gt;
+            Return of the King
+        &lt;/a&gt;&lt;br&gt;
+        Tolkien.J.R.R.&lt;br&gt;
+        &lt;span class="book-cover"&gt;&lt;img src="https://m.media-amazon.com/images/I/91YPlS-HzxL._AC_UF1000,1000_QL80_.jpg" alt="Return of the King picture" class="book-picture" /&gt;&lt;/span&gt;
+    &lt;/div&gt;
+        &lt;div class="book"&gt;
+        &lt;a href="/library/detailsOfBook/Test1" style="color:blue;text-decoration:underline;"&gt;
+            Test1
+        &lt;/a&gt;&lt;br&gt;
+        Test1&lt;br&gt;
+        &lt;span class="book-cover"&gt;&lt;img src="https://i.harperapps.com/hcanz/covers/9780261103252/y648.jpg" alt="Test1 picture" class="book-picture" /&gt;&lt;/span&gt;
+    &lt;/div&gt;
+        &lt;div class="book"&gt;
+        &lt;a href="/library/detailsOfBook/Test2" style="color:blue;text-decoration:underline;"&gt;
+            Test2
+        &lt;/a&gt;&lt;br&gt;
+        Test2&lt;br&gt;
+        &lt;span class="book-cover"&gt;&lt;img src="https://i.harperapps.com/hcanz/covers/9780261103252/y648.jpg" alt="Test2 picture" class="book-picture" /&gt;&lt;/span&gt;
+    &lt;/div&gt;
+        &lt;div class="book"&gt;
+        &lt;a href="/library/detailsOfBook/test%2010" style="color:blue;text-decoration:underline;"&gt;
+            test 10
+        &lt;/a&gt;&lt;br&gt;
+        test 10&lt;br&gt;
+        &lt;span class="book-cover"&gt;&lt;img src="https://m.media-amazon.com/images/I/91YPlS-HzxL._AC_UF1000,1000_QL80_.jpg" alt="test 10 picture" class="book-picture" /&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/body&gt;
+    &lt;footer class="site-footer"&gt;
+        &lt;div class="footer-content"&gt;
+            &lt;a class="gitimg" href="https://github.com/Grimgoren/Mvc"&gt;
+                &lt;img src="/assets/img/GitHub-logo.png" alt=""&gt;
+            &lt;/a&gt;
+            &lt;p&gt;Copyright AG&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/footer&gt;
+&lt;/html&gt;
+</system-out>
+        </testcase>
       </testsuite>
     </testsuite>
   </testsuite>

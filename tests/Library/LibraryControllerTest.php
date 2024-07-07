@@ -48,6 +48,9 @@ class LibraryControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/library/showHtml');
 
+        // Print response content for debugging
+        echo $client->getResponse()->getContent();
+
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
         $this->assertSelectorTextContains('h1', 'Alla Böcker');
