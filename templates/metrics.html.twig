@@ -87,6 +87,9 @@
             Vilket jag utgår från skulle förbättras med ovanstående förslag om att dela upp klassen i två mindre klasser.</li>
             <li>LibraryController har även en stor <a href="{{ asset('assets/img/volym.png') }}">volym</a> enligt Phpmetrics, vilket också åtgärdas med en uppdelning i två mindre klasser.</li>
         </p>
+        <p>
+            Ovan analys är främst baserat på cohesion och codestyle.
+        </p>
 
     <h2>Scrutinizer</h2>
         <p>
@@ -119,10 +122,19 @@
                 <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/build.png?b=main" alt="Code Coverage" />
             </a>
         </p>
+        <p>
+            Ovan analys är främst baserad på CRAP och complexity samt codestyle.
+        </p>
 
     <h2>Förbättringar</h2>
         <p>
-            
+            Dela upp LibraryController i två mindre klasser eftersom (något som tidigare nämnts) klaseen är väldigt 
+            stor och har många höga värden i exempelvis CRAP m.m.
+            Skriva tester till LibraryController (efter att jag delat upp den i 
+            två mindre klasser) detta eftersom min kod i allmänhet har dålig täckning (coverage) 
+            och denna klassen är bland de större så kommer den poängen förmodligen öka om jag åtgärdar det här. 
+            Dela upp editLibraryItem() metoden i LibraryController klassen då den har ett högt CRAP poäng och 
+            hög komplicitet samt en stor volym allt detta i relation till resten av metoderna.
         </p>
 
     <h2>Diskussion</h2>

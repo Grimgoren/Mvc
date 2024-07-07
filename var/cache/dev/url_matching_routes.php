@@ -32,9 +32,9 @@ return [
         '/library/addBook' => [[['_route' => 'library-addBook-page', '_controller' => 'App\\Controller\\LibraryController::addBookPage'], null, null, null, false, false, null]],
         '/library/allBooks' => [[['_route' => 'library-showAll-page', '_controller' => 'App\\Controller\\LibraryController::showAllBooks'], null, null, null, false, false, null]],
         '/library/create' => [[['_route' => 'library_create', '_controller' => 'App\\Controller\\LibraryController::createLibraryItem'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        '/api/library/books' => [[['_route' => 'library_show_all', '_controller' => 'App\\Controller\\LibraryController::showAllLibraryItems'], null, null, null, false, false, null]],
         '/library/showHtml' => [[['_route' => 'library_show_all_html', '_controller' => 'App\\Controller\\LibraryController::showAllLibraryItemsHtml'], null, null, null, false, false, null]],
         '/library/search' => [[['_route' => 'library_search_html', '_controller' => 'App\\Controller\\LibraryController::showLibrarySearchHtml'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/api/library/books' => [[['_route' => 'library_show_all', '_controller' => 'App\\Controller\\LibraryControllerJson::showAllLibraryItems'], null, null, null, false, false, null]],
         '/api/lucky/number' => [[['_route' => 'api-lucky', '_controller' => 'App\\Controller\\LuckyControllerJson::jsonNumber'], null, null, null, false, false, null]],
         '/api' => [[['_route' => 'api', '_controller' => 'App\\Controller\\LuckyControllerJson::apiRoutes'], null, null, null, false, false, null]],
         '/api/quote' => [[['_route' => 'api-quote', '_controller' => 'App\\Controller\\LuckyControllerJson::apiQuote'], null, null, null, false, false, null]],
@@ -77,11 +77,11 @@ return [
                 .')'
                 .'|/library/(?'
                     .'|detailsOfBook/([^/]++)(*:269)'
-                    .'|show/([^/]++)(*:290)'
-                    .'|update/([^/]++)/([^/]++)(*:322)'
-                    .'|([^/]++)/update(*:345)'
-                    .'|edit/([^/]++)(*:366)'
-                    .'|delete/([^/]++)(*:389)'
+                    .'|update/([^/]++)/([^/]++)(*:301)'
+                    .'|([^/]++)/update(*:324)'
+                    .'|edit/([^/]++)(*:345)'
+                    .'|delete/([^/]++)(*:368)'
+                    .'|show/([^/]++)(*:389)'
                 .')'
                 .'|/api/library/book/([^/]++)(*:424)'
                 .'|/product/(?'
@@ -109,12 +109,12 @@ return [
             [['_route' => 'card_draw_number_post', '_controller' => 'App\\Controller\\CardControllerKmom02Twig::initDrawNumber'], ['num'], null, null, false, true, null],
         ],
         269 => [[['_route' => 'library-showDetails-page', '_controller' => 'App\\Controller\\LibraryController::showBookDetails'], ['title'], ['GET' => 0], null, false, true, null]],
-        290 => [[['_route' => 'library_by_id', '_controller' => 'App\\Controller\\LibraryController::showLibraryItemById'], ['id'], null, null, false, true, null]],
-        322 => [[['_route' => 'library_update', '_controller' => 'App\\Controller\\LibraryController::updateLibraryItem'], ['id', 'picture'], null, null, false, true, null]],
-        345 => [[['_route' => 'library_edit', '_controller' => 'App\\Controller\\LibraryController::editLibraryItem'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        366 => [[['_route' => 'library_show_edit_form', '_controller' => 'App\\Controller\\LibraryController::showEditForm'], ['id'], ['POST' => 0], null, false, true, null]],
-        389 => [[['_route' => 'library_delete', '_controller' => 'App\\Controller\\LibraryController::libraryDelete'], ['id'], ['POST' => 0], null, false, true, null]],
-        424 => [[['_route' => 'library_by_isbn', '_controller' => 'App\\Controller\\LibraryController::showLibraryItemByISBN'], ['isbn'], null, null, false, true, null]],
+        301 => [[['_route' => 'library_update', '_controller' => 'App\\Controller\\LibraryController::updateLibraryItem'], ['id', 'picture'], null, null, false, true, null]],
+        324 => [[['_route' => 'library_edit', '_controller' => 'App\\Controller\\LibraryController::editLibraryItem'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        345 => [[['_route' => 'library_show_edit_form', '_controller' => 'App\\Controller\\LibraryController::showEditForm'], ['id'], ['POST' => 0], null, false, true, null]],
+        368 => [[['_route' => 'library_delete', '_controller' => 'App\\Controller\\LibraryController::libraryDelete'], ['id'], ['POST' => 0], null, false, true, null]],
+        389 => [[['_route' => 'library_by_id', '_controller' => 'App\\Controller\\LibraryControllerJson::showLibraryItemById'], ['id'], null, null, false, true, null]],
+        424 => [[['_route' => 'library_by_isbn', '_controller' => 'App\\Controller\\LibraryControllerJson::showLibraryItemByISBN'], ['isbn'], null, null, false, true, null]],
         460 => [[['_route' => 'product_by_id', '_controller' => 'App\\Controller\\ProductController::showProductById'], ['id'], null, null, false, true, null]],
         480 => [[['_route' => 'product_by_min_value', '_controller' => 'App\\Controller\\ProductController::showProductByMinimumValue'], ['value'], null, null, false, true, null]],
         504 => [[['_route' => 'product_delete_by_id', '_controller' => 'App\\Controller\\ProductController::deleteProductById'], ['id'], null, null, false, true, null]],
