@@ -41,14 +41,13 @@ class LibraryController extends AbstractController
         return $this->render('library/addBook.html.twig');
     }
 
-    /**
-     * Route to add a book to the library (api route).
-     */
+    /*
     #[Route("/library/allBooks", name: "library-showAll-page")]
     public function showAllBooks(): Response
     {
         return $this->render('library/showAllBooks.html.twig');
     }
+     */
 
     /**
      * Route to show details of a book.
