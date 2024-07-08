@@ -117,10 +117,10 @@ class LibraryControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/library/edit/6');
+        $crawler = $client->request('GET', '/library/edit/21');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertSelectorTextContains('h1', 'Redigera bok-Id: 6');
+        $this->assertSelectorTextContains('h1', 'Redigera bok-Id: 21');
 
         $this->assertCount(4, $crawler->filter('label'));
         $this->assertStringContainsString('Titel:', $crawler->filter('label[for="title"]')->text());
@@ -136,6 +136,22 @@ class LibraryControllerTest extends WebTestCase
 
         $this->assertSelectorTextContains('p', 'Ingen bok hittades för id');
     }
+
+    public function testEditBookInvalidData()
+    {
+        $client = static::createClient();
+    
+        $crawler = $client->request('POST', '/library/21/update', [
+            'title' => '',
+            'isbn' => '',
+            'author' => '',
+            'picture' => ''
+        ]);
+    
+        $this->assertEquals(400, $client->getResponse()->getStatusCode());
+        $this->assertSelectorTextContains('p', 'Det saknas information');
+    }
+    
 
     public function testLibraryDeleteFailPage()
     {

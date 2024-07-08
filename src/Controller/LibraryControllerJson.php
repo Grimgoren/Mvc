@@ -75,6 +75,5 @@ class LibraryControllerJson extends AbstractController
 
         return $this->redirectToRoute('library_show_all');
     }
-
     */
 }
