@@ -78,7 +78,7 @@ class LibraryControllerTest extends WebTestCase
     {
         $client = static::createClient();
     
-        $crawler = $client->request('GET', '/library/detailsOfBook/FakeData');
+        $client->request('GET', '/library/detailsOfBook/FakeData');
     
         $this->assertEquals(404, $client->getResponse()->getStatusCode());
         $this->assertStringContainsString('Ingen bok hittad med titeln', $client->getResponse()->getContent());
