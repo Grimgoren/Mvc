@@ -151,7 +151,7 @@ class LibraryControllerTest extends WebTestCase
     {
         $client = static::createClient();
     
-        $crawler = $client->request('POST', '/library/21/update', [
+        $client->request('POST', '/library/21/update', [
             'title' => '',
             'isbn' => '',
             'author' => '',
