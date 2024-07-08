@@ -237,7 +237,7 @@ class LibraryController extends AbstractController
     /**
      * Route to the info about a book by the id library.
      */
-    #[Route('/library/edit/{id}', name: 'library_show_edit_form', methods: ['POST'])]
+    #[Route('/library/edit/{id}', name: 'library_show_edit_form', methods: ['POST', 'GET'])]
     public function showEditForm(int $id, LibraryRepository $libraryRepository): Response
     {
         $libraryItem = $libraryRepository->find($id);

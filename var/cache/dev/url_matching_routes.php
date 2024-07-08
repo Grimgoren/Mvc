@@ -108,7 +108,7 @@ return [
         ],
         269 => [[['_route' => 'library-showDetails-page', '_controller' => 'App\\Controller\\LibraryController::showBookDetails'], ['title'], ['GET' => 0], null, false, true, null]],
         292 => [[['_route' => 'library_edit', '_controller' => 'App\\Controller\\LibraryController::editLibraryItem'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        313 => [[['_route' => 'library_show_edit_form', '_controller' => 'App\\Controller\\LibraryController::showEditForm'], ['id'], ['POST' => 0], null, false, true, null]],
+        313 => [[['_route' => 'library_show_edit_form', '_controller' => 'App\\Controller\\LibraryController::showEditForm'], ['id'], ['POST' => 0, 'GET' => 1], null, false, true, null]],
         336 => [[['_route' => 'library_delete', '_controller' => 'App\\Controller\\LibraryController::libraryDelete'], ['id'], ['POST' => 0], null, false, true, null]],
         357 => [[['_route' => 'library_by_id', '_controller' => 'App\\Controller\\LibraryControllerJson::showLibraryItemById'], ['id'], null, null, false, true, null]],
         392 => [[['_route' => 'library_by_isbn', '_controller' => 'App\\Controller\\LibraryControllerJson::showLibraryItemByISBN'], ['isbn'], null, null, false, true, null]],

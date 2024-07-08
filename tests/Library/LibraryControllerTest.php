@@ -112,5 +112,17 @@ class LibraryControllerTest extends WebTestCase
 
         $this->assertStringContainsString('The Lord of the Rings', $client->getResponse()->getContent());
     }
-}
 
+    public function testEditPage()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/library/edit/6');
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->assertSelectorTextContains('h1', 'Redigera bok-Id: 6');
+
+        $this->assertCount(4, $crawler->filter('label'));
+        $this->assertStringContainsString('Titel:', $crawler->filter('label[for="title"]')->text());
+    }
+}
