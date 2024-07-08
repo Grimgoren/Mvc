@@ -77,9 +77,9 @@ class LibraryControllerTest extends WebTestCase
     public function testShowBookDetailsFakeData()
     {
         $client = static::createClient();
-    
+
         $client->request('GET', '/library/detailsOfBook/FakeData');
-    
+
         $this->assertEquals(404, $client->getResponse()->getStatusCode());
         $this->assertStringContainsString('Ingen bok hittad med titeln', $client->getResponse()->getContent());
     }
@@ -150,18 +150,18 @@ class LibraryControllerTest extends WebTestCase
     public function testEditBookInvalidData()
     {
         $client = static::createClient();
-    
+
         $client->request('POST', '/library/21/update', [
             'title' => '',
             'isbn' => '',
             'author' => '',
             'picture' => ''
         ]);
-    
+
         $this->assertEquals(400, $client->getResponse()->getStatusCode());
         $this->assertSelectorTextContains('p', 'Det saknas information');
     }
-    
+
 
     public function testLibraryDeleteFailPage()
     {

@@ -24,7 +24,7 @@
             I skrivande stund har jag inte särskilt bra resultat: 
             
             <a href="{{ asset('assets/img/scrut.png') }}">
-                <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/coverage.png?b=main" alt="Code Coverage" />
+                <img src="{{ asset('assets/img/oldcov.png') }}" alt="Code Coverage" />
             </a>
              , något som kan förbättras.
         </p>
@@ -86,23 +86,24 @@
             "Calculation is based on number of operators, operands, cyclomatic complexity" och "This component contains in theory 0.72 bugs."<br>
             Vilket jag utgår från skulle förbättras med ovanstående förslag om att dela upp klassen i två mindre klasser.</li>
             <li>LibraryController har även en stor <a href="{{ asset('assets/img/volym.png') }}">volym</a> enligt Phpmetrics, vilket också åtgärdas med en uppdelning i två mindre klasser.</li>
-        </p>
-        <p>
-            Ovan analys är främst baserat på cohesion och codestyle.
+            <li>LibraryController har fler efferent coupling(s) än vad de flesta andra klasserna har, vilket innebär att andra klasser 
+            förlitar sig på denna, jag skulle kanske inte kalla en score på 6 oroväkande mycket men det är något som man kanske kunde 
+            förbättra.</li>
         </p>
 
     <h2>Scrutinizer</h2>
         <p>
             <li>Eftersom CRAP nivån på LibraryController är relativt hög så är det ett område som borde åtgärdas, alltså skriva 
-            tester för den controllern.
+            tester för den controllern, både för att sänka CRAP och öka coverage.
 
             <a href="{{ asset('assets/img/crap.png') }}">
-                <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/coverage.png?b=main" alt="Code Coverage" />
+                <img src="{{ asset('assets/img/oldcov.png') }}" alt="Code Coverage" />
             </a></li>
         </p>
         <p>
-            <li>LibraryController har även i scrutinizer ett högt värde på <a href="{{ asset('assets/img/complexlib.png') }}">complexity</a>
-            , precis som i Phpmetrics, vilket förmodligen sänks med en uppdelning av koden.</li>
+            <li>LibraryController har även i scrutinizer ett högt värde på <a href="{{ asset('assets/img/complexlib.png') }}">complexity</a> samt ett 
+            0% värde på coverage.
+            , precis som i Phpmetrics, vilket förmodligen sänks med en uppdelning av koden och coverage som höjs med skrivning av tester.</li>
         </p>
         <p>
             <li>Detsamma gäller även för volymen eller som det benämns i scrutinizer <a href="{{ asset('assets/img/complexlib.png') }}">size</a>, LibraryController är väldigt stor om man 
@@ -121,25 +122,81 @@
             <a href="{{ asset('assets/img/scrut.png') }}">
                 <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/build.png?b=main" alt="Code Coverage" />
             </a>
+
+                <br>(Klicka på bilderna för att se hur det såg ut i början)
+
         </p>
         <p>
-            Ovan analys är främst baserad på CRAP och complexity samt codestyle.
+            Ovan analys innehåller CRAP, complexity, coverage, coupling samt codestyle.
         </p>
 
     <h2>Förbättringar</h2>
         <p>
-            Dela upp LibraryController i två mindre klasser eftersom (något som tidigare nämnts) klaseen är väldigt 
-            stor och har många höga värden i exempelvis CRAP m.m.
-            Skriva tester till LibraryController (efter att jag delat upp den i 
+            <li>Dela upp LibraryController i två mindre klasser eftersom (något som tidigare nämnts) klaseen är väldigt 
+            stor och har många höga värden i exempelvis CRAP m.m.</li>
+            <li>Skriva tester till LibraryController (efter att jag delat upp den i 
             två mindre klasser) detta eftersom min kod i allmänhet har dålig täckning (coverage) 
-            och denna klassen är bland de större så kommer den poängen förmodligen öka om jag åtgärdar det här. 
-            Dela upp editLibraryItem() metoden i LibraryController klassen då den har ett högt CRAP poäng och 
-            hög komplicitet samt en stor volym allt detta i relation till resten av metoderna.
+            och denna klassen är bland de större så kommer den poängen förmodligen öka om jag åtgärdar det här.</li>
+            <li>Dela upp editLibraryItem() metoden i LibraryController klassen då den har ett högt CRAP poäng och 
+            hög komplicitet samt en stor volym allt detta i relation till resten av metoderna.</li>
+        </p>
+
+        <p>
+            Efter implementeringen av ovanstående förbättringsförslag så har min kod kvalite ökat enligt både 
+            scrutinizer och Phpmetrics.
+        </p>
+        <p>
+            Min coverage har blivit bättre eftersom jag implementerat tester: 
+            <a href="{{ asset('assets/img/scrut.png') }}">
+                <img src="{{ asset('assets/img/oldcov.png') }}" alt="Code Coverage" />
+            </a>
+            <a href="{{ asset('assets/img/scrutnew.png') }}">
+                <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/coverage.png?b=main" alt="Code Coverage" />
+            </a>
+        </p>
+        <p>
+            Min <a href="{{ asset('assets/img/crap.png') }}">CRAP</a> status har <a href="{{ asset('assets/img/crapnew.png') }}">minskat</a>.
+            Klickar ni på länkarna så ser man att editLibraryItem() har gått från en CRAP poäng 56 till CRAP 7.79. 
+            Medans createLibraryItem() gått från 42 till 10.5.
+        </p>
+        <p>
+            Volymen har <a href="{{ asset('assets/img/volymnew.png') }}">minskat</a> från <a href="{{ asset('assets/img/volym.png') }}">cirka 2000</a> 
+            till cirka 1800 för LibraryController klassen, även LLOC har minskat från 144 till 127. Allt detta beror självklart på 
+            att jag delat upp klassen till LibraryController och LibraryControllerJson.
+        </p>
+        <p>
+            Även komplexiteten på LibraryController har <a href="{{ asset('assets/img/complexlibnew.png') }}">minskat</a> 
+            från <a href="{{ asset('assets/img/complexlib.png') }}">33</a> till 30 i scrutinizers poängskala.
+        </p>
+        <p>
+            Med dessa ändringar har min kod mycket bättre testning, mindre komplicitet vilket gör den lättare att unerhålla 
+            och genom uppdelning av koden så är det också lättare att överskåda vad som är vad.
         </p>
 
     <h2>Diskussion</h2>
-        <p>
-            
-        </p>
+
+        <h2>Kan man aktivt jobba med kodkvalitet och “clean code” på detta sättet?</h2>
+            <p>
+                Jag har blandade åsikter, till viss del så är detta systemet väldigt bra då det hjälper till att 
+                identifiera problem och svagheter. Vissa av de 6C som lyfts ser jag inte riktigt hur de relaterar till 
+                problem i koden, exempelvis coupling. Det kanske är uppenbart vid andra tillfällen men just för min kod 
+                så berättar denna punkt enbart hur mycket en klass används av en annan klass och vise versa, vilket 
+                inte är jätte värdefult i min mening (just nu).
+            </p>
+        <h2>Finns det fördelar och kanske nackdelar?</h2>
+            <p>
+                De fördelar som jag upplevde var framförallt scrutinizer och dess badges, det var mycket enkelt att 
+                se vad som gjorde koden bättre och det blev lite som ett "mini-game" i sig att pusha updates för att se 
+                vad den nya scoren blev. Även CRAP i scrutinizer var väldigt givande att se, jag själv tyckte inte att 
+                de metoder som den tyckte var stora eller komplicerade men det fick en att öppna ögonen för förbättringar.
+            </p>
+        <h2>Ser du andra möjligheter att jobba mot “clean code”?</h2>
+            <p>
+                Förmodligen skulle jag behöva implementera mer av de optionella Phpmetrics funktionerna (så som code coverage) 
+                för att kunna jämföra vad den och scrutinizer tycker samtidigt och om det skiljer sig. Jag är dock inte helt hundra på hur 
+                man gör det på ett smidigt sätt. Förmodligen finns det många andra liknande verktyg som man säkert kan mata in i github 
+                eller lokalt för att få mättal. Med andra ord fler mätningar av olika produkter hade gjort förbättringarna ännu mer 
+                robusta och ökat kvaliten.
+            </p>
 
 {% endblock %}

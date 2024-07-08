@@ -321,11 +321,6 @@ Search.appendIndex(
             "summary": "Route\u0020to\u0020add\u0020a\u0020book\u0020to\u0020the\u0020library.",
             "url": "classes/App-Controller-LibraryController.html#method_addBookPage"
         },                {
-            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowAllBooks\u0028\u0029",
-            "name": "showAllBooks",
-            "summary": "Route\u0020to\u0020add\u0020a\u0020book\u0020to\u0020the\u0020library\u0020\u0028api\u0020route\u0029.",
-            "url": "classes/App-Controller-LibraryController.html#method_showAllBooks"
-        },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowBookDetails\u0028\u0029",
             "name": "showBookDetails",
             "summary": "Route\u0020to\u0020show\u0020details\u0020of\u0020a\u0020book.",
@@ -336,35 +331,25 @@ Search.appendIndex(
             "summary": "Route\u0020to\u0020add\u0020a\u0020book\u0020to\u0020the\u0020library.",
             "url": "classes/App-Controller-LibraryController.html#method_createLibraryItem"
         },                {
-            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowAllLibraryItems\u0028\u0029",
-            "name": "showAllLibraryItems",
-            "summary": "Route\u0020to\u0020show\u0020all\u0020the\u0020books\u0020in\u0020the\u0020library\u0020as\u0020Json.",
-            "url": "classes/App-Controller-LibraryController.html#method_showAllLibraryItems"
-        },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowAllLibraryItemsHtml\u0028\u0029",
             "name": "showAllLibraryItemsHtml",
             "summary": "Route\u0020to\u0020show\u0020all\u0020the\u0020books\u0020in\u0020the\u0020library.",
             "url": "classes/App-Controller-LibraryController.html#method_showAllLibraryItemsHtml"
-        },                {
-            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowLibraryItemById\u0028\u0029",
-            "name": "showLibraryItemById",
-            "summary": "Route\u0020to\u0020show\u0020a\u0020book\u0020by\u0020id\u0020from\u0020the\u0020library.",
-            "url": "classes/App-Controller-LibraryController.html#method_showLibraryItemById"
-        },                {
-            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowLibraryItemByISBN\u0028\u0029",
-            "name": "showLibraryItemByISBN",
-            "summary": "Route\u0020to\u0020show\u0020a\u0020book\u0020based\u0020on\u0020isbn\u0020from\u0020the\u0020library.",
-            "url": "classes/App-Controller-LibraryController.html#method_showLibraryItemByISBN"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowLibrarySearchHtml\u0028\u0029",
             "name": "showLibrarySearchHtml",
             "summary": "Route\u0020to\u0020search\u0020for\u0020a\u0020book\u0020from\u0020the\u0020library.",
             "url": "classes/App-Controller-LibraryController.html#method_showLibrarySearchHtml"
         },                {
-            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AupdateLibraryItem\u0028\u0029",
-            "name": "updateLibraryItem",
-            "summary": "Route\u0020to\u0020update\u0020the\u0020picture\u0020of\u0020a\u0020book\u0020cover\u0020library.",
-            "url": "classes/App-Controller-LibraryController.html#method_updateLibraryItem"
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AfindLibraryItem\u0028\u0029",
+            "name": "findLibraryItem",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryController.html#method_findLibraryItem"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AcheckRequest\u0028\u0029",
+            "name": "checkRequest",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryController.html#method_checkRequest"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AeditLibraryItem\u0028\u0029",
             "name": "editLibraryItem",
@@ -380,6 +365,26 @@ Search.appendIndex(
             "name": "libraryDelete",
             "summary": "Route\u0020delete\u0020a\u0020book\u0020from\u0020the\u0020library\u0020by\u0020it\u0027s\u0020id.",
             "url": "classes/App-Controller-LibraryController.html#method_libraryDelete"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryControllerJson",
+            "name": "LibraryControllerJson",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryControllerJson.html"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryControllerJson\u003A\u003AshowAllLibraryItems\u0028\u0029",
+            "name": "showAllLibraryItems",
+            "summary": "Route\u0020to\u0020show\u0020all\u0020the\u0020books\u0020in\u0020the\u0020library\u0020as\u0020Json.",
+            "url": "classes/App-Controller-LibraryControllerJson.html#method_showAllLibraryItems"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryControllerJson\u003A\u003AshowLibraryItemById\u0028\u0029",
+            "name": "showLibraryItemById",
+            "summary": "Route\u0020to\u0020show\u0020a\u0020book\u0020by\u0020id\u0020from\u0020the\u0020library.",
+            "url": "classes/App-Controller-LibraryControllerJson.html#method_showLibraryItemById"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryControllerJson\u003A\u003AshowLibraryItemByISBN\u0028\u0029",
+            "name": "showLibraryItemByISBN",
+            "summary": "Route\u0020to\u0020show\u0020a\u0020book\u0020based\u0020on\u0020isbn\u0020from\u0020the\u0020library.",
+            "url": "classes/App-Controller-LibraryControllerJson.html#method_showLibraryItemByISBN"
         },                {
             "fqsen": "\\App\\Controller\\LuckyControllerJson",
             "name": "LuckyControllerJson",
@@ -425,6 +430,11 @@ Search.appendIndex(
             "name": "number",
             "summary": "",
             "url": "classes/App-Controller-LuckyControllerTwig.html#method_number"
+        },                {
+            "fqsen": "\\App\\Controller\\LuckyControllerTwig\u003A\u003Ametrics\u0028\u0029",
+            "name": "metrics",
+            "summary": "",
+            "url": "classes/App-Controller-LuckyControllerTwig.html#method_metrics"
         },                {
             "fqsen": "\\App\\Controller\\ProductController",
             "name": "ProductController",

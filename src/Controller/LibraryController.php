@@ -187,7 +187,7 @@ class LibraryController extends AbstractController
         if (!$title || !$isbn || !$author || !$picture) {
             return new Response('Det saknas information', Response::HTTP_BAD_REQUEST);
         }
-    return null;
+        return null;
     }
 
     /**
@@ -209,7 +209,7 @@ class LibraryController extends AbstractController
 
         if ($request->isMethod('POST')) {
             $validationResult = $this->checkRequest($request);
-    
+
             if ($validationResult !== null) {
                 return $validationResult;
             }
