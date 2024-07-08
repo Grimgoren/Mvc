@@ -452,7 +452,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.Pj_I6U9"/>
+      <argument type="service" id=".service_locator.bMe0fa."/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -3349,7 +3349,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.Pj_I6U9"/>
+      <argument type="service" id=".service_locator.bMe0fa."/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -7561,7 +7561,7 @@
         <argument key="productRepository" type="service_closure" id="App\Repository\ProductRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.Pj_I6U9" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.bMe0fa." class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
@@ -7572,7 +7572,6 @@
         <argument key="App\Controller\LibraryController::createLibraryItem" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\LibraryController::showAllLibraryItemsHtml" type="service_closure" id=".service_locator.mFXXG35"/>
         <argument key="App\Controller\LibraryController::showLibrarySearchHtml" type="service_closure" id=".service_locator.mFXXG35"/>
-        <argument key="App\Controller\LibraryController::updateLibraryItem" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\LibraryController::editLibraryItem" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\LibraryController::showEditForm" type="service_closure" id=".service_locator.mFXXG35"/>
         <argument key="App\Controller\LibraryController::libraryDelete" type="service_closure" id=".service_locator.o6sN0hZ"/>
@@ -7593,7 +7592,6 @@
         <argument key="App\Controller\LibraryController:createLibraryItem" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\LibraryController:showAllLibraryItemsHtml" type="service_closure" id=".service_locator.mFXXG35"/>
         <argument key="App\Controller\LibraryController:showLibrarySearchHtml" type="service_closure" id=".service_locator.mFXXG35"/>
-        <argument key="App\Controller\LibraryController:updateLibraryItem" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\LibraryController:editLibraryItem" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\LibraryController:showEditForm" type="service_closure" id=".service_locator.mFXXG35"/>
         <argument key="App\Controller\LibraryController:libraryDelete" type="service_closure" id=".service_locator.o6sN0hZ"/>
@@ -9779,7 +9777,7 @@
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface" alias="webpack_encore.entrypoint_lookup[_default]"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.Pj_I6U9"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.bMe0fa."/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>

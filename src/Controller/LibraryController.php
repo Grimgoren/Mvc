@@ -149,9 +149,7 @@ class LibraryController extends AbstractController
         ]);
     }
 
-    /**
-     * Route to update the picture of a book cover library.
-     */
+    /*
     #[Route('/library/update/{id}/{picture}', name: 'library_update')]
     public function updateLibraryItem(
         ManagerRegistry $doctrine,
@@ -172,6 +170,25 @@ class LibraryController extends AbstractController
 
         return $this->redirectToRoute('library_show_all');
     }
+     */
+
+    private function findLibraryItem(ManagerRegistry $doctrine, int $id): ?Library
+    {
+        return $doctrine->getManager()->getRepository(Library::class)->find($id);
+    }
+
+    private function checkRequest(Request $request): ?Response
+    {
+        $title = $request->request->get('title');
+        $isbn = $request->request->get('isbn');
+        $author = $request->request->get('author');
+        $picture = $request->request->get('picture');
+
+        if (!$title || !$isbn || !$author || !$picture) {
+            return new Response('Det saknas information', Response::HTTP_BAD_REQUEST);
+        }
+    return null;
+    }
 
     /**
      * Route to the info about a book by the id library.
@@ -182,22 +199,25 @@ class LibraryController extends AbstractController
         ManagerRegistry $doctrine,
         int $id
     ): Response {
+
         $entityManager = $doctrine->getManager();
-        $libraryItem = $entityManager->getRepository(Library::class)->find($id);
+        $libraryItem = $this->findLibraryItem($doctrine, $id);
 
         if (!$libraryItem) {
             throw $this->createNotFoundException('No book found for id ' . $id);
         }
 
         if ($request->isMethod('POST')) {
+            $validationResult = $this->checkRequest($request);
+    
+            if ($validationResult !== null) {
+                return $validationResult;
+            }
+
             $title = $request->request->get('title');
             $isbn = $request->request->get('isbn');
             $author = $request->request->get('author');
             $picture = $request->request->get('picture');
-
-            if (!$title || !$isbn || !$author || !$picture) {
-                return new Response('Det saknas inormation', Response::HTTP_BAD_REQUEST);
-            }
 
             $libraryItem->setTitle($title);
             $libraryItem->setISBN($isbn);
