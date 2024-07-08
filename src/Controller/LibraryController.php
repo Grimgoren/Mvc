@@ -62,7 +62,7 @@ class LibraryController extends AbstractController
             ->getResult();
 
         if (!$libraryItems) {
-            return new Response('No book found with the title ' . $title, Response::HTTP_NOT_FOUND);
+            return new Response('Ingen bok hittad med titeln ' . $title, Response::HTTP_NOT_FOUND);
         }
 
         return $this->render('library/showDetails.html.twig', [

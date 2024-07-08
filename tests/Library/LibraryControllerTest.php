@@ -74,6 +74,16 @@ class LibraryControllerTest extends WebTestCase
         $this->assertStringContainsString('The Lord of the Rings', $crawler->filter('h1')->text());
     }
 
+    public function testShowBookDetailsFakeData()
+    {
+        $client = static::createClient();
+    
+        $crawler = $client->request('GET', '/library/detailsOfBook/FakeData');
+    
+        $this->assertEquals(404, $client->getResponse()->getStatusCode());
+        $this->assertStringContainsString('Ingen bok hittad med titeln', $client->getResponse()->getContent());
+    }
+
     public function testCreateBookFailPage()
     {
         $client = static::createClient();
