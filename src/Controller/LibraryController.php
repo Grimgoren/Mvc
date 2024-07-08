@@ -204,7 +204,7 @@ class LibraryController extends AbstractController
         $libraryItem = $this->findLibraryItem($doctrine, $id);
 
         if (!$libraryItem) {
-            throw $this->createNotFoundException('No book found for id ' . $id);
+            throw $this->createNotFoundException('Ingen bok hittades för ' . $id);
         }
 
         if ($request->isMethod('POST')) {
@@ -243,7 +243,7 @@ class LibraryController extends AbstractController
         $libraryItem = $libraryRepository->find($id);
 
         if (!$libraryItem) {
-            throw $this->createNotFoundException('No book found for id ' . $id);
+            return new Response('Ingen bok hittades för id ' . $id, Response::HTTP_BAD_REQUEST);
         }
 
         return $this->render('library/editDetails.html.twig', [
@@ -254,7 +254,7 @@ class LibraryController extends AbstractController
     /**
      * Route delete a book from the library by it's id.
      */
-    #[Route('/library/delete/{id}', name: 'library_delete', methods: ['POST'])]
+    #[Route('/library/delete/{id}', name: 'library_delete', methods: ['POST', 'GET'])]
     public function libraryDelete(
         Request $request,
         ManagerRegistry $doctrine,
@@ -264,9 +264,7 @@ class LibraryController extends AbstractController
         $libraryItem = $entityManager->getRepository(Library::class)->find($id);
 
         if (!$libraryItem) {
-            throw $this->createNotFoundException(
-                'No book found for id '.$id
-            );
+            return new Response('Ingen bok hittades för id ' . $id, Response::HTTP_BAD_REQUEST);
         }
 
         if ($request->isMethod('POST')) {

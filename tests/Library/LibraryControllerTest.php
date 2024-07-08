@@ -125,4 +125,26 @@ class LibraryControllerTest extends WebTestCase
         $this->assertCount(4, $crawler->filter('label'));
         $this->assertStringContainsString('Titel:', $crawler->filter('label[for="title"]')->text());
     }
+
+    public function testEditPageFailPage()
+    {
+        $client = static::createClient();
+
+        $client->request('GET', '/library/edit/1000');
+
+        $this->assertEquals(400, $client->getResponse()->getStatusCode());
+
+        $this->assertSelectorTextContains('p', 'Ingen bok hittades för id');
+    }
+
+    public function testLibraryDeleteFailPage()
+    {
+        $client = static::createClient();
+
+        $client->request('GET', '/library/delete/1000');
+
+        $this->assertEquals(400, $client->getResponse()->getStatusCode());
+
+        $this->assertSelectorTextContains('p', 'Ingen bok hittades för id');
+    }
 }
