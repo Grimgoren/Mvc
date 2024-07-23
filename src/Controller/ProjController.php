@@ -120,21 +120,6 @@ class ProjController extends AbstractController
 
         $gameDone = false;
 
-        var_dump($playerValue);
-        print_r($playerValue);
-
-        var_dump($playerValue2);
-        print_r($playerValue2);
-
-        var_dump($playerValue3);
-        print_r($playerValue3);
-
-        var_dump($dealerValue);
-        print_r($dealerValue);
-
-        var_dump($deckCount);
-        print_r($deckCount);
-
         return $this->render('blackjack/blackjackstart.html.twig', [
             'playerCards' => $playerCards,
             'playerCards2' => $playerCards2,
@@ -273,19 +258,20 @@ class ProjController extends AbstractController
     public function stopBlackJack(SessionInterface $session): Response
     {
         $deckOfCards = unserialize($session->get('deckOfCards'));
-        $oldDealerCards = $session->get('dealerCards');
-        $playerCards = $session->get('playerCards');
-        $playerCards2 = $session->get('playerCards2');
-        $playerCards3 = $session->get('playerCards3');
-        $playerValue = $session->get('playerValue');
+
+        $oldDealerCards = $session->get('dealerCards', []);
+        $playerCards1 = $session->get('playerCards', []);
+        $playerCards2 = $session->get('playerCards2', []);
+        $playerCards3 = $session->get('playerCards3', []);
+        $playerValue1 = $session->get('playerValue');
         $playerValue2 = $session->get('playerValue2');
         $playerValue3 = $session->get('playerValue3');
 
-        $stand1 = $session->get('playerStand', false);
+        $stand1 = $session->get('player1Stand', false);
         $stand2 = $session->get('player2Stand', false);
         $stand3 = $session->get('player3Stand', false);
 
-        $busted1 = $session->get('playerBust', false);
+        $busted1 = $session->get('player1Bust', false);
         $busted2 = $session->get('player2Bust', false);
         $busted3 = $session->get('player3Bust', false);
 
@@ -316,7 +302,7 @@ class ProjController extends AbstractController
         }
 
         $session->set('deckOfCards', serialize($deckOfCards));
-        $session->set('playerCards', $playerCards);
+        $session->set('playerCards', $playerCards1);
         $session->set('playerCards2', $playerCards2);
         $session->set('playerCards3', $playerCards3);
         $session->set('dealerCards', $oldDealerCards);
@@ -334,12 +320,16 @@ class ProjController extends AbstractController
 
         $gameDone = $allBustedOrStanding;
 
+        echo "player1 standing: " . ($stand['player1']) . "\n";
+        echo "player2 standing: " . ($stand['player2']) . "\n";
+        echo "player3 standing: " . ($stand['player3']) . "\n";
+
         return $this->render('blackjack/blackjackstart.html.twig', [
-            'playerCards' => $playerCards,
+            'playerCards' => $playerCards1,
             'playerCards2' => $playerCards2,
             'playerCards3' => $playerCards3,
             'dealerCards' => $oldDealerCards,
-            'playerValue' => $playerValue,
+            'playerValue' => $playerValue1,
             'playerValue2' => $playerValue2,
             'playerValue3' => $playerValue3,
             'dealerValue' => $dealerValue,

@@ -50,6 +50,7 @@ return [
         '/blackjack/start' => [[['_route' => 'blackjack', '_controller' => 'App\\Controller\\ProjController::startBlackJack'], null, ['GET' => 0], null, false, false, null]],
         '/blackjack/hitRegister' => [[['_route' => 'hitRegister', '_controller' => 'App\\Controller\\ProjController::hitRegister'], null, ['GET' => 0], null, false, false, null]],
         '/blackjack/hit' => [[['_route' => 'hit', '_controller' => 'App\\Controller\\ProjController::blackJackHit'], null, ['GET' => 0], null, false, false, null]],
+        '/blackjack/standRegister' => [[['_route' => 'standRegister', '_controller' => 'App\\Controller\\ProjController::standRegister'], null, ['GET' => 0], null, false, false, null]],
         '/blackjack/stand' => [[['_route' => 'stand', '_controller' => 'App\\Controller\\ProjController::stopBlackJack'], null, ['GET' => 0], null, false, false, null]],
         '/blackjack/DoublingDown' => [[['_route' => 'DoublingDown', '_controller' => 'App\\Controller\\ProjController::blackJackDoublingDown'], null, ['GET' => 0], null, false, false, null]],
         '/game' => [[['_route' => 'gamepage', '_controller' => 'App\\Controller\\TjugoettControllerTwig::cardStartPage'], null, null, null, false, false, null]],
