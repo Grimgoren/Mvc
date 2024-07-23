@@ -409,6 +409,13 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\ProductController"/>
       </call>
     </service>
+    <service id="App\Controller\ProjController" class="App\Controller\ProjController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\ProjController"/>
+      </call>
+    </service>
     <service id="App\Controller\TjugoettControllerTwig" class="App\Controller\TjugoettControllerTwig" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -7113,6 +7120,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ProductController" class="App\Controller\ProductController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ProductController" class="App\Controller\ProductController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ProductController" class="App\Controller\ProductController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ProjController" class="App\Controller\ProjController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ProjController" class="App\Controller\ProjController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ProjController" class="App\Controller\ProjController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TjugoettControllerTwig" class="App\Controller\TjugoettControllerTwig" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TjugoettControllerTwig" class="App\Controller\TjugoettControllerTwig" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\TjugoettControllerTwig" class="App\Controller\TjugoettControllerTwig" autowire="true" autoconfigure="true" abstract="true"/>
@@ -8239,6 +8249,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\ProjController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ProjController"/>
+      <argument>App\Controller\ProjController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
     <service id=".service_locator.O2p6Lk7.App\Controller\TjugoettControllerTwig" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\TjugoettControllerTwig"/>
       <argument>App\Controller\TjugoettControllerTwig</argument>
@@ -8423,6 +8439,7 @@
           <argument>App\Controller\LibraryControllerJson</argument>
           <argument>App\Controller\LuckyControllerTwig</argument>
           <argument>App\Controller\ProductController</argument>
+          <argument>App\Controller\ProjController</argument>
           <argument>App\Controller\TjugoettControllerTwig</argument>
           <argument>Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController</argument>
         </argument>

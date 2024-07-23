@@ -1,0 +1,162 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+{% if deckCount == 52 %}
+    <h2>Dealer</h2>
+    <ul>
+        <p>Kort kvar: {{ deckCount }}</p>
+    </ul>
+    <h2>Spelare</h2>
+    <button onclick="location.href='{{ path('blackjack') }}'" type="button">Startade inte spelet? Tryck här!</button>
+{% endif %}
+
+{% if class != "finish" %}
+    {% if deckCount < 52 %}
+        <h2>Dealer</h2>
+        <ul>
+            <p>Kort kvar: {{ deckCount }}</p>
+            <div class="card-container">
+                {% for card in dealerCards %}
+                    <div class="allcards
+                        {% if loop.index == 1 %}
+                            {% if card.getSuit() == 'Hearts' %}
+                                heart
+                            {% elseif card.getSuit() == 'Diamonds' %}
+                                diamond
+                            {% elseif card.getSuit() == 'Clubs' %}
+                                club
+                            {% else %}
+                                spade
+                            {% endif %}
+                        {% else %}
+                            back
+                        {% endif %}
+                    ">
+                        <p>
+                            {% if loop.index == 1 %}
+                                {{ card.getAsString() }}
+                            {% else %}
+                                ?
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        </ul>
+    {% endif %}
+{% endif %}
+
+{% if class != "finish" %}
+    {% if deckCount < 52 %}
+            {% if dealerCards|length > 2 %}
+            <h2>Dealer</h2>
+                <ul>
+                    <p>Kort kvar: {{ deckCount }}</p>
+                    <p>Poäng: {{ dealerValue }}</p>
+                    <div class="card-container">
+                        {% for card in dealerCards %}
+                            <div class="allcards
+                                {% if card.getSuit() == 'Hearts' %}
+                                    heart
+                                {% elseif card.getSuit() == 'Diamonds' %}
+                                    diamond
+                                {% elseif card.getSuit() == 'Clubs' %}
+                                    club
+                                {% else %}
+                                    spade
+                                {% endif %}
+                            ">
+                                <p>{{ card.getAsString() }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </ul>
+    {% endif %}
+{% endif %}
+
+{% if class != "finish" %}
+    {% if deckCount < 52 %}
+        <h2>Spelare 1</h2>
+            <ul>
+                <p>Poäng: {{ playerValue }}</p>
+                <button onclick="location.href='{{ path('hitRegister', { player: 'player1' }) }}'" type="button">Hit</button>
+                <button onclick="location.href='{{ path('stand') }}'" type="Stand">Stand</button>
+                <div class="card-container">
+                    {% for card in playerCards %}
+                        <div class="allcards
+                            {% if card.getSuit() == 'Hearts' %}
+                                heart
+                            {% elseif card.getSuit() == 'Diamonds' %}
+                                diamond
+                            {% elseif card.getSuit() == 'Clubs' %}
+                                club
+                            {% else %}
+                                spade
+                            {% endif %}
+                        ">
+                            <p>{{ card.getAsString() }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </ul>
+    {% endif %}
+{% endif %}
+
+{% if class != "finish" %}
+    {% if deckCount < 52 %}
+        <h2>Spelare 2</h2>
+            <ul>
+                <p>Poäng: {{ playerValue2 }}</p>
+                <button onclick="location.href='{{ path('hitRegister', { player: 'player2' }) }}'" type="button">Hit</button>
+                <button onclick="location.href='{{ path('stand') }}'" type="Stand">Stand</button>
+                <div class="card-container">
+                    {% for card in playerCards2 %}
+                        <div class="allcards
+                            {% if card.getSuit() == 'Hearts' %}
+                                heart
+                            {% elseif card.getSuit() == 'Diamonds' %}
+                                diamond
+                            {% elseif card.getSuit() == 'Clubs' %}
+                                club
+                            {% else %}
+                                spade
+                            {% endif %}
+                        ">
+                            <p>{{ card.getAsString() }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </ul>
+    {% endif %}
+{% endif %}
+
+{% if class != "finish" %}
+    {% if deckCount < 52 %}
+        <h2>Spelare 3</h2>
+            <ul>
+                <p>Poäng: {{ playerValue3 }}</p>
+                <button onclick="location.href='{{ path('hitRegister', { player: 'player3' }) }}'" type="button">Hit</button>
+                <button onclick="location.href='{{ path('stand') }}'" type="Stand">Stand</button>
+                <div class="card-container">
+                    {% for card in playerCards3 %}
+                        <div class="allcards
+                            {% if card.getSuit() == 'Hearts' %}
+                                heart
+                            {% elseif card.getSuit() == 'Diamonds' %}
+                                diamond
+                            {% elseif card.getSuit() == 'Clubs' %}
+                                club
+                            {% else %}
+                                spade
+                            {% endif %}
+                        ">
+                            <p>{{ card.getAsString() }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </ul>
+    {% endif %}
+{% endif %}
+
+{% endblock %}
