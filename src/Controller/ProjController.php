@@ -156,80 +156,94 @@ class ProjController extends AbstractController
         if (in_array($player, ['player1', 'player2', 'player3'])) {
             $session->set($player . 'Hit', true);
         }
-    
+
         return $this->redirectToRoute('hit');
     }
-    
+
     #[Route("/blackjack/hit", name: "hit", methods: ['GET'])]
     public function blackJackHit(SessionInterface $session): Response
     {
         $deckOfCards = unserialize($session->get('deckOfCards'));
+
+        $oldPlayerCards1 = $session->get('playerCards', []);
+        $oldPlayerCards2 = $session->get('playerCards2', []);
+        $oldPlayerCards3 = $session->get('playerCards3', []);
         
-        // Retrieve all player cards and values from the session
-        $playerCards = [
-            'player1' => $session->get('playerCards', []),
-            'player2' => $session->get('playerCards2', []),
-            'player3' => $session->get('playerCards3', [])
-        ];
-    
-        $playerValues = [
-            'player1' => $session->get('playerValue', 0),
-            'player2' => $session->get('playerValue2', 0),
-            'player3' => $session->get('playerValue3', 0)
-        ];
-    
-        $dealerCards = $session->get('dealerCards', []);
-        $dealerValue = $session->get('dealerValue', 0);
-    
-        // Check which players have hit
+        $dealerCards = $session->get('dealerCards');
+        $dealerValue = $session->get('dealerValue');
+
+        $playerValue1 = $session->get('playerValue');
+        $playerValue2 = $session->get('playerValue2');
+        $playerValue3 = $session->get('playerValue3');
+
+        $hitMe1 = $session->get('player1Hit');
+        $hitMe2 = $session->get('player2Hit');
+        $hitMe3 = $session->get('player3Hit');
+
+        $doubledDown1 = $session->get('playerDoubledDown', false);
+        $doubledDown2 = $session->get('player2DoubledDown', false);
+        $doubledDown3 = $session->get('player3DoubledDown', false);
+
         $hitMe = [
-            'player1' => $session->get('player1Hit', false),
-            'player2' => $session->get('player2Hit', false),
-            'player3' => $session->get('player3Hit', false)
+            'player1' => $hitMe1,
+            'player2' => $hitMe2,
+            'player3' => $hitMe3
         ];
-    
-        // Check which players have doubled down
+
         $doubledDown = [
-            'player1' => $session->get('playerDoubledDown', false),
-            'player2' => $session->get('playerDoubledDown2', false),
-            'player3' => $session->get('playerDoubledDown3', false)
+            'player1' => $doubledDown1,
+            'player2' => $doubledDown2,
+            'player3' => $doubledDown3
         ];
-    
-        // Process hits for each player
-        foreach ($hitMe as $player => $hit) {
-            if ($hit && !$doubledDown[$player]) {
+
+        $playerValues = [
+            'player1' => $playerValue1,
+            'player2' => $playerValue2,
+            'player3' => $playerValue3
+        ];
+
+        $playerCards = [
+            'player1' => $oldPlayerCards1,
+            'player2' => $oldPlayerCards2,
+            'player3' => $oldPlayerCards3
+        ];
+
+        foreach (['player1', 'player2', 'player3'] as $player) {
+            if ($hitMe[$player] && !$doubledDown[$player]) {
                 $newCard = $deckOfCards->drawCard();
-                $playerCards[$player][] = $newCard; // Add the new card to the player's hand
-    
+                $playerCards[$player][] = $newCard;
                 $playerHand = new CardHand();
                 foreach ($playerCards[$player] as $card) {
                     $playerHand->add($card);
                 }
-    
                 $playerValues[$player] = $playerHand->getHandValue();
-    
-                // Update session values for the player
-                $session->set($player . 'Cards', $playerCards[$player]);
-                $session->set($player . 'Value', $playerValues[$player]);
-                $session->set($player . 'Hit', false); // Reset hit flag
+
+                switch ($player) {
+                    case 'player1':
+                        $session->set('playerCards', $playerCards['player1']);
+                        $session->set('playerValue', $playerValues['player1']);
+                        $session->set('player1Hit', false);
+                        break;
+                    case 'player2':
+                        $session->set('playerCards2', $playerCards['player2']);
+                        $session->set('playerValue2', $playerValues['player2']);
+                        $session->set('player2Hit', false);
+                        break;
+                    case 'player3':
+                        $session->set('playerCards3', $playerCards['player3']);
+                        $session->set('playerValue3', $playerValues['player3']);
+                        $session->set('player3Hit', false);
+                        break;
+                }
             }
         }
-    
-        // Update the deck of cards in the session
+
         $session->set('deckOfCards', serialize($deckOfCards));
         $session->set('dealerCards', $dealerCards);
         $session->set('dealerValue', $dealerValue);
-    
+
         $deckCount = count($deckOfCards->getDeck());
-        $gameDone = false;
-    
-        echo "player1: " . $playerValues['player1'] . "\n";
-        echo "player2: " . $playerValues['player2'] . "\n";
-        echo "player3: " . $playerValues['player3'] . "\n";
-        echo "Dealer score: " . $dealerValue . "\n";
-        echo "Deckcount: " . $deckCount . "\n";
-        echo "Player1 doubled down?: " . ($doubledDown['player1'] ? 'Yes' : 'No') . "\n";
-    
+
         return $this->render('blackjack/blackjackstart.html.twig', [
             'playerCards' => $playerCards['player1'],
             'playerCards2' => $playerCards['player2'],
@@ -240,10 +254,20 @@ class ProjController extends AbstractController
             'playerValue2' => $playerValues['player2'],
             'playerValue3' => $playerValues['player3'],
             'deckCount' => $deckCount,
-            'class' => $gameDone
+            'class' => false
         ]);
     }
-    
+
+    #[Route("/blackjack/standRegister", name: "standRegister", methods: ['GET'])]
+    public function standRegister(SessionInterface $session, Request $request): Response
+    {
+        $player = $request->query->get('player');
+        if (in_array($player, ['player1', 'player2', 'player3'])) {
+            $session->set($player . 'Stand', true);
+        }
+
+        return $this->redirectToRoute('stand');
+    }
 
     #[Route("/blackjack/stand", name: "stand", methods: ['GET'])]
     public function stopBlackJack(SessionInterface $session): Response
@@ -257,21 +281,21 @@ class ProjController extends AbstractController
         $playerValue2 = $session->get('playerValue2');
         $playerValue3 = $session->get('playerValue3');
 
-        $stand1 = $session->get('playerStand');
-        $stand2 = $session->get('playerStand2');
-        $stand3 = $session->get('playerStand3');
+        $stand1 = $session->get('playerStand', false);
+        $stand2 = $session->get('player2Stand', false);
+        $stand3 = $session->get('player3Stand', false);
 
-        $busted1 = $session->get('playerBust');
-        $busted2 = $session->get('playerBust2');
-        $busted3 = $session->get('playerBust3');
+        $busted1 = $session->get('playerBust', false);
+        $busted2 = $session->get('player2Bust', false);
+        $busted3 = $session->get('player3Bust', false);
 
-        $stand = [ // Lägg till en knapp per spelare som skickar true (default false) på hitme
+        $stand = [
             'player1' => $stand1,
             'player2' => $stand2,
             'player3' => $stand3
         ];
 
-        $busted = [ // Lägg till en knapp per spelare som skickar true (default false) på hitme
+        $busted = [
             'player1' => $busted1,
             'player2' => $busted2,
             'player3' => $busted3

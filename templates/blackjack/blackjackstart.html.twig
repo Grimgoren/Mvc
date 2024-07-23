@@ -81,7 +81,7 @@
             <ul>
                 <p>Poäng: {{ playerValue }}</p>
                 <button onclick="location.href='{{ path('hitRegister', { player: 'player1' }) }}'" type="button">Hit</button>
-                <button onclick="location.href='{{ path('stand') }}'" type="Stand">Stand</button>
+                <button onclick="location.href='{{ path('standRegister') }}'" type="Stand">Stand</button>
                 <div class="card-container">
                     {% for card in playerCards %}
                         <div class="allcards
@@ -109,7 +109,7 @@
             <ul>
                 <p>Poäng: {{ playerValue2 }}</p>
                 <button onclick="location.href='{{ path('hitRegister', { player: 'player2' }) }}'" type="button">Hit</button>
-                <button onclick="location.href='{{ path('stand') }}'" type="Stand">Stand</button>
+                <button onclick="location.href='{{ path('standRegister') }}'" type="Stand">Stand</button>
                 <div class="card-container">
                     {% for card in playerCards2 %}
                         <div class="allcards
@@ -137,7 +137,7 @@
             <ul>
                 <p>Poäng: {{ playerValue3 }}</p>
                 <button onclick="location.href='{{ path('hitRegister', { player: 'player3' }) }}'" type="button">Hit</button>
-                <button onclick="location.href='{{ path('stand') }}'" type="Stand">Stand</button>
+                <button onclick="location.href='{{ path('standRegister') }}'" type="Stand">Stand</button>
                 <div class="card-container">
                     {% for card in playerCards3 %}
                         <div class="allcards
