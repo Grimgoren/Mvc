@@ -141,6 +141,83 @@ class ProjController extends AbstractController
         ]);
     }
 
+    #[Route("/blackjack/gameCheck", name: "gameCheck", methods: ['GET'])]
+    public function gameCheck(SessionInterface $session, Request $request): Response
+    {
+
+        $deckOfCards = unserialize($session->get('deckOfCards'));
+
+        $oldPlayerCards1 = $session->get('playerCards', []);
+        $oldPlayerCards2 = $session->get('playerCards2', []);
+        $oldPlayerCards3 = $session->get('playerCards3', []);
+        
+        $dealerCards = $session->get('dealerCards');
+        $dealerValue = $session->get('dealerValue');
+
+        $playerValue1 = $session->get('playerValue');
+        $playerValue2 = $session->get('playerValue2');
+        $playerValue3 = $session->get('playerValue3');
+
+        $hitMe1 = $session->get('player1Hit');
+        $hitMe2 = $session->get('player2Hit');
+        $hitMe3 = $session->get('player3Hit');
+
+        $stand1 = $session->get('player1Stand', false);
+        $stand2 = $session->get('player2Stand', false);
+        $stand3 = $session->get('player3Stand', false);
+
+        $doubledDown1 = $session->get('player1DoubledDown', false);
+        $doubledDown2 = $session->get('player2DoubledDown', false);
+        $doubledDown3 = $session->get('player3DoubledDown', false);
+
+        $hitMe = [
+            'player1' => $hitMe1,
+            'player2' => $hitMe2,
+            'player3' => $hitMe3
+        ];
+
+        $doubledDown = [
+            'player1' => $doubledDown1,
+            'player2' => $doubledDown2,
+            'player3' => $doubledDown3
+        ];
+
+        $playerValues = [
+            'player1' => $playerValue1,
+            'player2' => $playerValue2,
+            'player3' => $playerValue3
+        ];
+
+        $playerCards = [
+            'player1' => $oldPlayerCards1,
+            'player2' => $oldPlayerCards2,
+            'player3' => $oldPlayerCards3
+        ];
+
+        $deckCount = count($deckOfCards->getDeck());
+
+        $gameDone = $stand1 && $stand2 && $stand3;
+
+        return $this->render('blackjack/blackjackstart.html.twig', [
+            'playerCards' => $playerCards['player1'],
+            'playerCards2' => $playerCards['player2'],
+            'playerCards3' => $playerCards['player3'],
+            'dealerCards' => $dealerCards,
+            'dealerValue' => $dealerValue,
+            'playerValue' => $playerValues['player1'],
+            'playerValue2' => $playerValues['player2'],
+            'playerValue3' => $playerValues['player3'],
+            'deckCount' => $deckCount,
+            'class' => $gameDone ? "finish" : "",
+            'stand1' => $stand1,
+            'stand2' => $stand2,
+            'stand3' => $stand3,
+            'double1' => $doubledDown1,
+            'double2' => $doubledDown2,
+            'double3' => $doubledDown3
+        ]);
+    }
+
     #[Route("/blackjack/hitRegister", name: "hitRegister", methods: ['GET'])]
     public function hitRegister(SessionInterface $session, Request $request): Response
     {
@@ -240,21 +317,7 @@ class ProjController extends AbstractController
 
         $deckCount = count($deckOfCards->getDeck());
 
-        return $this->render('blackjack/blackjackstart.html.twig', [
-            'playerCards' => $playerCards['player1'],
-            'playerCards2' => $playerCards['player2'],
-            'playerCards3' => $playerCards['player3'],
-            'dealerCards' => $dealerCards,
-            'dealerValue' => $dealerValue,
-            'playerValue' => $playerValues['player1'],
-            'playerValue2' => $playerValues['player2'],
-            'playerValue3' => $playerValues['player3'],
-            'deckCount' => $deckCount,
-            'class' => false,
-            'stand1' => $stand1,
-            'stand2' => $stand2,
-            'stand3' => $stand3,
-        ]);
+        return $this->redirectToRoute('gameCheck');
     }
 
     #[Route("/blackjack/standRegister", name: "standRegister", methods: ['GET'])]
@@ -308,48 +371,33 @@ class ProjController extends AbstractController
 
         $deckCount = count($deckOfCards->getDeck());
 
-        $allBustedOrStanding = false;
+        $allStandingOrBusted = true;
         foreach (['player1', 'player2', 'player3'] as $player) {
-            if ((!$busted[$player] || $stand[$player])) {
-                $allBustedOrStanding = true;
-
-                $dealerHand = new CardHand();
-                foreach ($oldDealerCards as $card) {
-                    $dealerHand->add($card);
-                }
-
-                $dealerValue = $dealerHand->getHandValue();
-
-                while ($dealerValue < 17) {
-                    $newCard = $deckOfCards->drawCard();
-                    $dealerHand->add($newCard);
-                    $dealerValue = $dealerHand->getHandValue();
-                    $oldDealerCards[] = $newCard;
-                    $session->set('dealerCards', $oldDealerCards);
-                    $session->set('dealerValue', $dealerValue);
-                }
+            if (!($busted[$player] || $stand[$player])) {
+                $allStandingOrBusted = false;
                 break;
             }
         }
 
-        var_dump($allBustedOrStanding);
-        $gameDone = $allBustedOrStanding;
+        if ($allStandingOrBusted) {
+            $dealerHand = new CardHand();
+            foreach ($oldDealerCards as $card) {
+                $dealerHand->add($card);
+            }
+    
+            $dealerValue = $dealerHand->getHandValue();
+    
+            while ($dealerValue < 17) {
+                $newCard = $deckOfCards->drawCard();
+                $dealerHand->add($newCard);
+                $dealerValue = $dealerHand->getHandValue();
+                $oldDealerCards[] = $newCard;
+                $session->set('dealerCards', $oldDealerCards);
+                $session->set('dealerValue', $dealerValue);
+            }
+        }
 
-        return $this->render('blackjack/blackjackstart.html.twig', [
-            'playerCards' => $playerCards1,
-            'playerCards2' => $playerCards2,
-            'playerCards3' => $playerCards3,
-            'dealerCards' => $oldDealerCards,
-            'playerValue' => $playerValue1,
-            'playerValue2' => $playerValue2,
-            'playerValue3' => $playerValue3,
-            'dealerValue' => $dealerValue,
-            'deckCount' => $deckCount,
-            'class' => $gameDone,
-            'stand1' => $stand1,
-            'stand2' => $stand2,
-            'stand3' => $stand3,
-        ]);
+        return $this->redirectToRoute('gameCheck');
     }
 
     #[Route("/blackjack/doublingRegister", name: "doublingRegister", methods: ['GET'])]
@@ -458,23 +506,6 @@ class ProjController extends AbstractController
 
         $deckCount = count($deckOfCards->getDeck());
 
-        return $this->render('blackjack/blackjackstart.html.twig', [
-            'playerCards' => $playerCards['player1'],
-            'playerCards2' => $playerCards['player2'],
-            'playerCards3' => $playerCards['player3'],
-            'dealerCards' => $dealerCards,
-            'dealerValue' => $dealerValue,
-            'playerValue' => $playerValues['player1'],
-            'playerValue2' => $playerValues['player2'],
-            'playerValue3' => $playerValues['player3'],
-            'deckCount' => $deckCount,
-            'class' => false,
-            'stand1' => $stand1Check,
-            'stand2' => $stand2Check,
-            'stand3' => $stand3Check,
-            'double1' => $doubledDown1,
-            'double2' => $doubledDown2,
-            'double3' => $doubledDown3
-        ]);
+        return $this->redirectToRoute('gameCheck');
     }
 }

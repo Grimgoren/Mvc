@@ -109,6 +109,7 @@
                 {% if stand2 != true %}
                     <button onclick="location.href='{{ path('hitRegister', { player: 'player2' }) }}'" type="button">Hit</button>
                     <button onclick="location.href='{{ path('standRegister', { player: 'player2' }) }}'" type="button">Stand</button>
+                    <button onclick="location.href='{{ path('doublingRegister', { player: 'player2' }) }}'" type="button">Doubling down</button>
                 {% endif %}
                 <div class="card-container">
                     {% for card in playerCards2 %}
@@ -139,6 +140,7 @@
                 {% if stand3 != true %}
                     <button onclick="location.href='{{ path('hitRegister', { player: 'player3' }) }}'" type="button">Hit</button>
                     <button onclick="location.href='{{ path('standRegister', { player: 'player3' }) }}'" type="button">Stand</button>
+                    <button onclick="location.href='{{ path('doublingRegister', { player: 'player3' }) }}'" type="button">Doubling down</button>
                 {% endif %}
                 <div class="card-container">
                     {% for card in playerCards3 %}
