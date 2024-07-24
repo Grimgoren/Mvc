@@ -123,11 +123,11 @@ class ProjController extends AbstractController
         $session->set('playerValue3', $playerValue3);
         $session->set('dealerValue', $dealerValue);
         $session->set('name1', $name1);
-        $session->set('bet1', $name1);
+        $session->set('bet1', $bet1);
         $session->set('name2', $name2);
-        $session->set('bet2', $name2);
+        $session->set('bet2', $bet2);
         $session->set('name3', $name3);
-        $session->set('bet3', $name3);
+        $session->set('bet3', $bet3);
 
         $deckCount = count($deckOfCards->getDeck());
 
@@ -480,6 +480,16 @@ class ProjController extends AbstractController
         $doubledDown2 = $session->get('player2DoubledDown', false);
         $doubledDown3 = $session->get('player3DoubledDown', false);
 
+        $bet1 = (int) $session->get('bet1', 0);
+        $bet2 = (int) $session->get('bet2', 0);
+        $bet3 = (int) $session->get('bet3', 0);
+
+        $bets = [
+            'player1' => $bet1,
+            'player2' => $bet2,
+            'player3' => $bet3
+        ];
+
         $hitMe = [
             'player1' => $hitMe1,
             'player2' => $hitMe2,
@@ -506,6 +516,7 @@ class ProjController extends AbstractController
 
         foreach (['player1', 'player2', 'player3'] as $player) {
             if (!$hitMe[$player] && $doubledDown[$player]) {
+                $bets[$player] *= 2;
                 $newCard = $deckOfCards->drawCard();
                 $playerCards[$player][] = $newCard;
                 $playerHand = new CardHand();
@@ -518,18 +529,21 @@ class ProjController extends AbstractController
                     case 'player1':
                         $session->set('playerCards', $playerCards['player1']);
                         $session->set('playerValue', $playerValues['player1']);
+                        $session->set('bet1', $bets['player1']);
                         $session->set('player1DoubledDown', false);
                         $session->set('player1Stand', true);
                         break;
                     case 'player2':
                         $session->set('playerCards2', $playerCards['player2']);
                         $session->set('playerValue2', $playerValues['player2']);
+                        $session->set('bet2', $bets['player2']);
                         $session->set('player2DoubledDown', false);
                         $session->set('player2Stand', true);
                         break;
                     case 'player3':
                         $session->set('playerCards3', $playerCards['player3']);
                         $session->set('playerValue3', $playerValues['player3']);
+                        $session->set('bet3', $bets['player3']);
                         $session->set('player3DoubledDown', false);
                         $session->set('player3Stand', true);
                         break;
