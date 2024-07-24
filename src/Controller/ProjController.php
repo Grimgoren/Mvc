@@ -175,7 +175,10 @@ class ProjController extends AbstractController
             'name3' => $name3,
             'bet1' => $bet1,
             'bet2' => $bet2,
-            'bet3' => $bet3
+            'bet3' => $bet3,
+            'busted1' => $busted1,
+            'busted2' => $busted2,
+            'busted3' => $busted3
         ]);
     }
 
@@ -305,7 +308,6 @@ class ProjController extends AbstractController
         if (in_array($player, ['player1', 'player2', 'player3']) && !$busted) {
             $session->set($player . 'Hit', true);
         }
-
         return $this->redirectToRoute('hit');
     }
 
@@ -317,7 +319,7 @@ class ProjController extends AbstractController
         $oldPlayerCards1 = $session->get('playerCards', []);
         $oldPlayerCards2 = $session->get('playerCards2', []);
         $oldPlayerCards3 = $session->get('playerCards3', []);
-
+        
         $dealerCards = $session->get('dealerCards');
         $dealerValue = $session->get('dealerValue');
 
@@ -478,9 +480,9 @@ class ProjController extends AbstractController
             foreach ($oldDealerCards as $card) {
                 $dealerHand->add($card);
             }
-    
+
             $dealerValue = $dealerHand->getHandValue();
-    
+
             while ($dealerValue < 17) {
                 $newCard = $deckOfCards->drawCard();
                 $dealerHand->add($newCard);
@@ -498,7 +500,8 @@ class ProjController extends AbstractController
     public function doublingRegister(SessionInterface $session, Request $request): Response
     {
         $player = $request->query->get('player');
-        if (in_array($player, ['player1', 'player2', 'player3'])) {
+        $busted = $session->get($player . 'Bust', false);
+        if (in_array($player, ['player1', 'player2', 'player3']) && !$busted) {
             $session->set($player . 'DoubledDown', true);
         }
 
@@ -577,6 +580,10 @@ class ProjController extends AbstractController
                     $playerHand->add($card);
                 }
                 $playerValues[$player] = $playerHand->getHandValue();
+
+                if ($playerValues[$player] > 21) {
+                    $session->set($player . 'Bust', true);
+                }
 
                 switch ($player) {
                     case 'player1':

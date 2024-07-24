@@ -76,9 +76,13 @@
             <p>Poäng: {{ playerValue }}</p>
             {% if class != "finish" %}
                 {% if stand1 != true %}
-                    <button onclick="location.href='{{ path('hitRegister', { player: 'player1' }) }}'" type="button">Ta kort</button>
+                    {% if busted1 != true %}
+                        <button onclick="location.href='{{ path('hitRegister', { player: 'player1' }) }}'" type="button">Ta kort</button>
+                    {% endif %}
                     <button onclick="location.href='{{ path('standRegister', { player: 'player1' }) }}'" type="button">Stanna</button>
-                    <button onclick="location.href='{{ path('doublingRegister', { player: 'player1' }) }}'" type="button">Dubbla</button>
+                    {% if busted1 != true %}
+                        <button onclick="location.href='{{ path('doublingRegister', { player: 'player1' }) }}'" type="button">Dubbla</button>
+                    {% endif %}
                 {% endif %}
             {% endif %}
             <div class="card-container">
@@ -107,9 +111,13 @@
             <p>Poäng: {{ playerValue2 }}</p>
             {% if class != "finish" %}
                 {% if stand2 != true %}
-                    <button onclick="location.href='{{ path('hitRegister', { player: 'player2' }) }}'" type="button">Ta kort</button>
+                    {% if busted2 != true %}
+                        <button onclick="location.href='{{ path('hitRegister', { player: 'player2' }) }}'" type="button">Ta kort</button>
+                    {% endif %}
                     <button onclick="location.href='{{ path('standRegister', { player: 'player2' }) }}'" type="button">Stanna</button>
-                    <button onclick="location.href='{{ path('doublingRegister', { player: 'player2' }) }}'" type="button">Dubbla</button>
+                    {% if busted2 != true %}
+                        <button onclick="location.href='{{ path('doublingRegister', { player: 'player2' }) }}'" type="button">Dubbla</button>
+                    {% endif %}
                 {% endif %}
             {% endif %}
             <div class="card-container">
@@ -138,9 +146,13 @@
             <p>Poäng: {{ playerValue3 }}</p>
             {% if class != "finish" %}
                 {% if stand3 != true %}
-                    <button onclick="location.href='{{ path('hitRegister', { player: 'player3' }) }}'" type="button">Ta kort</button>
+                    {% if busted3 != true %}
+                        <button onclick="location.href='{{ path('hitRegister', { player: 'player3' }) }}'" type="button">Ta kort</button>
+                    {% endif %}
                     <button onclick="location.href='{{ path('standRegister', { player: 'player3' }) }}'" type="button">Stanna</button>
-                    <button onclick="location.href='{{ path('doublingRegister', { player: 'player3' }) }}'" type="button">Dubbla</button>
+                    {% if busted3 != true %}
+                        <button onclick="location.href='{{ path('doublingRegister', { player: 'player3' }) }}'" type="button">Dubbla</button>
+                    {% endif %}
                 {% endif %}
             {% endif %}
             <div class="card-container">
