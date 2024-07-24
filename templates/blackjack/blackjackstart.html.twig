@@ -10,8 +10,8 @@
     <button onclick="location.href='{{ path('blackjack') }}'" type="button">Startade inte spelet? Tryck här!</button>
 {% endif %}
 
-{% if class != "finish" %}
-    {% if deckCount < 52 %}
+
+{% if deckCount < 52 %}
         {% if dealerCards|length <= 2 %}
             <h2>Dealer</h2>
             <ul>
@@ -67,7 +67,6 @@
                     {% endfor %}
                 </div>
             </ul>
-        {% endif %}
     {% endif %}
 {% endif %}
 
@@ -76,8 +75,11 @@
         <h2>Spelare 1</h2>
             <ul>
                 <p>Poäng: {{ playerValue }}</p>
-                <button onclick="location.href='{{ path('hitRegister', { player: 'player1' }) }}'" type="button">Hit</button>
-                <button onclick="location.href='{{ path('stand') }}'" type="Stand">Stand</button>
+                {% if stand1 != true %}
+                    <button onclick="location.href='{{ path('hitRegister', { player: 'player1' }) }}'" type="button">Hit</button>
+                    <button onclick="location.href='{{ path('standRegister', { player: 'player1' }) }}'" type="button">Stand</button>
+                    <button onclick="location.href='{{ path('doublingRegister', { player: 'player1' }) }}'" type="button">Doubling down</button>
+                {% endif %}
                 <div class="card-container">
                     {% for card in playerCards %}
                         <div class="allcards
@@ -104,8 +106,10 @@
         <h2>Spelare 2</h2>
             <ul>
                 <p>Poäng: {{ playerValue2 }}</p>
-                <button onclick="location.href='{{ path('hitRegister', { player: 'player2' }) }}'" type="button">Hit</button>
-                <button onclick="location.href='{{ path('stand') }}'" type="Stand">Stand</button>
+                {% if stand2 != true %}
+                    <button onclick="location.href='{{ path('hitRegister', { player: 'player2' }) }}'" type="button">Hit</button>
+                    <button onclick="location.href='{{ path('standRegister', { player: 'player2' }) }}'" type="button">Stand</button>
+                {% endif %}
                 <div class="card-container">
                     {% for card in playerCards2 %}
                         <div class="allcards
@@ -132,8 +136,10 @@
         <h2>Spelare 3</h2>
             <ul>
                 <p>Poäng: {{ playerValue3 }}</p>
-                <button onclick="location.href='{{ path('hitRegister', { player: 'player3' }) }}'" type="button">Hit</button>
-                <button onclick="location.href='{{ path('stand') }}'" type="Stand">Stand</button>
+                {% if stand3 != true %}
+                    <button onclick="location.href='{{ path('hitRegister', { player: 'player3' }) }}'" type="button">Hit</button>
+                    <button onclick="location.href='{{ path('standRegister', { player: 'player3' }) }}'" type="button">Stand</button>
+                {% endif %}
                 <div class="card-container">
                     {% for card in playerCards3 %}
                         <div class="allcards
