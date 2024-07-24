@@ -1,8 +1,33 @@
-{% extends "base.html.twig" %}
 {% block body %}
 
 <h1>Blackjack</h1>
 
-<button onclick="location.href='{{ path('blackjack') }}'" type="button">Spela</button>
+<form action="{{ path('blackjack') }}" method="post">
+    <div>
+        <label for="name">Spelare 1:</label>
+        <input type="text" id="name" name="name1" required>
+    </div>
+    <div>
+        <label for="bet">Satsning:</label>
+        <input type="number" id="bet" name="bet1" required min="1">
+    </div>
+        <div>
+        <label for="name">Spelare 2:</label>
+        <input type="text" id="name" name="name2" required>
+    </div>
+    <div>
+        <label for="bet">Satsning:</label>
+        <input type="number" id="bet" name="bet2" required min="1">
+    </div>
+        <div>
+        <label for="name">Spelare 3:</label>
+        <input type="text" id="name" name="name3" required>
+    </div>
+    <div>
+        <label for="bet">Satsning:</label>
+        <input type="number" id="bet" name="bet3" required min="1">
+    </div>
+    <button type="submit">Spela</button>
+</form>
 
 {% endblock %}

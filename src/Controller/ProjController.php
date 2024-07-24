@@ -56,13 +56,20 @@ class ProjController extends AbstractController
         ]);
     }
 
-    #[Route("/blackjack/start", name: "blackjack", methods: ['GET'])]
-    public function startBlackJack(SessionInterface $session): Response
+    #[Route("/blackjack/start", name: "blackjack", methods: ['GET', 'POST'])]
+    public function startBlackJack(SessionInterface $session, Request $request): Response
     {
         $session->clear();
 
         $deckOfCards = new DeckOfCards();
         $deckOfCards->shuffleDeck();
+
+        $name1 = $request->request->get('name1');
+        $bet1 = $request->request->get('bet1');
+        $name2 = $request->request->get('name2');
+        $bet2 = $request->request->get('bet2');
+        $name3 = $request->request->get('name3');
+        $bet3 = $request->request->get('bet3');
 
         $playerCards = [
             $deckOfCards->drawCard(),
@@ -115,6 +122,12 @@ class ProjController extends AbstractController
         $session->set('playerValue2', $playerValue2);
         $session->set('playerValue3', $playerValue3);
         $session->set('dealerValue', $dealerValue);
+        $session->set('name1', $name1);
+        $session->set('bet1', $name1);
+        $session->set('name2', $name2);
+        $session->set('bet2', $name2);
+        $session->set('name3', $name3);
+        $session->set('bet3', $name3);
 
         $deckCount = count($deckOfCards->getDeck());
 
@@ -138,6 +151,12 @@ class ProjController extends AbstractController
             'stand1' => $stand1,
             'stand2' => $stand2,
             'stand3' => $stand3,
+            'name1' => $name1,
+            'name2' => $name2,
+            'name3' => $name3,
+            'bet1' => $bet1,
+            'bet2' => $bet2,
+            'bet3' => $bet3
         ]);
     }
 
@@ -169,6 +188,13 @@ class ProjController extends AbstractController
         $doubledDown1 = $session->get('player1DoubledDown', false);
         $doubledDown2 = $session->get('player2DoubledDown', false);
         $doubledDown3 = $session->get('player3DoubledDown', false);
+
+        $name1 = $session->get('name1');
+        $bet1 = $session->get('bet1');
+        $name2 = $session->get('name2');
+        $bet2 = $session->get('bet2');
+        $name3 = $session->get('name3');
+        $bet3 = $session->get('bet3');
 
         $hitMe = [
             'player1' => $hitMe1,
@@ -223,7 +249,13 @@ class ProjController extends AbstractController
             'stand3' => $stand3,
             'double1' => $doubledDown1,
             'double2' => $doubledDown2,
-            'double3' => $doubledDown3
+            'double3' => $doubledDown3,
+            'name1' => $name1,
+            'name2' => $name2,
+            'name3' => $name3,
+            'bet1' => $bet1,
+            'bet2' => $bet2,
+            'bet3' => $bet3
         ]);
     }
 
