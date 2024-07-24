@@ -113,6 +113,22 @@ class ProjController extends AbstractController
         $playerValue3 = $playerHand3->getHandValue();
         $dealerValue = $dealerHand->getHandValue();
 
+        $busted1 = false;
+        $busted2 = false;
+        $busted3 = false;
+
+        if ($playerValue > 21) {
+            $busted1 = true;
+        }
+
+        if ($playerValue2 > 21) {
+            $busted2 = true;
+        }
+
+        if ($playerValue3 > 21) {
+            $busted3 = true;
+        }
+
         $session->set('deckOfCards', serialize($deckOfCards));
         $session->set('playerCards', $playerCards);
         $session->set('playerCards2', $playerCards2);
@@ -128,6 +144,9 @@ class ProjController extends AbstractController
         $session->set('bet2', $bet2);
         $session->set('name3', $name3);
         $session->set('bet3', $bet3);
+        $session->set('player1Bust', $busted1);
+        $session->set('player2Bust', $busted2);
+        $session->set('player3Bust', $busted3);
 
         $deckCount = count($deckOfCards->getDeck());
 
@@ -188,6 +207,22 @@ class ProjController extends AbstractController
         $doubledDown1 = $session->get('player1DoubledDown', false);
         $doubledDown2 = $session->get('player2DoubledDown', false);
         $doubledDown3 = $session->get('player3DoubledDown', false);
+
+        $busted1 = $session->get('player1Bust', false);
+        $busted2 = $session->get('player2Bust', false);
+        $busted3 = $session->get('player3Bust', false);
+
+        if ($playerValue1 > 21) {
+            $busted1 = true;
+        }
+
+        if ($playerValue2 > 21) {
+            $busted2 = true;
+        }
+
+        if ($playerValue3 > 21) {
+            $busted3 = true;
+        }
 
         $name1 = $session->get('name1');
         $bet1 = $session->get('bet1');
@@ -255,7 +290,10 @@ class ProjController extends AbstractController
             'name3' => $name3,
             'bet1' => $bet1,
             'bet2' => $bet2,
-            'bet3' => $bet3
+            'bet3' => $bet3,
+            'busted1' => $busted1,
+            'busted2' => $busted2,
+            'busted3' => $busted3
         ]);
     }
 
@@ -263,7 +301,8 @@ class ProjController extends AbstractController
     public function hitRegister(SessionInterface $session, Request $request): Response
     {
         $player = $request->query->get('player');
-        if (in_array($player, ['player1', 'player2', 'player3'])) {
+        $busted = $session->get($player . 'Bust', false);
+        if (in_array($player, ['player1', 'player2', 'player3']) && !$busted) {
             $session->set($player . 'Hit', true);
         }
 
@@ -278,7 +317,7 @@ class ProjController extends AbstractController
         $oldPlayerCards1 = $session->get('playerCards', []);
         $oldPlayerCards2 = $session->get('playerCards2', []);
         $oldPlayerCards3 = $session->get('playerCards3', []);
-        
+
         $dealerCards = $session->get('dealerCards');
         $dealerValue = $session->get('dealerValue');
 
@@ -297,6 +336,16 @@ class ProjController extends AbstractController
         $doubledDown1 = $session->get('player1DoubledDown', false);
         $doubledDown2 = $session->get('player2DoubledDown', false);
         $doubledDown3 = $session->get('player3DoubledDown', false);
+
+        $busted1 = $session->get('player1Bust', false);
+        $busted2 = $session->get('player2Bust', false);
+        $busted3 = $session->get('player3Bust', false);
+
+        $busted = [
+            'player1' => $busted1,
+            'player2' => $busted2,
+            'player3' => $busted3
+        ];
 
         $hitMe = [
             'player1' => $hitMe1,
@@ -323,7 +372,7 @@ class ProjController extends AbstractController
         ];
 
         foreach (['player1', 'player2', 'player3'] as $player) {
-            if ($hitMe[$player] && !$doubledDown[$player]) {
+            if ($hitMe[$player] && !$doubledDown[$player] && !$busted[$player]) {
                 $newCard = $deckOfCards->drawCard();
                 $playerCards[$player][] = $newCard;
                 $playerHand = new CardHand();
@@ -331,6 +380,10 @@ class ProjController extends AbstractController
                     $playerHand->add($card);
                 }
                 $playerValues[$player] = $playerHand->getHandValue();
+
+                if ($playerValues[$player] > 21) {
+                    $session->set($player . 'Bust', true);
+                }
 
                 switch ($player) {
                     case 'player1':
