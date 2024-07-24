@@ -198,6 +198,15 @@ class ProjController extends AbstractController
 
         $gameDone = $stand1 && $stand2 && $stand3;
 
+        //var_dump($stand1); 
+        //print_r($stand1);
+
+        //var_dump($stand2); 
+        //print_r($stand2);
+
+        //var_dump($stand3); 
+        //print_r($stand3);
+
         return $this->render('blackjack/blackjackstart.html.twig', [
             'playerCards' => $playerCards['player1'],
             'playerCards2' => $playerCards['player2'],
@@ -419,7 +428,7 @@ class ProjController extends AbstractController
         $oldPlayerCards1 = $session->get('playerCards', []);
         $oldPlayerCards2 = $session->get('playerCards2', []);
         $oldPlayerCards3 = $session->get('playerCards3', []);
-        
+
         $dealerCards = $session->get('dealerCards');
         $dealerValue = $session->get('dealerValue');
 
@@ -499,6 +508,48 @@ class ProjController extends AbstractController
         $stand1Check = $session->get('player1Stand', false);
         $stand2Check = $session->get('player2Stand', false);
         $stand3Check = $session->get('player3Stand', false);
+
+        $busted1 = $session->get('player1Bust', false);
+        $busted2 = $session->get('player2Bust', false);
+        $busted3 = $session->get('player3Bust', false);
+
+        $stand = [
+            'player1' => $stand1Check,
+            'player2' => $stand2Check,
+            'player3' => $stand3Check
+        ];
+
+        $busted = [
+            'player1' => $busted1,
+            'player2' => $busted2,
+            'player3' => $busted3
+        ];
+
+        $allStandingOrBusted = true;
+        foreach (['player1', 'player2', 'player3'] as $player) {
+            if (!($busted[$player] || $stand[$player])) {
+                $allStandingOrBusted = false;
+                break;
+            }
+        }
+
+        if ($allStandingOrBusted) {
+            $dealerHand = new CardHand();
+            foreach ($dealerCards as $card) {
+                $dealerHand->add($card);
+            }
+    
+            $dealerValue = $dealerHand->getHandValue();
+    
+            while ($dealerValue < 17) {
+                $newCard = $deckOfCards->drawCard();
+                $dealerHand->add($newCard);
+                $dealerValue = $dealerHand->getHandValue();
+                $dealerCards[] = $newCard;
+                $session->set('dealerCards', $dealerCards);
+                $session->set('dealerValue', $dealerValue);
+            }
+        }
 
         $session->set('deckOfCards', serialize($deckOfCards));
         $session->set('dealerCards', $dealerCards);
