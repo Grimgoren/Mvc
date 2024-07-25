@@ -4,13 +4,12 @@
 <div class="game-table-container" style="background-image: url('{{ asset('assets/img/blackjackbackground.jpg') }}');">
     {% if deckCount == 52 %}
         <div class="dealer-section">
-            <h2>Dealer</h2>
-            <ul>
-                <p>Kort kvar: {{ deckCount }}</p>
-            </ul>
+        <div class="dealer-text">
+            <p>Kort kvar: {{ deckCount }}</p>
+        </div>
         </div>
         <div class="player-section">
-            <h2>Spelare</h2>
+            <p>Spelare</p>
             <button onclick="location.href='{{ path('blackjack') }}'" type="button">Startade inte spelet? Tryck här!</button>
         </div>
     {% endif %}
@@ -18,9 +17,9 @@
     {% if deckCount < 52 %}
         <div class="dealer-section">
             {% if dealerCards|length <= 2 %}
-                <h2>Dealer</h2>
-                <ul>
-                    <p>Kort kvar: {{ deckCount }}</p>
+                    <div class="dealer-text">
+                        <p>Kort kvar: {{ deckCount }}</p>
+                    </div>
                     <div class="blackjack-container">
                         {% for card in dealerCards %}
                             <div class="blackjack-cards
@@ -48,12 +47,11 @@
                             </div>
                         {% endfor %}
                     </div>
-                </ul>
             {% else %}
-                <h2>Dealer</h2>
-                <ul>
-                    <p>Kort kvar: {{ deckCount }}</p>
-                    <p>Poäng: {{ dealerValue }}</p>
+                    <div class="dealer-text">
+                        <p>Kort kvar: {{ deckCount }}</p>
+                        <p>Värde: {{ dealerValue }}</p>
+                    </div>
                     <div class="blackjack-container">
                         {% for card in dealerCards %}
                             <div class="blackjack-cards
@@ -71,16 +69,13 @@
                             </div>
                         {% endfor %}
                     </div>
-                </ul>
             {% endif %}
         </div>
     {% endif %}
 
     {% if deckCount < 52 %}
         <div class="player-section">
-            <h2>{{ name1 }} (Satsning: {{ bet1 }})</h2>
-            <ul>
-                <p>Poäng: {{ playerValue }}</p>
+            <p>{{ name1 }} (Insatts: {{ bet1 }}) Värde: {{ playerValue }}</p>
                 {% if class != "finish" %}
                     {% if stand1 != true %}
                         {% if busted1 != true %}
@@ -109,15 +104,12 @@
                         </div>
                     {% endfor %}
                 </div>
-            </ul>
         </div>
     {% endif %}
 
     {% if deckCount < 52 %}
         <div class="player-section">
-            <h2>{{ name2 }} (Satsning: {{ bet2 }})</h2>
-            <ul>
-                <p>Poäng: {{ playerValue2 }}</p>
+            <p>{{ name2 }} (Insatts: {{ bet2 }}) Värde: {{ playerValue2 }}</p>
                 {% if class != "finish" %}
                     {% if stand2 != true %}
                         {% if busted2 != true %}
@@ -146,15 +138,12 @@
                         </div>
                     {% endfor %}
                 </div>
-            </ul>
         </div>
     {% endif %}
 
     {% if deckCount < 52 %}
         <div class="player-section">
-            <h2>{{ name3 }} (Satsning: {{ bet3 }})</h2>
-            <ul>
-                <p>Poäng: {{ playerValue3 }}</p>
+            <p>{{ name3 }} (Insatts: {{ bet3 }}) Värde: {{ playerValue3 }}</p>
                 {% if class != "finish" %}
                     {% if stand3 != true %}
                         {% if busted3 != true %}
@@ -183,7 +172,6 @@
                         </div>
                     {% endfor %}
                 </div>
-            </ul>
         </div>
     {% endif %}
 </div>

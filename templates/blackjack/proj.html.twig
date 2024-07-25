@@ -2,34 +2,30 @@
 
 {% block body %}
 
-<h1>Blackjack</h1>
+<div class="form-container">
+    <form action="{{ path('blackjack') }}" method="post">
+        <div class="player-form">
+            <label for="name1">Spelare 1:</label>
+            <input type="text" id="name1" name="name1" required>
+            <label for="bet1">Satsning:</label>
+            <input type="number" id="bet1" name="bet1" required min="1">
+        </div>
 
-<form action="{{ path('blackjack') }}" method="post">
-    <div>
-        <label for="name">Spelare 1:</label>
-        <input type="text" id="name" name="name1" required>
-    </div>
-    <div>
-        <label for="bet">Satsning:</label>
-        <input type="number" id="bet" name="bet1" required min="1">
-    </div>
-        <div>
-        <label for="name">Spelare 2:</label>
-        <input type="text" id="name" name="name2" required>
-    </div>
-    <div>
-        <label for="bet">Satsning:</label>
-        <input type="number" id="bet" name="bet2" required min="1">
-    </div>
-        <div>
-        <label for="name">Spelare 3:</label>
-        <input type="text" id="name" name="name3" required>
-    </div>
-    <div>
-        <label for="bet">Satsning:</label>
-        <input type="number" id="bet" name="bet3" required min="1">
-    </div>
-    <button class="blackjackbutton" type="submit">Spela</button>
-</form>
+        <div class="player-form">
+            <label for="name2">Spelare 2:</label>
+            <input type="text" id="name2" name="name2" required>
+            <label for="bet2">Satsning:</label>
+            <input type="number" id="bet2" name="bet2" required min="1">
+        </div>
+
+        <div class="player-form">
+            <label for="name3">Spelare 3:</label>
+            <input type="text" id="name3" name="name3" required>
+            <label for="bet3">Satsning:</label>
+            <input type="number" id="bet3" name="bet3" required min="1">
+        </div>
+        <button class="blackjackbutton" type="submit">Spela</button>
+    </form>
+</div>
 
 {% endblock %}

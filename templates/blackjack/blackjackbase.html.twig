@@ -16,10 +16,11 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
-        <body class="blackjackbody">
+        <body class="blackjackbody" style="background-image: url({{ asset('assets/img/greenbackground.jpg') }})">
             <nav>
                 <ul>
                     <button class="blackjacknav" onclick="location.href='{{ path('me') }}'">Hem</button>
+                    <button class="blackjacknav" onclick="location.href='{{ path('proj') }}'">Börja om</button>
                     <button class="blackjacknav" onclick="location.href='{{ path('projAbout') }}'">Om projektet</button>
                 </ul>
             </nav>
