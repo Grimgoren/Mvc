@@ -191,13 +191,12 @@ class ProjController extends AbstractController
     #[Route("/blackjack/gameCheck", name: "gameCheck", methods: ['GET'])]
     public function gameCheck(SessionInterface $session, Request $request): Response
     {
-
         $deckOfCards = unserialize($session->get('deckOfCards'));
 
         $oldPlayerCards1 = $session->get('playerCards', []);
         $oldPlayerCards2 = $session->get('playerCards2', []);
         $oldPlayerCards3 = $session->get('playerCards3', []);
-        
+    
         $dealerCards = $session->get('dealerCards');
         $dealerValue = $session->get('dealerValue');
 
@@ -205,33 +204,13 @@ class ProjController extends AbstractController
         $playerValue2 = $session->get('playerValue2');
         $playerValue3 = $session->get('playerValue3');
 
-        $hitMe1 = $session->get('player1Hit');
-        $hitMe2 = $session->get('player2Hit');
-        $hitMe3 = $session->get('player3Hit');
-
         $stand1 = $session->get('player1Stand', false);
         $stand2 = $session->get('player2Stand', false);
         $stand3 = $session->get('player3Stand', false);
 
-        $doubledDown1 = $session->get('player1DoubledDown', false);
-        $doubledDown2 = $session->get('player2DoubledDown', false);
-        $doubledDown3 = $session->get('player3DoubledDown', false);
-
         $busted1 = $session->get('player1Bust', false);
         $busted2 = $session->get('player2Bust', false);
         $busted3 = $session->get('player3Bust', false);
-
-        if ($playerValue1 > 21) {
-            $busted1 = true;
-        }
-
-        if ($playerValue2 > 21) {
-            $busted2 = true;
-        }
-
-        if ($playerValue3 > 21) {
-            $busted3 = true;
-        }
 
         $name1 = $session->get('name1');
         $bet1 = $session->get('bet1');
@@ -239,18 +218,6 @@ class ProjController extends AbstractController
         $bet2 = $session->get('bet2');
         $name3 = $session->get('name3');
         $bet3 = $session->get('bet3');
-
-        $hitMe = [
-            'player1' => $hitMe1,
-            'player2' => $hitMe2,
-            'player3' => $hitMe3
-        ];
-
-        $doubledDown = [
-            'player1' => $doubledDown1,
-            'player2' => $doubledDown2,
-            'player3' => $doubledDown3
-        ];
 
         $playerValues = [
             'player1' => $playerValue1,
@@ -268,14 +235,11 @@ class ProjController extends AbstractController
 
         $gameDone = $stand1 && $stand2 && $stand3;
 
-        //var_dump($stand1); 
-        //print_r($stand1);
-
-        //var_dump($stand2); 
-        //print_r($stand2);
-
-        //var_dump($stand3); 
-        //print_r($stand3);
+        $winners = [
+            'player1' => $this->whoWon($playerValue1, $busted1, $dealerValue),
+            'player2' => $this->whoWon($playerValue2, $busted2, $dealerValue),
+            'player3' => $this->whoWon($playerValue3, $busted3, $dealerValue)
+        ];
 
         return $this->render('blackjack/blackjackstart.html.twig', [
             'playerCards' => $playerCards['player1'],
@@ -291,9 +255,6 @@ class ProjController extends AbstractController
             'stand1' => $stand1,
             'stand2' => $stand2,
             'stand3' => $stand3,
-            'double1' => $doubledDown1,
-            'double2' => $doubledDown2,
-            'double3' => $doubledDown3,
             'name1' => $name1,
             'name2' => $name2,
             'name3' => $name3,
@@ -302,8 +263,26 @@ class ProjController extends AbstractController
             'bet3' => $bet3,
             'busted1' => $busted1,
             'busted2' => $busted2,
-            'busted3' => $busted3
+            'busted3' => $busted3,
+            'winners' => $winners
         ]);
+    }
+
+    private function whoWon(int $playerValue, bool $playerBusted, int $dealerValue): string
+    {
+        if ($playerBusted) {
+            return 'busted';
+        }
+        if ($dealerValue > 21) {
+            return 'player';
+        }
+        if ($playerValue > $dealerValue) {
+            return 'player';
+        }
+        if ($playerValue < $dealerValue) {
+            return 'dealer';
+        }
+        return 'push';
     }
 
     #[Route("/blackjack/hitRegister", name: "hitRegister", methods: ['GET'])]
