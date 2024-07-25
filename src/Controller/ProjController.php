@@ -196,7 +196,7 @@ class ProjController extends AbstractController
         $oldPlayerCards1 = $session->get('playerCards', []);
         $oldPlayerCards2 = $session->get('playerCards2', []);
         $oldPlayerCards3 = $session->get('playerCards3', []);
-    
+
         $dealerCards = $session->get('dealerCards');
         $dealerValue = $session->get('dealerValue');
 
@@ -241,6 +241,31 @@ class ProjController extends AbstractController
             'player3' => $this->whoWon($playerValue3, $busted3, $dealerValue)
         ];
 
+        $cashFlow = [
+            'player1' => $this->payOut($winners['player1'], $bet1),
+            'player2' => $this->payOut($winners['player2'], $bet2),
+            'player3' => $this->payOut($winners['player3'], $bet3)
+        ];
+
+        $balances = [
+            'player1' => $cashFlow['player1'] + ($winners['player1'] === 'player' || $winners['player1'] === 'blackjack' ? $bet1 : 0),
+            'player2' => $cashFlow['player2'] + ($winners['player2'] === 'player' || $winners['player2'] === 'blackjack' ? $bet2 : 0),
+            'player3' => $cashFlow['player3'] + ($winners['player3'] === 'player' || $winners['player3'] === 'blackjack' ? $bet3 : 0)
+        ];
+
+        if ($gameDone) {
+            $session->set('balance1', $balances['player1']);
+            $session->set('balance2', $balances['player2']);
+            $session->set('balance3', $balances['player3']);
+            $session->set('bet1', $balances['player1']);
+            $session->set('bet2', $balances['player2']);
+            $session->set('bet3', $balances['player3']);
+        }
+
+        $bet1 = $session->get('bet1');
+        $bet2 = $session->get('bet2');
+        $bet3 = $session->get('bet3');
+
         return $this->render('blackjack/blackjackstart.html.twig', [
             'playerCards' => $playerCards['player1'],
             'playerCards2' => $playerCards['player2'],
@@ -264,7 +289,9 @@ class ProjController extends AbstractController
             'busted1' => $busted1,
             'busted2' => $busted2,
             'busted3' => $busted3,
-            'winners' => $winners
+            'winners' => $winners,
+            'netResults' => $cashFlow,
+            'balances' => $balances
         ]);
     }
 
@@ -283,6 +310,21 @@ class ProjController extends AbstractController
             return 'dealer';
         }
         return 'push';
+    }
+
+    private function payOut(string $result, int $bet): int
+    {
+        switch ($result) {
+            case 'player':
+            case 'blackjack': // Assuming we handle blackjack as a special case if needed
+                return $bet;
+            case 'push':
+                return 0;
+            case 'busted':
+            case 'dealer':
+            default:
+                return -$bet;
+        }
     }
 
     #[Route("/blackjack/hitRegister", name: "hitRegister", methods: ['GET'])]
