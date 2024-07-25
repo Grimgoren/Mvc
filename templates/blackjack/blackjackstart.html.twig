@@ -1,6 +1,10 @@
 {% extends "blackjack/blackjackbase.html.twig" %}
 {% block body %}
 
+{% if class == "finish" %}
+<h2>Hej</h2>
+{% endif %}
+
 <div class="game-table-container" style="background-image: url('{{ asset('assets/img/blackjackbackground.jpg') }}');">
     {% if deckCount == 52 %}
         <div class="dealer-section">

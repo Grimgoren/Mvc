@@ -473,7 +473,7 @@ class ProjController extends AbstractController
 
         $deckCount = count($deckOfCards->getDeck());
 
-        $allStandingOrBusted = true;
+        $allStandingOrBusted = $stand1 || $busted1 && $stand2 || $busted2 && $stand3 || $busted3;
         foreach (['player1', 'player2', 'player3'] as $player) {
             if (!($busted[$player] || $stand[$player])) {
                 $allStandingOrBusted = false;
