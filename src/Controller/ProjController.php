@@ -56,6 +56,12 @@ class ProjController extends AbstractController
         ]);
     }
 
+    #[Route("/proj/about", name: "projAbout")]
+    public function projAboutPage(): Response
+    {
+        return $this->render('blackjack/blackjackAbout.html.twig');
+    }
+
     #[Route("/blackjack/start", name: "blackjack", methods: ['GET', 'POST'])]
     public function startBlackJack(SessionInterface $session, Request $request): Response
     {

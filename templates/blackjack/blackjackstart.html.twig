@@ -1,25 +1,62 @@
-{% extends "base.html.twig" %}
+{% extends "blackjack/blackjackbase.html.twig" %}
 {% block body %}
 
-{% if deckCount == 52 %}
-    <h2>Dealer</h2>
-    <ul>
-        <p>Kort kvar: {{ deckCount }}</p>
-    </ul>
-    <h2>Spelare</h2>
-    <button onclick="location.href='{{ path('blackjack') }}'" type="button">Startade inte spelet? Tryck här!</button>
-{% endif %}
-
-
-{% if deckCount < 52 %}
-        {% if dealerCards|length <= 2 %}
+<div class="game-table-container" style="background-image: url('{{ asset('assets/img/blackjackbackground.jpg') }}');">
+    {% if deckCount == 52 %}
+        <div class="dealer-section">
             <h2>Dealer</h2>
             <ul>
                 <p>Kort kvar: {{ deckCount }}</p>
-                <div class="card-container">
-                    {% for card in dealerCards %}
-                        <div class="allcards
-                            {% if loop.index == 1 %}
+            </ul>
+        </div>
+        <div class="player-section">
+            <h2>Spelare</h2>
+            <button onclick="location.href='{{ path('blackjack') }}'" type="button">Startade inte spelet? Tryck här!</button>
+        </div>
+    {% endif %}
+
+    {% if deckCount < 52 %}
+        <div class="dealer-section">
+            {% if dealerCards|length <= 2 %}
+                <h2>Dealer</h2>
+                <ul>
+                    <p>Kort kvar: {{ deckCount }}</p>
+                    <div class="blackjack-container">
+                        {% for card in dealerCards %}
+                            <div class="blackjack-cards
+                                {% if loop.index == 1 %}
+                                    {% if card.getSuit() == 'Hearts' %}
+                                        heart
+                                    {% elseif card.getSuit() == 'Diamonds' %}
+                                        diamond
+                                    {% elseif card.getSuit() == 'Clubs' %}
+                                        club
+                                    {% else %}
+                                        spade
+                                    {% endif %}
+                                {% else %}
+                                    back
+                                {% endif %}
+                            ">
+                                <p>
+                                    {% if loop.index == 1 %}
+                                        {{ card.getAsString() }}
+                                    {% else %}
+                                        ?
+                                    {% endif %}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            {% else %}
+                <h2>Dealer</h2>
+                <ul>
+                    <p>Kort kvar: {{ deckCount }}</p>
+                    <p>Poäng: {{ dealerValue }}</p>
+                    <div class="blackjack-container">
+                        {% for card in dealerCards %}
+                            <div class="blackjack-cards
                                 {% if card.getSuit() == 'Hearts' %}
                                     heart
                                 {% elseif card.getSuit() == 'Diamonds' %}
@@ -29,29 +66,35 @@
                                 {% else %}
                                     spade
                                 {% endif %}
-                            {% else %}
-                                back
-                            {% endif %}
-                        ">
-                            <p>
-                                {% if loop.index == 1 %}
-                                    {{ card.getAsString() }}
-                                {% else %}
-                                    ?
-                                {% endif %}
-                            </p>
-                        </div>
-                    {% endfor %}
-                </div>
-            </ul>
-        {% else %}
-            <h2>Dealer</h2>
+                            ">
+                                <p>{{ card.getAsString() }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if deckCount < 52 %}
+        <div class="player-section">
+            <h2>{{ name1 }} (Satsning: {{ bet1 }})</h2>
             <ul>
-                <p>Kort kvar: {{ deckCount }}</p>
-                <p>Poäng: {{ dealerValue }}</p>
-                <div class="card-container">
-                    {% for card in dealerCards %}
-                        <div class="allcards
+                <p>Poäng: {{ playerValue }}</p>
+                {% if class != "finish" %}
+                    {% if stand1 != true %}
+                        {% if busted1 != true %}
+                            <button class="blackjackbutton" onclick="location.href='{{ path('hitRegister', { player: 'player1' }) }}'" type="button">Ta kort</button>
+                        {% endif %}
+                        <button class="blackjackbutton" onclick="location.href='{{ path('standRegister', { player: 'player1' }) }}'" type="button">Stanna</button>
+                        {% if busted1 != true %}
+                            <button class="blackjackbutton" onclick="location.href='{{ path('doublingRegister', { player: 'player1' }) }}'" type="button">Dubbla</button>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                <div class="blackjack-container">
+                    {% for card in playerCards %}
+                        <div class="blackjack-cards
                             {% if card.getSuit() == 'Hearts' %}
                                 heart
                             {% elseif card.getSuit() == 'Diamonds' %}
@@ -67,112 +110,82 @@
                     {% endfor %}
                 </div>
             </ul>
+        </div>
     {% endif %}
-{% endif %}
 
-{% if deckCount < 52 %}
-    <h2>{{ name1 }} (Satsning: {{ bet1 }})</h2>
-        <ul>
-            <p>Poäng: {{ playerValue }}</p>
-            {% if class != "finish" %}
-                {% if stand1 != true %}
-                    {% if busted1 != true %}
-                        <button onclick="location.href='{{ path('hitRegister', { player: 'player1' }) }}'" type="button">Ta kort</button>
-                    {% endif %}
-                    <button onclick="location.href='{{ path('standRegister', { player: 'player1' }) }}'" type="button">Stanna</button>
-                    {% if busted1 != true %}
-                        <button onclick="location.href='{{ path('doublingRegister', { player: 'player1' }) }}'" type="button">Dubbla</button>
+    {% if deckCount < 52 %}
+        <div class="player-section">
+            <h2>{{ name2 }} (Satsning: {{ bet2 }})</h2>
+            <ul>
+                <p>Poäng: {{ playerValue2 }}</p>
+                {% if class != "finish" %}
+                    {% if stand2 != true %}
+                        {% if busted2 != true %}
+                            <button class="blackjackbutton" onclick="location.href='{{ path('hitRegister', { player: 'player2' }) }}'" type="button">Ta kort</button>
+                        {% endif %}
+                        <button class="blackjackbutton" onclick="location.href='{{ path('standRegister', { player: 'player2' }) }}'" type="button">Stanna</button>
+                        {% if busted2 != true %}
+                            <button class="blackjackbutton" onclick="location.href='{{ path('doublingRegister', { player: 'player2' }) }}'" type="button">Dubbla</button>
+                        {% endif %}
                     {% endif %}
                 {% endif %}
-            {% endif %}
-            <div class="card-container">
-                {% for card in playerCards %}
-                    <div class="allcards
-                        {% if card.getSuit() == 'Hearts' %}
-                            heart
-                        {% elseif card.getSuit() == 'Diamonds' %}
-                            diamond
-                        {% elseif card.getSuit() == 'Clubs' %}
-                            club
-                        {% else %}
-                            spade
-                        {% endif %}
-                    ">
-                        <p>{{ card.getAsString() }}</p>
-                    </div>
-                {% endfor %}
-            </div>
-        </ul>
-{% endif %}
+                <div class="blackjack-container">
+                    {% for card in playerCards2 %}
+                        <div class="blackjack-cards
+                            {% if card.getSuit() == 'Hearts' %}
+                                heart
+                            {% elseif card.getSuit() == 'Diamonds' %}
+                                diamond
+                            {% elseif card.getSuit() == 'Clubs' %}
+                                club
+                            {% else %}
+                                spade
+                            {% endif %}
+                        ">
+                            <p>{{ card.getAsString() }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </ul>
+        </div>
+    {% endif %}
 
-{% if deckCount < 52 %}
-    <h2>{{ name2 }} (Satsning: {{ bet2 }})</h2>
-        <ul>
-            <p>Poäng: {{ playerValue2 }}</p>
-            {% if class != "finish" %}
-                {% if stand2 != true %}
-                    {% if busted2 != true %}
-                        <button onclick="location.href='{{ path('hitRegister', { player: 'player2' }) }}'" type="button">Ta kort</button>
-                    {% endif %}
-                    <button onclick="location.href='{{ path('standRegister', { player: 'player2' }) }}'" type="button">Stanna</button>
-                    {% if busted2 != true %}
-                        <button onclick="location.href='{{ path('doublingRegister', { player: 'player2' }) }}'" type="button">Dubbla</button>
+    {% if deckCount < 52 %}
+        <div class="player-section">
+            <h2>{{ name3 }} (Satsning: {{ bet3 }})</h2>
+            <ul>
+                <p>Poäng: {{ playerValue3 }}</p>
+                {% if class != "finish" %}
+                    {% if stand3 != true %}
+                        {% if busted3 != true %}
+                            <button class="blackjackbutton" onclick="location.href='{{ path('hitRegister', { player: 'player3' }) }}'" type="button">Ta kort</button>
+                        {% endif %}
+                        <button class="blackjackbutton" onclick="location.href='{{ path('standRegister', { player: 'player3' }) }}'" type="button">Stanna</button>
+                        {% if busted3 != true %}
+                            <button class="blackjackbutton" onclick="location.href='{{ path('doublingRegister', { player: 'player3' }) }}'" type="button">Dubbla</button>
+                        {% endif %}
                     {% endif %}
                 {% endif %}
-            {% endif %}
-            <div class="card-container">
-                {% for card in playerCards2 %}
-                    <div class="allcards
-                        {% if card.getSuit() == 'Hearts' %}
-                            heart
-                        {% elseif card.getSuit() == 'Diamonds' %}
-                            diamond
-                        {% elseif card.getSuit() == 'Clubs' %}
-                            club
-                        {% else %}
-                            spade
-                        {% endif %}
-                    ">
-                        <p>{{ card.getAsString() }}</p>
-                    </div>
-                {% endfor %}
-            </div>
-        </ul>
-{% endif %}
-
-{% if deckCount < 52 %}
-    <h2>{{ name3 }} (Satsning: {{ bet3 }})</h2>
-        <ul>
-            <p>Poäng: {{ playerValue3 }}</p>
-            {% if class != "finish" %}
-                {% if stand3 != true %}
-                    {% if busted3 != true %}
-                        <button onclick="location.href='{{ path('hitRegister', { player: 'player3' }) }}'" type="button">Ta kort</button>
-                    {% endif %}
-                    <button onclick="location.href='{{ path('standRegister', { player: 'player3' }) }}'" type="button">Stanna</button>
-                    {% if busted3 != true %}
-                        <button onclick="location.href='{{ path('doublingRegister', { player: 'player3' }) }}'" type="button">Dubbla</button>
-                    {% endif %}
-                {% endif %}
-            {% endif %}
-            <div class="card-container">
-                {% for card in playerCards3 %}
-                    <div class="allcards
-                        {% if card.getSuit() == 'Hearts' %}
-                            heart
-                        {% elseif card.getSuit() == 'Diamonds' %}
-                            diamond
-                        {% elseif card.getSuit() == 'Clubs' %}
-                            club
-                        {% else %}
-                            spade
-                        {% endif %}
-                    ">
-                        <p>{{ card.getAsString() }}</p>
-                    </div>
-                {% endfor %}
-            </div>
-        </ul>
-{% endif %}
+                <div class="blackjack-container">
+                    {% for card in playerCards3 %}
+                        <div class="blackjack-cards
+                            {% if card.getSuit() == 'Hearts' %}
+                                heart
+                            {% elseif card.getSuit() == 'Diamonds' %}
+                                diamond
+                            {% elseif card.getSuit() == 'Clubs' %}
+                                club
+                            {% else %}
+                                spade
+                            {% endif %}
+                        ">
+                            <p>{{ card.getAsString() }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </ul>
+        </div>
+    {% endif %}
+</div>
 
 {% endblock %}

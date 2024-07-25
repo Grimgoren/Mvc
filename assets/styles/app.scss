@@ -6,9 +6,39 @@ body {
   color: white
 }
 
+.blackjackbody {
+  margin: 0 auto;
+  max-width: 1200px;
+  background-size: cover;
+  background-color: #455302;
+  color: white
+}
+
 .link-color { 
   color: #007bff;
   text-decoration: none;
+}
+
+.blackjacknav {
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+
+.blackjacknav:hover {
+  background-color: #04AA6D;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.blackjackbutton {
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+
+.blackjackbutton:hover {
+    background-color: #04AA6D;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .site-header {
@@ -17,6 +47,18 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.blackjack-header {
+  height: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-size: cover;
+  background-position: center -120px;
+  background-repeat: no-repeat;
+  border-radius: 8px;
 }
 
 .site-footer {
@@ -130,6 +172,35 @@ h1 {
     margin: auto;
 }
 
+.blackjack-cards {
+    position: relative;
+    background-color: white;
+    color: black;
+    font-size: 62px;
+    font-weight: bold;
+    border: 2px solid #000;
+    border-radius: 10px;
+    width: 120px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+    text-align: center;
+    margin: auto;
+}
+
+.blackjack-cards::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 5px solid white;
+    border-radius: 10px;
+}
+
 .heart p {
     color: red;
 }
@@ -146,6 +217,50 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     grid-gap: 20px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.game-table-container {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.game-table-container::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -15px;
+    border: 5px solid white;
+    border-radius: 10px;
+}
+
+
+.dealer-section {
+    grid-column: 1 / -1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.player-section {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.blackjack-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
     padding: 20px;
     margin: 0 auto;
 }
