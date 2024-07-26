@@ -50,6 +50,7 @@ return [
         '/proj/about' => [[['_route' => 'projAbout', '_controller' => 'App\\Controller\\ProjController::projAboutPage'], null, null, null, false, false, null]],
         '/blackjack/start' => [[['_route' => 'blackjack', '_controller' => 'App\\Controller\\ProjController::startBlackJack'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/blackjack/gameCheck' => [[['_route' => 'gameCheck', '_controller' => 'App\\Controller\\ProjController::gameCheck'], null, ['GET' => 0], null, false, false, null]],
+        '/blackjack/playAgain' => [[['_route' => 'playAgain', '_controller' => 'App\\Controller\\ProjController::playAgain'], null, ['GET' => 0], null, false, false, null]],
         '/blackjack/hitRegister' => [[['_route' => 'hitRegister', '_controller' => 'App\\Controller\\ProjController::hitRegister'], null, ['GET' => 0], null, false, false, null]],
         '/blackjack/hit' => [[['_route' => 'hit', '_controller' => 'App\\Controller\\ProjController::blackJackHit'], null, ['GET' => 0], null, false, false, null]],
         '/blackjack/standRegister' => [[['_route' => 'standRegister', '_controller' => 'App\\Controller\\ProjController::standRegister'], null, ['GET' => 0], null, false, false, null]],

@@ -1,13 +1,14 @@
 {% extends "blackjack/blackjackbase.html.twig" %}
 {% block body %}
-<h1>Projekt MVC</h1>
-<div class="two-columns">
-    <div class="column">
-        <p>I detta kursmoment har jag valt att skapa en enkel version av 
-<a class="link-color" href="https://en.wikipedia.org/wiki/Blackjack">BlackJack</a>. Man kan skapa tre olika användare, sätta in 
-hur mycket "pengar" man vill sattsa, välja att stoppa när man känner sig färdig och be om mer kort om man vill det. Spelet tar slut 
-när alla spelare antingen gått "bust" eller blivit tjock som det också heter på svenska eller valt att dubbla sin insatts, alternativt 
-sagt stopp.
-    </div>
+
+<div class="game-descriptor-container" style="background-image: url('{{ asset('assets/img/blackjackbackground.jpg') }}');">
+            <p>I detta kursmoment har jag valt att skapa en enkel version av 
+    <a class="link-color" href="https://en.wikipedia.org/wiki/Blackjack">BlackJack</a>. Man kan skapa tre olika användare, sätta in 
+    hur mycket "pengar" man vill sattsa, välja att stoppa när man känner sig färdig och be om mer kort om man vill det. Spelet tar slut 
+    när alla spelare antingen gått "bust" eller blivit tjock som det också heter på svenska eller valt att dubbla sin insatts, alternativt 
+    sagt stopp.
+    <p>Väljer man att fortsätta spela efter en runda är över så fortsätter man med den vinst man har och om man 
+    har förlorat (är mindre än 10) så läggs automatiskt minimum insattsen 10 in igen.</p>
 </div>
+
 {% endblock %}

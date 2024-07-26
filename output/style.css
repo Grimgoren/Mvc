@@ -335,6 +335,27 @@ h1 {
   pointer-events: none;
 }
 
+.game-descriptor-container {
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 2;
+  border-radius: 10px;
+}
+
+.game-descriptor-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 10px solid white;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
 .dealer-section {
   grid-column: 1/-1;
   background-size: cover;

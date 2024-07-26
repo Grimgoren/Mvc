@@ -65,17 +65,32 @@ class ProjController extends AbstractController
     #[Route("/blackjack/start", name: "blackjack", methods: ['GET', 'POST'])]
     public function startBlackJack(SessionInterface $session, Request $request): Response
     {
+
+        $name1 = $session->get('name1');
+        $bet1 = (int) $session->get('bet1', 0);
+        $name2 = $session->get('name2');
+        $bet2 = (int) $session->get('bet2', 0);
+        $name3 = $session->get('name3');
+        $bet3 = (int) $session->get('bet3', 0);
+
         $session->clear();
+
+        $session->set('name1', $name1);
+        $session->set('bet1', $bet1);
+        $session->set('name2', $name2);
+        $session->set('bet2', $bet2);
+        $session->set('name3', $name3);
+        $session->set('bet3', $bet3);
 
         $deckOfCards = new DeckOfCards();
         $deckOfCards->shuffleDeck();
 
-        $name1 = $request->request->get('name1');
-        $bet1 = $request->request->get('bet1');
-        $name2 = $request->request->get('name2');
-        $bet2 = $request->request->get('bet2');
-        $name3 = $request->request->get('name3');
-        $bet3 = $request->request->get('bet3');
+        $name1 = $request->request->get('name1', $session->get('name1'));
+        $bet1 = $request->request->get('bet1', $session->get('bet1', 0));
+        $name2 = $request->request->get('name2', $session->get('name2'));
+        $bet2 = $request->request->get('bet2', $session->get('bet2', 0));
+        $name3 = $request->request->get('name3', $session->get('name3'));
+        $bet3 = $request->request->get('bet3', $session->get('bet3', 0));
 
         $playerCards = [
             $deckOfCards->drawCard(),
@@ -325,6 +340,33 @@ class ProjController extends AbstractController
             default:
                 return -$bet;
         }
+    }
+
+    #[Route("/blackjack/playAgain", name: "playAgain", methods: ['GET'])]
+    public function playAgain(SessionInterface $session, Request $request): Response
+    {
+        $bet1 = (int) $session->get('bet1', 0);
+        $bet2 = (int) $session->get('bet2', 0);
+        $bet3 = (int) $session->get('bet3', 0);
+        $name1 = $session->get('name1');
+        $name2 = $session->get('name2');
+        $name3 = $session->get('name3');
+
+        if ($bet1 < 10) {
+            $bet1 = 10;
+        }
+        if ($bet2 < 10) {
+            $bet2 = 10;
+        }
+        if ($bet3 < 10) {
+            $bet3 = 10;
+        }
+
+        $session->set('bet1', $bet1);
+        $session->set('bet2', $bet2);
+        $session->set('bet3', $bet3);
+
+        return $this->redirectToRoute('blackjack');
     }
 
     #[Route("/blackjack/hitRegister", name: "hitRegister", methods: ['GET'])]
