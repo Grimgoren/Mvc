@@ -1,16 +1,20 @@
-![](public/assets/img/GitHub-logo.png)
 # Mvc 
 <a href="{{ asset('assets/img/scrut.png') }}">
-    <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/quality-score.png?b=main" alt="Code Coverage" />
+    <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/?branch=main" alt="Code Coverage" />
 </a>
 
 <a href="{{ asset('assets/img/scrut.png') }}">
-    <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/coverage.png?b=main" alt="Code Coverage" />
+    <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/?branch=main" alt="Code Coverage" />
 </a>
 
 <a href="{{ asset('assets/img/scrut.png') }}">
-    <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/build.png?b=main" alt="Code Coverage" />
+    <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/?branch=main" alt="Code Coverage" />
 </a>
+
+# Innehåll
+
+Detta är min github för kursen MVC, det innehåller alla kmom i kursen inklusive projektet. Innehållet hjälper mig hålla 
+reda på ändringar i koden samt kvalitetssäkring med scuritinzer.
 
 # Ladda hem projektet
 

@@ -14,6 +14,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ProjController extends AbstractController
 {
+    /**
+     * Route to initialize session variables and engage the game.
+     */
     #[Route("/proj", name: "proj")]
     public function blackJackStart(SessionInterface $session): Response
     {
@@ -56,16 +59,21 @@ class ProjController extends AbstractController
         ]);
     }
 
+    /**
+     * Route for the about page which describes what the project is about.
+     */
     #[Route("/proj/about", name: "projAbout")]
     public function projAboutPage(): Response
     {
         return $this->render('blackjack/blackjackAbout.html.twig');
     }
 
+    /**
+     * Route to start the game.
+     */
     #[Route("/blackjack/start", name: "blackjack", methods: ['GET', 'POST'])]
     public function startBlackJack(SessionInterface $session, Request $request): Response
     {
-
         $name1 = $session->get('name1');
         $bet1 = (int) $session->get('bet1', 0);
         $name2 = $session->get('name2');
@@ -203,8 +211,11 @@ class ProjController extends AbstractController
         ]);
     }
 
+    /**
+     * Route which checks the game state (other routes direct here).
+     */
     #[Route("/blackjack/gameCheck", name: "gameCheck", methods: ['GET'])]
-    public function gameCheck(SessionInterface $session, Request $request): Response
+    public function gameCheck(SessionInterface $session): Response
     {
         $deckOfCards = unserialize($session->get('deckOfCards'));
 
@@ -310,6 +321,9 @@ class ProjController extends AbstractController
         ]);
     }
 
+    /**
+     * Route to determine winners and losers.
+     */
     private function whoWon(int $playerValue, bool $playerBusted, int $dealerValue): string
     {
         if ($playerBusted) {
@@ -327,6 +341,9 @@ class ProjController extends AbstractController
         return 'push';
     }
 
+    /**
+     * Route which determines who is getting paid or not.
+     */
     private function payOut(string $result, int $bet): int
     {
         switch ($result) {
@@ -342,15 +359,15 @@ class ProjController extends AbstractController
         }
     }
 
+    /**
+     * Route to continue playing the game after a round has concluded.
+     */
     #[Route("/blackjack/playAgain", name: "playAgain", methods: ['GET'])]
-    public function playAgain(SessionInterface $session, Request $request): Response
+    public function playAgain(SessionInterface $session): Response
     {
         $bet1 = (int) $session->get('bet1', 0);
         $bet2 = (int) $session->get('bet2', 0);
         $bet3 = (int) $session->get('bet3', 0);
-        $name1 = $session->get('name1');
-        $name2 = $session->get('name2');
-        $name3 = $session->get('name3');
 
         if ($bet1 < 10) {
             $bet1 = 10;
@@ -369,6 +386,9 @@ class ProjController extends AbstractController
         return $this->redirectToRoute('blackjack');
     }
 
+    /**
+     * Route which sets a player as being hit.
+     */
     #[Route("/blackjack/hitRegister", name: "hitRegister", methods: ['GET'])]
     public function hitRegister(SessionInterface $session, Request $request): Response
     {
@@ -380,6 +400,9 @@ class ProjController extends AbstractController
         return $this->redirectToRoute('hit');
     }
 
+    /**
+     * Route which continues after hitRegister and draws a card for the "hit" player.
+     */
     #[Route("/blackjack/hit", name: "hit", methods: ['GET'])]
     public function blackJackHit(SessionInterface $session): Response
     {
@@ -388,7 +411,7 @@ class ProjController extends AbstractController
         $oldPlayerCards1 = $session->get('playerCards', []);
         $oldPlayerCards2 = $session->get('playerCards2', []);
         $oldPlayerCards3 = $session->get('playerCards3', []);
-        
+
         $dealerCards = $session->get('dealerCards');
         $dealerValue = $session->get('dealerValue');
 
@@ -399,10 +422,6 @@ class ProjController extends AbstractController
         $hitMe1 = $session->get('player1Hit');
         $hitMe2 = $session->get('player2Hit');
         $hitMe3 = $session->get('player3Hit');
-
-        $stand1 = $session->get('player1Stand', false);
-        $stand2 = $session->get('player2Stand', false);
-        $stand3 = $session->get('player3Stand', false);
 
         $doubledDown1 = $session->get('player1DoubledDown', false);
         $doubledDown2 = $session->get('player2DoubledDown', false);
@@ -480,11 +499,12 @@ class ProjController extends AbstractController
         $session->set('dealerCards', $dealerCards);
         $session->set('dealerValue', $dealerValue);
 
-        $deckCount = count($deckOfCards->getDeck());
-
         return $this->redirectToRoute('gameCheck');
     }
 
+    /**
+     * Route which sets a player as standing.
+     */
     #[Route("/blackjack/standRegister", name: "standRegister", methods: ['GET'])]
     public function standRegister(SessionInterface $session, Request $request): Response
     {
@@ -496,6 +516,9 @@ class ProjController extends AbstractController
         return $this->redirectToRoute('stand');
     }
 
+    /**
+     * Route which makes the dealer draw his cards if everyone is standing (or busted).
+     */
     #[Route("/blackjack/stand", name: "stand", methods: ['GET'])]
     public function stopBlackJack(SessionInterface $session): Response
     {
@@ -505,9 +528,6 @@ class ProjController extends AbstractController
         $playerCards1 = $session->get('playerCards', []);
         $playerCards2 = $session->get('playerCards2', []);
         $playerCards3 = $session->get('playerCards3', []);
-        $playerValue1 = $session->get('playerValue');
-        $playerValue2 = $session->get('playerValue2');
-        $playerValue3 = $session->get('playerValue3');
 
         $stand1 = $session->get('player1Stand', false);
         $stand2 = $session->get('player2Stand', false);
@@ -533,8 +553,6 @@ class ProjController extends AbstractController
         $session->set('playerCards', $playerCards1);
         $session->set('playerCards2', $playerCards2);
         $session->set('playerCards3', $playerCards3);
-
-        $deckCount = count($deckOfCards->getDeck());
 
         $allStandingOrBusted = $stand1 || $busted1 && $stand2 || $busted2 && $stand3 || $busted3;
         foreach (['player1', 'player2', 'player3'] as $player) {
@@ -565,6 +583,9 @@ class ProjController extends AbstractController
         return $this->redirectToRoute('gameCheck');
     }
 
+    /**
+     * Route which sets a player as wanting to double their bet.
+     */
     #[Route("/blackjack/doublingRegister", name: "doublingRegister", methods: ['GET'])]
     public function doublingRegister(SessionInterface $session, Request $request): Response
     {
@@ -577,6 +598,9 @@ class ProjController extends AbstractController
         return $this->redirectToRoute('DoublingDown');
     }
 
+    /**
+     * Route to double a players bet and give them their card.
+     */
     #[Route("/blackjack/DoublingDown", name: "DoublingDown", methods: ['GET'])]
     public function blackJackDoublingDown(SessionInterface $session): Response
     {
@@ -596,10 +620,6 @@ class ProjController extends AbstractController
         $hitMe1 = $session->get('player1Hit');
         $hitMe2 = $session->get('player2Hit');
         $hitMe3 = $session->get('player3Hit');
-
-        $stand1 = $session->get('player1Stand', false);
-        $stand2 = $session->get('player2Stand', false);
-        $stand3 = $session->get('player3Stand', false);
 
         $doubledDown1 = $session->get('player1DoubledDown', false);
         $doubledDown2 = $session->get('player2DoubledDown', false);
@@ -713,9 +733,9 @@ class ProjController extends AbstractController
             foreach ($dealerCards as $card) {
                 $dealerHand->add($card);
             }
-    
+
             $dealerValue = $dealerHand->getHandValue();
-    
+
             while ($dealerValue < 17) {
                 $newCard = $deckOfCards->drawCard();
                 $dealerHand->add($newCard);
@@ -729,8 +749,6 @@ class ProjController extends AbstractController
         $session->set('deckOfCards', serialize($deckOfCards));
         $session->set('dealerCards', $dealerCards);
         $session->set('dealerValue', $dealerValue);
-
-        $deckCount = count($deckOfCards->getDeck());
 
         return $this->redirectToRoute('gameCheck');
     }

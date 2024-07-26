@@ -486,6 +486,76 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ProductController.html#method_showProductByMinimumValue"
         },                {
+            "fqsen": "\\App\\Controller\\ProjController",
+            "name": "ProjController",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AblackJackStart\u0028\u0029",
+            "name": "blackJackStart",
+            "summary": "Route\u0020to\u0020initialize\u0020session\u0020variables\u0020and\u0020engage\u0020the\u0020game.",
+            "url": "classes/App-Controller-ProjController.html#method_blackJackStart"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AprojAboutPage\u0028\u0029",
+            "name": "projAboutPage",
+            "summary": "Route\u0020for\u0020the\u0020about\u0020page\u0020which\u0020describes\u0020what\u0020the\u0020project\u0020is\u0020about.",
+            "url": "classes/App-Controller-ProjController.html#method_projAboutPage"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AstartBlackJack\u0028\u0029",
+            "name": "startBlackJack",
+            "summary": "Route\u0020to\u0020start\u0020the\u0020game.",
+            "url": "classes/App-Controller-ProjController.html#method_startBlackJack"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AgameCheck\u0028\u0029",
+            "name": "gameCheck",
+            "summary": "Route\u0020which\u0020checks\u0020the\u0020game\u0020state\u0020\u0028other\u0020routes\u0020direct\u0020here\u0029.",
+            "url": "classes/App-Controller-ProjController.html#method_gameCheck"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AwhoWon\u0028\u0029",
+            "name": "whoWon",
+            "summary": "Route\u0020to\u0020determine\u0020winners\u0020and\u0020losers.",
+            "url": "classes/App-Controller-ProjController.html#method_whoWon"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003ApayOut\u0028\u0029",
+            "name": "payOut",
+            "summary": "Route\u0020which\u0020determines\u0020who\u0020is\u0020getting\u0020paid\u0020or\u0020not.",
+            "url": "classes/App-Controller-ProjController.html#method_payOut"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AplayAgain\u0028\u0029",
+            "name": "playAgain",
+            "summary": "Route\u0020to\u0020continue\u0020playing\u0020the\u0020game\u0020after\u0020a\u0020round\u0020has\u0020concluded.",
+            "url": "classes/App-Controller-ProjController.html#method_playAgain"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AhitRegister\u0028\u0029",
+            "name": "hitRegister",
+            "summary": "Route\u0020which\u0020sets\u0020a\u0020player\u0020as\u0020being\u0020hit.",
+            "url": "classes/App-Controller-ProjController.html#method_hitRegister"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AblackJackHit\u0028\u0029",
+            "name": "blackJackHit",
+            "summary": "Route\u0020which\u0020continues\u0020after\u0020hitRegister\u0020and\u0020draws\u0020a\u0020card\u0020for\u0020the\u0020\u0022hit\u0022\u0020player.",
+            "url": "classes/App-Controller-ProjController.html#method_blackJackHit"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AstandRegister\u0028\u0029",
+            "name": "standRegister",
+            "summary": "Route\u0020which\u0020sets\u0020a\u0020player\u0020as\u0020standing.",
+            "url": "classes/App-Controller-ProjController.html#method_standRegister"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AstopBlackJack\u0028\u0029",
+            "name": "stopBlackJack",
+            "summary": "Route\u0020which\u0020makes\u0020the\u0020dealer\u0020draw\u0020his\u0020cards\u0020if\u0020everyone\u0020is\u0020standing\u0020\u0028or\u0020busted\u0029.",
+            "url": "classes/App-Controller-ProjController.html#method_stopBlackJack"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AdoublingRegister\u0028\u0029",
+            "name": "doublingRegister",
+            "summary": "Route\u0020which\u0020sets\u0020a\u0020player\u0020as\u0020wanting\u0020to\u0020double\u0020their\u0020bet.",
+            "url": "classes/App-Controller-ProjController.html#method_doublingRegister"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AblackJackDoublingDown\u0028\u0029",
+            "name": "blackJackDoublingDown",
+            "summary": "Route\u0020to\u0020double\u0020a\u0020players\u0020bet\u0020and\u0020give\u0020them\u0020their\u0020card.",
+            "url": "classes/App-Controller-ProjController.html#method_blackJackDoublingDown"
+        },                {
             "fqsen": "\\App\\Controller\\TjugoettControllerTwig",
             "name": "TjugoettControllerTwig",
             "summary": "",
