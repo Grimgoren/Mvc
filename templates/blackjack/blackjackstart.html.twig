@@ -59,9 +59,9 @@
                         <p>Kort kvar: {{ deckCount }}</p>
                         <p>Värde: {{ dealerValue }}</p>
                         {% if class == "finish" %}
-                            <p>{{ name1 }}: {% if winners.player1 == 'player' %}Vinst{% elseif winners.player1 == 'dealer' %}Förlorar{% elseif winners.player1 == 'push' %}Oavgjort{% else %}Busted{% endif %} | Vinst: {{ netResults.player1 }} | Ny insatts: {{ balances.player1 }}</p>
-                            <p>{{ name2 }}: {% if winners.player2 == 'player' %}Vinst{% elseif winners.player2 == 'dealer' %}Förlorar{% elseif winners.player2 == 'push' %}Oavgjort{% else %}Busted{% endif %} | Vinst: {{ netResults.player2 }} | Ny insatts: {{ balances.player2 }}</p>
-                            <p>{{ name3 }}: {% if winners.player3 == 'player' %}Vinst{% elseif winners.player3 == 'dealer' %}Förlorar{% elseif winners.player3 == 'push' %}Oavgjort{% else %}Busted{% endif %} | Vinst: {{ netResults.player3 }} | Ny insatts: {{ balances.player3 }}</p>
+                            <p>{{ name1 }}: {% if winners.player1 == 'player' %}Vinst{% elseif winners.player1 == 'dealer' %}Förlorar{% elseif winners.player1 == 'push' %}Oavgjort{% else %}Busted{% endif %} | Netto: {{ netResults.player1 }}</p>
+                            <p>{{ name2 }}: {% if winners.player2 == 'player' %}Vinst{% elseif winners.player2 == 'dealer' %}Förlorar{% elseif winners.player2 == 'push' %}Oavgjort{% else %}Busted{% endif %} | Netto: {{ netResults.player2 }}</p>
+                            <p>{{ name3 }}: {% if winners.player3 == 'player' %}Vinst{% elseif winners.player3 == 'dealer' %}Förlorar{% elseif winners.player3 == 'push' %}Oavgjort{% else %}Busted{% endif %} | Netto: {{ netResults.player3 }}</p>
                             <button class="blackjackbutton" onclick="location.href='{{ path('playAgain') }}'" type="button">Fortsätt spela</button>
                         {% endif %}
                     </div>

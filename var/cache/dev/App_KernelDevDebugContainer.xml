@@ -412,6 +412,7 @@
     <service id="App\Controller\ProjController" class="App\Controller\ProjController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
+      <argument type="service" id="App\Service\GameInitializer"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\ProjController"/>
       </call>
@@ -432,6 +433,7 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Service\GameInitializer" class="App\Service\GameInitializer" autowire="true" autoconfigure="true"/>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory"/>
     <service id="argument_resolver.backed_enum_resolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">
       <tag priority="100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">controller.argument_value_resolver</tag>

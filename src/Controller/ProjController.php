@@ -11,32 +11,27 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Request;
+use App\Service\GameInitializer;
 
 class ProjController extends AbstractController
 {
+    private GameInitializer $gameInitializer;
+
     /**
-     * Route to initialize session variables and engage the game.
+     * Function to initialize certain variables into the game.
+     */
+    public function __construct(GameInitializer $gameInitializer)
+    {
+        $this->gameInitializer = $gameInitializer;
+    }
+
+    /**
+     * Route to start the project site.
      */
     #[Route("/proj", name: "proj")]
     public function blackJackStart(SessionInterface $session): Response
     {
-        $session->clear();
-
-        if (!$session->has('deckOfCards')) {
-            $session->set('deckOfCards', serialize(new DeckOfCards()));
-        }
-        if (!$session->has('playerCards')) {
-            $session->set('playerCards', []);
-        }
-        if (!$session->has('playerCards2')) {
-            $session->set('playerCards2', []);
-        }
-        if (!$session->has('playerCards3')) {
-            $session->set('playerCards3', []);
-        }
-        if (!$session->has('dealerCards')) {
-            $session->set('dealerCards', []);
-        }
+        $this->gameInitializer->initializeGame($session);
 
         $deckOfCards = unserialize($session->get('deckOfCards'));
         $playerCards = $session->get('playerCards');
@@ -44,10 +39,7 @@ class ProjController extends AbstractController
         $playerCards3 = $session->get('playerCards3');
         $dealerCards = $session->get('dealerCards');
         $deckCount = count($deckOfCards->getDeck());
-
         $gameDone = false;
-
-        error_log("There are this many cards currently: ". $deckCount);
 
         return $this->render('blackjack/proj.html.twig', [
             'playerCards' => $playerCards,
