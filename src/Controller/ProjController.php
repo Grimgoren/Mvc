@@ -584,7 +584,7 @@ class ProjController extends AbstractController
         $session->set('playerCards2', $playerCards2);
         $session->set('playerCards3', $playerCards3);
 
-        $allStandingOrBusted = $stand1 || $busted1 && $stand2 || $busted2 && $stand3 || $busted3;
+        $allStandingOrBusted = true;
         foreach (['player1', 'player2', 'player3'] as $player) {
             if (!($busted[$player] || $stand[$player])) {
                 $allStandingOrBusted = false;
