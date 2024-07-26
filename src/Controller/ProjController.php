@@ -223,9 +223,9 @@ class ProjController extends AbstractController
         $gameDone = $gameData['stand1'] && $gameData['stand2'] && $gameData['stand3'];
 
         $winners = [
-            'player1' => $this->whoWon($gameData['playerValue1'], $gameData['busted1'], $gameData['dealerValue']),
-            'player2' => $this->whoWon($gameData['playerValue2'], $gameData['busted2'], $gameData['dealerValue']),
-            'player3' => $this->whoWon($gameData['playerValue3'], $gameData['busted3'], $gameData['dealerValue'])
+            'player1' => $this->whoWon($gameData['playerValue1'], $gameData['busted1'], $gameData['dealerValue'], $gameData['playerCards']['player1']),
+            'player2' => $this->whoWon($gameData['playerValue2'], $gameData['busted2'], $gameData['dealerValue'], $gameData['playerCards']['player2']),
+            'player3' => $this->whoWon($gameData['playerValue3'], $gameData['busted3'], $gameData['dealerValue'], $gameData['playerCards']['player3'])
         ];
 
         $cashFlow = [
@@ -235,9 +235,9 @@ class ProjController extends AbstractController
         ];
 
         $balances = [
-            'player1' => $cashFlow['player1'] + ($winners['player1'] === 'player' || $winners['player1'] === 'blackjack' ? $gameData['bet1'] : 0),
-            'player2' => $cashFlow['player2'] + ($winners['player2'] === 'player' || $winners['player2'] === 'blackjack' ? $gameData['bet2'] : 0),
-            'player3' => $cashFlow['player3'] + ($winners['player3'] === 'player' || $winners['player3'] === 'blackjack' ? $gameData['bet3'] : 0)
+            'player1' => $session->get('balance1', 0) + $cashFlow['player1'],
+            'player2' => $session->get('balance2', 0) + $cashFlow['player2'],
+            'player3' => $session->get('balance3', 0) + $cashFlow['player3']
         ];
 
         if ($gameDone) {
@@ -350,10 +350,13 @@ class ProjController extends AbstractController
     /**
      * Function to determine winners and losers.
      */
-    private function whoWon(int $playerValue, bool $playerBusted, int $dealerValue): string
+    private function whoWon(int $playerValue, bool $playerBusted, int $dealerValue, array $playerCards): string
     {
         if ($playerBusted) {
             return 'busted';
+        }
+        if ($playerValue === 21 && count($playerCards) === 2) {
+            return 'blackjack';
         }
         if ($dealerValue > 21) {
             return 'player';
@@ -374,8 +377,9 @@ class ProjController extends AbstractController
     {
         switch ($result) {
             case 'player':
-            case 'blackjack': // Assuming we handle blackjack as a special case if needed
-                return $bet;
+                return 2 * $bet;
+            case 'blackjack':
+                return 3 * $bet;
             case 'push':
                 return 0;
             case 'busted':
