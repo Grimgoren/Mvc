@@ -1,14 +1,14 @@
 # Mvc 
-<a href="{{ asset('assets/img/scrut.png') }}">
-    <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/?branch=main" alt="Code Coverage" />
+<a href="https://scrutinizer-ci.com/g/Grimgoren/Mvc/?branch=main">
+    <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/quality-score.png?b=main" alt="Code Coverage" />
 </a>
 
-<a href="{{ asset('assets/img/scrut.png') }}">
-    <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/?branch=main" alt="Code Coverage" />
+<a href="https://scrutinizer-ci.com/g/Grimgoren/Mvc/?branch=main">
+    <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/coverage.png?b=main" alt="Code Coverage" />
 </a>
 
-<a href="{{ asset('assets/img/scrut.png') }}">
-    <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/?branch=main" alt="Code Coverage" />
+<a href="https://scrutinizer-ci.com/g/Grimgoren/Mvc/?branch=main">
+    <img src="https://scrutinizer-ci.com/g/Grimgoren/Mvc/badges/build.png?b=main" alt="Code Coverage" />
 </a>
 
 # Innehåll
