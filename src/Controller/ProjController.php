@@ -217,6 +217,72 @@ class ProjController extends AbstractController
     #[Route("/blackjack/gameCheck", name: "gameCheck", methods: ['GET'])]
     public function gameCheck(SessionInterface $session): Response
     {
+        $gameData = $this->getGameCheckData($session);
+
+        $deckCount = count($gameData['deckOfCards']->getDeck());
+        $gameDone = $gameData['stand1'] && $gameData['stand2'] && $gameData['stand3'];
+
+        $winners = [
+            'player1' => $this->whoWon($gameData['playerValue1'], $gameData['busted1'], $gameData['dealerValue']),
+            'player2' => $this->whoWon($gameData['playerValue2'], $gameData['busted2'], $gameData['dealerValue']),
+            'player3' => $this->whoWon($gameData['playerValue3'], $gameData['busted3'], $gameData['dealerValue'])
+        ];
+
+        $cashFlow = [
+            'player1' => $this->payOut($winners['player1'], $gameData['bet1']),
+            'player2' => $this->payOut($winners['player2'], $gameData['bet2']),
+            'player3' => $this->payOut($winners['player3'], $gameData['bet3'])
+        ];
+
+        $balances = [
+            'player1' => $cashFlow['player1'] + ($winners['player1'] === 'player' || $winners['player1'] === 'blackjack' ? $gameData['bet1'] : 0),
+            'player2' => $cashFlow['player2'] + ($winners['player2'] === 'player' || $winners['player2'] === 'blackjack' ? $gameData['bet2'] : 0),
+            'player3' => $cashFlow['player3'] + ($winners['player3'] === 'player' || $winners['player3'] === 'blackjack' ? $gameData['bet3'] : 0)
+        ];
+
+        if ($gameDone) {
+            $session->set('balance1', $balances['player1']);
+            $session->set('balance2', $balances['player2']);
+            $session->set('balance3', $balances['player3']);
+            $session->set('bet1', $balances['player1']);
+            $session->set('bet2', $balances['player2']);
+            $session->set('bet3', $balances['player3']);
+        }
+
+        return $this->render('blackjack/blackjackstart.html.twig', [
+            'playerCards' => $gameData['playerCards']['player1'],
+            'playerCards2' => $gameData['playerCards']['player2'],
+            'playerCards3' => $gameData['playerCards']['player3'],
+            'dealerCards' => $gameData['dealerCards'],
+            'dealerValue' => $gameData['dealerValue'],
+            'playerValue' => $gameData['playerValues']['player1'],
+            'playerValue2' => $gameData['playerValues']['player2'],
+            'playerValue3' => $gameData['playerValues']['player3'],
+            'deckCount' => $deckCount,
+            'class' => $gameDone ? "finish" : "",
+            'stand1' => $gameData['stand1'],
+            'stand2' => $gameData['stand2'],
+            'stand3' => $gameData['stand3'],
+            'name1' => $gameData['name1'],
+            'name2' => $gameData['name2'],
+            'name3' => $gameData['name3'],
+            'bet1' => $gameData['bet1'],
+            'bet2' => $gameData['bet2'],
+            'bet3' => $gameData['bet3'],
+            'busted1' => $gameData['busted1'],
+            'busted2' => $gameData['busted2'],
+            'busted3' => $gameData['busted3'],
+            'winners' => $winners,
+            'netResults' => $cashFlow,
+            'balances' => $balances
+        ]);
+    }
+
+    /**
+     * Function which passes data to the GameCheck route.
+     */
+    private function getGameCheckData(SessionInterface $session): array
+    {
         $deckOfCards = unserialize($session->get('deckOfCards'));
 
         $oldPlayerCards1 = $session->get('playerCards', []);
@@ -257,72 +323,32 @@ class ProjController extends AbstractController
             'player3' => $oldPlayerCards3
         ];
 
-        $deckCount = count($deckOfCards->getDeck());
-
-        $gameDone = $stand1 && $stand2 && $stand3;
-
-        $winners = [
-            'player1' => $this->whoWon($playerValue1, $busted1, $dealerValue),
-            'player2' => $this->whoWon($playerValue2, $busted2, $dealerValue),
-            'player3' => $this->whoWon($playerValue3, $busted3, $dealerValue)
-        ];
-
-        $cashFlow = [
-            'player1' => $this->payOut($winners['player1'], $bet1),
-            'player2' => $this->payOut($winners['player2'], $bet2),
-            'player3' => $this->payOut($winners['player3'], $bet3)
-        ];
-
-        $balances = [
-            'player1' => $cashFlow['player1'] + ($winners['player1'] === 'player' || $winners['player1'] === 'blackjack' ? $bet1 : 0),
-            'player2' => $cashFlow['player2'] + ($winners['player2'] === 'player' || $winners['player2'] === 'blackjack' ? $bet2 : 0),
-            'player3' => $cashFlow['player3'] + ($winners['player3'] === 'player' || $winners['player3'] === 'blackjack' ? $bet3 : 0)
-        ];
-
-        if ($gameDone) {
-            $session->set('balance1', $balances['player1']);
-            $session->set('balance2', $balances['player2']);
-            $session->set('balance3', $balances['player3']);
-            $session->set('bet1', $balances['player1']);
-            $session->set('bet2', $balances['player2']);
-            $session->set('bet3', $balances['player3']);
-        }
-
-        $bet1 = $session->get('bet1');
-        $bet2 = $session->get('bet2');
-        $bet3 = $session->get('bet3');
-
-        return $this->render('blackjack/blackjackstart.html.twig', [
-            'playerCards' => $playerCards['player1'],
-            'playerCards2' => $playerCards['player2'],
-            'playerCards3' => $playerCards['player3'],
+        return [
+            'deckOfCards' => $deckOfCards,
+            'playerCards' => $playerCards,
             'dealerCards' => $dealerCards,
             'dealerValue' => $dealerValue,
-            'playerValue' => $playerValues['player1'],
-            'playerValue2' => $playerValues['player2'],
-            'playerValue3' => $playerValues['player3'],
-            'deckCount' => $deckCount,
-            'class' => $gameDone ? "finish" : "",
+            'playerValues' => $playerValues,
+            'playerValue1' => $playerValue1,
+            'playerValue2' => $playerValue2,
+            'playerValue3' => $playerValue3,
             'stand1' => $stand1,
             'stand2' => $stand2,
             'stand3' => $stand3,
-            'name1' => $name1,
-            'name2' => $name2,
-            'name3' => $name3,
-            'bet1' => $bet1,
-            'bet2' => $bet2,
-            'bet3' => $bet3,
             'busted1' => $busted1,
             'busted2' => $busted2,
             'busted3' => $busted3,
-            'winners' => $winners,
-            'netResults' => $cashFlow,
-            'balances' => $balances
-        ]);
+            'name1' => $name1,
+            'bet1' => $bet1,
+            'name2' => $name2,
+            'bet2' => $bet2,
+            'name3' => $name3,
+            'bet3' => $bet3,
+        ];
     }
 
     /**
-     * Route to determine winners and losers.
+     * Function to determine winners and losers.
      */
     private function whoWon(int $playerValue, bool $playerBusted, int $dealerValue): string
     {
@@ -342,7 +368,7 @@ class ProjController extends AbstractController
     }
 
     /**
-     * Route which determines who is getting paid or not.
+     * Function which determines who is getting paid or not.
      */
     private function payOut(string $result, int $bet): int
     {
