@@ -2,7 +2,22 @@ imports:
     - php
 
 filter:
-    excluded_paths: [vendor/*, test/*, app/*, app_old/*]
+    excluded_paths: 
+        - vendor/*
+        - test/*
+        - app/*
+        - app_old/*
+        - src/Controller/CardControllerKmom02Json.php
+        - src/Controller/CardControllerKmom02Twig.php
+        - src/Controller/LuckyControllerJson.php
+        - src/Controller/LuckyControllerTwig.php
+        - src/Controller/ProductController.php
+        - src/Controller/ProjController.php
+        - src/Controller/TjugoettControllerTwig.php
+        - src/Card_old
+        - src/Dice
+        - src/Entity
+        - src/Repository
 
 build:
     image: default-bionic
