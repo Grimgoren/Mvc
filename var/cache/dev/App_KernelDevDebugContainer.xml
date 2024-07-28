@@ -380,6 +380,13 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\CardControllerKmom02Twig"/>
       </call>
     </service>
+    <service id="App\Controller\Doubling" class="App\Controller\Doubling" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\Doubling"/>
+      </call>
+    </service>
     <service id="App\Controller\LibraryController" class="App\Controller\LibraryController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -7112,6 +7119,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CardControllerKmom02Twig" class="App\Controller\CardControllerKmom02Twig" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CardControllerKmom02Twig" class="App\Controller\CardControllerKmom02Twig" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\CardControllerKmom02Twig" class="App\Controller\CardControllerKmom02Twig" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Doubling" class="App\Controller\Doubling" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Doubling" class="App\Controller\Doubling" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Doubling" class="App\Controller\Doubling" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LibraryController" class="App\Controller\LibraryController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LibraryController" class="App\Controller\LibraryController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\LibraryController" class="App\Controller\LibraryController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -8229,6 +8239,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\Doubling" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Doubling"/>
+      <argument>App\Controller\Doubling</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
     <service id=".service_locator.O2p6Lk7.App\Controller\LibraryController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\LibraryController"/>
       <argument>App\Controller\LibraryController</argument>
@@ -8439,6 +8455,7 @@
         <argument type="collection">
           <argument>App\Kernel</argument>
           <argument>App\Controller\CardControllerKmom02Twig</argument>
+          <argument>App\Controller\Doubling</argument>
           <argument>App\Controller\LibraryController</argument>
           <argument>App\Controller\LibraryControllerJson</argument>
           <argument>App\Controller\LuckyControllerTwig</argument>
