@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Service\GameInitializer;
 use App\Service\Gamestarter;
+use App\Service\Gamestate;
 
 class ProjController extends AbstractController
 {
@@ -22,10 +23,20 @@ class ProjController extends AbstractController
     /**
      * Function to initialize certain variables into the game.
      */
-    public function __construct(GameInitializer $gameInitializer, Gamestarter $gamestarter)
+    public function __construct(GameInitializer $gameInitializer, Gamestarter $gamestarter, Gamestate $gamestate)
     {
         $this->gameInitializer = $gameInitializer;
         $this->gamestarter = $gamestarter;
+        $this->gamestate = $gamestate;
+    }
+
+    /**
+     * Route for the about page which describes what the project is about.
+     */
+    #[Route("/proj/about", name: "projAbout")]
+    public function projAboutPage(): Response
+    {
+        return $this->render('blackjack/blackjackAbout.html.twig');
     }
 
     /**
@@ -34,7 +45,6 @@ class ProjController extends AbstractController
     #[Route("/proj", name: "proj")]
     public function blackJackStart(SessionInterface $session): Response
     {
-        // Refactored because of scrutinizer
         $this->gameInitializer->initializeGame($session);
 
         $deckOfCards = unserialize($session->get('deckOfCards'));
@@ -56,25 +66,14 @@ class ProjController extends AbstractController
     }
 
     /**
-     * Route for the about page which describes what the project is about.
-     */
-    #[Route("/proj/about", name: "projAbout")]
-    public function projAboutPage(): Response
-    {
-        return $this->render('blackjack/blackjackAbout.html.twig');
-    }
-
-    /**
      * Route to start the game.
      */
-
     #[Route("/blackjack/start", name: "blackjack", methods: ['GET', 'POST'])]
     public function startBlackJack(SessionInterface $session, Request $request): Response
     {
         $deckOfCards = new DeckOfCards();
         $deckOfCards->shuffleDeck();
 
-        // Refactored because of scrutinizer
         list($name1, $name2, $name3, $bet1, $bet2, $bet3) = $this->gamestarter->gamestarter($session, $request);
 
         $playerCards = [
@@ -188,15 +187,15 @@ class ProjController extends AbstractController
         $gameDone = $gameData['stand1'] && $gameData['stand2'] && $gameData['stand3'];
 
         $winners = [
-            'player1' => $this->whoWon($gameData['playerValue1'], $gameData['busted1'], $gameData['dealerValue'], $gameData['playerCards']['player1']),
-            'player2' => $this->whoWon($gameData['playerValue2'], $gameData['busted2'], $gameData['dealerValue'], $gameData['playerCards']['player2']),
-            'player3' => $this->whoWon($gameData['playerValue3'], $gameData['busted3'], $gameData['dealerValue'], $gameData['playerCards']['player3'])
+            'player1' => $this->gamestate->whoWon($gameData['playerValue1'], $gameData['busted1'], $gameData['dealerValue'], $gameData['playerCards']['player1']),
+            'player2' => $this->gamestate->whoWon($gameData['playerValue2'], $gameData['busted2'], $gameData['dealerValue'], $gameData['playerCards']['player2']),
+            'player3' => $this->gamestate->whoWon($gameData['playerValue3'], $gameData['busted3'], $gameData['dealerValue'], $gameData['playerCards']['player3'])
         ];
 
         $cashFlow = [
-            'player1' => $this->payOut($winners['player1'], $gameData['bet1']),
-            'player2' => $this->payOut($winners['player2'], $gameData['bet2']),
-            'player3' => $this->payOut($winners['player3'], $gameData['bet3'])
+            'player1' => $this->gamestate->payOut($winners['player1'], $gameData['bet1']),
+            'player2' => $this->gamestate->payOut($winners['player2'], $gameData['bet2']),
+            'player3' => $this->gamestate->payOut($winners['player3'], $gameData['bet3'])
         ];
 
         $balances = [
@@ -313,48 +312,6 @@ class ProjController extends AbstractController
     }
 
     /**
-     * Function to determine winners and losers.
-     */
-    private function whoWon(int $playerValue, bool $playerBusted, int $dealerValue, array $playerCards): string
-    {
-        if ($playerBusted) {
-            return 'busted';
-        }
-        if ($playerValue === 21 && count($playerCards) === 2) {
-            return 'blackjack';
-        }
-        if ($dealerValue > 21) {
-            return 'player';
-        }
-        if ($playerValue > $dealerValue) {
-            return 'player';
-        }
-        if ($playerValue < $dealerValue) {
-            return 'dealer';
-        }
-        return 'push';
-    }
-
-    /**
-     * Function which determines who is getting paid or not.
-     */
-    private function payOut(string $result, int $bet): int
-    {
-        switch ($result) {
-            case 'player':
-                return 2 * $bet;
-            case 'blackjack':
-                return 3 * $bet;
-            case 'push':
-                return 0;
-            case 'busted':
-            case 'dealer':
-            default:
-                return -$bet;
-        }
-    }
-
-    /**
      * Route to continue playing the game after a round has concluded.
      */
     #[Route("/blackjack/playAgain", name: "playAgain", methods: ['GET'])]
@@ -379,20 +336,6 @@ class ProjController extends AbstractController
         $session->set('bet3', $bet3);
 
         return $this->redirectToRoute('blackjack');
-    }
-
-    /**
-     * Route which sets a player as being hit.
-     */
-    #[Route("/blackjack/hitRegister", name: "hitRegister", methods: ['GET'])]
-    public function hitRegister(SessionInterface $session, Request $request): Response
-    {
-        $player = $request->query->get('player');
-        $busted = $session->get($player . 'Bust', false);
-        if (in_array($player, ['player1', 'player2', 'player3']) && !$busted) {
-            $session->set($player . 'Hit', true);
-        }
-        return $this->redirectToRoute('hit');
     }
 
     /**
@@ -495,20 +438,6 @@ class ProjController extends AbstractController
         $session->set('dealerValue', $dealerValue);
 
         return $this->redirectToRoute('gameCheck');
-    }
-
-    /**
-     * Route which sets a player as standing.
-     */
-    #[Route("/blackjack/standRegister", name: "standRegister", methods: ['GET'])]
-    public function standRegister(SessionInterface $session, Request $request): Response
-    {
-        $player = $request->query->get('player');
-        if (in_array($player, ['player1', 'player2', 'player3'])) {
-            $session->set($player . 'Stand', true);
-        }
-
-        return $this->redirectToRoute('stand');
     }
 
     /**

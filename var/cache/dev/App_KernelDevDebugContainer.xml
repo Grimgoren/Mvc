@@ -380,13 +380,6 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\CardControllerKmom02Twig"/>
       </call>
     </service>
-    <service id="App\Controller\Doubling" class="App\Controller\Doubling" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\Doubling"/>
-      </call>
-    </service>
     <service id="App\Controller\LibraryController" class="App\Controller\LibraryController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -421,8 +414,23 @@
       <tag name="container.service_subscriber"/>
       <argument type="service" id="App\Service\GameInitializer"/>
       <argument type="service" id="App\Service\Gamestarter"/>
+      <argument type="service" id="App\Service\Gamestate"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\ProjController"/>
+      </call>
+    </service>
+    <service id="App\Controller\ProjControllerDoubling" class="App\Controller\ProjControllerDoubling" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\ProjControllerDoubling"/>
+      </call>
+    </service>
+    <service id="App\Controller\ProjControllerRegisters" class="App\Controller\ProjControllerRegisters" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\ProjControllerRegisters"/>
       </call>
     </service>
     <service id="App\Controller\TjugoettControllerTwig" class="App\Controller\TjugoettControllerTwig" public="true" autowire="true" autoconfigure="true">
@@ -443,6 +451,7 @@
     </service>
     <service id="App\Service\GameInitializer" class="App\Service\GameInitializer" autowire="true" autoconfigure="true"/>
     <service id="App\Service\Gamestarter" class="App\Service\Gamestarter" autowire="true" autoconfigure="true"/>
+    <service id="App\Service\Gamestate" class="App\Service\Gamestate" autowire="true" autoconfigure="true"/>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory"/>
     <service id="argument_resolver.backed_enum_resolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">
       <tag priority="100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">controller.argument_value_resolver</tag>
@@ -7119,9 +7128,6 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CardControllerKmom02Twig" class="App\Controller\CardControllerKmom02Twig" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CardControllerKmom02Twig" class="App\Controller\CardControllerKmom02Twig" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\CardControllerKmom02Twig" class="App\Controller\CardControllerKmom02Twig" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Doubling" class="App\Controller\Doubling" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Doubling" class="App\Controller\Doubling" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\Doubling" class="App\Controller\Doubling" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LibraryController" class="App\Controller\LibraryController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LibraryController" class="App\Controller\LibraryController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\LibraryController" class="App\Controller\LibraryController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -7137,6 +7143,12 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ProjController" class="App\Controller\ProjController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ProjController" class="App\Controller\ProjController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ProjController" class="App\Controller\ProjController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ProjControllerDoubling" class="App\Controller\ProjControllerDoubling" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ProjControllerDoubling" class="App\Controller\ProjControllerDoubling" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ProjControllerDoubling" class="App\Controller\ProjControllerDoubling" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ProjControllerRegisters" class="App\Controller\ProjControllerRegisters" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ProjControllerRegisters" class="App\Controller\ProjControllerRegisters" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ProjControllerRegisters" class="App\Controller\ProjControllerRegisters" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TjugoettControllerTwig" class="App\Controller\TjugoettControllerTwig" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TjugoettControllerTwig" class="App\Controller\TjugoettControllerTwig" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\TjugoettControllerTwig" class="App\Controller\TjugoettControllerTwig" autowire="true" autoconfigure="true" abstract="true"/>
@@ -8239,12 +8251,6 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
-    <service id=".service_locator.O2p6Lk7.App\Controller\Doubling" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Doubling"/>
-      <argument>App\Controller\Doubling</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
-    </service>
     <service id=".service_locator.O2p6Lk7.App\Controller\LibraryController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\LibraryController"/>
       <argument>App\Controller\LibraryController</argument>
@@ -8272,6 +8278,18 @@
     <service id=".service_locator.O2p6Lk7.App\Controller\ProjController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\ProjController"/>
       <argument>App\Controller\ProjController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\ProjControllerDoubling" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ProjControllerDoubling"/>
+      <argument>App\Controller\ProjControllerDoubling</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\ProjControllerRegisters" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ProjControllerRegisters"/>
+      <argument>App\Controller\ProjControllerRegisters</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
@@ -8455,12 +8473,13 @@
         <argument type="collection">
           <argument>App\Kernel</argument>
           <argument>App\Controller\CardControllerKmom02Twig</argument>
-          <argument>App\Controller\Doubling</argument>
           <argument>App\Controller\LibraryController</argument>
           <argument>App\Controller\LibraryControllerJson</argument>
           <argument>App\Controller\LuckyControllerTwig</argument>
           <argument>App\Controller\ProductController</argument>
           <argument>App\Controller\ProjController</argument>
+          <argument>App\Controller\ProjControllerDoubling</argument>
+          <argument>App\Controller\ProjControllerRegisters</argument>
           <argument>App\Controller\TjugoettControllerTwig</argument>
           <argument>Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController</argument>
         </argument>

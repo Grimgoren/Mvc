@@ -12,23 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-class Doubling extends AbstractController
+class ProjControllerDoubling extends AbstractController
 {
-    /**
-     * Route which sets a player as wanting to double their bet.
-     */
-    #[Route("/blackjack/doublingRegister", name: "doublingRegister", methods: ['GET'])]
-    public function doublingRegister(SessionInterface $session, Request $request): Response
-    {
-        $player = $request->query->get('player');
-        $busted = $session->get($player . 'Bust', false);
-        if (in_array($player, ['player1', 'player2', 'player3']) && !$busted) {
-            $session->set($player . 'DoubledDown', true);
-        }
-
-        return $this->redirectToRoute('DoublingDown');
-    }
-
     /**
      * Route to double a players bet and give them their card.
      */

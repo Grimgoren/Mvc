@@ -301,6 +301,21 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-CardControllerKmom02Twig.html#method_initDrawNumber"
         },                {
+            "fqsen": "\\App\\Controller\\Doubling",
+            "name": "Doubling",
+            "summary": "",
+            "url": "classes/App-Controller-Doubling.html"
+        },                {
+            "fqsen": "\\App\\Controller\\Doubling\u003A\u003AdoublingRegister\u0028\u0029",
+            "name": "doublingRegister",
+            "summary": "Route\u0020which\u0020sets\u0020a\u0020player\u0020as\u0020wanting\u0020to\u0020double\u0020their\u0020bet.",
+            "url": "classes/App-Controller-Doubling.html#method_doublingRegister"
+        },                {
+            "fqsen": "\\App\\Controller\\Doubling\u003A\u003AblackJackDoublingDown\u0028\u0029",
+            "name": "blackJackDoublingDown",
+            "summary": "Route\u0020to\u0020double\u0020a\u0020players\u0020bet\u0020and\u0020give\u0020them\u0020their\u0020card.",
+            "url": "classes/App-Controller-Doubling.html#method_blackJackDoublingDown"
+        },                {
             "fqsen": "\\App\\Controller\\LibraryController",
             "name": "LibraryController",
             "summary": "",
@@ -491,9 +506,14 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ProjController.html"
         },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Function\u0020to\u0020initialize\u0020certain\u0020variables\u0020into\u0020the\u0020game.",
+            "url": "classes/App-Controller-ProjController.html#method___construct"
+        },                {
             "fqsen": "\\App\\Controller\\ProjController\u003A\u003AblackJackStart\u0028\u0029",
             "name": "blackJackStart",
-            "summary": "Route\u0020to\u0020initialize\u0020session\u0020variables\u0020and\u0020engage\u0020the\u0020game.",
+            "summary": "Route\u0020to\u0020start\u0020the\u0020project\u0020site.",
             "url": "classes/App-Controller-ProjController.html#method_blackJackStart"
         },                {
             "fqsen": "\\App\\Controller\\ProjController\u003A\u003AprojAboutPage\u0028\u0029",
@@ -511,14 +531,19 @@ Search.appendIndex(
             "summary": "Route\u0020which\u0020checks\u0020the\u0020game\u0020state\u0020\u0028other\u0020routes\u0020direct\u0020here\u0029.",
             "url": "classes/App-Controller-ProjController.html#method_gameCheck"
         },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AgetGameCheckData\u0028\u0029",
+            "name": "getGameCheckData",
+            "summary": "Function\u0020which\u0020passes\u0020data\u0020to\u0020the\u0020GameCheck\u0020route.",
+            "url": "classes/App-Controller-ProjController.html#method_getGameCheckData"
+        },                {
             "fqsen": "\\App\\Controller\\ProjController\u003A\u003AwhoWon\u0028\u0029",
             "name": "whoWon",
-            "summary": "Route\u0020to\u0020determine\u0020winners\u0020and\u0020losers.",
+            "summary": "Function\u0020to\u0020determine\u0020winners\u0020and\u0020losers.",
             "url": "classes/App-Controller-ProjController.html#method_whoWon"
         },                {
             "fqsen": "\\App\\Controller\\ProjController\u003A\u003ApayOut\u0028\u0029",
             "name": "payOut",
-            "summary": "Route\u0020which\u0020determines\u0020who\u0020is\u0020getting\u0020paid\u0020or\u0020not.",
+            "summary": "Function\u0020which\u0020determines\u0020who\u0020is\u0020getting\u0020paid\u0020or\u0020not.",
             "url": "classes/App-Controller-ProjController.html#method_payOut"
         },                {
             "fqsen": "\\App\\Controller\\ProjController\u003A\u003AplayAgain\u0028\u0029",
@@ -546,15 +571,15 @@ Search.appendIndex(
             "summary": "Route\u0020which\u0020makes\u0020the\u0020dealer\u0020draw\u0020his\u0020cards\u0020if\u0020everyone\u0020is\u0020standing\u0020\u0028or\u0020busted\u0029.",
             "url": "classes/App-Controller-ProjController.html#method_stopBlackJack"
         },                {
-            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AdoublingRegister\u0028\u0029",
-            "name": "doublingRegister",
-            "summary": "Route\u0020which\u0020sets\u0020a\u0020player\u0020as\u0020wanting\u0020to\u0020double\u0020their\u0020bet.",
-            "url": "classes/App-Controller-ProjController.html#method_doublingRegister"
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003A\u0024gameInitializer",
+            "name": "gameInitializer",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html#property_gameInitializer"
         },                {
-            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AblackJackDoublingDown\u0028\u0029",
-            "name": "blackJackDoublingDown",
-            "summary": "Route\u0020to\u0020double\u0020a\u0020players\u0020bet\u0020and\u0020give\u0020them\u0020their\u0020card.",
-            "url": "classes/App-Controller-ProjController.html#method_blackJackDoublingDown"
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003A\u0024gamestarter",
+            "name": "gamestarter",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html#property_gamestarter"
         },                {
             "fqsen": "\\App\\Controller\\TjugoettControllerTwig",
             "name": "TjugoettControllerTwig",
@@ -761,6 +786,26 @@ Search.appendIndex(
             "summary": "Find\u0020all\u0020products\u0020having\u0020a\u0020value\u0020above\u0020the\u0020specified\u0020one\u0020with\u0020SQL.",
             "url": "classes/App-Repository-ProductRepository.html#method_findByMinimumValue2"
         },                {
+            "fqsen": "\\App\\Service\\GameInitializer",
+            "name": "GameInitializer",
+            "summary": "",
+            "url": "classes/App-Service-GameInitializer.html"
+        },                {
+            "fqsen": "\\App\\Service\\GameInitializer\u003A\u003AinitializeGame\u0028\u0029",
+            "name": "initializeGame",
+            "summary": "Function\u0020that\u0020checks\u0020session\u0020and\u0020adds\u0020things\u0020like\u0020the\u0020card\u0020deck\u0020to\u0020session\u0020if\u0020it\u0020is\u0020not\u0020present\u0020\u0028in\u0020order\u0020to\u0020\u0022launch\u0022\nthe\u0020project\u0029.",
+            "url": "classes/App-Service-GameInitializer.html#method_initializeGame"
+        },                {
+            "fqsen": "\\App\\Service\\Gamestarter",
+            "name": "Gamestarter",
+            "summary": "",
+            "url": "classes/App-Service-Gamestarter.html"
+        },                {
+            "fqsen": "\\App\\Service\\Gamestarter\u003A\u003Agamestarter\u0028\u0029",
+            "name": "gamestarter",
+            "summary": "Function\u0020sets\u0020session\u0020and\u0020returns\u0020variables\u0020to\u0020start\u0020a\u0020game.",
+            "url": "classes/App-Service-Gamestarter.html#method_gamestarter"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -795,5 +840,10 @@ Search.appendIndex(
             "name": "Repository",
             "summary": "",
             "url": "namespaces/app-repository.html"
+        },                {
+            "fqsen": "\\App\\Service",
+            "name": "Service",
+            "summary": "",
+            "url": "namespaces/app-service.html"
         }            ]
 );
