@@ -412,8 +412,6 @@
     <service id="App\Controller\ProjController" class="App\Controller\ProjController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
-      <argument type="service" id="App\Service\GameInitializer"/>
-      <argument type="service" id="App\Service\GameStarter"/>
       <argument type="service" id="App\Service\GameState"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\ProjController"/>

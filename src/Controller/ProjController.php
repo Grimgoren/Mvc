@@ -11,22 +11,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Request;
-use App\Service\GameInitializer;
-use App\Service\GameStarter;
 use App\Service\GameState;
 
 class ProjController extends AbstractController
 {
-    private GameInitializer $gameInitializer;
-    private GameStarter $gamestarter;
 
     /**
      * Function to initialize certain variables into the game.
      */
-    public function __construct(GameInitializer $gameInitializer, GameStarter $gamestarter, GameState $gamestate)
+    public function __construct(GameState $gamestate)
     {
-        $this->gameInitializer = $gameInitializer;
-        $this->gamestarter = $gamestarter;
         $this->gamestate = $gamestate;
     }
 
@@ -45,7 +39,23 @@ class ProjController extends AbstractController
     #[Route("/proj", name: "proj")]
     public function blackJackStart(SessionInterface $session): Response
     {
-        $this->gameInitializer->initializeGame($session);
+        $session->clear();
+
+        if (!$session->has('deckOfCards')) {
+            $session->set('deckOfCards', serialize(new DeckOfCards()));
+        }
+        if (!$session->has('playerCards')) {
+            $session->set('playerCards', []);
+        }
+        if (!$session->has('playerCards2')) {
+            $session->set('playerCards2', []);
+        }
+        if (!$session->has('playerCards3')) {
+            $session->set('playerCards3', []);
+        }
+        if (!$session->has('dealerCards')) {
+            $session->set('dealerCards', []);
+        }
 
         $deckOfCards = unserialize($session->get('deckOfCards'));
         $playerCards = $session->get('playerCards');
@@ -71,10 +81,31 @@ class ProjController extends AbstractController
     #[Route("/blackjack/start", name: "blackjack", methods: ['GET', 'POST'])]
     public function startBlackJack(SessionInterface $session, Request $request): Response
     {
+        $name1 = $session->get('name1');
+        $bet1 = (int) $session->get('bet1', 0);
+        $name2 = $session->get('name2');
+        $bet2 = (int) $session->get('bet2', 0);
+        $name3 = $session->get('name3');
+        $bet3 = (int) $session->get('bet3', 0);
+
+        $session->clear();
+
+        $session->set('name1', $name1);
+        $session->set('bet1', $bet1);
+        $session->set('name2', $name2);
+        $session->set('bet2', $bet2);
+        $session->set('name3', $name3);
+        $session->set('bet3', $bet3);
+
         $deckOfCards = new DeckOfCards();
         $deckOfCards->shuffleDeck();
 
-        list($name1, $name2, $name3, $bet1, $bet2, $bet3) = $this->gamestarter->gameStarter($session, $request);
+        $name1 = $request->request->get('name1', $session->get('name1'));
+        $bet1 = $request->request->get('bet1', $session->get('bet1', 0));
+        $name2 = $request->request->get('name2', $session->get('name2'));
+        $bet2 = $request->request->get('bet2', $session->get('bet2', 0));
+        $name3 = $request->request->get('name3', $session->get('name3'));
+        $bet3 = $request->request->get('bet3', $session->get('bet3', 0));
 
         $playerCards = [
             $deckOfCards->drawCard(),
