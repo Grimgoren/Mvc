@@ -1,13 +1,6 @@
 {% extends "blackjack/blackjackbase.html.twig" %}
 {% block body %}
 
-{% if class != "finish" %}
-<h2>Class is not finish</h2>
-{% endif %}
-{% if class == "finish" %}
-<h2>Class is finish</h2>
-{% endif %}
-
 <div class="game-table-container" style="background-image: url('{{ asset('assets/img/blackjackbackground.jpg') }}');">
     {% if deckCount == 52 %}
         <div class="dealer-section">
@@ -88,18 +81,23 @@
 
     {% if deckCount < 52 %}
         <div class="player-section">
-            <p>{{ name1 }} (Insatts: {{ bet1 }}) Värde: {{ playerValue }}</p>
-                {% if class != "finish" %}
-                    {% if stand1 != true %}
-                        {% if busted1 != true %}
-                            <button class="blackjackbutton" onclick="location.href='{{ path('hitRegister', { player: 'player1' }) }}'" type="button">Ta kort</button>
-                        {% endif %}
-                        <button class="blackjackbutton" onclick="location.href='{{ path('standRegister', { player: 'player1' }) }}'" type="button">Stanna</button>
-                        {% if busted1 != true %}
-                            <button class="blackjackbutton" onclick="location.href='{{ path('doublingRegister', { player: 'player1' }) }}'" type="button">Dubbla</button>
-                        {% endif %}
+            <div class="player-text">
+                {% if class !="finish" %}
+                    <p>{{ name1 }}</p> 
+                        <p>(Insatts: {{ bet1 }}) Värde: {{ playerValue }}</p>
+                            {% if class != "finish" %}
+                                {% if stand1 != true %}
+                                    {% if busted1 != true %}
+                                        <button class="blackjackbutton" onclick="location.href='{{ path('hitRegister', { player: 'player1' }) }}'" type="button">Ta kort</button>
+                                    {% endif %}
+                                    <button class="blackjackbutton" onclick="location.href='{{ path('standRegister', { player: 'player1' }) }}'" type="button">Stanna</button>
+                                    {% if busted1 != true %}
+                                        <button class="blackjackbutton" onclick="location.href='{{ path('doublingRegister', { player: 'player1' }) }}'" type="button">Dubbla</button>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
                     {% endif %}
-                {% endif %}
+                </div>
                 <div class="blackjack-container">
                     {% for card in playerCards %}
                         <div class="blackjack-cards
@@ -122,18 +120,23 @@
 
     {% if deckCount < 52 %}
         <div class="player-section">
-            <p>{{ name2 }} (Insatts: {{ bet2 }}) Värde: {{ playerValue2 }}</p>
-                {% if class != "finish" %}
-                    {% if stand2 != true %}
-                        {% if busted2 != true %}
-                            <button class="blackjackbutton" onclick="location.href='{{ path('hitRegister', { player: 'player2' }) }}'" type="button">Ta kort</button>
+            <div class="player-text">
+                {% if class !="finish" %}
+                    <p>{{ name2 }}</p>
+                        <p>(Insatts: {{ bet2 }}) Värde: {{ playerValue2 }}</p>
+                            {% if class != "finish" %}
+                                {% if stand2 != true %}
+                                    {% if busted2 != true %}
+                                        <button class="blackjackbutton" onclick="location.href='{{ path('hitRegister', { player: 'player2' }) }}'" type="button">Ta kort</button>
+                                    {% endif %}
+                                    <button class="blackjackbutton" onclick="location.href='{{ path('standRegister', { player: 'player2' }) }}'" type="button">Stanna</button>
+                                    {% if busted2 != true %}
+                                        <button class="blackjackbutton" onclick="location.href='{{ path('doublingRegister', { player: 'player2' }) }}'" type="button">Dubbla</button>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
                         {% endif %}
-                        <button class="blackjackbutton" onclick="location.href='{{ path('standRegister', { player: 'player2' }) }}'" type="button">Stanna</button>
-                        {% if busted2 != true %}
-                            <button class="blackjackbutton" onclick="location.href='{{ path('doublingRegister', { player: 'player2' }) }}'" type="button">Dubbla</button>
-                        {% endif %}
-                    {% endif %}
-                {% endif %}
+                </div>
                 <div class="blackjack-container">
                     {% for card in playerCards2 %}
                         <div class="blackjack-cards
@@ -156,18 +159,23 @@
 
     {% if deckCount < 52 %}
         <div class="player-section">
-            <p>{{ name3 }} (Insatts: {{ bet3 }}) Värde: {{ playerValue3 }}</p>
-                {% if class != "finish" %}
-                    {% if stand3 != true %}
-                        {% if busted3 != true %}
-                            <button class="blackjackbutton" onclick="location.href='{{ path('hitRegister', { player: 'player3' }) }}'" type="button">Ta kort</button>
+            <div class="player-text">
+                {% if class !="finish" %}
+                    <p>{{ name3 }}</p>
+                        <p>(Insatts: {{ bet3 }}) Värde: {{ playerValue3 }}</p>
+                            {% if class != "finish" %}
+                                {% if stand3 != true %}
+                                    {% if busted3 != true %}
+                                        <button class="blackjackbutton" onclick="location.href='{{ path('hitRegister', { player: 'player3' }) }}'" type="button">Ta kort</button>
+                                    {% endif %}
+                                    <button class="blackjackbutton" onclick="location.href='{{ path('standRegister', { player: 'player3' }) }}'" type="button">Stanna</button>
+                                    {% if busted3 != true %}
+                                        <button class="blackjackbutton" onclick="location.href='{{ path('doublingRegister', { player: 'player3' }) }}'" type="button">Dubbla</button>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
                         {% endif %}
-                        <button class="blackjackbutton" onclick="location.href='{{ path('standRegister', { player: 'player3' }) }}'" type="button">Stanna</button>
-                        {% if busted3 != true %}
-                            <button class="blackjackbutton" onclick="location.href='{{ path('doublingRegister', { player: 'player3' }) }}'" type="button">Dubbla</button>
-                        {% endif %}
-                    {% endif %}
-                {% endif %}
+                </div>
                 <div class="blackjack-container">
                     {% for card in playerCards3 %}
                         <div class="blackjack-cards

@@ -301,21 +301,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-CardControllerKmom02Twig.html#method_initDrawNumber"
         },                {
-            "fqsen": "\\App\\Controller\\Doubling",
-            "name": "Doubling",
-            "summary": "",
-            "url": "classes/App-Controller-Doubling.html"
-        },                {
-            "fqsen": "\\App\\Controller\\Doubling\u003A\u003AdoublingRegister\u0028\u0029",
-            "name": "doublingRegister",
-            "summary": "Route\u0020which\u0020sets\u0020a\u0020player\u0020as\u0020wanting\u0020to\u0020double\u0020their\u0020bet.",
-            "url": "classes/App-Controller-Doubling.html#method_doublingRegister"
-        },                {
-            "fqsen": "\\App\\Controller\\Doubling\u003A\u003AblackJackDoublingDown\u0028\u0029",
-            "name": "blackJackDoublingDown",
-            "summary": "Route\u0020to\u0020double\u0020a\u0020players\u0020bet\u0020and\u0020give\u0020them\u0020their\u0020card.",
-            "url": "classes/App-Controller-Doubling.html#method_blackJackDoublingDown"
-        },                {
             "fqsen": "\\App\\Controller\\LibraryController",
             "name": "LibraryController",
             "summary": "",
@@ -511,15 +496,15 @@ Search.appendIndex(
             "summary": "Function\u0020to\u0020initialize\u0020certain\u0020variables\u0020into\u0020the\u0020game.",
             "url": "classes/App-Controller-ProjController.html#method___construct"
         },                {
-            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AblackJackStart\u0028\u0029",
-            "name": "blackJackStart",
-            "summary": "Route\u0020to\u0020start\u0020the\u0020project\u0020site.",
-            "url": "classes/App-Controller-ProjController.html#method_blackJackStart"
-        },                {
             "fqsen": "\\App\\Controller\\ProjController\u003A\u003AprojAboutPage\u0028\u0029",
             "name": "projAboutPage",
             "summary": "Route\u0020for\u0020the\u0020about\u0020page\u0020which\u0020describes\u0020what\u0020the\u0020project\u0020is\u0020about.",
             "url": "classes/App-Controller-ProjController.html#method_projAboutPage"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AblackJackStart\u0028\u0029",
+            "name": "blackJackStart",
+            "summary": "Route\u0020to\u0020start\u0020the\u0020project\u0020site.",
+            "url": "classes/App-Controller-ProjController.html#method_blackJackStart"
         },                {
             "fqsen": "\\App\\Controller\\ProjController\u003A\u003AstartBlackJack\u0028\u0029",
             "name": "startBlackJack",
@@ -536,50 +521,50 @@ Search.appendIndex(
             "summary": "Function\u0020which\u0020passes\u0020data\u0020to\u0020the\u0020GameCheck\u0020route.",
             "url": "classes/App-Controller-ProjController.html#method_getGameCheckData"
         },                {
-            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AwhoWon\u0028\u0029",
-            "name": "whoWon",
-            "summary": "Function\u0020to\u0020determine\u0020winners\u0020and\u0020losers.",
-            "url": "classes/App-Controller-ProjController.html#method_whoWon"
-        },                {
-            "fqsen": "\\App\\Controller\\ProjController\u003A\u003ApayOut\u0028\u0029",
-            "name": "payOut",
-            "summary": "Function\u0020which\u0020determines\u0020who\u0020is\u0020getting\u0020paid\u0020or\u0020not.",
-            "url": "classes/App-Controller-ProjController.html#method_payOut"
-        },                {
             "fqsen": "\\App\\Controller\\ProjController\u003A\u003AplayAgain\u0028\u0029",
             "name": "playAgain",
             "summary": "Route\u0020to\u0020continue\u0020playing\u0020the\u0020game\u0020after\u0020a\u0020round\u0020has\u0020concluded.",
             "url": "classes/App-Controller-ProjController.html#method_playAgain"
-        },                {
-            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AhitRegister\u0028\u0029",
-            "name": "hitRegister",
-            "summary": "Route\u0020which\u0020sets\u0020a\u0020player\u0020as\u0020being\u0020hit.",
-            "url": "classes/App-Controller-ProjController.html#method_hitRegister"
         },                {
             "fqsen": "\\App\\Controller\\ProjController\u003A\u003AblackJackHit\u0028\u0029",
             "name": "blackJackHit",
             "summary": "Route\u0020which\u0020continues\u0020after\u0020hitRegister\u0020and\u0020draws\u0020a\u0020card\u0020for\u0020the\u0020\u0022hit\u0022\u0020player.",
             "url": "classes/App-Controller-ProjController.html#method_blackJackHit"
         },                {
-            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AstandRegister\u0028\u0029",
-            "name": "standRegister",
-            "summary": "Route\u0020which\u0020sets\u0020a\u0020player\u0020as\u0020standing.",
-            "url": "classes/App-Controller-ProjController.html#method_standRegister"
-        },                {
             "fqsen": "\\App\\Controller\\ProjController\u003A\u003AstopBlackJack\u0028\u0029",
             "name": "stopBlackJack",
             "summary": "Route\u0020which\u0020makes\u0020the\u0020dealer\u0020draw\u0020his\u0020cards\u0020if\u0020everyone\u0020is\u0020standing\u0020\u0028or\u0020busted\u0029.",
             "url": "classes/App-Controller-ProjController.html#method_stopBlackJack"
         },                {
-            "fqsen": "\\App\\Controller\\ProjController\u003A\u003A\u0024gameInitializer",
-            "name": "gameInitializer",
+            "fqsen": "\\App\\Controller\\ProjControllerDoubling",
+            "name": "ProjControllerDoubling",
             "summary": "",
-            "url": "classes/App-Controller-ProjController.html#property_gameInitializer"
+            "url": "classes/App-Controller-ProjControllerDoubling.html"
         },                {
-            "fqsen": "\\App\\Controller\\ProjController\u003A\u003A\u0024gamestarter",
-            "name": "gamestarter",
+            "fqsen": "\\App\\Controller\\ProjControllerDoubling\u003A\u003AblackJackDoublingDown\u0028\u0029",
+            "name": "blackJackDoublingDown",
+            "summary": "Route\u0020to\u0020double\u0020a\u0020players\u0020bet\u0020and\u0020give\u0020them\u0020their\u0020card.",
+            "url": "classes/App-Controller-ProjControllerDoubling.html#method_blackJackDoublingDown"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjControllerRegisters",
+            "name": "ProjControllerRegisters",
             "summary": "",
-            "url": "classes/App-Controller-ProjController.html#property_gamestarter"
+            "url": "classes/App-Controller-ProjControllerRegisters.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjControllerRegisters\u003A\u003AhitRegister\u0028\u0029",
+            "name": "hitRegister",
+            "summary": "Route\u0020which\u0020sets\u0020a\u0020player\u0020as\u0020being\u0020hit.",
+            "url": "classes/App-Controller-ProjControllerRegisters.html#method_hitRegister"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjControllerRegisters\u003A\u003AstandRegister\u0028\u0029",
+            "name": "standRegister",
+            "summary": "Route\u0020which\u0020sets\u0020a\u0020player\u0020as\u0020standing.",
+            "url": "classes/App-Controller-ProjControllerRegisters.html#method_standRegister"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjControllerRegisters\u003A\u003AdoublingRegister\u0028\u0029",
+            "name": "doublingRegister",
+            "summary": "Route\u0020which\u0020sets\u0020a\u0020player\u0020as\u0020wanting\u0020to\u0020double\u0020their\u0020bet.",
+            "url": "classes/App-Controller-ProjControllerRegisters.html#method_doublingRegister"
         },                {
             "fqsen": "\\App\\Controller\\TjugoettControllerTwig",
             "name": "TjugoettControllerTwig",
@@ -796,15 +781,30 @@ Search.appendIndex(
             "summary": "Function\u0020that\u0020checks\u0020session\u0020and\u0020adds\u0020things\u0020like\u0020the\u0020card\u0020deck\u0020to\u0020session\u0020if\u0020it\u0020is\u0020not\u0020present\u0020\u0028in\u0020order\u0020to\u0020\u0022launch\u0022\nthe\u0020project\u0029.",
             "url": "classes/App-Service-GameInitializer.html#method_initializeGame"
         },                {
-            "fqsen": "\\App\\Service\\Gamestarter",
-            "name": "Gamestarter",
+            "fqsen": "\\App\\Service\\GameStarter",
+            "name": "GameStarter",
             "summary": "",
-            "url": "classes/App-Service-Gamestarter.html"
+            "url": "classes/App-Service-GameStarter.html"
         },                {
-            "fqsen": "\\App\\Service\\Gamestarter\u003A\u003Agamestarter\u0028\u0029",
-            "name": "gamestarter",
+            "fqsen": "\\App\\Service\\GameStarter\u003A\u003AgameStarter\u0028\u0029",
+            "name": "gameStarter",
             "summary": "Function\u0020sets\u0020session\u0020and\u0020returns\u0020variables\u0020to\u0020start\u0020a\u0020game.",
-            "url": "classes/App-Service-Gamestarter.html#method_gamestarter"
+            "url": "classes/App-Service-GameStarter.html#method_gameStarter"
+        },                {
+            "fqsen": "\\App\\Service\\GameState",
+            "name": "GameState",
+            "summary": "",
+            "url": "classes/App-Service-GameState.html"
+        },                {
+            "fqsen": "\\App\\Service\\GameState\u003A\u003AwhoWon\u0028\u0029",
+            "name": "whoWon",
+            "summary": "Function\u0020to\u0020determine\u0020winners\u0020and\u0020losers.",
+            "url": "classes/App-Service-GameState.html#method_whoWon"
+        },                {
+            "fqsen": "\\App\\Service\\GameState\u003A\u003ApayOut\u0028\u0029",
+            "name": "payOut",
+            "summary": "Function\u0020which\u0020determines\u0020who\u0020is\u0020getting\u0020paid\u0020or\u0020not.",
+            "url": "classes/App-Service-GameState.html#method_payOut"
         },                {
             "fqsen": "\\",
             "name": "\\",

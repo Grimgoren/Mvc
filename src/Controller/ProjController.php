@@ -15,7 +15,6 @@ use App\Service\GameState;
 
 class ProjController extends AbstractController
 {
-
     /**
      * Function to initialize certain variables into the game.
      */

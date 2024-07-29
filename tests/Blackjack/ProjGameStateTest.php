@@ -10,7 +10,7 @@ class ProjGameStateTest extends TestCase
     public function testDealerWon()
     {
         $gamestate = new GameState();
-        
+
         $playerValue = 10;
         $playerBusted = false;
         $dealerValue = 21;
@@ -24,7 +24,7 @@ class ProjGameStateTest extends TestCase
     public function testPlayerWon()
     {
         $gamestate = new GameState();
-        
+
         $playerValue = 20;
         $playerBusted = false;
         $dealerValue = 19;
@@ -38,7 +38,7 @@ class ProjGameStateTest extends TestCase
     public function testPlayerBlackjack()
     {
         $gamestate = new GameState();
-        
+
         $playerValue = 21;
         $playerBusted = false;
         $dealerValue = 20;
@@ -52,7 +52,7 @@ class ProjGameStateTest extends TestCase
     public function testPlayerWin21()
     {
         $gamestate = new GameState();
-        
+
         $playerValue = 21;
         $playerBusted = false;
         $dealerValue = 20;
@@ -66,7 +66,7 @@ class ProjGameStateTest extends TestCase
     public function testDealerWin21()
     {
         $gamestate = new GameState();
-        
+
         $playerValue = 20;
         $playerBusted = false;
         $dealerValue = 21;
@@ -80,7 +80,7 @@ class ProjGameStateTest extends TestCase
     public function testDealerBust()
     {
         $gamestate = new GameState();
-        
+
         $playerValue = 10;
         $playerBusted = false;
         $dealerValue = 22;
@@ -94,7 +94,7 @@ class ProjGameStateTest extends TestCase
     public function testPlayerBust()
     {
         $gamestate = new GameState();
-        
+
         $playerValue = 25;
         $playerBusted = true;
         $dealerValue = 22;
@@ -108,7 +108,7 @@ class ProjGameStateTest extends TestCase
     public function testPush()
     {
         $gamestate = new GameState();
-        
+
         $playerValue = 18;
         $playerBusted = false;
         $dealerValue = 18;
@@ -122,7 +122,7 @@ class ProjGameStateTest extends TestCase
     public function testPayOut()
     {
         $payDay = new GameState();
-        
+
         $bet = 20;
         $result = 'player';
 
@@ -134,7 +134,7 @@ class ProjGameStateTest extends TestCase
     public function testPayOutBlackjack()
     {
         $payDay = new GameState();
-        
+
         $bet = 20;
         $result = 'blackjack';
 
@@ -146,7 +146,7 @@ class ProjGameStateTest extends TestCase
     public function testPayOutPush()
     {
         $payDay = new GameState();
-        
+
         $bet = 20;
         $result = 'push';
 
@@ -158,7 +158,7 @@ class ProjGameStateTest extends TestCase
     public function testPayOutBusted()
     {
         $payDay = new GameState();
-        
+
         $bet = 20;
         $result = 'busted';
 
@@ -170,7 +170,7 @@ class ProjGameStateTest extends TestCase
     public function testPayOutDealer()
     {
         $payDay = new GameState();
-        
+
         $bet = 20;
         $result = 'dealer';
 
