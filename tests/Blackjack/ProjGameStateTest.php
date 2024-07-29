@@ -118,4 +118,64 @@ class ProjGameStateTest extends TestCase
 
         $this->assertEquals('push', $result);
     }
+
+    public function testPayOut()
+    {
+        $payDay = new GameState();
+        
+        $bet = 20;
+        $result = 'player';
+
+        $payOut = $payDay->payOut($result, $bet);
+
+        $this->assertEquals(40, $payOut);
+    }
+
+    public function testPayOutBlackjack()
+    {
+        $payDay = new GameState();
+        
+        $bet = 20;
+        $result = 'blackjack';
+
+        $payOut = $payDay->payOut($result, $bet);
+
+        $this->assertEquals(60, $payOut);
+    }
+
+    public function testPayOutPush()
+    {
+        $payDay = new GameState();
+        
+        $bet = 20;
+        $result = 'push';
+
+        $payOut = $payDay->payOut($result, $bet);
+
+        $this->assertEquals(0, $payOut);
+    }
+
+    public function testPayOutBusted()
+    {
+        $payDay = new GameState();
+        
+        $bet = 20;
+        $result = 'busted';
+
+        $payOut = $payDay->payOut($result, $bet);
+
+        $this->assertEquals(-20, $payOut);
+    }
+
+    public function testPayOutDealer()
+    {
+        $payDay = new GameState();
+        
+        $bet = 20;
+        $result = 'dealer';
+
+        $payOut = $payDay->payOut($result, $bet);
+
+        $this->assertEquals(-20, $payOut);
+    }
 }
