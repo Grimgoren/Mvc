@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-class Gamestate
+class GameState
 {
     /**
      * Function to determine winners and losers.

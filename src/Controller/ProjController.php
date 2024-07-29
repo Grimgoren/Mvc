@@ -12,18 +12,18 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Service\GameInitializer;
-use App\Service\Gamestarter;
-use App\Service\Gamestate;
+use App\Service\GameStarter;
+use App\Service\GameState;
 
 class ProjController extends AbstractController
 {
     private GameInitializer $gameInitializer;
-    private Gamestarter $gamestarter;
+    private GameStarter $gamestarter;
 
     /**
      * Function to initialize certain variables into the game.
      */
-    public function __construct(GameInitializer $gameInitializer, Gamestarter $gamestarter, Gamestate $gamestate)
+    public function __construct(GameInitializer $gameInitializer, GameStarter $gamestarter, GameState $gamestate)
     {
         $this->gameInitializer = $gameInitializer;
         $this->gamestarter = $gamestarter;
@@ -74,7 +74,7 @@ class ProjController extends AbstractController
         $deckOfCards = new DeckOfCards();
         $deckOfCards->shuffleDeck();
 
-        list($name1, $name2, $name3, $bet1, $bet2, $bet3) = $this->gamestarter->gamestarter($session, $request);
+        list($name1, $name2, $name3, $bet1, $bet2, $bet3) = $this->gamestarter->gameStarter($session, $request);
 
         $playerCards = [
             $deckOfCards->drawCard(),

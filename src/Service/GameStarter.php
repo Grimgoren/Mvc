@@ -5,12 +5,12 @@ namespace App\Service;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-class Gamestarter
+class GameStarter
 {
     /**
      * Function sets session and returns variables to start a game.
      */
-    public function gamestarter(SessionInterface $session, Request $request): array
+    public function gameStarter(SessionInterface $session, Request $request): array
     {
         $name1 = $session->get('name1');
         $bet1 = (int) $session->get('bet1', 0);
