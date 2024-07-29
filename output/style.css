@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 body {
   margin: 0 auto;
   max-width: 1200px;
@@ -7,12 +8,18 @@ body {
   color: white;
 }
 
+.blackjack-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .blackjackbody {
-  margin: 0 auto;
-  max-width: 1200px;
-  background-size: cover;
-  background-color: #455302;
-  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .link-color {
@@ -157,10 +164,30 @@ body {
   text-align: left;
 }
 
+.blackjack-site-footer {
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  padding: 20px 0;
+  margin-top: auto;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  max-height: auto;
+}
+
 .footer-content {
   display: flex;
   flex-direction: column;
   align-items: left;
+}
+
+.blackjack-footer-content {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
 .site-title {
@@ -184,6 +211,14 @@ h1 {
 .gitimg img {
   width: 80px;
   height: auto;
+}
+
+.helpimg img {
+  width: 160px;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .two-columns {
@@ -412,8 +447,48 @@ h1 {
 }
 
 .player-text {
-  padding: 20px;
+  position: relative;
+  background: linear-gradient(45deg, #FFD700, #FFC700);
+  border: 1px solid #DAA520;
+  font-size: 14px;
+  color: #000000;
+  margin: 10px;
+  padding: 10px;
   text-align: center;
+  text-decoration: none;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  z-index: 3;
+}
+
+.player-text::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.5);
+  background: linear-gradient(white, rgba(255, 255, 255, 0));
+  transform: rotate(45deg);
+  border-radius: 50%;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.player-text::after {
+  content: "";
+  background: rgba(255, 255, 255, 0.2);
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0;
 }
 
 .player-section {
@@ -422,10 +497,6 @@ h1 {
   background-repeat: no-repeat;
   border-radius: 10px;
   text-align: left;
-}
-
-.dealer-text {
-  padding: 20px;
 }
 
 .blackjack-container {

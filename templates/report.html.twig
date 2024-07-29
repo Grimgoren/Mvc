@@ -197,8 +197,36 @@
             <p>
                 Scrutinizer & phpmetrics samt kodkvalite överlag.
             </p>
-    <h2 id="kmom07">Kmom07</h2>
-    <p></p>
-    <h2 id="kmom08">Kmom08</h2>
-    <p></p>
+    <h2 id="kmom10">Kmom10</h2>
+    <h2>Krav 1-3</h2>
+    <p>
+        Till och börja med så implementerade jag en "helt ny" base twig för mitt Black Jack spel, för att få till 
+        en typ av unik look/feel som också är ett av kraven (krav 3).
+        Min route /proj (krav 1 & 2) gjorde jag på så sätt att den i min nya controller ProjController sätter olika saker 
+        i session, så som kortleken, spelarnas kort och dealerns kort.
+        Sidan innehåller även formulär för de tre spelarna så att man kan välja namn och betta vad man vill (lägst 10).</p>
+        <p>Jag valde inte att göra någon ny stylesheet, all style för min sida ligger i samma fil som föregående med andra namn. 
+        Mest för att jag själv tycker det är bekvämare så. Eftersom krav 1-3 är hänvisar till stor del om utseendet av sidan så kommer jag lägga mer fokus på 
+        det just här.
+    </p>
+        Min styling har en egen navbar med en länk hem till huvudsidan (sidan med report m.m.), en länk för att starta om spelet helt och en annan länk för 
+        lite mer info om projektet. Vissa element är lika min föregående style, så som att jag har en footer har samma typ av style som resten av sidan, det 
+        vill säga en spelsida och en länk till stödlinjen (för spelberoende) eftersom det verkar vara väldigt standard (till och med lag möjligtvis?) att 
+        inkludera det på en spelsida.
+    <p>
+
+    </p>
+
+    <p>
+        Själva spelet implementerade jag jag genom att ha en hel del olika routes i min controller, 
+        exempelvis så har jag en route som heter gameCheck som många andra routes hänvisar/redirectar till. Denna route 
+        hämtar olika sessions värden och sätter vissa värden i session för sedan själv hänvisa vidare till start routen. Alltså 
+        en route som kollar av spelet och hur det ser ut en Gamecheck route.
+    </p>
+
+    <p>
+        Routes som diregerar till min gamecheck route kan exempelvis vara när man väljer att stanna, då måste ju session 
+        uppdateras och det måste stämmas av om alla spelare har stannat, gått bust eller vad som nu hänt.
+    </p>
+
 {% endblock %}

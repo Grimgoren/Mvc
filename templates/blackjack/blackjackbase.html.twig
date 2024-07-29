@@ -1,38 +1,40 @@
 <!DOCTYPE html>
-<html>
-    <header class="blackjack-header" style="background-image: url({{ asset('assets/img/blackjackbanner-edit.jpg') }})">
-        <span class="site-title"></span>
-    </header>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="{{ asset('assets/img/glider.svg') }}">
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-        <body class="blackjackbody" style="background-image: url({{ asset('assets/img/greenbackground.jpg') }})">
-            <nav>
-                <ul>
-                    <button class="blackjacknav" onclick="location.href='{{ path('me') }}'">Hem</button>
-                    <button class="blackjacknav" onclick="location.href='{{ path('proj') }}'">Börja om</button>
-                    <button class="blackjacknav" onclick="location.href='{{ path('projAbout') }}'">Om projektet</button>
-                </ul>
-            </nav>
-            {% block body %}{% endblock %}
-        </body>
-    </body>
-    <footer class="site-footer">
-        <div class="footer-content">
-            <a class="gitimg" href="https://github.com/Grimgoren/Mvc">
-                <img src="{{ asset('assets/img/GitHub-logo.png') }}" alt="">
-            </a>
-            <p>Copyright AG</p>
-        </div>
-    </footer>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Blackjack{% endblock %}</title>
+    <link rel="icon" href="{{ asset('assets/img/glider.svg') }}">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+<body class="blackjackbody" style="background-image: url({{ asset('assets/img/greenbackground.jpg') }})">
+    <div class="blackjack-wrapper">
+        <header class="blackjack-header" style="background-image: url({{ asset('assets/img/blackjackbanner-edit.jpg') }})">
+            <span class="site-title"></span>
+        </header>
+        <nav>
+            <ul>
+                <button class="blackjacknav" onclick="location.href='{{ path('me') }}'">Hem</button>
+                <button class="blackjacknav" onclick="location.href='{{ path('proj') }}'">Börja om</button>
+                <button class="blackjacknav" onclick="location.href='{{ path('projAbout') }}'">Om projektet</button>
+            </ul>
+        </nav>
+        {% block body %}{% endblock %}
+        <footer class="blackjack-site-footer" style="background-image: url('{{ asset('assets/img/blackjackbackground.jpg') }}');">
+            <div class="blackjack-footer-content">
+                <a class="helpimg" href="https://stodlinjen.se/">
+                    <img src="{{ asset('assets/img/Stodlinjen.png') }}" alt="GitHub Logo">
+                </a>
+                <a>
+                    Copyright AG
+                </a>
+            </div>
+        </footer>
+    </div>
+</body>
 </html>
