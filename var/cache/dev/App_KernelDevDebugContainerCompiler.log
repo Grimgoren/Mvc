@@ -128,6 +128,8 @@ Symfony\Component\DependencyInjection\Compiler\ResolveChildDefinitionsPass: Reso
 Symfony\Component\DependencyInjection\Compiler\AutowirePass: Skipping service "App\Card_old\CardSort": Class or interface "App\Card_old\CardSort" cannot be loaded.
 Symfony\Component\DependencyInjection\Compiler\AutowirePass: Skipping service "App\Card_old\CardValue": Class or interface "App\Card_old\CardValue" cannot be loaded.
 Symfony\Component\DependencyInjection\Compiler\AutowirePass: Skipping service "App\Card_old\Draw": Class or interface "App\Card_old\Draw" cannot be loaded.
+Symfony\Component\DependencyInjection\Compiler\AutowirePass: Skipping service "App\Service\Service_old\GameInitializer": Class or interface "App\Service\Service_old\GameInitializer" cannot be loaded.
+Symfony\Component\DependencyInjection\Compiler\AutowirePass: Skipping service "App\Service\Service_old\GameStarter": Class or interface "App\Service\Service_old\GameStarter" cannot be loaded.
 Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass: Removed service "Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface"; reason: private alias.
 Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass: Removed service "Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface"; reason: private alias.
 Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass: Removed service "Symfony\Component\EventDispatcher\EventDispatcherInterface"; reason: private alias.
@@ -566,8 +568,8 @@ Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Remo
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "App\Controller\CardControllerKmom02Json"; reason: unused.
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "App\Controller\LuckyControllerJson"; reason: unused.
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "App\Dice\Dice"; reason: unused.
-Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "App\Service\GameInitializer"; reason: unused.
-Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "App\Service\GameStarter"; reason: unused.
+Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "App\Service\Service_old\GameInitializer"; reason: unused.
+Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "App\Service\Service_old\GameStarter"; reason: unused.
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "http_cache"; reason: unused.
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "http_cache.store"; reason: unused.
 Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass: Removed service "reverse_container"; reason: unused.

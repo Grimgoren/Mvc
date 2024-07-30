@@ -17,7 +17,8 @@
         "watch": "encore dev --watch",
         "build": "encore production --progress",
         "style": "sass base.scss output/style.css --no-source-map",
-        "style-min": "sass base.scss output/style.min.css  --no-source-map --style compressed"
+        "style-min": "sass base.scss output/style.min.css  --no-source-map --style compressed",
+        "build-all": "npm run style-min && npm run build"
     },
     "dependencies": {
         "sass": "^1.72.0",
