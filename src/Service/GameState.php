@@ -36,7 +36,7 @@ class GameState
             case 'player':
                 return 2 * $bet;
             case 'blackjack':
-                return 2.5 * $bet;
+                return (int)(2.5 * $bet);
             case 'push':
                 return 0;
             case 'busted':
