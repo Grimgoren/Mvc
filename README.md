@@ -15,6 +15,10 @@
 
 Detta är min github för kursen MVC, det innehåller alla kmom i kursen inklusive projektet. Innehållet hjälper mig hålla 
 reda på ändringar i koden samt kvalitetssäkring med scuritinzer.
+Projektet som avslutar kursen är ett Blackjack spel som spelas med tre personer och en dealer, man kan välja att lägga in en 
+insatts och man har flera valmöjligheter under spelets gång om hur man vill fortsätta.
+
+![alt text](image-5.png)
 
 # Ladda hem projektet
 
@@ -26,7 +30,7 @@ reda på ändringar i koden samt kvalitetssäkring med scuritinzer.
 3. Navigera med Ubuntu (eller liknande) till report folder.
 ![](image-3.png)
 
-# Starta sidan ![](public/assets/img/php.png)
+# Starta sidan
 
 Navigera till /report och copy-paste följande i terminalen för att starta servern:
 
@@ -36,7 +40,7 @@ Webssidan kan sedan nås på följande länk:
 
 http://localhost:8888/
 
-![alt text](image-2.png)
+![alt text](image-4.png)
 
 
 

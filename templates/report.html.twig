@@ -219,19 +219,87 @@
         och spelarna längst ned (tittar mot dealern). Man har en representation av hur många kort som är kvar i leken och en kontrollmodul per spelare 
         (där man kan dubbla stanna och be om kort). Själva stylen på bordet har jag försökte få till någon slags "spelstil" eller kanske bättre 
         förklarat en stil som påminner om lite gammal och "ful" casino stil (typ maskiner man ser på gamla slitna färjor mellan Danmark och Tyskland), 
-        därav allt guld och grönt.
+        därav allt guld och grönt. Något jag inte implementerat främst för att det kändes krångligt var att lägga in ett "fast" 
+        spelfält, alltså ha ett bord som inte förändras i storlek beroende på hur många kort man har och istället ser ut som ett 
+        mer "riktigt" poker bord med plats för kanske 5 eller mer kort per spelare.
     </p>
 
     <p>
-        Själva spelet implementerade jag jag genom att ha en hel del olika routes i min controller, 
+        Spel logiken implementerade jag jag genom att ha en hel del olika routes i min controller, 
         exempelvis så har jag en route som heter gameCheck som många andra routes hänvisar/redirectar till. Denna route 
         hämtar olika sessions värden och sätter vissa värden i session för sedan själv hänvisa vidare till start routen. Alltså 
         en route som kollar av spelet och hur det ser ut en Gamecheck route.
+        Routes som diregerar till min gamecheck route kan exempelvis vara när man väljer att stanna, då måste ju session 
+        uppdateras och det måste stämmas av om alla spelare har stannat, gått bust eller vad som nu hänt. För övrigt så har 
+        jag en route för varje sak man väljer att göra (ta koret, stanna, dubbla) som sätter en "checkmark" för just den saken 
+        så spelet vet att exempelvis spelare 1 har valt att stanna eller ta ett kort.
+    </p>
+
+    <h3>
+        Repo & dokumentation
+    </h3>
+
+    <p>
+        Min sida har sedan tidigare en README.md med information om hur man hämtar och startar repot, denna har jag självklart 
+        uppdaterat även om allt med hur det fungerar är samma, det finns scrutinzer badges som man kan klicka på för att komma 
+        till senaste scrutinizer sidan för projektet.<br>
+        Jag har även lagt till mer beskrivning specillet för vad det innehåller och ännu mer specifikt för vad projektet är.
     </p>
 
     <p>
-        Routes som diregerar till min gamecheck route kan exempelvis vara när man väljer att stanna, då måste ju session 
-        uppdateras och det måste stämmas av om alla spelare har stannat, gått bust eller vad som nu hänt.
+        Min kodtäckning i scrutinizer har jag lyckats få upp till 43%, inte riktigt de 90% som man kanske vill ha, det hade jag 
+        nog kommit upp i om jag exkluderade min controller men det känns lite fegt. Jag har ändå skrivit tester till samtliga klasser 
+        som inte är kontroller (och hade sedan tidigare tester från 21 spelet till mina kort och kortlek).<br>
+        De saker som jag valde att exkluderade är alla andra saker i mitt projekt som inte är relevanta för 21 spelet, biblioteket och blackjack spelet 
+        så som gamla kontrollers och andra klasser som inte är relevanta (exempelvis klassen Dice).<br>
+        Om jag skulle komma upp ännu mera i min coverage så behöver jag skriva tester för min controller vilket verkar 
+        väldigt komplicerat (jag försökte men kom inte någonstans).
     </p>
 
+    <h2>Hur gick genomförandet av projektet?</h2>
+
+    <p>
+        Vi kan börja med vad jag ansåg var krånglit och struligt. Det absolut största problemet jag hade var att min 
+        controller blev enorm stor (något scrutinizer klagat på) vilket ledde till att jag fick flytta ut en del saker till 
+        mindre klasser, jag är medveten om att det är så man bör göra det från början men det blir ofta att man bara 
+        fortsätter skriva i samma fil när man väl är igång för att "de funkar ju" och glömmer att tänka på att det blir lite 
+        väl komplicerat att få en överskådlig bild senare. Nu är min primära controller klass fortfarande rätt stor men det 
+        är mycket på grund utav alla session variabler som ska hämtas och sättas i varje route så det inte blir fel.
+        Exempel på nya klasser jag skapade är ProjControllerDoubling just för när man väljer att dubbla sin insatts och 
+        GameState som hanterar vem som vinner och hur mycket man får i vinst eller hur mycket man förlorat.<br>
+        GameState var innan jag skapade den klassen del utav min massiva kotroller vilket inte var så bra, nu är det en riktigt bra 
+        liten och konsistent klass.
+    </p>
+
+    <p>
+        Jag valde blackjack eftersom det kunde påbörjas enkelt med hjälp av mina tidigare klasser för 21 spelet och 
+        jag har återanvänt i stort sätt alla klasser jag hade där utan att göra några ändringar i dem. Vilket jag själv skulle 
+        säga är bra eftersom då är dem klasserna förmodligen ganksa bra skrivna.<br>
+        För övrigt kunde jag återanvända mycket av de gamla routsen från 21 spelet också men där fick jag "uppgradera" dem 
+        till en tre spelare version. Man skulle säkert kunna gjort det på andra sätt och "dynamiskt" tittat efter om det 
+        finns fler än en spelare och utifrån det spelat spelet, men som koden är nu så är det alltid 3 spelare.<br>
+        Det tog ändå mer tid än vad jag hade räknat med (upp mot 80 timmar om jag skulle gissa) eftersom vissa saker inte 
+        riktigt ville fungera, jag hade exempelvis problem med att få korten att dras och inte ställa om sig efter man dragit 
+        mer än ett kort. Detta fungerade ändå i mitt 21 spel men ville inte alls fungera i mitt blackjackspel, i slutändan var det 
+        att jag satte session lite tokigt och skrev över det, något som inte var helt enkelt att hitta.<br>
+        Med det sagt så kanske estimeringen på att detta skulle vara "ett mindre" projekt kanske inte helt sant, i alla fall 
+        inte för mig själv men det kan självklart variera från person till person.<br>
+        Om man ska summera det lite så var den svåra delen att hålla koll på alla olika session variabler och den lätta delen 
+        att få igång hela projektet eftersom jag kunde återanvända mycket av mina gamla klasser.
+    </p>
+
+    <h2>Tankar kring kursen</h2>
+
+    <p>
+        Något jag minns som väldigt stökigt och krångligt var början av kursen, specifikt när man skulle installera symphony, 
+        på något vis lyckades jag få hela min installation inne i app mappen vilket blev helt galet och tog en del ominstallationer och 
+        manuellt förflyttning för att lösa. Jag tror att man behöver se över instruktionerna i kmom01 för installationen så att 
+        andra inte har samma problem som mig, det kanske bara var jag som läste fel någonstans men det var ett problem som tog väldigt 
+        mycket onödig tid, det är också därför det finns en app_old i mina filer.<br> 
+        I övrigt så skulle jag säga att jag uppskattade variationerna av uppgifterna, vi har byggt ett kortsel, vi har grejat i 
+        databaser m.m. vilket har lett till mycket variationer och det tycker jag personligen är bra. Sedan ska det även nämnas 
+        att slutprojektet som man nästintill direkt kunde börja med och ha en god bas tack vare de tidigare kmoms kortspel 
+        var väldigt uppskattat då det ofta är i början man sitter fast, det borde fler kurser implementera.<br>
+        Om jag ska ge något "score" så blir 7/10 helt klart över medel men vissa saker var röriga. 
+    </p>
 {% endblock %}

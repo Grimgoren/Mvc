@@ -771,6 +771,21 @@ Search.appendIndex(
             "summary": "Find\u0020all\u0020products\u0020having\u0020a\u0020value\u0020above\u0020the\u0020specified\u0020one\u0020with\u0020SQL.",
             "url": "classes/App-Repository-ProductRepository.html#method_findByMinimumValue2"
         },                {
+            "fqsen": "\\App\\Service\\GameState",
+            "name": "GameState",
+            "summary": "",
+            "url": "classes/App-Service-GameState.html"
+        },                {
+            "fqsen": "\\App\\Service\\GameState\u003A\u003AwhoWon\u0028\u0029",
+            "name": "whoWon",
+            "summary": "Function\u0020to\u0020determine\u0020winners\u0020and\u0020losers.",
+            "url": "classes/App-Service-GameState.html#method_whoWon"
+        },                {
+            "fqsen": "\\App\\Service\\GameState\u003A\u003ApayOut\u0028\u0029",
+            "name": "payOut",
+            "summary": "Function\u0020which\u0020determines\u0020who\u0020is\u0020getting\u0020paid\u0020or\u0020not.",
+            "url": "classes/App-Service-GameState.html#method_payOut"
+        },                {
             "fqsen": "\\App\\Service\\GameInitializer",
             "name": "GameInitializer",
             "summary": "",
@@ -790,21 +805,6 @@ Search.appendIndex(
             "name": "gameStarter",
             "summary": "Function\u0020sets\u0020session\u0020and\u0020returns\u0020variables\u0020to\u0020start\u0020a\u0020game.",
             "url": "classes/App-Service-GameStarter.html#method_gameStarter"
-        },                {
-            "fqsen": "\\App\\Service\\GameState",
-            "name": "GameState",
-            "summary": "",
-            "url": "classes/App-Service-GameState.html"
-        },                {
-            "fqsen": "\\App\\Service\\GameState\u003A\u003AwhoWon\u0028\u0029",
-            "name": "whoWon",
-            "summary": "Function\u0020to\u0020determine\u0020winners\u0020and\u0020losers.",
-            "url": "classes/App-Service-GameState.html#method_whoWon"
-        },                {
-            "fqsen": "\\App\\Service\\GameState\u003A\u003ApayOut\u0028\u0029",
-            "name": "payOut",
-            "summary": "Function\u0020which\u0020determines\u0020who\u0020is\u0020getting\u0020paid\u0020or\u0020not.",
-            "url": "classes/App-Service-GameState.html#method_payOut"
         },                {
             "fqsen": "\\",
             "name": "\\",

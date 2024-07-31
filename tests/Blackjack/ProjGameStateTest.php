@@ -152,7 +152,7 @@ class ProjGameStateTest extends TestCase
 
         $payOut = $payDay->payOut($result, $bet);
 
-        $this->assertEquals(0, $payOut);
+        $this->assertEquals(20, $payOut);
     }
 
     public function testPayOutBusted()
