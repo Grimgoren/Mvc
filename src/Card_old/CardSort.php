@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Card;
+namespace App\Card_old;
 
 use App\Card\CardValue;
 
