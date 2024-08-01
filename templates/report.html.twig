@@ -268,7 +268,15 @@
         Exempel på nya klasser jag skapade är ProjControllerDoubling just för när man väljer att dubbla sin insatts och 
         GameState som hanterar vem som vinner och hur mycket man får i vinst eller hur mycket man förlorat.<br>
         GameState var innan jag skapade den klassen del utav min massiva kotroller vilket inte var så bra, nu är det en riktigt bra 
-        liten och konsistent klass.
+        liten och konsistent klass.<br>
+        Något som jag också tyckte blev rätt bra är att jag har några routes som sätter en "mark" för exempelvis om man har valt att stanna och sedan 
+        redirectar till en större route som hanterar vad som händer när man valt och stanna (den kollar först vilka som har stannat med 
+        hjälp utav "mark" routen). Innan jag implementerade dem routsen så var det enbart en del av en större route för hela saker (stanna, dra kort 
+        och dubbla).<br>
+        Jag nämnde innan att jag valde att inte göra en ny stylesheet eftersom jag tyckte det var bekvämare att fortsätta arbeta i det jag redan hade 
+        i efterhand så var det nog en miss. Detta eftersom jag först i slutet av mitt projekt märkte att jag kanse velat göra saker annorlunda med exempelvis 
+        body för projekt sidan, vilket blir lite skevt när allt ligger i samma sass/css fil. Något man kan ta med sig till nästa gång som lärdom, men i 
+        slutändan så påverkade det inte stilen på sidan det gjorde bara att det blev krångligare att få till saker som jag ville.
     </p>
 
     <p>
@@ -295,11 +303,13 @@
         på något vis lyckades jag få hela min installation inne i app mappen vilket blev helt galet och tog en del ominstallationer och 
         manuellt förflyttning för att lösa. Jag tror att man behöver se över instruktionerna i kmom01 för installationen så att 
         andra inte har samma problem som mig, det kanske bara var jag som läste fel någonstans men det var ett problem som tog väldigt 
-        mycket onödig tid, det är också därför det finns en app_old i mina filer.<br> 
+        mycket onödig tid, det är också därför det finns en app_old i mina filer.<br>
+        Det kmom som hanterade databaser (ORM) tyckte jag var väldigt bra uppbyggt det välskrivet och lätt att förstå, det hände aldrig att man fastnade 
+        som kan ske på andra kmom, och själva databasen var lätthanterlig om man jämför med tidigare databaser vi arbetat med.
         I övrigt så skulle jag säga att jag uppskattade variationerna av uppgifterna, vi har byggt ett kortsel, vi har grejat i 
         databaser m.m. vilket har lett till mycket variationer och det tycker jag personligen är bra. Sedan ska det även nämnas 
         att slutprojektet som man nästintill direkt kunde börja med och ha en god bas tack vare de tidigare kmoms kortspel 
         var väldigt uppskattat då det ofta är i början man sitter fast, det borde fler kurser implementera.<br>
-        Om jag ska ge något "score" så blir 7/10 helt klart över medel men vissa saker var röriga. 
+        Om jag ska ge något "score" så blir 7/10 helt klart över medel men vissa saker var röriga.
     </p>
 {% endblock %}

@@ -172,11 +172,11 @@ body {
     padding: 20px 0;
     box-sizing: border-box;
     margin-top: auto;
+    width: 100vw;
     position: relative;
     left: 50%;
     right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    transform: translateX(-50%);
 }
 
 .footer-content {
