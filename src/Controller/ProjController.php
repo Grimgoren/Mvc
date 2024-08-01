@@ -524,7 +524,7 @@ class ProjController extends AbstractController
 
             $dealerValue = $dealerHand->getHandValue();
 
-            while ($dealerValue < 17) {
+            while ($dealerValue < 40) {
                 $newCard = $deckOfCards->drawCard();
                 $dealerHand->add($newCard);
                 $dealerValue = $dealerHand->getHandValue();

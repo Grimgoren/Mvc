@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service_old;
+namespace App\Service\Service_old;
 
 use App\Card\DeckOfCards;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
